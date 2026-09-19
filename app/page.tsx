@@ -95,12 +95,14 @@ export default function Home() {
           <a href="#pricing">Pricing</a>
           <a href="#book">Book</a>
         </div>
-        <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
-          {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-        </motion.button>
-        <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
-          Book a Shoot <ArrowRight size={16} />
-        </motion.a>
+        <div className="navActions">
+          <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+          </motion.button>
+          <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
+            Book a Shoot <ArrowRight size={16} />
+          </motion.a>
+        </div>
       </nav>
 
       <section className="hero" onMouseMove={moveHero}>

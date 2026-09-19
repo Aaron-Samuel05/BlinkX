@@ -187,7 +187,7 @@ export default function Home() {
       <section id="pricing" className="offerSection section">
         <div className="offerPhone">
           <div className="offerGlow"/>
-          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{contentThumbs.map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
+          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{heroContentThumbs.slice(0, 9).map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
           <div className="offerBadge glass"><b><Sparkles size={18}/></b> 12 Reels<br/><strong>24 Hours</strong></div>
         </div>
         <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span><Video/><b>We Shoot</b></span><ArrowRight/><span><Layers3/><b>We Process</b></span><ArrowRight/><span><TrendingUp/><b>You Grow</b></span></div></div>

@@ -14,6 +14,19 @@ const benefits = [
   ["04", "All in One", "Planning, scripts, shooting, editing, captions and music.", "●"],
 ];
 
+
+const contentThumbs = [
+  "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=700&q=85",
+];
+
 const process = [
   ["01", "We Plan", "We bring ideas to life.", "💡"],
   ["02", "We Shoot", "On-location with professional production.", "◉"],
@@ -92,7 +105,13 @@ export default function Home() {
                 <div className="phoneScreen">
                   <div className="phoneTop"><span>9:41</span><span>● ◔ ▪</span></div>
                   <div className="phoneGrid">
-                    {["coffee","woman","founder","product","studio","creator","event","brand","growth"].map((x, i) => <div key={x} className={"mini mini" + (i+1)}><span>{i+1}</span></div>)}
+                    {contentThumbs.map((src, i) => (
+                    <div key={src} className={"mini mini" + (i + 1)}>
+                      <img src={src} alt="" loading={i > 2 ? "lazy" : "eager"} />
+                      <span>{i + 1}</span>
+                      <i className="miniPlay"><Play size={7} fill="currentColor" /></i>
+                    </div>
+                  ))}
                   </div>
                   <div className="phoneBottom"><b>REELS</b><span>12 / 12</span></div>
                 </div>
@@ -160,7 +179,7 @@ export default function Home() {
       <section id="pricing" className="offerSection section">
         <div className="offerPhone">
           <div className="offerGlow"/>
-          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{Array.from({length:9}).map((_,i)=><i key={i}/>)}</div></div></div>
+          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{contentThumbs.map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
           <div className="offerBadge glass"><b>⚡</b> 12 Reels<br/><strong>24 Hours</strong></div>
         </div>
         <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span>◫<b>We Shoot</b></span><ArrowRight/><span>☁<b>We Process</b></span><ArrowRight/><span>▶<b>You Grow</b></span></div></div>

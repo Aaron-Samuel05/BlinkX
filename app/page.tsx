@@ -1,71 +1,221 @@
 "use client";
-import {useMemo,useState} from "react";
-import {ArrowRight,Check,Clock3,Instagram,MapPin,Play,Phone,Video,Zap} from "lucide-react";
-import {motion} from "framer-motion";
 
-const days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-const times=["10:00 AM","12:00 PM","2:00 PM","4:00 PM","6:00 PM"];
+import { useMemo, useState } from "react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X } from "lucide-react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
-export default function Home(){
- const [date,setDate]=useState<number|null>(null);
- const [time,setTime]=useState<string|null>(null);
- const [showBooking,setShowBooking]=useState(false);
- const [submitted,setSubmitted]=useState(false);
- const [form,setForm]=useState({name:"",business:"",phone:"",email:"",type:"Business / Brand",location:""});
- const calendar=useMemo(()=>Array.from({length:30},(_,i)=>i+1),[]);
- const canBook=date!==null&&time!==null;
- return <main>
-  <nav className="nav"><div className="brand"><span className="mark">X</span><span>Blink X</span></div><div className="navlinks"><a href="#work">Work</a><a href="#process">How it works</a><a href="#book">Book</a></div><a className="navcta" href="#book">Book a shoot <ArrowRight size={17}/></a></nav>
+const months = ["September 2026"];
+const days = Array.from({ length: 30 }, (_, i) => i + 1);
 
-  <section className="hero">
-   <div className="heroGlow one"/><div className="heroGlow two"/>
-   <div className="heroCopy">
-    <p className="eyebrow"><Zap size={15}/> CONTENT AT THE SPEED OF LIGHT</p>
-    <h1><span>12 REELS.</span><span>24 HOURS.</span><span className="accent">ONE SHOOT.</span></h1>
-    <p className="heroText">We come to you, shoot your content, edit 12 reels and hand over the finished content in 24 hours.</p>
-    <div className="heroActions"><a className="button primary" href="#book">Book your shoot <ArrowRight size={19}/></a><a className="button ghost" href="#work"><Play size={17} fill="currentColor"/> See the work</a></div>
-    <div className="heroMeta"><span>₹15,000 / shoot</span><span>50% to book</span><span>50% on delivery</span></div>
-   </div>
-   <div className="heroVisual"><div className="reelFrame"><div className="scan"/><div className="reelTop"><span>BLINK X</span><span>01 / 12</span></div><div className="reelScene"><div className="sceneCircle"/><div className="sceneCard">YOUR<br/><b>BRAND.</b></div></div><div className="reelBottom">SHOOT → EDIT → DELIVER</div></div></div>
-  </section>
+const benefits = [
+  ["01", "Save Time", "No more planning, scripting, shooting or editing on your own.", "✦"],
+  ["02", "Grow Faster", "More content means more reach, more conversations, more customers.", "↗"],
+  ["03", "Pro Quality", "Shoot and edited by a dedicated creative team.", "★"],
+  ["04", "All in One", "Planning, scripts, shooting, editing, captions and music.", "●"],
+];
 
-  <section className="ticker"><div>12 REELS <i>✦</i> 24 HOURS <i>✦</i> SHOOT TODAY <i>✦</i> POST TOMORROW <i>✦</i> 12 REELS <i>✦</i> 24 HOURS</div></section>
+const process = [
+  ["01", "We Plan", "We bring ideas to life.", "💡"],
+  ["02", "We Shoot", "On-location with professional production.", "◉"],
+  ["03", "We Edit", "High-quality, ready-to-post reels.", "▣"],
+  ["04", "You Grow", "More content. More opportunities.", "↗"],
+];
 
-  <section id="work" className="work">
-   <div className="sectionHead"><div><p className="eyebrow">THE OUTPUT</p><h2>Built for the <span>scroll.</span></h2></div><p>Product launches, restaurants, personal brands, events and everything in between. One shoot gives you a full bank of content.</p></div>
-   <div className="reelGrid">
-    {[1,2,3,4,5,6].map((n)=><motion.div key={n} className="reelTile" whileHover={{scale:1.025}}><div className="tileNo">0{n}</div><div className={"tileShape s"+n}/><div className="tileLabel">{["Brand launch","Restaurant","Founder","Product","Event","Creator"][n-1]}</div><div className="tilePlay"><Play size={19} fill="currentColor"/></div></motion.div>)}
-   </div>
-  </section>
+export default function Home() {
+  const [date, setDate] = useState<number | null>(null);
+  const [time, setTime] = useState("Discuss on call");
+  const [showBooking, setShowBooking] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", business: "", phone: "", email: "", type: "Business / Brand", location: "" });
 
-  <section id="process" className="process"><div className="sectionHead"><div><p className="eyebrow">THE BLINK X METHOD</p><h2>Fast in. <span>Fast out.</span></h2></div></div>
-   <div className="steps">{[
-    ["01","BOOK","Pick a date and time that works. Your slot is reserved instantly.","Calendar"],
-    ["02","SHOOT","Our team comes to your location and captures everything we need for 12 reels.","On location"],
-    ["03","EDIT","We turn the footage into 12 polished, social-ready edits.","In-house"],
-    ["04","DELIVER","Get your 12 reels via a Google Drive link within 24 hours of the shoot.","24 hours"]
-   ].map(([num,title,text,badge])=><div className="step" key={num}><div className="num">{num}</div><div><div className="stepBadge">{badge}</div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
-  </section>
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.22], [0, -110]);
+  const phoneY = useTransform(scrollYProgress, [0, 0.28], [0, 120]);
+  const blobY = useTransform(scrollYProgress, [0, 0.3], [0, -70]);
 
-  <section className="offer"><div className="offerMark">X</div><div><p className="eyebrow">ONE SIMPLE OFFER</p><h2>₹15,000</h2><p>Everything needed for your 12-reel content day. <b>50% to reserve.</b> The balance is due on delivery.</p></div><div className="offerList">{["12 edited vertical reels","Shoot + production","Editing + finishing","Social-ready exports","Google Drive delivery"].map(x=><span key={x}><Check size={17}/>{x}</span>)}</div></section>
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const smoothX = useSpring(cursorX, { stiffness: 80, damping: 22 });
+  const smoothY = useSpring(cursorY, { stiffness: 80, damping: 22 });
 
-  <section id="book" className="booking">
-   <div className="bookingIntro"><p className="eyebrow">RESERVE YOUR SLOT</p><h2>Pick a date.<br/><span>We’ll call you.</span></h2><p>Choose your preferred day and time. Once the booking request is submitted, the Blink X team will call you to discuss the shoot, location and remaining details.</p><div className="bookingInfo"><span><Phone size={17}/> Team callback after booking</span><span><MapPin size={17}/> Location confirmed on call</span><span><Clock3 size={17}/> 24-hour delivery</span></div></div>
-   <div className="calendarCard">
-    {!submitted ? <>
-    <div className="calendarHeader"><div><span className="month">September 2026</span><small>Choose your preferred date</small></div><div className="miniMark">X</div></div>
-    <div className="week">{days.map(d=><span key={d}>{d}</span>)}</div>
-    <div className="days">{calendar.map(d=><button key={d} className={date===d?"selected":""} onClick={()=>setDate(d)}>{d}</button>)}</div>
-    <div className="timeRow"><span>Preferred time</span><div>{times.map(t=><button key={t} className={time===t?"selected":""} onClick={()=>setTime(t)}>{t}</button>)}</div></div>
-    <button disabled={!canBook} className="bookButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={19}/></button>
-    </>:<div className="success"><div className="successIcon"><Check/></div><p className="eyebrow">BOOKING REQUEST RECEIVED</p><h3>We’ll call you.</h3><p>Your preferred slot is <b>September {date}, 2026 · {time}</b>. Blink X will contact you to discuss the shoot details and the 50% advance.</p><a href="#" onClick={(e)=>{e.preventDefault();setSubmitted(false);setShowBooking(false)}}>Make another booking</a></div>}
-   </div>
-  </section>
+  const calendar = useMemo(() => days, []);
+  const canContinue = date !== null;
 
-  <footer><div className="footerBrand"><span className="mark">X</span><span>Blink X</span></div><p>Content, at the speed of light.</p><div className="footerRight"><a href="#book">Book a shoot</a><a href="#work">Instagram <Instagram size={15}/></a></div></footer>
+  function moveHero(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    cursorX.set((e.clientX - rect.left - rect.width / 2) / 22);
+    cursorY.set((e.clientY - rect.top - rect.height / 2) / 22);
+  }
 
-  {showBooking&&<div className="modalBack" onMouseDown={()=>setShowBooking(false)}><motion.div className="modal" initial={{y:30,opacity:0}} animate={{y:0,opacity:1}} onMouseDown={e=>e.stopPropagation()}><div className="modalHead"><div><p className="eyebrow">FINAL STEP</p><h3>Tell us who’s booking.</h3></div><button onClick={()=>setShowBooking(false)}>×</button></div><div className="selectedSummary">Sep {date}, 2026 <span>•</span> {time}<span>•</span> ₹7,500 advance</div><div className="formGrid">{[
-   ["name","Your name"],["business","Business / brand"],["phone","Phone number"],["email","Email address"],["location","Shoot location / area"]
-  ].map(([k,label])=><input key={k} placeholder={label} value={(form as any)[k]} onChange={e=>setForm({...form,[k]:e.target.value})} className={k==="location"?"full":""}/>)}</div><select value={form.type} onChange={e=>setForm({...form,type:e.target.value})}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select><p className="modalNote">Available times, location, production details and all shoot requirements will be discussed with the Blink X team on the callback.</p><button className="bookButton" onClick={()=>{setShowBooking(false);setSubmitted(true)}}>Submit booking request <ArrowRight size={18}/></button></motion.div></div>}
- </main>
+  return (
+    <main onMouseLeave={() => { cursorX.set(0); cursorY.set(0); }}>
+      <div className="progress"><motion.div style={{ scaleX: scrollYProgress }} /></div>
+
+      <nav className="nav glass">
+        <a className="brand" href="#">
+          <img src="/blinkx-logo.svg" alt="Blink X" />
+        </a>
+        <div className="navlinks">
+          <a href="#why">Why Blink X?</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#book">Book</a>
+        </div>
+        <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
+          Book a Shoot <ArrowRight size={16} />
+        </motion.a>
+      </nav>
+
+      <section className="hero" onMouseMove={moveHero}>
+        <motion.div className="heroOrb orbOne" style={{ x: smoothX, y: smoothY }} />
+        <motion.div className="heroOrb orbTwo" style={{ x: useTransform(smoothX, v => -v * 0.45), y: useTransform(smoothY, v => -v * 0.45) }} />
+        <div className="heroNoise" />
+        <div className="heroInner">
+          <motion.div className="heroCopy" style={{ y: heroY }}>
+            <motion.div className="eyebrow glassPill"><Sparkles size={14}/> CONTENT THAT MOVES BUSINESS</motion.div>
+            <h1><span>12 Reels.</span><span className="orange">24 Hours.</span></h1>
+            <p>We come. We shoot. We edit. You grow.</p>
+            <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
+            <div className="heroActions">
+              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#book">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how"><span className="playCircle"><Play size={13} fill="currentColor"/></span> Watch how it works <small>01:00</small></motion.a>
+            </div>
+            <div className="trustRow"><div className="avatarStack"><i/><i/><i/><i/><i/></div><div><b>500+</b><span>Businesses trust Blink X</span></div></div>
+          </motion.div>
+
+          <div className="heroVisual">
+            <motion.div className="heroBackText" style={{ y: blobY }}>BLINK X</motion.div>
+            <motion.div className="orangeShape" style={{ y: blobY }} />
+            <motion.div className="phoneWrap" style={{ y: phoneY }}>
+              <div className="phone">
+                <div className="phoneIsland" />
+                <div className="phoneScreen">
+                  <div className="phoneTop"><span>9:41</span><span>● ◔ ▪</span></div>
+                  <div className="phoneGrid">
+                    {["coffee","woman","founder","product","studio","creator","event","brand","growth"].map((x, i) => <div key={x} className={"mini mini" + (i+1)}><span>{i+1}</span></div>)}
+                  </div>
+                  <div className="phoneBottom"><b>REELS</b><span>12 / 12</span></div>
+                </div>
+              </div>
+              <motion.div className="floatCard topCard glass" animate={{ y: [0, -10, 0], rotate: [-2, 1, -2] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+                <b>⚡</b><span>12 Reels<br/><strong>24 Hours</strong></span>
+              </motion.div>
+              <motion.div className="floatCard bottomCard glass" animate={{ y: [0, 9, 0], rotate: [2, -1, 2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+                <span className="tinyX">X</span><span><strong>Blink X</strong><small>More Content. Less Stress.</small></span>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+        <div className="sideProgress"><span>SHOOT</span><i/><span>EDIT</span><i/><span>DELIVER</span></div>
+        <div className="scrollHint">SCROLL <span>↓</span></div>
+      </section>
+
+      <div className="marqueeWrap">
+        <div className="marquee">
+          <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
+          <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
+        </div>
+      </div>
+
+      <section id="why" className="section why">
+        <div className="sectionIntro">
+          <div><div className="miniEyebrow">WHY <span /></div><h2>Why Blink <em>X?</em></h2><p>Your business deserves better content.</p></div>
+          <motion.a whileHover={{ x: 5 }} href="#how" className="textButton">See how it works <ArrowRight size={17}/></motion.a>
+        </div>
+        <div className="benefitGrid">
+          {benefits.map(([num, title, text, icon], i) => (
+            <motion.div key={title} className="benefit glassCard" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ delay: i * .08 }}>
+              <span className="benefitNo">{num}</span><div className="iconBubble">{icon}</div><h3>{title}</h3><p>{text}</p><ArrowRight size={16} className="cardArrow"/>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section className="problem section">
+        <motion.div className="problemVisual" initial={{ opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+          <div className="problemBlob" />
+          <div className="deskStack"><div/><div/><div/><div/></div>
+          <div className="coffee">☕</div>
+          <div className="sticky s1">PLAN</div><div className="sticky s2">SCRIPT</div><div className="sticky s3">SHOOT</div><div className="sticky s4">EDIT</div>
+          <div className="scribble">⌁⌁⌁</div>
+        </motion.div>
+        <div className="problemCopy">
+          <div className="miniEyebrow">THE PROBLEM <span /></div>
+          <h2>Running a business is already a <em>full-time job.</em></h2>
+          <p>Let Blink X handle the content.</p>
+          <div className="taskList">
+            {["Planning content","Writing scripts","Shooting videos","Editing Reels"].map((x,i)=><div key={x}><span>{["▤","✎","◉","▶"][i]}</span>{x}</div>)}
+          </div>
+          <div className="handline">It takes time.</div>
+        </div>
+      </section>
+
+      <section id="how" className="section how">
+        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill">● Simple. Fast. Effective.</div></div>
+        <div className="processGrid">
+          {process.map(([num,title,text,icon],i)=><div className="processItem" key={num}><span className="processNo">{num}</span><div className="processIcon glassCard">{icon}</div><h3>{title}</h3><p>{text}</p>{i<3&&<ArrowRight className="processArrow"/>}</div>)}
+        </div>
+      </section>
+
+      <section id="pricing" className="offerSection section">
+        <div className="offerPhone">
+          <div className="offerGlow"/>
+          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{Array.from({length:9}).map((_,i)=><i key={i}/>)}</div></div></div>
+          <div className="offerBadge glass"><b>⚡</b> 12 Reels<br/><strong>24 Hours</strong></div>
+        </div>
+        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span>◫<b>We Shoot</b></span><ArrowRight/><span>☁<b>We Process</b></span><ArrowRight/><span>▶<b>You Grow</b></span></div></div>
+        <div className="priceCard glassCard" id="book">
+          <div className="price">₹15,000</div><div className="included">Everything Included</div>
+          {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery","12 Ready-to-Post Reels"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
+          <div className="paymentNote"><b>₹7,500</b> to reserve · ₹7,500 on delivery</div>
+          <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Book for ₹7,500 <span><ArrowRight size={17}/></span></motion.a>
+        </div>
+      </section>
+
+      <section className="ctaSection">
+        <div className="ctaFloat left">◫</div><div className="ctaFloat right">⚡</div>
+        <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
+        <h2>Ready to <em>Create Content</em> That Works?</h2>
+        <p>Pick a date, book your shoot, and let Blink X handle the rest.</p>
+        <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton darkButton" href="#bookForm">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+      </section>
+
+      <section id="bookForm" className="bookingSection section">
+        <div className="bookingCopy">
+          <div className="miniEyebrow">BOOK YOUR CONTENT DAY <span /></div>
+          <h2>Pick a date.<br/><em>We’ll call you.</em></h2>
+          <p>Choose your preferred date. The Blink X team will call you to confirm the available time, location and all shoot details before the session.</p>
+          <div className="bookFacts"><span><Phone size={17}/> Team callback</span><span><Clock3 size={17}/> 24-hour delivery</span><span><MapPin size={17}/> Location discussed on call</span></div>
+        </div>
+        <div className="calendar glassCard">
+          {!submitted ? <>
+            <div className="calendarTop"><div><small>SELECT DATE</small><h3>{months[0]}</h3></div><CalendarDays/></div>
+            <div className="calendarWeek">{["M","T","W","T","F","S","S"].map((x,i)=><span key={i}>{x}</span>)}</div>
+            <div className="calendarDays">{calendar.map(d=><button key={d} className={date===d?"active":""} onClick={()=>setDate(d)}>{d}</button>)}</div>
+            <div className="preference"><div><small>PREFERRED TIME</small><b>{time}</b></div><ChevronDown size={17}/></div>
+            <button className="preferenceHint" onClick={()=>setTime(time==="Discuss on call"?"Morning / Afternoon / Evening":"Discuss on call")}>Tap to choose a broad preference</button>
+            <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={18}/></motion.button>
+          </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>September {date}, 2026</b>. The Blink X team will call to confirm the time, location and shoot details.</p><button className="textButton" onClick={()=>setSubmitted(false)}>Make another booking <ArrowRight size={16}/></button></div>}
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="footerBrand"><img src="/blinkx-logo.svg" alt="Blink X"/><span>More Content. Bigger Growth.</span></div>
+        <div className="footerLinks"><a href="#why">Why Blink X?</a><a href="#how">How It Works</a><a href="#pricing">Pricing</a><a href="#bookForm">Book</a><a href="#">FAQs</a></div>
+        <div className="footerSocial"><a href="#"><Instagram size={16}/></a><a href="#"><Video size={16}/></a><a href="#"><Phone size={16}/></a></div>
+      </footer>
+
+      {showBooking && <div className="modalBack" onMouseDown={()=>setShowBooking(false)}>
+        <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>e.stopPropagation()}>
+          <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
+          <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
+          <div className="selectedSlot"><CalendarDays size={16}/> Sep {date}, 2026 <span>•</span> {time} <span>•</span> ₹7,500 advance</div>
+          <div className="formGrid">{[["name","Your name"],["business","Business / brand"],["phone","Phone number"],["email","Email address"],["location","Shoot location / area"]].map(([k,label])=><input key={k} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>setForm({...form,[k]:e.target.value})}/>)}</div>
+          <select value={form.type} onChange={e=>setForm({...form,type:e.target.value})}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
+          <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>
+          <motion.button whileHover={{scale:1.015}} whileTap={{scale:.985}} className="fullButton" onClick={()=>{setShowBooking(false);setSubmitted(true)}}>Submit Booking Request <ArrowRight size={18}/></motion.button>
+        </motion.div>
+      </div>}
+    </main>
+  );
 }

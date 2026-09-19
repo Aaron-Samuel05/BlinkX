@@ -87,7 +87,7 @@ export default function Home() {
 
       <nav className="nav glass">
         <a className="brand" href="#">
-          <img src="/blinkx-logo.svg" alt="Blink X" />
+          <img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.svg"} alt="Blink X" />
         </a>
         <div className="navlinks">
           <a href="#why">Why Blink X?</a>

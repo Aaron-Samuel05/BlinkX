@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -51,6 +51,23 @@ export default function Home() {
   const [time, setTime] = useState("Discuss on call");
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("blinkx-theme");
+    const enabled = saved === "dark";
+    setDarkMode(enabled);
+    document.body.classList.toggle("darkMode", enabled);
+  }, []);
+
+  function toggleDarkMode() {
+    setDarkMode(prev => {
+      const next = !prev;
+      localStorage.setItem("blinkx-theme", next ? "dark" : "light");
+      document.body.classList.toggle("darkMode", next);
+      return next;
+    });
+  }
   const [form, setForm] = useState({ name: "", business: "", phone: "", email: "", type: "Business / Brand", location: "" });
 
   const { scrollYProgress } = useScroll();
@@ -86,6 +103,9 @@ export default function Home() {
           <a href="#pricing">Pricing</a>
           <a href="#book">Book</a>
         </div>
+        <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
+          {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+        </motion.button>
         <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
           Book a Shoot <ArrowRight size={16} />
         </motion.a>

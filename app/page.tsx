@@ -160,12 +160,8 @@ export default function Home() {
       </section>
 
       <section className="problem section">
-        <motion.div className="problemVisual" initial={{ opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-          <div className="problemBlob" />
-          <div className="deskStack"><div/><div/><div/><div/></div>
-          <div className="coffee">☕</div>
-          <div className="sticky s1">PLAN</div><div className="sticky s2">SCRIPT</div><div className="sticky s3">SHOOT</div><div className="sticky s4">EDIT</div>
-          <div className="scribble">⌁⌁⌁</div>
+        <motion.div className="problemVisual problemImageCard" initial={{ opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+          <img src="/blinkx-problem-workspace.jpg" alt="Blink X content production workspace" />
         </motion.div>
         <div className="problemCopy">
           <div className="miniEyebrow">THE PROBLEM <span /></div>

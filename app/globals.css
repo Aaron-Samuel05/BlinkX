@@ -23,3 +23,6 @@
 .faqItem[open] .faqPlus{transform:rotate(45deg)}
 .faqItem p{margin:0;padding:0 24px 23px;color:#777;font-size:13px;line-height:1.6;max-width:650px}
 @media(max-width:650px){.faqHeader{display:block}.faqBadge{margin-top:20px;width:max-content}.faqGrid{grid-template-columns:1fr}.faqItem summary{font-size:14px;padding:19px}.faqItem p{padding:0 19px 20px}}
+
+.problemImageCard{background:#fff!important;overflow:hidden}.problemImageCard img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;border-radius:inherit}
+@media(max-width:650px){.problemImageCard{height:350px}.problemImageCard img{object-position:center}}

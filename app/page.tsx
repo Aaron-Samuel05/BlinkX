@@ -1,17 +1,18 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, Lightbulb, Camera, Scissors, TrendingUp, Layers, Target } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
 const months = ["September 2026"];
 const days = Array.from({ length: 30 }, (_, i) => i + 1);
 
-const benefits = [
+const benefits: [string, string, string, LucideIcon][] = [
   ["01", "Save Time", "No more planning, scripting, shooting or editing on your own.", Clock3],
-  ["02", "Grow Faster", "More content means more reach, more conversations, more customers.", TrendingUp],
+  ["02", "Grow Faster", "More content means more reach, more conversations, more customers.", ArrowRight],
   ["03", "Pro Quality", "Shoot and edited by a dedicated creative team.", Sparkles],
-  ["04", "All in One", "Planning, scripts, shooting, editing, captions and music.", Layers],
+  ["04", "All in One", "Planning, scripts, shooting, editing, captions and music.", Star],
 ];
 
 
@@ -27,11 +28,11 @@ const contentThumbs = [
   "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=700&q=85",
 ];
 
-const process = [
-  ["01", "We Plan", "We bring ideas to life.", Lightbulb],
-  ["02", "We Shoot", "On-location with professional production.", Camera],
-  ["03", "We Edit", "High-quality, ready-to-post reels.", Scissors],
-  ["04", "You Grow", "More content. More opportunities.", TrendingUp],
+const process: [string, string, string, LucideIcon][] = [
+  ["01", "We Plan", "We bring ideas to life.", Sparkles],
+  ["02", "We Shoot", "On-location with professional production.", Video],
+  ["03", "We Edit", "High-quality, ready-to-post reels.", Star],
+  ["04", "You Grow", "More content. More opportunities.", ArrowRight],
 ];
 
 const faqs = [
@@ -150,9 +151,9 @@ export default function Home() {
           <motion.a whileHover={{ x: 5 }} href="#how" className="textButton">See how it works <ArrowRight size={17}/></motion.a>
         </div>
         <div className="benefitGrid">
-          {benefits.map(([num, title, text, icon], i) => (
+          {benefits.map(([num, title, text, Icon], i) => (
             <motion.div key={title} className="benefit glassCard" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ delay: i * .08 }}>
-              <span className="benefitNo">{num}</span><div className="iconBubble">{(() => { const Icon = icon as any; return <Icon size={24} strokeWidth={2.2}/>; })()}</div><h3>{title}</h3><p>{text}</p><ArrowRight size={16} className="cardArrow"/>
+              <span className="benefitNo">{num}</span><div className="iconBubble"><Icon size={24} strokeWidth={2.2}/></div><h3>{title}</h3><p>{text}</p><ArrowRight size={16} className="cardArrow"/>
             </motion.div>
           ))}
         </div>
@@ -180,7 +181,7 @@ export default function Home() {
       <section id="how" className="section how">
         <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill">● Simple. Fast. Effective.</div></div>
         <div className="processGrid">
-          {process.map(([num,title,text,icon],i)=><div className="processItem" key={num}><span className="processNo">{num}</span><div className="processIcon glassCard">{(() => { const Icon = icon as any; return <Icon size={34} strokeWidth={2}/>; })()}</div><h3>{title}</h3><p>{text}</p>{i<3&&<ArrowRight className="processArrow"/>}</div>)}
+          {process.map(([num,title,text,Icon],i)=><div className="processItem" key={num}><span className="processNo">{num}</span><div className="processIcon glassCard"><Icon size={34} strokeWidth={2}/></div><h3>{title}</h3><p>{text}</p>{i<3&&<ArrowRight className="processArrow"/>}</div>)}
         </div>
       </section>
 
@@ -233,7 +234,7 @@ export default function Home() {
             <h2>Everything you need to <em>know.</em></h2>
             <p>Simple answers before you book your content day.</p>
           </div>
-          <div className="faqBadge glassPill"><Target size={14}/> BLINK X DETAILS</div>
+          <div className="faqBadge glassPill"><Sparkles size={14}/> BLINK X DETAILS</div>
         </div>
         <div className="faqGrid">
           {faqs.map(([question, answer], i) => (

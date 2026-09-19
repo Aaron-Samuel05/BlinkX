@@ -16,7 +16,7 @@ const benefits: [string, string, string, LucideIcon][] = [
 ];
 
 
-const contentThumbs = [
+const heroContentThumbs = [
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85",
@@ -26,6 +26,9 @@ const contentThumbs = [
   "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=85",
 ];
 
 const process: [string, string, string, LucideIcon][] = [
@@ -114,7 +117,7 @@ export default function Home() {
                 <div className="phoneScreen">
                   <div className="phoneTop"><span>9:41</span><span>● ◔ ▪</span></div>
                   <div className="phoneGrid">
-                    {contentThumbs.map((src, i) => (
+                    {heroContentThumbs.map((src, i) => (
                     <div key={src} className={"reelThumb reelThumb" + (i + 1)}>
                       <img src={src} alt="" loading={i > 2 ? "lazy" : "eager"} />
                       <span>{i + 1}</span>

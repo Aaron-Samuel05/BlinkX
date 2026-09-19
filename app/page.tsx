@@ -187,7 +187,7 @@ export default function Home() {
           <div className="price">₹15,000</div><div className="included">Everything Included</div>
           {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery","12 Ready-to-Post Reels"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
           <div className="paymentNote"><b>₹7,500</b> to reserve · ₹7,500 on delivery</div>
-          <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Book for ₹7,500 <span><ArrowRight size={17}/></span></motion.a>
+          <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Pay 50% Now <span><ArrowRight size={17}/></span></motion.a>
         </div>
       </section>
 

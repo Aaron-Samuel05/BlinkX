@@ -106,10 +106,10 @@ export default function Home() {
                   <div className="phoneTop"><span>9:41</span><span>● ◔ ▪</span></div>
                   <div className="phoneGrid">
                     {contentThumbs.map((src, i) => (
-                    <div key={src} className={"mini mini" + (i + 1)}>
+                    <div key={src} className={"reelThumb reelThumb" + (i + 1)}>
                       <img src={src} alt="" loading={i > 2 ? "lazy" : "eager"} />
                       <span>{i + 1}</span>
-                      <i className="miniPlay"><Play size={7} fill="currentColor" /></i>
+                      <i className="reelPlay"><Play size={7} fill="currentColor" /></i>
                     </div>
                   ))}
                   </div>

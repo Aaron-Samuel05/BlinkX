@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import { useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -157,8 +159,9 @@ export default function Home() {
 
       <div className="marqueeWrap">
         <div className="marquee">
-          <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
-          <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
+          {[0,1,2,3].map(group => <React.Fragment key={group}>
+            <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
+          </React.Fragment>)}
         </div>
       </div>
 

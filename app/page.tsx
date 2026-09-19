@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
@@ -53,17 +53,9 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("blinkx-theme");
-    const enabled = saved === "dark";
-    setDarkMode(enabled);
-    document.body.classList.toggle("darkMode", enabled);
-  }, []);
-
   function toggleDarkMode() {
     setDarkMode(prev => {
       const next = !prev;
-      localStorage.setItem("blinkx-theme", next ? "dark" : "light");
       document.body.classList.toggle("darkMode", next);
       return next;
     });

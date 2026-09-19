@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -172,14 +172,14 @@ export default function Home() {
           <h2>Running a business is already a <em>full-time job.</em></h2>
           <p>Let Blink X handle the content.</p>
           <div className="taskList">
-            {["Planning content","Writing scripts","Shooting videos","Editing Reels"].map((x,i)=><div key={x}><span>{["▤","✎","◉","▶"][i]}</span>{x}</div>)}
+            {[["Planning content", ListChecks],["Writing scripts", PenLine],["Shooting videos", CircleDot],["Editing Reels", Film]].map(([x,Icon])=><div key={x as string}><span><Icon size={22} strokeWidth={2}/></span>{x as string}</div>)}
           </div>
           <div className="handline">It takes time.</div>
         </div>
       </section>
 
       <section id="how" className="section how">
-        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill">● Simple. Fast. Effective.</div></div>
+        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill"><Sparkles size={13}/> Simple. Fast. Effective.</div></div>
         <div className="processGrid">
           {process.map(([num,title,text,Icon],i)=><div className="processItem" key={num}><span className="processNo">{num}</span><div className="processIcon glassCard"><Icon size={34} strokeWidth={2}/></div><h3>{title}</h3><p>{text}</p>{i<3&&<ArrowRight className="processArrow"/>}</div>)}
         </div>
@@ -189,9 +189,9 @@ export default function Home() {
         <div className="offerPhone">
           <div className="offerGlow"/>
           <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{contentThumbs.map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
-          <div className="offerBadge glass"><b>⚡</b> 12 Reels<br/><strong>24 Hours</strong></div>
+          <div className="offerBadge glass"><b><Sparkles size={18}/></b> 12 Reels<br/><strong>24 Hours</strong></div>
         </div>
-        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span>◫<b>We Shoot</b></span><ArrowRight/><span>☁<b>We Process</b></span><ArrowRight/><span>▶<b>You Grow</b></span></div></div>
+        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span><Video/><b>We Shoot</b></span><ArrowRight/><span><Layers3/><b>We Process</b></span><ArrowRight/><span><TrendingUp/><b>You Grow</b></span></div></div>
         <div className="priceCard glassCard" id="book">
           <div className="price">₹15,000</div><div className="included">Everything Included</div>
           {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery","12 Ready-to-Post Reels"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
@@ -201,7 +201,7 @@ export default function Home() {
       </section>
 
       <section className="ctaSection">
-        <div className="ctaFloat left">◫</div><div className="ctaFloat right">⚡</div>
+        <div className="ctaFloat left"><Layers3 size={20}/></div><div className="ctaFloat right"><Sparkles size={20}/></div>
         <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
         <h2>Ready to <em>Create Content</em> That Works?</h2>
         <p>Pick a date, book your shoot, and let Blink X handle the rest.</p>

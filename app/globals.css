@@ -7,3 +7,19 @@
 @media(max-width:650px){.nav{margin:6px 12px 0;height:64px;padding:0 12px}.brand img{width:105px}.pillButton{padding:9px 12px;font-size:10px}.hero{padding:55px 20px 60px}.hero h1{font-size:20vw}.heroCopy>p:not(.heroSub){font-size:18px}.heroSub{font-size:13px}.heroVisual{height:480px;margin-top:20px}.phoneWrap{transform:scale(.73)}.orangeShape{width:370px;height:380px;right:0}.topCard{right:-5px}.bottomCard{left:0}.sideProgress{display:none}.scrollHint{left:20px}.marquee{height:54px;font-size:10px}.section{padding:80px 20px}.sectionIntro,.howHeader{display:block}.sectionIntro .textButton{margin-top:25px}.benefitGrid{grid-template-columns:1fr 1fr;gap:9px}.benefit{min-height:275px;padding:17px;border-radius:20px}.iconBubble{margin:35px 0 20px;width:48px;height:48px}.benefit h3{font-size:16px}.benefit p{font-size:11px}.problem{padding:70px 20px;gap:45px}.problemVisual{height:350px;border-radius:28px}.deskStack{left:15px;bottom:20px;width:200px}.coffee{left:90px;bottom:115px;font-size:55px}.sticky{font-size:11px;padding:8px 12px}.s1{left:55px;bottom:215px}.s2{left:105px;bottom:180px}.s3{left:60px;bottom:145px}.s4{left:110px;bottom:110px}.taskList{grid-template-columns:1fr}.how h2{font-size:49px}.simpleBadge{margin-top:20px;width:max-content}.processGrid{grid-template-columns:1fr 1fr;gap:35px 10px}.processIcon{width:75px;height:75px;font-size:25px}.processItem h3{font-size:15px}.processItem p{font-size:11px}.offerSection{padding:70px 20px}.offerPhone{height:380px}.smallPhone{width:220px;height:390px}.offerGlow{width:320px;height:320px}.offerCopy h2{font-size:54px}.flow{width:100%;justify-content:center;gap:9px}.flow span{font-size:16px}.price{font-size:48px}.ctaSection{margin:0 12px 70px;padding:70px 18px;border-radius:28px}.ctaFloat{display:none}.bookingSection{padding-top:30px}.calendar{padding:18px;border-radius:22px}.calendarDays{gap:4px}.calendarDays button{padding:10px 0;font-size:12px}.bookingModal{padding:22px;border-radius:24px}.bookingModal h3{font-size:30px}.formGrid{grid-template-columns:1fr}.formGrid .full{grid-column:auto}.footer{padding:30px 20px}.footerLinks{gap:15px}.footerSocial{margin-top:5px}}
 
 @media(max-width:650px){.heroVisual{overflow:visible}.phoneWrap{width:365px;max-width:none;}.phoneGrid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));}.reelThumb img,.miniVideoGrid img{max-width:none!important;}}
+
+
+.processIcon svg,.iconBubble svg{color:var(--orange2);stroke:currentColor}
+.taskList span{color:var(--orange2);font-weight:800}
+.flow>svg{color:var(--orange2);flex:0 0 auto}
+.faqHeader{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}
+.faqHeader p{color:#777;margin:0}
+.faqBadge{margin:0}
+.faqGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.faqItem{border-radius:22px;padding:0;overflow:hidden}
+.faqItem summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 24px;font-family:"Manrope";font-weight:700;font-size:15px}
+.faqItem summary::-webkit-details-marker{display:none}
+.faqPlus{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#fff4df;color:var(--orange2);font-size:22px;font-weight:500;transition:transform .25s}
+.faqItem[open] .faqPlus{transform:rotate(45deg)}
+.faqItem p{margin:0;padding:0 24px 23px;color:#777;font-size:13px;line-height:1.6;max-width:650px}
+@media(max-width:650px){.faqHeader{display:block}.faqBadge{margin-top:20px;width:max-content}.faqGrid{grid-template-columns:1fr}.faqItem summary{font-size:14px;padding:19px}.faqItem p{padding:0 19px 20px}}

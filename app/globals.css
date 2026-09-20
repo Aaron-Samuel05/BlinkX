@@ -65,3 +65,10 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
 .successBookingButton:hover{box-shadow:0 16px 34px rgba(250,170,38,.34);background:#ffb536}
 .successBookingButton span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;transition:transform .3s}
 .successBookingButton:hover span{transform:translateX(3px) rotate(-4deg)}
+
+
+/* Booking success CTA — keep it on-brand even if legacy textButton class is present */
+.success .textButton,.success .successBookingButton{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;padding:7px 8px 7px 20px!important;min-height:50px!important;border:0!important;border-radius:999px!important;background:var(--orange)!important;color:#090909!important;font-family:inherit!important;font-size:14px!important;font-weight:800!important;line-height:1!important;cursor:pointer!important;box-shadow:0 10px 26px rgba(250,170,38,.22)!important;transition:transform .25s ease,box-shadow .25s ease,background .25s ease!important}
+.success .textButton:hover,.success .successBookingButton:hover{transform:translateY(-2px)!important;background:#ffb536!important;box-shadow:0 15px 32px rgba(250,170,38,.3)!important}
+.success .textButton svg,.success .successBookingButton span{width:36px!important;height:36px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#090909!important;color:#fff!important;flex:0 0 36px!important;transition:transform .3s ease!important}
+.success .textButton:hover svg,.success .successBookingButton:hover span{transform:translateX(3px)!important}

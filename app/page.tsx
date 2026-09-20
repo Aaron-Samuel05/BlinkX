@@ -47,7 +47,7 @@ const process: [string, string, string, LucideIcon][] = [
 ];
 
 const faqs = [
-  ["What is included in the ₹15,000 content day?", "One professional content day includes shooting, editing, captions and subtitles, music and sound design, color grading, thumbnails, 12 ready-to-post Reels and 24-hour delivery."],
+  ["What is included in a content day?", "Every package includes professional shooting, editing, captions and subtitles, music and sound design, color grading, thumbnails and 24-hour delivery. The number of ready-to-post Reels depends on the package you choose."],
   ["How does the 50% payment work?", "You pay 50% to reserve the content day. The remaining 50% is due on delivery."],
   ["How quickly will I receive the Reels?", "The package is designed for delivery within 24 hours after the shoot."],
   ["Where do you shoot?", "Shoot location is discussed and confirmed with the Blink X team during the booking callback."],
@@ -65,6 +65,13 @@ export default function Home() {
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const packages = [
+    { id: "starter", name: "Starter", reels: 8, price: 10000, advance: 5000 },
+    { id: "growth", name: "Growth", reels: 12, price: 15000, advance: 7500, popular: true },
+    { id: "scale", name: "Scale", reels: 18, price: 25000, advance: 12500 },
+  ];
+  const [selectedPackage, setSelectedPackage] = useState("growth");
+  const activePackage = packages.find(pkg => pkg.id === selectedPackage) || packages[1];
 
   function toggleDarkMode() {
     setDarkMode(prev => {
@@ -244,14 +251,27 @@ export default function Home() {
         <div className="offerPhone">
           <div className="offerGlow"/>
           <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{heroContentThumbs.slice(0, 9).map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
-          <div className="offerBadge glass"><b><Sparkles size={18}/></b> 12 Reels<br/><strong>24 Hours</strong></div>
+          <div className="offerBadge glass"><b><Sparkles size={18}/></b> {activePackage.reels} Reels<br/><strong>24 Hours</strong></div>
         </div>
-        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>12 Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span><Video/><b>We Shoot</b></span><ArrowRight/><span><Layers3/><b>We Process</b></span><ArrowRight/><span><TrendingUp/><b>You Grow</b></span></div></div>
-        <div className="priceCard glassCard" id="book">
-          <div className="price">₹15,000</div><div className="included">Everything Included</div>
-          {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery","12 Ready-to-Post Reels"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
-          <div className="paymentNote"><b>₹7,500</b> to reserve · ₹7,500 on delivery</div>
-          <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Pay 50% Now <span><ArrowRight size={17}/></span></motion.a>
+        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>{activePackage.reels} Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span><Video/><b>We Shoot</b></span><ArrowRight/><span><Layers3/><b>We Process</b></span><ArrowRight/><span><TrendingUp/><b>You Grow</b></span></div></div>
+        <div className="pricingOptions" id="book">
+          {packages.map(pkg => (
+            <motion.button key={pkg.id} whileHover={{ y: -4 }} whileTap={{ scale: .985 }} className={`packageCard glassCard ${selectedPackage === pkg.id ? "selected" : ""}`} onClick={() => setSelectedPackage(pkg.id)}>
+              {pkg.popular && <span className="packagePopular">MOST POPULAR</span>}
+              <span className="packageName">{pkg.name}</span>
+              <span className="packagePrice">₹{pkg.price.toLocaleString("en-IN")}</span>
+              <span className="packageReels">{pkg.reels} Reels</span>
+              <span className="packageAdvance">₹{pkg.advance.toLocaleString("en-IN")} to reserve</span>
+              <span className="packageCheck"><Check size={15}/> Select package</span>
+            </motion.button>
+          ))}
+          <div className="packageDetails glassCard">
+            <div className="included">Everything Included</div>
+            {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
+            <div className="priceLine"><Check size={15}/>{activePackage.reels} Ready-to-Post Reels</div>
+            <div className="paymentNote"><b>₹{activePackage.advance.toLocaleString("en-IN")}</b> to reserve · ₹{activePackage.advance.toLocaleString("en-IN")} on delivery</div>
+            <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Book {activePackage.name} <span><ArrowRight size={17}/></span></motion.a>
+          </div>
         </div>
       </section>
 
@@ -327,7 +347,7 @@ export default function Home() {
         <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>e.stopPropagation()}>
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
-          <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> ₹7,500 advance</div>
+          <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
           <div className="formGrid">{[["name","Your name"],["business","Business / brand"],["phone","Phone number"],["email","Email address"],["location","Shoot location / area"]].map(([k,label])=><input key={k} required type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>
           <select value={form.type} onChange={e=>{setForm({...form,type:e.target.value});setFormError("")}}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
           <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>

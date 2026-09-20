@@ -7,8 +7,14 @@ import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
-const months = ["September 2026"];
-const days = Array.from({ length: 30 }, (_, i) => i + 1);
+const bookingMonths = Array.from({ length: 12 }, (_, i) => {
+  const d = new Date();
+  d.setDate(1);
+  d.setMonth(d.getMonth() + i);
+  return { year: d.getFullYear(), month: d.getMonth() };
+});
+const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" });
+const timeOptions = ["Morning (9 AM – 12 PM)", "Afternoon (12 PM – 4 PM)", "Evening (4 PM – 7 PM)", "Discuss on call"];
 
 const benefits: [string, string, string, LucideIcon][] = [
   ["01", "Save Time", "No more planning, scripting, shooting or editing on your own.", Clock3],
@@ -50,7 +56,12 @@ const faqs = [
 
 export default function Home() {
   const [date, setDate] = useState<number | null>(null);
+  const [selectedMonth, setSelectedMonth] = useState(() => {
+    const now = new Date();
+    return { year: now.getFullYear(), month: now.getMonth() };
+  });
   const [time, setTime] = useState("Discuss on call");
+  const [showTimeOptions, setShowTimeOptions] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -74,7 +85,13 @@ export default function Home() {
   const smoothX = useSpring(cursorX, { stiffness: 80, damping: 22 });
   const smoothY = useSpring(cursorY, { stiffness: 80, damping: 22 });
 
-  const calendar = useMemo(() => days, []);
+  const calendar = useMemo(() => {
+    const first = new Date(selectedMonth.year, selectedMonth.month, 1);
+    const startOffset = (first.getDay() + 6) % 7;
+    const count = new Date(selectedMonth.year, selectedMonth.month + 1, 0).getDate();
+    return [...Array(startOffset).fill(null), ...Array.from({ length: count }, (_, i) => i + 1)];
+  }, [selectedMonth]);
+  const monthLabel = monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, 1));
   const canContinue = date !== null;
 
   function moveHero(e: React.MouseEvent<HTMLElement>) {
@@ -233,13 +250,29 @@ export default function Home() {
         </div>
         <div className="calendar glassCard">
           {!submitted ? <>
-            <div className="calendarTop"><div><small>SELECT DATE</small><h3>{months[0]}</h3></div><CalendarDays/></div>
+            <div className="calendarTop">
+              <div><small>SELECT DATE</small><h3>{monthLabel}</h3></div>
+              <div className="monthControls">
+                <button aria-label="Previous month" disabled={bookingMonths.findIndex(m => m.year === selectedMonth.year && m.month === selectedMonth.month) <= 0} onClick={() => {
+                  const index = bookingMonths.findIndex(m => m.year === selectedMonth.year && m.month === selectedMonth.month);
+                  if (index > 0) { setSelectedMonth(bookingMonths[index - 1]); setDate(null); }
+                }}>‹</button>
+                <button aria-label="Next month" disabled={bookingMonths.findIndex(m => m.year === selectedMonth.year && m.month === selectedMonth.month) === bookingMonths.length - 1} onClick={() => {
+                  const index = bookingMonths.findIndex(m => m.year === selectedMonth.year && m.month === selectedMonth.month);
+                  if (index < bookingMonths.length - 1) { setSelectedMonth(bookingMonths[index + 1]); setDate(null); }
+                }}>›</button>
+                <CalendarDays/>
+              </div>
+            </div>
             <div className="calendarWeek">{["M","T","W","T","F","S","S"].map((x,i)=><span key={i}>{x}</span>)}</div>
-            <div className="calendarDays">{calendar.map(d=><button key={d} className={date===d?"active":""} onClick={()=>setDate(d)}>{d}</button>)}</div>
-            <div className="preference"><div><small>PREFERRED TIME</small><b>{time}</b></div><ChevronDown size={17}/></div>
-            <button className="preferenceHint" onClick={()=>setTime(time==="Discuss on call"?"Morning / Afternoon / Evening":"Discuss on call")}>Tap to choose a broad preference</button>
+            <div className="calendarDays">{calendar.map((d, i)=><span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button className={date===d?"active":""} onClick={()=>setDate(d)}>{d}</button>}</span>)}</div>
+            <div className="preference" onClick={()=>setShowTimeOptions(v=>!v)} role="button" tabIndex={0}>
+              <div><small>PREFERRED TIME</small><b>{time}</b></div><ChevronDown size={17}/>
+            </div>
+            {showTimeOptions && <div className="timeOptions">{timeOptions.map(option=><button key={option} className={time===option?"selected":""} onClick={()=>{setTime(option);setShowTimeOptions(false)}}>{option}<Check size={15}/></button>)}</div>}
+            <button className="preferenceHint" onClick={()=>setShowTimeOptions(v=>!v)}>Tap to choose a time preference</button>
             <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={18}/></motion.button>
-          </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>September {date}, 2026</b>. The Blink X team will call to confirm the time, location and shoot details.</p><button className="textButton" onClick={()=>setSubmitted(false)}>Make another booking <ArrowRight size={16}/></button></div>}
+          </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>{monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year}</b>. The Blink X team will call to confirm the time, location and shoot details.</p><button className="textButton" onClick={()=>setSubmitted(false)}>Make another booking <ArrowRight size={16}/></button></div>}
         </div>
       </section>
 
@@ -272,7 +305,7 @@ export default function Home() {
         <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>e.stopPropagation()}>
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
-          <div className="selectedSlot"><CalendarDays size={16}/> Sep {date}, 2026 <span>•</span> {time} <span>•</span> ₹7,500 advance</div>
+          <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> ₹7,500 advance</div>
           <div className="formGrid">{[["name","Your name"],["business","Business / brand"],["phone","Phone number"],["email","Email address"],["location","Shoot location / area"]].map(([k,label])=><input key={k} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>setForm({...form,[k]:e.target.value})}/>)}</div>
           <select value={form.type} onChange={e=>setForm({...form,type:e.target.value})}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
           <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>

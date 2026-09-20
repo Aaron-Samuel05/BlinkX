@@ -58,3 +58,10 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
   .monthControls button{width:34px!important;height:34px!important}
   .monthControls svg{margin-left:1px!important}
 }
+
+
+/* Success state booking CTA */
+.successBookingButton{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;background:var(--orange);color:#111;border-radius:999px;padding:8px 9px 8px 20px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 12px 28px rgba(250,170,38,.24);transition:box-shadow .25s,transform .25s,background .25s}
+.successBookingButton:hover{box-shadow:0 16px 34px rgba(250,170,38,.34);background:#ffb536}
+.successBookingButton span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;transition:transform .3s}
+.successBookingButton:hover span{transform:translateX(3px) rotate(-4deg)}

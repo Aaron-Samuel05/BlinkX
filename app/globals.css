@@ -33,3 +33,28 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
 .monthControls{display:flex;align-items:center;gap:7px}.monthControls button{width:34px;height:34px;border:1px solid var(--line);background:#fff;border-radius:50%;font-size:20px;line-height:1;cursor:pointer;transition:transform .2s,background .2s}.monthControls button:hover:not(:disabled){transform:translateY(-2px);background:#faf9f6}.monthControls button:disabled{opacity:.3;cursor:not-allowed}.monthControls svg{margin-left:5px;color:var(--orange2)}
 .calendarDays>span{min-width:0}.timeOptions{display:grid;gap:7px;margin-top:10px}.timeOptions button{display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 14px;border:1px solid var(--line);background:#fff;border-radius:14px;color:#222;font-size:13px;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}.timeOptions button:hover{transform:translateY(-1px);border-color:#f0b15a}.timeOptions button svg{opacity:0}.timeOptions button.selected{border-color:var(--orange);background:#fff8ed}.timeOptions button.selected svg{opacity:1;color:var(--orange2)}
 @media(max-width:700px){.monthControls button{width:32px;height:32px}.monthControls svg{width:20px}.timeOptions button{font-size:12px;padding:11px 12px}}
+
+/* Booking calendar polish */
+.calendarTop{gap:14px}
+.calendarTop>div:first-child{min-width:0}
+.monthControls{flex-shrink:0}
+.monthControls button{appearance:none!important;-webkit-appearance:none!important;color:var(--orange2)!important;background:transparent!important;border:1px solid #e9e9e6!important;font-family:inherit;font-weight:700}
+.monthControls button:hover:not(:disabled){color:var(--orange)!important;border-color:var(--orange)!important;background:#fffaf2!important}
+.calendarDays{align-items:stretch}
+.calendarDays>span{display:block;min-width:0;width:100%;min-height:42px}
+.calendarDays>span:empty{visibility:hidden}
+.calendarDays>span>button{display:block;width:100%;height:100%;min-height:42px;margin:0;box-sizing:border-box}
+.timeOptions{margin-top:8px;max-height:240px;overflow:auto;padding-right:2px}
+.preference{cursor:pointer;transition:border-color .2s,background .2s}
+.preference:hover{border-color:#f2b35c}
+@media(max-width:700px){
+  .calendar{padding:18px!important}
+  .calendarTop h3{font-size:20px}
+  .calendarWeek{margin-top:18px}
+  .calendarDays{gap:5px}
+  .calendarDays>span{min-height:40px}
+  .calendarDays>span>button{min-height:40px;padding:8px 0!important}
+  .monthControls{gap:5px}
+  .monthControls button{width:34px!important;height:34px!important}
+  .monthControls svg{margin-left:1px!important}
+}

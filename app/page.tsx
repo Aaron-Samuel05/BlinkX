@@ -97,8 +97,8 @@ export default function Home() {
   const formComplete = [form.name, form.business, form.phone, form.email, form.location].every(value => value.trim().length > 0);
 
   function submitBooking() {
-    const emailValid = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(form.email.trim());
-    const phoneDigits = form.phone.replace(/\\D/g, "");
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
+    const phoneDigits = form.phone.replace(/\D/g, "");
     if (!formComplete) {
       setFormError("Please fill in all fields before submitting.");
       return;

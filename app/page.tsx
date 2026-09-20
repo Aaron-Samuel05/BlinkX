@@ -267,10 +267,10 @@ export default function Home() {
             <div className="calendarWeek">{["M","T","W","T","F","S","S"].map((x,i)=><span key={i}>{x}</span>)}</div>
             <div className="calendarDays">{calendar.map((d, i)=><span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button className={date===d?"active":""} onClick={()=>setDate(d)}>{d}</button>}</span>)}</div>
             <div className="preference" onClick={()=>setShowTimeOptions(v=>!v)} role="button" tabIndex={0}>
-              <div><small>PREFERRED TIME</small><b>{time}</b></div><ChevronDown size={17}/>
+              <div><small>PREFERRED CALL TIME</small><b>{time}</b></div><ChevronDown size={17}/>
             </div>
             {showTimeOptions && <div className="timeOptions">{timeOptions.map(option=><button key={option} className={time===option?"selected":""} onClick={()=>{setTime(option);setShowTimeOptions(false)}}>{option}<Check size={15}/></button>)}</div>}
-            <button className="preferenceHint" onClick={()=>setShowTimeOptions(v=>!v)}>Tap to choose a time preference</button>
+            <button className="preferenceHint" onClick={()=>setShowTimeOptions(v=>!v)}>Tap to choose a preferred call time</button>
             <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={18}/></motion.button>
           </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>{monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year}</b>. The Blink X team will call to confirm the time, location and shoot details.</p><button className="textButton" onClick={()=>setSubmitted(false)}>Make another booking <ArrowRight size={16}/></button></div>}
         </div>

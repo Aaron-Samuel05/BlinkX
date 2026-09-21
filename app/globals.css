@@ -569,7 +569,7 @@ body.loadingActive{overflow:hidden}
 
 /* Blink X theme lanyard — desktop only */
 .themeLanyardAnchor{position:relative;display:flex;align-items:center;justify-content:center}
-.navLanyardDock{position:absolute;top:35px;left:50%;width:170px;height:290px;transform:translateX(-50%);z-index:7;overflow:visible;pointer-events:auto}
+.navLanyardDock{position:absolute;top:26px;left:50%;width:170px;height:290px;transform:translateX(-50%);z-index:7;overflow:visible;pointer-events:auto}
 .navLanyardDock .lanyard-wrapper{pointer-events:auto}
 .navLanyardDock canvas{pointer-events:auto}
 @media(max-width:900px){.navLanyardDock{display:none}}

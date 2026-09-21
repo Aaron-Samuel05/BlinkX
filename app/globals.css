@@ -87,12 +87,12 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
 .packageAdvance{margin-top:7px;font-size:9.5px;color:#777;line-height:1.3;min-height:13px;white-space:nowrap}
 .packageCheck{margin-top:auto;padding-top:14px;font-size:10px;font-weight:800;color:#555;display:flex;align-items:center;gap:5px}
 .packageCheck svg{color:#111;background:var(--orange);border-radius:50%;padding:2px;flex:0 0 auto}
-.packageDetails{grid-column:1/-1;border-radius:24px;padding:22px;background:#111!important;border-color:#292929!important;color:#f5f5f2}
-.packageDetails .included{color:#999}
-.packageDetails .priceLine{border-color:#30302d;color:#f5f5f2}
+.packageDetails{grid-column:1/-1;border-radius:24px;padding:22px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.08);color:#111}
+.packageDetails .included{color:#777}
+.packageDetails .priceLine{border-color:#eee;color:#111}
 .packageDetails .priceLine svg{color:#111}
-.packageDetails .paymentNote{color:#999}
-.packageDetails .paymentNote b{color:#f5f5f2}
+.packageDetails .paymentNote{color:#777}
+.packageDetails .paymentNote b{color:#111}
 @media (max-width:1050px){.pricingOptions{grid-template-columns:1fr}.packageDetails{grid-column:auto}}
 @media (max-width:700px){.pricingOptions{width:100%;}.packageCard{padding:18px 16px;min-height:174px}.packagePrice{font-size:25px}.packagePopular{right:10px}.packageDetails{padding:20px}}
 

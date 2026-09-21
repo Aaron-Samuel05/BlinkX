@@ -160,7 +160,7 @@ export default function Home() {
         <div className="heroInner">
           <motion.div className="heroCopy" style={{ y: heroY }}>
             <motion.div className="eyebrow glassPill"><Sparkles size={14}/> CONTENT THAT MOVES BUSINESS</motion.div>
-            <h1><span>12 Reels.</span><span className="orange">24 Hours.</span></h1>
+            <h1><span>18 Reels.</span><span className="orange">24 Hours.</span></h1>
             <p>We come. We shoot. We edit. You grow.</p>
             <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
             <div className="heroActions">
@@ -191,7 +191,7 @@ export default function Home() {
                 </div>
               </div>
               <motion.div className="floatCard topCard glass" animate={{ y: [0, -10, 0], rotate: [-2, 1, -2] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-                <b>⚡</b><span>12 Reels<br/><strong>24 Hours</strong></span>
+                <b>⚡</b><span>18 Reels<br/><strong>24 Hours</strong></span>
               </motion.div>
               <motion.div className="floatCard bottomCard glass" animate={{ y: [0, 9, 0], rotate: [2, -1, 2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
                 <span className="tinyX">X</span><span><strong>Blink X</strong><small>More Content. Less Stress.</small></span>

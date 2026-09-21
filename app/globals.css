@@ -230,8 +230,8 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
   border-radius:50%;
 }
 .packageFeature.scaleFeatureStart{
-  margin-top:8px;
-  padding-top:12px;
+  margin-top:0;
+  padding-top:0;
   border-top:0;
 }
 .packageSelect{

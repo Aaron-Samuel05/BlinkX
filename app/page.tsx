@@ -1,11 +1,14 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 
 import { useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+
+const Lanyard = dynamic(() => import("./components/Lanyard"), { ssr: false });
 
 const bookingMonths = Array.from({ length: 12 }, (_, i) => {
   const d = new Date();
@@ -172,9 +175,23 @@ export default function Home() {
           <a href="#book">Book</a>
         </div>
         <div className="navActions">
-          <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
-            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-          </motion.button>
+          <div className="themeLanyardAnchor">
+            <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
+              {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+            </motion.button>
+            <div className="navLanyardDock" aria-hidden="true">
+              <Lanyard
+                position={[0, 0, 16]}
+                gravity={[0, -40, 0]}
+                fov={20}
+                transparent
+                frontImage="/blinkx-logo-dark.png"
+                backImage="/blinkx-logo-dark.png"
+                imageFit="contain"
+                lanyardWidth={1.1}
+              />
+            </div>
+          </div>
           <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
             Book a Shoot <ArrowRight size={16} />
           </motion.a>

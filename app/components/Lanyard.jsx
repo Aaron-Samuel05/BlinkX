@@ -221,10 +221,10 @@ function Band({ frontImage = null, backImage = null, imageFit = "contain", lanya
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => {
               e.target.releasePointerCapture(e.pointerId);
+              const wasDragged = !!dragged;
               drag(false);
+              if (wasDragged && onRelease) onRelease();
             }}
-            onPointerDown={(e) => {
-              e.target.setPointerCapture(e.pointerId);
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
           >

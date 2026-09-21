@@ -181,7 +181,7 @@ export default function Home() {
             </motion.button>
             <div className="navLanyardDock" aria-hidden="true">
               <Lanyard
-                position={[0, 0, 16]}
+                position={[0, 0, 29]}
                 gravity={[0, -40, 0]}
                 fov={20}
                 transparent

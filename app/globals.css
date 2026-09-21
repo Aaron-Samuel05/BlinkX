@@ -451,3 +451,20 @@ body.darkMode .pricingHighlights>div>span{background:#211b11}
     font-size:10.5px;
   }
 }
+
+
+/* Marquee logo separators — scoped only to the marquee */
+.marquee .marqueeLogo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:18px;
+  flex:0 0 34px;
+}
+.marquee .marqueeLogo img{
+  display:block;
+  width:34px;
+  height:18px;
+  object-fit:contain;
+}

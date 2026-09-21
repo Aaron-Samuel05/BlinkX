@@ -74,67 +74,292 @@ body.darkMode{background:#0b0b0b;color:#f5f5f2}body.darkMode .nav{border-color:r
 .success .textButton:hover svg,.success .successBookingButton:hover span{transform:translateX(3px)!important}
 
 
-/* Pricing packages — scoped to the pricing section only */
-.pricingOptions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-self:center}
-.packageCard{appearance:none;border:1px solid rgba(20,20,20,.08);padding:20px 16px;text-align:left;cursor:pointer;border-radius:24px;position:relative;min-height:184px;display:flex;flex-direction:column;align-items:flex-start;transition:border-color .25s,box-shadow .25s,background .25s}
-.packageCard:hover,.packageCard.selected{border-color:var(--orange);box-shadow:0 18px 40px rgba(0,0,0,.08)}
-.packageCard.selected{background:#fffaf0}
-.packagePopular{position:absolute;top:-10px;right:14px;background:var(--orange);color:#111;border-radius:999px;padding:5px 9px;font-size:8px;font-weight:900;letter-spacing:.08em}
-.packageName,.packageReels,.packageAdvance,.packageCheck{display:block}
-.packageName{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#777;line-height:1.2}
-.packagePrice{display:block;width:100%;margin:8px 0 3px;font:800 26px "Instrument Sans",sans-serif;letter-spacing:-.055em;color:#111;line-height:1.05;white-space:nowrap}
-.packageReels{font-size:13px;font-weight:800;color:#111;line-height:1.2}
-.packageAdvance{margin-top:7px;font-size:9.5px;color:#777;line-height:1.3;min-height:13px;white-space:nowrap}
-.packageCheck{margin-top:auto;padding-top:14px;font-size:10px;font-weight:800;color:#555;display:flex;align-items:center;gap:5px}
-.packageCheck svg{color:#111;background:var(--orange);border-radius:50%;padding:2px;flex:0 0 auto}
-.packageDetails{grid-column:1/-1;border-radius:24px;padding:22px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.08);color:#111}
-.packageDetails .included{color:#777}
-.packageDetails .priceLine{border-color:#eee;color:#111}
-.packageDetails .priceLine svg{color:#111}
-.packageDetails .paymentNote{color:#777}
-.packageDetails .paymentNote b{color:#111}
-@media (max-width:1050px){.pricingOptions{grid-template-columns:1fr}.packageDetails{grid-column:auto}}
-@media (max-width:700px){.pricingOptions{width:100%;}.packageCard{padding:18px 16px;min-height:174px}.packagePrice{font-size:25px}.packagePopular{right:10px}.packageDetails{padding:20px}}
-
-
-/* Dark theme: pricing must stay pure black with white type */
-body.darkMode .pricingOptions .packageCard{
-  background:#0b0b0b!important;
-  border-color:#2a2a2a;
-  color:#fff;
+/* Pricing section — unified cards, hover focus, and Scale extras */
+.offerSection{
+  max-width:none;
+  min-height:0;
+  display:block;
+  padding:120px 7vw 105px;
+  background:#faf9f6;
 }
-body.darkMode .pricingOptions .packageCard.selected{
-  background:#0b0b0b!important;
+.pricingHeader{
+  max-width:820px;
+  margin:0 auto 48px;
+  text-align:center;
+}
+.pricingHeader .miniEyebrow{justify-content:center}
+.pricingHeader h2{
+  margin:16px 0 14px;
+  font-size:clamp(52px,6.5vw,88px);
+}
+.pricingHeader p{
+  margin:0;
+  color:#777;
+  font-size:15px;
+  line-height:1.55;
+}
+.pricingOptions{
+  width:min(1120px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
+  align-items:stretch;
+}
+.packageCard{
+  appearance:none;
+  width:100%;
+  min-height:520px;
+  padding:28px 28px 22px;
+  text-align:left;
+  cursor:pointer;
+  border-radius:28px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  overflow:visible;
+  color:#111;
+  border:1px solid rgba(20,20,20,.12);
+  background:rgba(255,255,255,.7);
+  box-shadow:0 18px 55px rgba(36,30,20,.06);
+  transition:transform .4s cubic-bezier(.2,.75,.2,1),filter .35s ease,opacity .35s ease,box-shadow .4s ease,border-color .35s ease,background .35s ease;
+  will-change:transform,filter;
+}
+.packageCard:hover{
+  transform:translateY(-12px) scale(1.025);
+  border-color:rgba(250,170,38,.72);
+  box-shadow:0 35px 85px rgba(30,24,14,.16),0 0 0 1px rgba(250,170,38,.12);
+  z-index:4;
+}
+.pricingOptions:has(.packageCard:hover) .packageCard:not(:hover){
+  filter:blur(3px);
+  opacity:.48;
+  transform:scale(.965);
+}
+.packageCard.selected{
   border-color:var(--orange);
 }
-body.darkMode .pricingOptions .packageName,
-body.darkMode .pricingOptions .packagePrice,
-body.darkMode .pricingOptions .packageReels,
-body.darkMode .pricingOptions .packageCheck{
-  color:#fff;
+.packagePopular,.scaleBadge{
+  position:absolute;
+  top:-12px;
+  border-radius:999px;
+  padding:6px 11px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.08em;
+  line-height:1;
+  z-index:5;
 }
-body.darkMode .pricingOptions .packageAdvance{
-  color:#fff;
-  opacity:.62;
-}
-body.darkMode .pricingOptions .packageCheck svg{
+.packagePopular{
+  left:28px;
+  background:var(--orange);
   color:#111;
 }
-body.darkMode .pricingOptions .packageDetails{
-  background:#0b0b0b!important;
-  border-color:#2a2a2a!important;
+.scaleBadge{
+  right:20px;
+  background:#211b11;
+  color:var(--orange);
+  border:1px solid rgba(250,170,38,.45);
+}
+.packageName{
+  display:block;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:#777;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+.packagePriceRow{
+  display:flex;
+  align-items:baseline;
+  gap:9px;
+}
+.packagePrice{
+  display:block;
+  font:800 clamp(35px,3.1vw,48px) "Instrument Sans",sans-serif;
+  letter-spacing:-.065em;
+  color:#111;
+  line-height:1;
+  white-space:nowrap;
+}
+.packageUnit{
+  font-size:12px;
+  color:#777;
+  white-space:nowrap;
+}
+.packageReels{
+  display:block;
+  margin-top:8px;
+  font-size:16px;
+  font-weight:800;
+  color:#111;
+}
+.packageAdvance{
+  display:block;
+  margin-top:7px;
+  padding-bottom:18px;
+  font-size:10px;
+  color:#777;
+  border-bottom:1px solid #e8e6e0;
+}
+.packageFeatureList{
+  display:grid;
+  gap:0;
+  margin-top:8px;
+}
+.packageFeature{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:30px;
+  padding:5px 0;
+  font-size:11px;
+  line-height:1.25;
+  color:#222;
+}
+.packageFeature svg{
+  flex:0 0 16px;
+  width:16px;
+  height:16px;
+  padding:2px;
+  color:#111;
+  background:var(--orange);
+  border-radius:50%;
+}
+.packageFeature.scaleFeatureStart{
+  margin-top:8px;
+  padding-top:12px;
+  border-top:1px solid rgba(250,170,38,.25);
+}
+.packageSelect{
+  margin-top:auto;
+  min-height:44px;
+  padding:8px 9px 8px 17px;
+  border-radius:999px;
+  border:1px solid #d9d7d1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px;
+  font-weight:800;
+  color:#222;
+  transition:background .3s,border-color .3s,color .3s,transform .3s;
+}
+.packageSelect svg{
+  width:30px;
+  height:30px;
+  padding:7px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  transition:transform .3s;
+}
+.packageCard:hover .packageSelect svg{transform:translateX(3px)}
+.packageSelect.active{
+  background:var(--orange);
+  border-color:var(--orange);
+  color:#111;
+}
+.packageSelect.active svg{
+  background:#111;
   color:#fff;
 }
-body.darkMode .pricingOptions .packageDetails .included,
-body.darkMode .pricingOptions .packageDetails .paymentNote{
-  color:#fff;
-  opacity:.62;
+.packageCard.scaleCard{
+  border-color:rgba(250,170,38,.52);
+  background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(255,248,230,.9));
 }
-body.darkMode .pricingOptions .packageDetails .priceLine{
-  color:#fff;
-  border-color:#2a2a2a;
+.packageCard.scaleCard:hover{
+  border-color:var(--orange);
+  box-shadow:0 38px 90px rgba(250,170,38,.2),0 0 0 1px rgba(250,170,38,.18);
 }
-body.darkMode .pricingOptions .packageDetails .paymentNote b{
-  color:#fff;
-  opacity:1;
+.pricingHighlights{
+  width:min(1120px,100%);
+  margin:52px auto 0;
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  align-items:center;
+  gap:28px;
 }
+.pricingHighlights>div{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:13px;
+}
+.pricingHighlights>div>span{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--orange2);
+  background:#fff4df;
+}
+.pricingHighlights b,.pricingHighlights small{display:block}
+.pricingHighlights b{font-size:13px}
+.pricingHighlights small{margin-top:3px;color:#888;font-size:10px}
+.pricingHighlights>i{
+  width:1px;
+  height:35px;
+  background:#ddd9d0;
+}
+@media(max-width:1050px){
+  .pricingOptions{grid-template-columns:1fr;max-width:620px}
+  .packageCard{min-height:0}
+  .pricingOptions:has(.packageCard:hover) .packageCard:not(:hover){transform:scale(.99)}
+  .pricingHighlights{grid-template-columns:1fr;gap:18px;max-width:620px}
+  .pricingHighlights>i{width:100%;height:1px}
+}
+@media(max-width:700px){
+  .offerSection{padding:80px 20px 75px}
+  .pricingHeader{margin-bottom:38px}
+  .pricingHeader h2{font-size:50px}
+  .pricingHeader p{font-size:13px}
+  .packageCard{padding:24px 21px 20px;border-radius:24px}
+  .packagePrice{font-size:38px}
+  .packageFeature{font-size:11px}
+  .pricingOptions:has(.packageCard:hover) .packageCard:not(:hover){filter:none;opacity:1;transform:none}
+  .packageCard:hover{transform:translateY(-5px) scale(1.01)}
+  .pricingHighlights{margin-top:38px}
+  .pricingHighlights>div{justify-content:flex-start}
+}
+
+/* Dark theme — pricing stays premium black with white type */
+body.darkMode .offerSection{
+  background:#0b0b0b;
+  color:#f5f5f2;
+}
+body.darkMode .pricingHeader p{color:#aaa}
+body.darkMode .packageCard{
+  background:#0b0b0b;
+  color:#fff;
+  border-color:#30302c;
+}
+body.darkMode .packageCard:hover{
+  background:#0d0d0c;
+  border-color:var(--orange);
+}
+body.darkMode .packageCard.scaleCard{
+  background:linear-gradient(145deg,#0b0b0b,#16130d);
+  border-color:rgba(250,170,38,.72);
+}
+body.darkMode .packageName,
+body.darkMode .packageUnit,
+body.darkMode .packageAdvance{color:#aaa}
+body.darkMode .packagePrice,
+body.darkMode .packageReels,
+body.darkMode .packageFeature,
+body.darkMode .packageSelect{color:#fff}
+body.darkMode .packageAdvance{border-color:#2c2c28}
+body.darkMode .packageFeature svg{color:#111}
+body.darkMode .packageSelect{border-color:#41413b}
+body.darkMode .packageSelect svg{background:#fff;color:#111}
+body.darkMode .packageSelect.active{background:var(--orange);border-color:var(--orange);color:#111}
+body.darkMode .packageSelect.active svg{background:#111;color:#fff}
+body.darkMode .pricingHighlights>i{background:#33332f}
+body.darkMode .pricingHighlights small{color:#999}
+body.darkMode .pricingHighlights>div>span{background:#211b11}

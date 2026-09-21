@@ -99,6 +99,17 @@ function Band({ frontImage = null, backImage = null, imageFit = "contain", lanya
   const cardMap = useMemo(() => {
     const baseMap = materials.base.map;
     if (!frontImage && !backImage) return baseMap;
+    if (frontImage && frontTex.image) {
+      const direct = frontTex.clone();
+      direct.wrapS = THREE.RepeatWrapping;
+      direct.wrapT = THREE.ClampToEdgeWrapping;
+      direct.repeat.set(2, 1);
+      direct.offset.set(0, 0);
+      direct.colorSpace = THREE.SRGBColorSpace;
+      direct.anisotropy = 16;
+      direct.needsUpdate = true;
+      return direct;
+    }
 
     const baseImg = baseMap.image;
     const canvas = document.createElement("canvas");

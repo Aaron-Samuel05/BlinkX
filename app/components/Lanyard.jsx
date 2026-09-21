@@ -18,6 +18,20 @@ const BLANK_PIXEL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAA
 const FRONT_UV_RECT = { x: 0, y: 0, w: 0.5, h: 0.755 };
 const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
 
+/**
+ * @typedef {Object} LanyardProps
+ * @property {number[]} [position]
+ * @property {number[]} [gravity]
+ * @property {number} [fov]
+ * @property {boolean} [transparent]
+ * @property {string|null} [frontImage]
+ * @property {string|null} [backImage]
+ * @property {"cover"|"contain"} [imageFit]
+ * @property {string|null} [lanyardImage]
+ * @property {number} [lanyardWidth]
+ */
+
+/** @param {LanyardProps} props */
 export default function Lanyard({
   position = [0, 0, 16],
   gravity = [0, -40, 0],

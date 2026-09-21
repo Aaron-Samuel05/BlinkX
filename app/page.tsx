@@ -206,7 +206,7 @@ export default function Home() {
       <div className="marqueeWrap">
         <div className="marquee">
           {[0,1,2,3].map(group => <React.Fragment key={group}>
-            <span>12 REELS</span><b>✦</b><span>24 HOURS</span><b>✦</b><span>MORE CONTENT</span><b>✦</b><span>MORE GROWTH</span><b>✦</b><span>BLINK X</span><b>✦</b>
+            <span>18 REELS</span><b className="marqueeLogo"><img src="/blinkx-logo.svg" alt="Blink X" /></b><span>24 HOURS</span><b className="marqueeLogo"><img src="/blinkx-logo.svg" alt="Blink X" /></b><span>MORE CONTENT</span><b className="marqueeLogo"><img src="/blinkx-logo.svg" alt="Blink X" /></b><span>MORE GROWTH</span><b className="marqueeLogo"><img src="/blinkx-logo.svg" alt="Blink X" /></b><span>BLINK X</span><b className="marqueeLogo"><img src="/blinkx-logo.svg" alt="Blink X" /></b>
           </React.Fragment>)}
         </div>
       </div>

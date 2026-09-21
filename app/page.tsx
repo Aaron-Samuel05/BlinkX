@@ -248,33 +248,86 @@ export default function Home() {
       </section>
 
       <section id="pricing" className="offerSection section">
-        <div className="offerPhone">
-          <div className="offerGlow"/>
-          <div className="smallPhone"><div className="smallScreen"><div className="miniVideoGrid">{heroContentThumbs.slice(0, 9).map((src, i) => <i key={src}><img src={src} alt="" loading="lazy" /><b><Play size={7} fill="currentColor" /></b></i>)}</div></div></div>
-          <div className="offerBadge glass"><b><Sparkles size={18}/></b> {activePackage.reels} Reels<br/><strong>24 Hours</strong></div>
+        <div className="pricingHeader">
+          <div className="miniEyebrow">SIMPLE PRICING <span /></div>
+          <h2>Choose your <em>content day.</em></h2>
+          <p>High-quality short-form content, shot and delivered within 24 hours.</p>
         </div>
-        <div className="offerCopy"><div className="miniEyebrow">ONE CONTENT DAY <span /></div><h2>{activePackage.reels} Reels.<br/><em>24 Hours.</em><br/>Delivery.</h2><p>More content. More opportunities.</p><div className="flow glassCard"><span><Video/><b>We Shoot</b></span><ArrowRight/><span><Layers3/><b>We Process</b></span><ArrowRight/><span><TrendingUp/><b>You Grow</b></span></div></div>
+
         <div className="pricingOptions" id="book">
-          {packages.map(pkg => (
-            <motion.button key={pkg.id} whileHover={{ y: -4 }} whileTap={{ scale: .985 }} className={`packageCard glassCard ${selectedPackage === pkg.id ? "selected" : ""}`} onClick={() => setSelectedPackage(pkg.id)}>
-              {pkg.popular && <span className="packagePopular">MOST POPULAR</span>}
-              <span className="packageName">{pkg.name}</span>
-              <span className="packagePrice">₹{pkg.price.toLocaleString("en-IN")}</span>
-              <span className="packageReels">{pkg.reels} Reels</span>
-              <span className="packageAdvance">₹{pkg.advance.toLocaleString("en-IN")} to reserve</span>
-              <span className="packageCheck"><Check size={15}/> Select package</span>
-            </motion.button>
-          ))}
-          <div className="packageDetails glassCard">
-            <div className="included">Everything Included</div>
-            {["Shooting","Editing","Captions & Subtitles","Music & Sound Design","Color Grading","Thumbnails","24-Hour Delivery"].map(x=><div className="priceLine" key={x}><Check size={15}/>{x}</div>)}
-            <div className="priceLine"><Check size={15}/>{activePackage.reels} Ready-to-Post Reels</div>
-            <div className="paymentNote"><b>₹{activePackage.advance.toLocaleString("en-IN")}</b> to reserve · ₹{activePackage.advance.toLocaleString("en-IN")} on delivery</div>
-            <motion.a whileHover={{ scale: 1.025 }} whileTap={{ scale: .97 }} href="#bookForm" className="ctaButton orangeButton">Book {activePackage.name} <span><ArrowRight size={17}/></span></motion.a>
-          </div>
+          {packages.map(pkg => {
+            const features =
+              pkg.id === "scale"
+                ? [
+                    "Shooting",
+                    "Editing",
+                    "Captions & Subtitles",
+                    "Music & Sound Design",
+                    "Color Grading",
+                    "Thumbnails",
+                    "24-Hour Delivery",
+                    "18 Ready-to-Post Reels",
+                    "1 Revision Round",
+                    "Shorts + Reels + TikTok Formatting",
+                    "Platform-Specific Optimization",
+                    "Priority Delivery Support",
+                    "Behind-the-Scenes (BTS) Clips",
+                    "Content Strategy & Shot List",
+                  ]
+                : [
+                    "Shooting",
+                    "Editing",
+                    "Captions & Subtitles",
+                    "Music & Sound Design",
+                    "Color Grading",
+                    "Thumbnails",
+                    "24-Hour Delivery",
+                    `${pkg.reels} Ready-to-Post Reels`,
+                  ];
+
+            return (
+              <motion.button
+                key={pkg.id}
+                whileTap={{ scale: .985 }}
+                className={`packageCard glassCard ${selectedPackage === pkg.id ? "selected" : ""} ${pkg.id === "scale" ? "scaleCard" : ""}`}
+                onClick={() => setSelectedPackage(pkg.id)}
+              >
+                {pkg.popular && <span className="packagePopular">MOST POPULAR</span>}
+                {pkg.id === "scale" && <span className="scaleBadge">MAXIMUM IMPACT</span>}
+                <span className="packageName">{pkg.name}</span>
+                <div className="packagePriceRow">
+                  <span className="packagePrice">₹{pkg.price.toLocaleString("en-IN")}</span>
+                  <span className="packageUnit">/content day</span>
+                </div>
+                <span className="packageReels">{pkg.reels} Reels</span>
+                <span className="packageAdvance">₹{pkg.advance.toLocaleString("en-IN")} to reserve</span>
+
+                <div className="packageFeatureList">
+                  {features.map((feature, index) => (
+                    <span className={`packageFeature ${pkg.id === "scale" && index === 8 ? "scaleFeatureStart" : ""}`} key={feature}>
+                      <Check size={15} />
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+
+                <span className={`packageSelect ${selectedPackage === pkg.id ? "active" : ""}`}>
+                  {selectedPackage === pkg.id ? `Selected ${pkg.name}` : `Select ${pkg.name}`}
+                  <ArrowRight size={17} />
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+
+        <div className="pricingHighlights">
+          <div><span><Clock3 size={20} /></span><div><b>One content day</b><small>We come to you</small></div></div>
+          <i />
+          <div><span><Layers3 size={20} /></span><div><b>Everything included</b><small>Shoot. Edit. Deliver.</small></div></div>
+          <i />
+          <div><span><TrendingUp size={20} /></span><div><b>More content. More growth.</b><small>Built for businesses & creators</small></div></div>
         </div>
       </section>
-
       <section className="ctaSection">
         <div className="ctaFloat left"><Layers3 size={20}/></div><div className="ctaFloat right"><Sparkles size={20}/></div>
         <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>

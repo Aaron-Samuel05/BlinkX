@@ -411,8 +411,8 @@ body.darkMode .pricingHighlights>div>span{background:#211b11}
   flex-basis:15px;
 }
 .packageFeature.scaleFeatureStart{
-  margin-top:5px;
-  padding-top:7px;
+  margin-top:0;
+  padding-top:0;
 }
 .packageSelect{
   min-height:40px;

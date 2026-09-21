@@ -56,35 +56,20 @@ const faqs = [
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
     document.body.classList.add("loadingActive");
-    const duration = 2300;
-    const start = performance.now();
-    let raf = 0;
-    let finishTimer: number | undefined;
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+      document.body.classList.remove("loadingActive");
+    }, 2600);
 
-    const tick = (now: number) => {
-      const progress = Math.min(100, Math.round(((now - start) / duration) * 100));
-      setLoadProgress(progress);
-      if (progress < 100) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        finishTimer = window.setTimeout(() => {
-          setIsLoading(false);
-          document.body.classList.remove("loadingActive");
-        }, 280);
-      }
-    };
-
-    raf = requestAnimationFrame(tick);
     return () => {
-      cancelAnimationFrame(raf);
-      if (finishTimer) window.clearTimeout(finishTimer);
+      window.clearTimeout(timer);
       document.body.classList.remove("loadingActive");
     };
   }, []);
+
   const [date, setDate] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const now = new Date();
@@ -182,10 +167,10 @@ export default function Home() {
             <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
             <div className="blinkLoaderTagline">MORE CONTENT. LESS STRESS.</div>
             <div className="blinkLoaderProgressRow">
-              <div className="blinkLoaderProgressTrack"><span style={{ width: `${loadProgress}%` }} /></div>
-              <span className="blinkLoaderPercent">{loadProgress}%</span>
+              <div className="blinkLoaderProgressTrack"><span /></div>
+              <span className="blinkLoaderPercent">18 REELS</span>
             </div>
-            <div className="blinkLoaderLabel">{loadProgress < 100 ? "LOADING..." : "READY."}</div>
+            <div className="blinkLoaderLabel">LOADING...</div>
           </div>
         </div>
       )}

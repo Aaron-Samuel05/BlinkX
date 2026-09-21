@@ -29,6 +29,7 @@ const BACK_UV_RECT = { x: 0.5, y: 0, w: 0.5, h: 0.757 };
  * @property {"cover"|"contain"} [imageFit]
  * @property {string|null} [lanyardImage]
  * @property {number} [lanyardWidth]
+ * @property {() => void} [onRelease]
  */
 
 /** @param {LanyardProps} props */
@@ -41,7 +42,8 @@ export default function Lanyard({
   backImage = null,
   imageFit = "contain",
   lanyardImage = null,
-  lanyardWidth = 1
+  lanyardWidth = 1,
+  onRelease = null
 }) {
   const [enabled, setEnabled] = useState(false);
 
@@ -225,6 +227,8 @@ function Band({ frontImage = null, backImage = null, imageFit = "contain", lanya
               drag(false);
               if (wasDragged && onRelease) onRelease();
             }}
+            onPointerDown={(e) => {
+              e.target.setPointerCapture(e.pointerId);
               drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
             }}
           >

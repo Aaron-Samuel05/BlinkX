@@ -271,8 +271,21 @@ export default function Home() {
                     "Shorts + Reels + TikTok Formatting",
                     "Platform-Specific Optimization",
                     "Priority Delivery Support",
-                    "Behind-the-Scenes (BTS) Clips",
                     "Content Strategy & Shot List",
+                  ]
+                : pkg.id === "growth"
+                ? [
+                    "Shooting",
+                    "Editing",
+                    "Captions & Subtitles",
+                    "Music & Sound Design",
+                    "Color Grading",
+                    "Thumbnails",
+                    "24-Hour Delivery",
+                    `${pkg.reels} Ready-to-Post Reels`,
+                    "Hashtag Strategy",
+                    "Platform-Specific Optimization",
+                    "1 Revision Round",
                   ]
                 : [
                     "Shooting",

@@ -561,3 +561,8 @@ body.loadingActive{overflow:hidden}
   .cornerTopRight{right:18px;top:20px;font-size:8px}.cornerBottomLeft{left:18px;bottom:24px;font-size:8px}
   .blinkLoaderStages{bottom:25px;gap:14px;font-size:8px;letter-spacing:.25em}.blinkLoaderStages i{display:none}
 }
+
+.blinkLoadingScreen{animation:blinkLoaderExit .48s ease 2.45s forwards}
+.blinkLoaderProgressTrack span{width:0;animation:blinkLoaderProgress 2.3s cubic-bezier(.22,.61,.36,1) forwards}
+@keyframes blinkLoaderProgress{0%{width:0}100%{width:100%}}
+@keyframes blinkLoaderExit{0%{opacity:1;visibility:visible;transform:scale(1)}85%{opacity:1;visibility:visible;transform:scale(1)}100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.015)}}

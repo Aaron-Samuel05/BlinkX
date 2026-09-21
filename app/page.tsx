@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
@@ -55,21 +55,6 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    document.body.classList.add("loadingActive");
-    const timer = window.setTimeout(() => {
-      setIsLoading(false);
-      document.body.classList.remove("loadingActive");
-    }, 2600);
-
-    return () => {
-      window.clearTimeout(timer);
-      document.body.classList.remove("loadingActive");
-    };
-  }, []);
-
   const [date, setDate] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const now = new Date();
@@ -146,34 +131,32 @@ export default function Home() {
 
   return (
     <>
-      {isLoading && (
-        <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
-          <div className="blinkLoaderGlow glowTop" />
-          <div className="blinkLoaderGlow glowBottom" />
-          <div className="blinkLoaderArc arcTop" />
-          <div className="blinkLoaderArc arcBottom" />
+      <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
+        <div className="blinkLoaderGlow glowTop" />
+        <div className="blinkLoaderGlow glowBottom" />
+        <div className="blinkLoaderArc arcTop" />
+        <div className="blinkLoaderArc arcBottom" />
 
-          <div className="blinkLoaderCorner cornerTopRight">
-            <span>CONTENT</span><span>THAT</span><span>MOVES</span><span>BUSINESS</span><i />
-          </div>
-          <div className="blinkLoaderCorner cornerBottomLeft">
-            <span>CREATORS</span><span>BRANDS</span><span>BUSINESSES</span><i />
-          </div>
-          <div className="blinkLoaderStages">
-            <span>SHOOT</span><span>EDIT</span><span>DELIVER</span><span>GROW</span><i />
-          </div>
-
-          <div className="blinkLoaderCenter">
-            <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
-            <div className="blinkLoaderTagline">MORE CONTENT. LESS STRESS.</div>
-            <div className="blinkLoaderProgressRow">
-              <div className="blinkLoaderProgressTrack"><span /></div>
-              <span className="blinkLoaderPercent">18 REELS</span>
-            </div>
-            <div className="blinkLoaderLabel">LOADING...</div>
-          </div>
+        <div className="blinkLoaderCorner cornerTopRight">
+          <span>CONTENT</span><span>THAT</span><span>MOVES</span><span>BUSINESS</span><i />
         </div>
-      )}
+        <div className="blinkLoaderCorner cornerBottomLeft">
+          <span>CREATORS</span><span>BRANDS</span><span>BUSINESSES</span><i />
+        </div>
+        <div className="blinkLoaderStages">
+          <span>SHOOT</span><span>EDIT</span><span>DELIVER</span><span>GROW</span><i />
+        </div>
+
+        <div className="blinkLoaderCenter">
+          <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
+          <div className="blinkLoaderTagline">MORE CONTENT. LESS STRESS.</div>
+          <div className="blinkLoaderProgressRow">
+            <div className="blinkLoaderProgressTrack"><span /></div>
+            <span className="blinkLoaderPercent">18 REELS</span>
+          </div>
+          <div className="blinkLoaderLabel">LOADING...</div>
+        </div>
+      </div>
 
     <main onMouseLeave={() => { cursorX.set(0); cursorY.set(0); }}>
       <div className="progress"><motion.div style={{ scaleX: scrollYProgress }} /></div>

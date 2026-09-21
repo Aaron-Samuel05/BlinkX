@@ -135,7 +135,7 @@ export default function Home() {
 
       <nav className="nav glass">
         <a className="brand" href="#">
-          <img src={darkMode ? "/blinkx-logo.png" : "/blinkx-logo.png"} alt="Blink X" />
+          <img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" />
         </a>
         <div className="navlinks">
           <a href="#why">Why Blink X?</a>
@@ -206,7 +206,7 @@ export default function Home() {
       <div className="marqueeWrap">
         <div className="marquee">
           {[0,1,2,3].map(group => <React.Fragment key={group}>
-            <span>18 REELS</span><b className="marqueeLogo"><img src="/blinkx-logo.png" alt="Blink X" /></b><span>24 HOURS</span><b className="marqueeLogo"><img src="/blinkx-logo.png" alt="Blink X" /></b><span>MORE CONTENT</span><b className="marqueeLogo"><img src="/blinkx-logo.png" alt="Blink X" /></b><span>MORE GROWTH</span><b className="marqueeLogo"><img src="/blinkx-logo.png" alt="Blink X" /></b><span>BLINK X</span><b className="marqueeLogo"><img src="/blinkx-logo.png" alt="Blink X" /></b>
+            <span>18 REELS</span><b className="marqueeLogo"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" /></b><span>24 HOURS</span><b className="marqueeLogo"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" /></b><span>MORE CONTENT</span><b className="marqueeLogo"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" /></b><span>MORE GROWTH</span><b className="marqueeLogo"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" /></b><span>BLINK X</span><b className="marqueeLogo"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X" /></b>
           </React.Fragment>)}
         </div>
       </div>
@@ -404,7 +404,7 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="footerBrand"><img src="/blinkx-logo.png" alt="Blink X"/><span>More Content. Bigger Growth.</span></div>
+        <div className="footerBrand"><img src={darkMode ? "/blinkx-logo-dark.svg" : "/blinkx-logo.png"} alt="Blink X"/><span>More Content. Bigger Growth.</span></div>
         <div className="footerLinks"><a href="#why">Why Blink X?</a><a href="#how">How It Works</a><a href="#pricing">Pricing</a><a href="#bookForm">Book</a><a href="#faqs">FAQs</a></div>
         <div className="footerSocial"><a href="#"><Instagram size={16}/></a><a href="#"><Video size={16}/></a><a href="#"><Phone size={16}/></a></div>
       </footer>

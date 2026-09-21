@@ -64,7 +64,7 @@ export default function Lanyard({
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band frontImage={frontImage} backImage={backImage} imageFit={imageFit} lanyardImage={lanyardImage} lanyardWidth={lanyardWidth} />
+          <Band frontImage={frontImage} backImage={backImage} imageFit={imageFit} lanyardImage={lanyardImage} lanyardWidth={lanyardWidth} onRelease={onRelease} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -77,13 +77,14 @@ export default function Lanyard({
   );
 }
 
-function Band({ frontImage = null, backImage = null, imageFit = "contain", lanyardImage = null, lanyardWidth = 1 }) {
+function Band({ frontImage = null, backImage = null, imageFit = "contain", lanyardImage = null, lanyardWidth = 1, onRelease = null }) {
   const band = useRef();
   const fixed = useRef();
   const j1 = useRef();
   const j2 = useRef();
   const j3 = useRef();
   const card = useRef();
+  const dragStart = useRef(null);
   const vec = new THREE.Vector3();
   const ang = new THREE.Vector3();
   const rot = new THREE.Vector3();

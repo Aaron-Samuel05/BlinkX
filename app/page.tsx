@@ -227,7 +227,7 @@ export default function Home() {
 
       <section className="problem section">
         <motion.div className="problemVisual problemImageCard" initial={{ opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-          <img src="/%20%20%20%20blinkx-problem.PNG" alt="Blink X content production workspace" />
+          <img src="/blinkx-problem.jpg" alt="Blink X content production workspace" />
         </motion.div>
         <div className="problemCopy">
           <div className="miniEyebrow">THE PROBLEM <span /></div>

@@ -1,12 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 122" role="img" aria-label="Blink X logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 122" role="img" aria-label="Blink X">
   <defs>
-    <filter id="white" color-interpolation-filters="sRGB">
-      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0"/>
+    <filter id="whiteWordmark" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
     </filter>
-    <clipPath id="mark">
-      <rect x="0" y="0" width="112" height="122"/>
+    <clipPath id="wordmark">
+      <rect x="108" y="0" width="148" height="122"/>
     </clipPath>
   </defs>
-  <image href="/blinkx-logo.png" x="0" y="0" width="256" height="122" preserveAspectRatio="none" filter="url(#white)"/>
-  <image href="/blinkx-logo.png" x="0" y="0" width="256" height="122" preserveAspectRatio="none" clip-path="url(#mark)"/>
+  <image href="/blinkx-logo.png" x="0" y="0" width="256" height="122" preserveAspectRatio="none"/>
+  <g clip-path="url(#wordmark)">
+    <image href="/blinkx-logo.png" x="0" y="0" width="256" height="122" preserveAspectRatio="none" filter="url(#whiteWordmark)"/>
+  </g>
 </svg>

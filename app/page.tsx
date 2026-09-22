@@ -41,11 +41,11 @@ const heroContentThumbs = [
   "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=700&q=85",
 ];
 
-const process: [string, string, string, LucideIcon][] = [
-  ["01", "We Plan", "We bring ideas to life.", Sparkles],
-  ["02", "We Shoot", "On-location with professional production.", Video],
-  ["03", "We Edit", "High-quality, ready-to-post reels.", Star],
-  ["04", "You Grow", "More content. More opportunities.", ArrowRight],
+const process: [string, string, string, LucideIcon, string, string][] = [
+  ["01", "We Plan", "We bring ideas to life.", Sparkles, "IDEA", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=88"],
+  ["02", "We Shoot", "On-location with professional production.", Video, "PRODUCTION", "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=88"],
+  ["03", "We Edit", "High-quality, ready-to-post reels.", Star, "POST-PRODUCTION", "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=88"],
+  ["04", "You Grow", "More content. More opportunities.", ArrowRight, "GROWTH", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=88"],
 ];
 
 const faqs = [
@@ -275,7 +275,23 @@ export default function Home() {
       <section id="how" className="section how">
         <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill"><Sparkles size={13}/> Simple. Fast. Effective.</div></div>
         <div className="processGrid">
-          {process.map(([num,title,text,Icon],i)=><div className="processItem" key={num}><span className="processNo">{num}</span><div className="processIcon glassCard"><Icon size={34} strokeWidth={2}/></div><h3>{title}</h3><p>{text}</p>{i<3&&<ArrowRight className="processArrow"/>}</div>)}
+          {process.map(([num,title,text,Icon,category,image],i)=>(
+            <div className="processItem" key={num}>
+              <div className="processVisual">
+                <img src={image} alt="" loading={i === 0 ? "eager" : "lazy"} />
+                <span className="processNo">{num}</span>
+                <span className="processCategory">{category}</span>
+              </div>
+              <div className="processContent">
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+                <span className="processArrowButton"><ArrowRight size={20} /></span>
+              </div>
+              {i<3&&<span className="processConnector"><i /></span>}
+            </div>
+          ))}
         </div>
       </section>
 

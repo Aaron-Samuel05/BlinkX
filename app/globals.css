@@ -709,3 +709,45 @@ body.darkMode .benefit p{color:rgba(255,255,255,.76)}
   .benefit p{left:17px;right:17px;bottom:17px;font-size:10.5px;max-width:calc(100% - 55px)}
   .benefit .cardArrow{right:14px;bottom:14px;width:40px;height:40px;padding:11px}
 }
+
+
+/* Why section — give the card composition more presence */
+.why{
+  min-height:calc(100vh - 82px);
+  padding-top:125px;
+  padding-bottom:125px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.why .sectionIntro{
+  margin-bottom:52px;
+}
+.why .benefitGrid{
+  width:100%;
+}
+.why .benefit{
+  height:500px;
+  min-height:500px;
+}
+@media(max-width:1050px){
+  .why{
+    min-height:auto;
+    padding-top:110px;
+    padding-bottom:110px;
+  }
+  .why .benefit{
+    height:440px;
+    min-height:440px;
+  }
+}
+@media(max-width:650px){
+  .why{
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+  .why .benefit{
+    height:350px;
+    min-height:350px;
+  }
+}

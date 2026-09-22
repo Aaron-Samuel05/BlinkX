@@ -287,7 +287,6 @@ export default function Home() {
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </div>
-                <span className="processArrowButton"><ArrowRight size={20} /></span>
               </div>
               {i<3&&<span className="processConnector"><i /></span>}
             </div>

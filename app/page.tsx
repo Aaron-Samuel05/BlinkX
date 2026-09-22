@@ -251,7 +251,7 @@ export default function Home() {
         <div className="benefitGrid">
           {benefits.map(([num, title, text, Icon], i) => (
             <motion.div key={title} className="benefit glassCard" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ delay: i * .08 }}>
-              <span className="benefitNo">{num}</span><div className="iconBubble"><Icon size={24} strokeWidth={2.2}/></div><h3>{title}</h3><p>{text}</p><ArrowRight size={16} className="cardArrow"/>
+              <span className="benefitNo">{num}</span><div className="iconBubble"><Icon size={24} strokeWidth={2.2}/></div><h3>{title}</h3><p>{text}</p>
             </motion.div>
           ))}
         </div>

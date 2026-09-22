@@ -577,3 +577,135 @@ body.loadingActive{overflow:hidden}
 
 @media(max-width:900px){.ctaSection{grid-template-columns:1fr;gap:35px;min-height:auto;padding:58px 8%;margin-bottom:70px}.ctaEditorialCopy h2{font-size:clamp(48px,12vw,72px)}.ctaEditorialVisual{height:330px}.ctaImageFrame{height:310px}.ctaVerticalText{display:none}}
 @media(max-width:600px){.ctaSection{border-radius:28px;padding:48px 24px}.ctaEditorialCopy h2{font-size:clamp(45px,13vw,62px)}.ctaMeta{gap:8px;letter-spacing:.12em;font-size:8px}.ctaEditorialVisual{height:270px}.ctaImageFrame{height:255px;border-radius:22px}.ctaImageLabel{left:15px;bottom:14px}}
+
+
+/* Premium Why Blink X cards — visual redesign only */
+.benefitGrid{
+  gap:18px;
+}
+.benefit{
+  min-height:430px;
+  height:430px;
+  padding:24px 23px 22px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  background:#111;
+  color:#fff;
+  box-shadow:0 22px 55px rgba(20,16,10,.12);
+  overflow:hidden;
+  isolation:isolate;
+  transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s cubic-bezier(.22,1,.36,1),border-color .35s ease;
+}
+.benefit::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transform:scale(1.01);
+  filter:saturate(.78) contrast(1.05);
+  transition:transform .8s cubic-bezier(.22,1,.36,1),filter .8s cubic-bezier(.22,1,.36,1);
+}
+.benefit::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.16) 34%,rgba(0,0,0,.72) 72%,rgba(0,0,0,.94) 100%),
+    linear-gradient(135deg,rgba(250,170,38,.10),transparent 45%);
+  pointer-events:none;
+}
+.benefit:nth-child(1)::before{
+  background-image:url("https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=1200&q=85");
+}
+.benefit:nth-child(2)::before{
+  background-image:url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85");
+}
+.benefit:nth-child(3)::before{
+  background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85");
+}
+.benefit:nth-child(4)::before{
+  background-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85");
+}
+.benefit:hover{
+  transform:translateY(-10px);
+  border-color:rgba(250,170,38,.5);
+  box-shadow:0 38px 85px rgba(20,16,10,.25),0 0 0 1px rgba(250,170,38,.08);
+}
+.benefit:hover::before{
+  transform:scale(1.08);
+  filter:saturate(.95) contrast(1.08);
+}
+.benefitNo{
+  position:relative;
+  z-index:3;
+  color:rgba(255,255,255,.72);
+  font-size:11px;
+  letter-spacing:.04em;
+}
+.benefit .iconBubble{
+  display:none;
+}
+.benefit h3{
+  position:absolute;
+  left:23px;
+  right:23px;
+  bottom:73px;
+  z-index:3;
+  margin:0;
+  color:#fff;
+  font-size:25px;
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.benefit p{
+  position:absolute;
+  left:23px;
+  right:65px;
+  bottom:35px;
+  z-index:3;
+  margin:0;
+  max-width:none;
+  color:rgba(255,255,255,.78);
+  font-size:12px;
+  line-height:1.45;
+}
+.benefit .cardArrow{
+  right:22px;
+  bottom:21px;
+  z-index:4;
+  width:50px;
+  height:50px;
+  padding:15px;
+  border:1px solid rgba(255,255,255,.36);
+  border-radius:50%;
+  color:var(--orange2);
+  background:rgba(10,10,10,.28);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:transform .35s ease,background .35s ease,border-color .35s ease;
+}
+.benefit:hover .cardArrow{
+  transform:translateX(3px);
+  background:var(--orange);
+  color:#111;
+  border-color:var(--orange);
+}
+body.darkMode .benefit{
+  background:#111;
+  border-color:rgba(255,255,255,.12);
+}
+body.darkMode .benefit p{color:rgba(255,255,255,.76)}
+@media(max-width:1050px){
+  .benefit{height:390px;min-height:390px}
+}
+@media(max-width:650px){
+  .benefitGrid{gap:9px}
+  .benefit{height:330px;min-height:330px;padding:17px;border-radius:16px}
+  .benefit h3{left:17px;right:17px;bottom:70px;font-size:19px}
+  .benefit p{left:17px;right:17px;bottom:17px;font-size:10.5px;max-width:calc(100% - 55px)}
+  .benefit .cardArrow{right:14px;bottom:14px;width:40px;height:40px;padding:11px}
+}

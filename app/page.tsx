@@ -373,11 +373,21 @@ export default function Home() {
         </div>
       </section>
       <section className="ctaSection">
-        <div className="ctaFloat left"><Layers3 size={20}/></div><div className="ctaFloat right"><Sparkles size={20}/></div>
-        <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
-        <h2>Ready to <em>Create Content</em> That Works?</h2>
-        <p>Pick a date, book your shoot, and let Blink X handle the rest.</p>
-        <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton darkButton" href="#bookForm">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+        <div className="ctaEditorialGlow" />
+        <div className="ctaEditorialCopy">
+          <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
+          <h2>Your next<br/><em>content day</em><br/>starts here.</h2>
+          <p>Pick a date. We shoot. We edit. We deliver.</p>
+          <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#bookForm">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+          <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
+        </div>
+        <div className="ctaEditorialVisual">
+          <div className="ctaImageFrame">
+            <img src="/blinkx-problem.jpg" alt="Blink X production setup" />
+            <div className="ctaImageLabel"><span>BLINK X</span><small>PRODUCTION DAY / 01</small></div>
+          </div>
+          <div className="ctaVerticalText">SHOOT&nbsp;&nbsp;&nbsp; EDIT&nbsp;&nbsp;&nbsp; DELIVER</div>
+        </div>
       </section>
 
       <section id="bookForm" className="bookingSection section">

@@ -8,7 +8,6 @@ import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
-const Lanyard = dynamic(() => import("./components/Lanyard"), { ssr: false });
 
 const bookingMonths = Array.from({ length: 12 }, (_, i) => {
   const d = new Date();
@@ -179,19 +178,6 @@ export default function Home() {
             <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }} className="themeToggle" onClick={toggleDarkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} title={darkMode ? "Light mode" : "Dark mode"}>
               {darkMode ? <Sun size={16} /> : <Moon size={16} />}
             </motion.button>
-            <div className="navLanyardDock" aria-hidden="true">
-              <Lanyard
-                onRelease={toggleDarkMode}
-                position={[0, 0, 29]}
-                gravity={[0, -40, 0]}
-                fov={20}
-                transparent
-                frontImage="/blinkx-logo-dark.png"
-                backImage="/blinkx-logo-dark.png"
-                imageFit="contain"
-                lanyardWidth={1.1}
-              />
-            </div>
           </div>
           <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pillButton dark" href="#book">
             Book a Shoot <ArrowRight size={16} />

@@ -803,3 +803,81 @@ body.darkMode .benefit p{color:rgba(255,255,255,.76)}
     min-height:350px;
   }
 }
+
+
+/* Final mobile optimization pass */
+@media (max-width:650px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .nav{margin:6px 10px 0;height:60px;padding:0 10px;top:6px}
+  .brand img{width:96px}
+  .navActions{gap:7px}
+  .themeToggle{width:36px;height:36px}
+  .pillButton{padding:9px 11px;font-size:9.5px;gap:6px}
+  .hero{padding:14px 16px 52px;min-height:auto}
+  .heroInner{display:flex;flex-direction:column;gap:0;min-height:auto}
+  .heroCopy{width:100%;padding-top:12px}
+  .hero h1{font-size:19vw;line-height:.9}
+  .heroCopy>p:not(.heroSub){font-size:17px;margin-top:20px}
+  .heroSub{font-size:12.5px;line-height:1.5}
+  .heroActions{margin-top:22px;gap:8px}
+  .watchButton{font-size:10px}
+  .trustRow{margin-top:22px}
+  .heroVisual{height:410px;width:100%;margin-top:4px;overflow:visible}
+  .phoneWrap{transform:scale(.58);transform-origin:center center}
+  .orangeShape{width:300px;height:315px;right:50%;transform:translateX(50%) rotate(21deg);top:10%}
+  .heroBackText{font-size:24vw;right:50%;transform:translateX(50%);top:24%}
+  .topCard{right:-2px;top:11%;padding:10px 13px;font-size:11px}
+  .topCard b{font-size:21px}.topCard strong{font-size:14px}
+  .bottomCard{left:-2px;bottom:11%;min-width:205px;padding:10px 13px}
+  .tinyX{font-size:30px}
+  .scrollHint{bottom:14px}
+  .section{padding:68px 16px}
+  .sectionIntro{margin-bottom:30px}
+  .section h2,.how h2,.problem h2,.offerCopy h2,.bookingCopy h2{font-size:clamp(43px,13vw,58px);line-height:.92}
+  .sectionIntro p{font-size:14px}
+  .why{padding:70px 16px 74px}
+  .why .sectionIntro .textButton{margin-top:18px}
+  .why .benefitGrid{grid-template-columns:1fr;gap:12px}
+  .why .benefit{
+    width:100%;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:1 / 1;
+    padding:18px;
+    border-radius:20px;
+  }
+  .why .benefit .iconBubble{margin:34px 0 20px}
+  .why .benefit h3{font-size:21px}
+  .why .benefit p{font-size:12px;max-width:72%;line-height:1.45}
+  .why .benefit .cardArrow{right:18px;bottom:18px}
+  .problem{padding:68px 16px;gap:34px}
+  .problemVisual,.problemImageCard{height:300px!important;border-radius:24px}
+  .problemCopy p{font-size:16px}
+  .taskList{grid-template-columns:1fr;gap:8px;margin-top:24px}
+  .taskList div{padding:15px;border-radius:17px;font-size:13px}
+  .handline{font-size:28px;margin-top:30px}
+  .how{padding-bottom:72px}
+  .howHeader p{font-size:14px}
+  .processGrid{grid-template-columns:1fr 1fr;gap:30px 8px;margin-top:38px}
+  .processIcon{width:68px;height:68px;margin:13px auto}
+  .processItem h3{font-size:14px}
+  .processItem p{font-size:10.5px}
+  .offerSection{padding:62px 16px 60px}
+  .pricingHeader h2{font-size:clamp(43px,13vw,58px)}
+  .pricingOptions{width:100%;max-width:none}
+  .packageCard{width:100%;padding:21px 18px 17px;border-radius:22px}
+  .packagePrice{font-size:36px}
+  .packageFeature{font-size:10.5px}
+  .pricingHighlights{width:100%;max-width:none}
+  .ctaSection{margin:0 10px 58px;padding:48px 20px;border-radius:24px}
+  .ctaEditorialCopy h2{font-size:clamp(43px,13vw,60px)}
+  .ctaEditorialVisual{height:255px}
+  .ctaImageFrame{width:100%;height:245px;border-radius:20px}
+  .bookingSection{padding-top:20px}
+  .bookingCopy>p{font-size:14px}
+  .calendar{width:100%;padding:16px!important}
+  .faqSection{padding-top:70px}
+  .faqHeader{margin-bottom:28px}
+  .footer{padding:30px 16px}
+  .footerBrand img{width:100px}
+}

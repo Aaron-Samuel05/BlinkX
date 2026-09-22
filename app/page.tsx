@@ -352,7 +352,6 @@ export default function Home() {
                 onClick={() => setSelectedPackage(pkg.id)}
               >
                 {pkg.popular && <span className="packagePopular">MOST POPULAR</span>}
-                {pkg.id === "scale" && <span className="scaleBadge">MAXIMUM IMPACT</span>}
                 <span className="packageName">{pkg.name}</span>
                 <div className="packagePriceRow">
                   <span className="packagePrice">₹{pkg.price.toLocaleString("en-IN")}</span>

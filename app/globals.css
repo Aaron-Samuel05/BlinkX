@@ -573,3 +573,7 @@ body.loadingActive{overflow:hidden}
 .navLanyardDock .lanyard-wrapper{pointer-events:auto}
 .navLanyardDock canvas{pointer-events:auto}
 @media(max-width:900px){.navLanyardDock{display:none}}
+
+
+@media(max-width:900px){.ctaSection{grid-template-columns:1fr;gap:35px;min-height:auto;padding:58px 8%;margin-bottom:70px}.ctaEditorialCopy h2{font-size:clamp(48px,12vw,72px)}.ctaEditorialVisual{height:330px}.ctaImageFrame{height:310px}.ctaVerticalText{display:none}}
+@media(max-width:600px){.ctaSection{border-radius:28px;padding:48px 24px}.ctaEditorialCopy h2{font-size:clamp(45px,13vw,62px)}.ctaMeta{gap:8px;letter-spacing:.12em;font-size:8px}.ctaEditorialVisual{height:270px}.ctaImageFrame{height:255px;border-radius:22px}.ctaImageLabel{left:15px;bottom:14px}}

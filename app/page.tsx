@@ -382,10 +382,10 @@ export default function Home() {
           <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
         </div>
         <div className="ctaEditorialVisual">
-          <div className="ctaImageFrame">
+          <motion.div className="ctaImageFrame" whileHover={{ y: -10, rotate: 0, scale: 1.025 }} transition={{ type: "spring", stiffness: 180, damping: 18 }}>
             <img src="/blinkx-problem.jpg" alt="Blink X production setup" />
             <div className="ctaImageLabel"><span>BLINK X</span><small>PRODUCTION DAY / 01</small></div>
-          </div>
+          </motion.div>
           <div className="ctaVerticalText">SHOOT&nbsp;&nbsp;&nbsp; EDIT&nbsp;&nbsp;&nbsp; DELIVER</div>
         </div>
       </section>

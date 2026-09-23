@@ -110,7 +110,7 @@ function PhoneModel(){
 
   return <group ref={group} scale={scale} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
-    <group position={[0, bounds.size.y*.025, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
+    <group position={[0, bounds.size.y*.13, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
   </group>;
 }
 

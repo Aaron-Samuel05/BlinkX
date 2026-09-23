@@ -26,7 +26,7 @@ const benefits: [string, string, string, LucideIcon][] = [
 ];
 
 
-const heroContentThumbs = [
+const IPhone3D = dynamic(() => import("./components/IPhone3D"), { ssr: false });\n\nconst heroContentThumbs = [
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85",
@@ -206,21 +206,8 @@ export default function Home() {
             <motion.div className="heroBackText" style={{ y: blobY }}>BLINK X</motion.div>
             <motion.div className="orangeShape" style={{ y: blobY }} />
             <motion.div className="phoneWrap" style={{ y: phoneY }}>
-              <div className="phone">
-                <div className="phoneIsland" />
-                <div className="phoneScreen">
-                  <div className="phoneTop"><span>9:41</span><span>● ◔ ▪</span></div>
-                  <div className="phoneGrid">
-                    {heroContentThumbs.map((src, i) => (
-                    <div key={src} className={"reelThumb reelThumb" + (i + 1)}>
-                      <img src={src} alt="" loading={i > 2 ? "lazy" : "eager"} />
-                      <span>{i + 1}</span>
-                      <i className="reelPlay"><Play size={7} fill="currentColor" /></i>
-                    </div>
-                  ))}
-                  </div>
-                  <div className="phoneBottom"><b>REELS</b><span>12 / 12</span></div>
-                </div>
+              <div className="iphone3d">
+                <IPhone3D />
               </div>
               <motion.div className="floatCard topCard glass" animate={{ y: [0, -10, 0], rotate: [-2, 1, -2] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
                 <b>⚡</b><span>18 Reels<br/><strong>24 Hours</strong></span>

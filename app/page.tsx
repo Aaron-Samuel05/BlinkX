@@ -26,7 +26,9 @@ const benefits: [string, string, string, LucideIcon][] = [
 ];
 
 
-const IPhone3D = dynamic(() => import("./components/IPhone3D"), { ssr: false });\n\nconst heroContentThumbs = [
+const IPhone3D = dynamic(() => import("./components/IPhone3D"), { ssr: false });
+
+const heroContentThumbs = [
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85",

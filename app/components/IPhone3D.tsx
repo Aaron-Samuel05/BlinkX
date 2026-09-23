@@ -114,14 +114,14 @@ function PhoneModel(){
   </group>;
 }
 
-export default function IPhone3D(){
+export default function IPhone3D(){\n  const [isMobile,setIsMobile]=useState(false);\n\n  useEffect(()=>{\n    const query=window.matchMedia("(max-width: 768px), (pointer: coarse)");\n    const update=()=>setIsMobile(query.matches);\n    update();\n    query.addEventListener("change",update);\n    return()=>query.removeEventListener("change",update);\n  },[]);
   return <Canvas dpr={[1,1.6]} camera={{position:[0,0,10.2],fov:31}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%",display:"block"}}>
     <ambientLight intensity={1.15}/>
     <directionalLight position={[4,6,8]} intensity={2.8}/>
     <directionalLight position={[-5,2,3]} intensity={1.4}/>
     <Environment preset="studio" environmentIntensity={.7}/>
     <PhoneModel/>
-    <ContactShadows position={[0,-3.15,0]} opacity={.24} scale={5.8} blur={2.6} far={4.5}/>\n    <OrbitControls enablePan={false} enableZoom={false} enableDamping dampingFactor={0.08} rotateSpeed={0.65} minPolarAngle={Math.PI*.36} maxPolarAngle={Math.PI*.64} minAzimuthAngle={-Math.PI*.45} maxAzimuthAngle={Math.PI*.45} />
+    <ContactShadows position={[0,-3.15,0]} opacity={.24} scale={5.8} blur={2.6} far={4.5}/>\n    <OrbitControls enabled={!isMobile} enablePan={false} enableZoom={false} enableDamping dampingFactor={0.08} rotateSpeed={0.65} minPolarAngle={Math.PI*.36} maxPolarAngle={Math.PI*.64} minAzimuthAngle={-Math.PI*.45} maxAzimuthAngle={Math.PI*.45} />
   </Canvas>;
 }
 

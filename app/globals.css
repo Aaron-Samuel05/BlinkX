@@ -1135,3 +1135,14 @@ body.darkMode .processItem:hover .processArrowButton{
     flex-basis:46px;
   }
 }
+
+
+/* Real Sketchfab iPhone hero — replaces only the old CSS mockup */
+.phoneWrap{position:relative;width:365px;height:650px;z-index:5;perspective:1400px;transform-style:preserve-3d}
+.iphone3d{position:absolute;inset:-72px -78px -72px;z-index:5;pointer-events:none;overflow:visible}
+.iphone3d canvas{width:100%!important;height:100%!important;display:block}
+.phoneWrap .topCard,.phoneWrap .bottomCard{z-index:12}
+@media(max-width:650px){
+  .phoneWrap{width:365px;height:650px}
+  .iphone3d{inset:-70px -78px -70px}
+}

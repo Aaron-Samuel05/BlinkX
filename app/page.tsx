@@ -226,7 +226,7 @@ export default function Home() {
                 <b>⚡</b><span>18 Reels<br/><strong>24 Hours</strong></span>
               </motion.div>
               <motion.div className="floatCard bottomCard glass" animate={{ y: [0, 9, 0], rotate: [2, -1, 2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
-                <span className="tinyX">X</span><span><strong>Blink X</strong><small>More Content. Less Stress.</small></span>
+                <img className="tinyLogo" src="/blinkx-logo-dark.png" alt="Blink X" /><span><strong>Blink X</strong><small>More Content. Less Stress.</small></span>
               </motion.div>
             </motion.div>
           </div>

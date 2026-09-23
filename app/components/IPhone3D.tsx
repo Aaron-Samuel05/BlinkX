@@ -9,7 +9,7 @@ const THUMBS = [
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85",
-  "https://images.unsplash.com/photo-1523275335684-37898b6baf9e?auto=format&fit=crop&w=700&q=85",
+  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=85",
@@ -115,7 +115,7 @@ function PhoneModel(){
 }
 
 export default function IPhone3D(){
-  return <Canvas dpr={[1,1.6]} camera={{position:[0,0,8.2],fov:31}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%",display:"block"}}>
+  return <Canvas dpr={[1,1.6]} camera={{position:[0,0,10.2],fov:31}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%",display:"block"}}>
     <ambientLight intensity={1.15}/>
     <directionalLight position={[4,6,8]} intensity={2.8}/>
     <directionalLight position={[-5,2,3]} intensity={1.4}/>

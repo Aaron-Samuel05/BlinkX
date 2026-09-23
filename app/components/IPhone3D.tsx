@@ -48,7 +48,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
 
     const draw=()=>{
       ctx.clearRect(0,0,900,1900);
-      ctx.fillStyle="#070707"; ctx.fillRect(0,0,900,1900);
+      ctx.fillStyle="rgba(0,0,0,0)"; ctx.clearRect(0,0,900,1900);
       ctx.fillStyle="rgba(255,255,255,.95)"; ctx.font="700 30px Arial"; ctx.fillText("9:41",46,60);
       ctx.fillStyle="rgba(255,255,255,.75)"; ctx.font="700 23px Arial"; ctx.textAlign="right"; ctx.fillText("●  ▪",858,59); ctx.textAlign="left";
       ctx.fillStyle="#050505"; ctx.beginPath(); ctx.roundRect(358,22,184,38,19); ctx.fill();
@@ -82,7 +82,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
   useEffect(()=>()=>geometry.dispose(),[geometry]);
 
   return <mesh geometry={geometry} position={[0,0,z]} renderOrder={4}>
-    <meshBasicMaterial map={texture ?? undefined} toneMapped={false}/>
+    <meshBasicMaterial map={texture ?? undefined} transparent opacity={texture ? 1 : 0} toneMapped={false}/>
   </mesh>;
 }
 
@@ -96,9 +96,9 @@ function PhoneModel(){
   },[model]);
 
   const scale=5.25/bounds.size.y;
-  const screenWidth=bounds.size.x*.70;
-  const screenHeight=bounds.size.y*.58;
-  const screenZ=bounds.maxZ+bounds.size.z*.012;
+  const screenWidth=bounds.size.x*.56;
+  const screenHeight=bounds.size.y*.49;
+  const screenZ=bounds.maxZ+bounds.size.z*.006;
 
   useFrame(({clock})=>{
     if(!group.current)return;
@@ -110,7 +110,7 @@ function PhoneModel(){
 
   return <group ref={group} scale={scale} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
-    <group position={[0, bounds.size.y*.12, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
+    <group position={[0, bounds.size.y*.105, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
   </group>;
 }
 

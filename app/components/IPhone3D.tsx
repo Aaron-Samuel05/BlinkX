@@ -96,9 +96,9 @@ function PhoneModel(){
   },[model]);
 
   const scale=5.25/bounds.size.y;
-  const screenWidth=bounds.size.x*.91;
-  const screenHeight=bounds.size.y*.925;
-  const screenZ=bounds.maxZ+bounds.size.z*.018;
+  const screenWidth=bounds.size.x*.70;
+  const screenHeight=bounds.size.y*.58;
+  const screenZ=bounds.maxZ+bounds.size.z*.012;
 
   useFrame(({clock})=>{
     if(!group.current)return;
@@ -110,11 +110,20 @@ function PhoneModel(){
 
   return <group ref={group} scale={scale} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
-    <group position={[0, bounds.size.y*.13, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
+    <group position={[0, bounds.size.y*.12, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
   </group>;
 }
 
-export default function IPhone3D(){\n  const [isMobile,setIsMobile]=useState(false);\n\n  useEffect(()=>{\n    const query=window.matchMedia("(max-width: 768px), (pointer: coarse)");\n    const update=()=>setIsMobile(query.matches);\n    update();\n    query.addEventListener("change",update);\n    return()=>query.removeEventListener("change",update);\n  },[]);
+export default function IPhone3D(){
+  const [isMobile,setIsMobile]=useState(false);
+
+  useEffect(()=>{
+    const query=window.matchMedia("(max-width: 768px), (pointer: coarse)");
+    const update=()=>setIsMobile(query.matches);
+    update();
+    query.addEventListener("change",update);
+    return()=>query.removeEventListener("change",update);
+  },[]);
   return <Canvas dpr={[1,1.6]} camera={{position:[0,0,10.2],fov:31}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%",display:"block"}}>
     <ambientLight intensity={1.15}/>
     <directionalLight position={[4,6,8]} intensity={2.8}/>

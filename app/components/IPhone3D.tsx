@@ -98,7 +98,8 @@ function PhoneModel(){
   const scale=5.25/bounds.size.y;
   const screenWidth=bounds.size.x*.56;
   const screenHeight=bounds.size.y*.49;
-  // Keep the custom reel screen on the opposite face so it cannot protrude through the back of the phone.\n  const screenZ=bounds.min.z-bounds.size.z*.006;
+  // Keep the custom reel screen on the opposite face so it cannot protrude through the back of the phone.
+  const screenZ=bounds.min.z-bounds.size.z*.006;
 
   useFrame(({clock})=>{
     if(!group.current)return;

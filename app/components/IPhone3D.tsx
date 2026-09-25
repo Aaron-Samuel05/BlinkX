@@ -92,7 +92,7 @@ function PhoneModel(){
   const model=useMemo(()=>scene.clone(true),[scene]);
   const bounds=useMemo(()=>{
     const box=new THREE.Box3().setFromObject(model);
-    return {size:box.getSize(new THREE.Vector3()),center:box.getCenter(new THREE.Vector3()),maxZ:box.max.z};
+    return {size:box.getSize(new THREE.Vector3()),center:box.getCenter(new THREE.Vector3()),minZ:box.min.z};
   },[model]);
 
   const scale=5.25/bounds.size.y;

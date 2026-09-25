@@ -858,7 +858,7 @@ body.darkMode .benefit p{color:rgba(255,255,255,.76)}
   .sectionIntro p{font-size:14px}
   .why{padding:70px 16px 74px}
   .why .sectionIntro .textButton{margin-top:18px}
-  .why .benefitGrid{grid-template-columns:1fr;gap:12px}
+  .why .benefitGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .why .benefit{
     width:100%;
     height:auto!important;

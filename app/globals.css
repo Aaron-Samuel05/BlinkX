@@ -828,7 +828,9 @@ body.darkMode .benefit p{color:rgba(255,255,255,.76)}
 
 /* Final mobile optimization pass */
 @media (max-width:650px){
-  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  html,body{width:100%;max-width:100%;overflow-x:hidden;touch-action:pan-y;overscroll-behavior-y:auto}
+  main{touch-action:pan-y}
+  .hero,.heroVisual,.heroInner{touch-action:pan-y}
   .nav{margin:6px 10px 0;height:60px;padding:0 10px;top:6px}
   .brand img{width:96px}
   .navActions{gap:7px}

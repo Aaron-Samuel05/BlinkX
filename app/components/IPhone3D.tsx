@@ -132,7 +132,7 @@ export default function IPhone3D(){
     <Environment preset="studio" environmentIntensity={.7}/>
     <PhoneModel/>
     <ContactShadows position={[0,-3.15,0]} opacity={.24} scale={5.8} blur={2.6} far={4.5}/>
-    <OrbitControls enabled={!isMobile} enablePan={false} enableZoom={false} enableDamping dampingFactor={0.08} rotateSpeed={0.65} minPolarAngle={Math.PI*.36} maxPolarAngle={Math.PI*.64} minAzimuthAngle={-Math.PI*.45} maxAzimuthAngle={Math.PI*.45} />
+    {!isMobile && <OrbitControls enablePan={false} enableZoom={false} enableDamping dampingFactor={0.08} rotateSpeed={0.65} minPolarAngle={Math.PI*.36} maxPolarAngle={Math.PI*.64} minAzimuthAngle={-Math.PI*.45} maxAzimuthAngle={Math.PI*.45} />}
   </Canvas>;
 }
 

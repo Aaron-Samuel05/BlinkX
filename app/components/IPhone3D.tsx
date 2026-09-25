@@ -89,7 +89,32 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
 function PhoneModel(){
   const {scene}=useGLTF("/apple_iphone_18_pro_max_silver.glb");
   const group=useRef<THREE.Group>(null);
-  const model=useMemo(()=>scene.clone(true),[scene]);
+  const model=useMemo(()=>{
+    const cloned=scene.clone(true);
+
+    // Remove the stray front display/white panel from the GLB.
+    // Keep the phone body and the custom ReelScreen overlay untouched.
+    cloned.updateMatrixWorld(true);
+    const phoneBox=new THREE.Box3().setFromObject(cloned);
+    const phoneSize=phoneBox.getSize(new THREE.Vector3());
+
+    cloned.traverse((child)=>{
+      const mesh=child as THREE.Mesh;
+      if(!mesh.isMesh || !mesh.geometry) return;
+
+      const box=new THREE.Box3().setFromObject(mesh);
+      const size=box.getSize(new THREE.Vector3());
+      const touchesFront=box.max.z > phoneBox.max.z - phoneSize.z * 0.018;
+      const largeEnough=size.x > phoneSize.x * 0.42 && size.y > phoneSize.y * 0.38;
+      const veryThin=size.z < phoneSize.z * 0.025;
+
+      if(touchesFront && largeEnough && veryThin){
+        mesh.visible=false;
+      }
+    });
+
+    return cloned;
+  },[scene]);
   const bounds=useMemo(()=>{
     const box=new THREE.Box3().setFromObject(model);
     return {size:box.getSize(new THREE.Vector3()),center:box.getCenter(new THREE.Vector3()),maxZ:box.max.z};

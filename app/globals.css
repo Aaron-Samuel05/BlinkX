@@ -1146,3 +1146,67 @@ body.darkMode .processItem:hover .processArrowButton{
   .phoneWrap{width:365px;height:650px}
   .iphone3d{inset:-70px -78px -70px}
 }
+
+/* Final mobile override — How It Works: two compact cards per row */
+@media (max-width:650px){
+  .how .processGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:14px 10px;
+    margin-top:32px;
+  }
+
+  .how .processItem{
+    width:100%;
+    min-width:0;
+  }
+
+  .how .processVisual{
+    width:100%;
+    aspect-ratio:1 / 1;
+    border-radius:16px 16px 0 0;
+  }
+
+  .how .processContent{
+    min-height:92px;
+    padding:13px 12px 12px;
+    border-radius:0 0 16px 16px;
+  }
+
+  .how .processContent h3{
+    font-size:15px;
+    line-height:1.15;
+    margin-bottom:5px;
+  }
+
+  .how .processContent p{
+    font-size:10px;
+    line-height:1.4;
+  }
+
+  .how .processArrowButton{
+    width:34px;
+    height:34px;
+    flex-basis:34px;
+  }
+
+  .how .processArrowButton svg{
+    width:14px;
+    height:14px;
+  }
+
+  .how .processNo{
+    top:12px;
+    left:13px;
+    font-size:9px;
+  }
+
+  .how .processCategory{
+    right:13px;
+    top:12px;
+    font-size:8px;
+  }
+
+  .how .processConnector{
+    display:none !important;
+  }
+}

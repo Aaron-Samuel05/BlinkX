@@ -1901,3 +1901,40 @@ body.darkMode .processItem:hover .processArrowButton{
     padding-right: 15px;
   }
 }
+
+
+/* Mobile hero layering fix — keep the phone behind the hero content/buttons. */
+@media (max-width:650px){
+  .heroCopy{
+    position:relative;
+    z-index:20;
+  }
+
+  .heroActions,
+  .trustRow{
+    position:relative;
+    z-index:21;
+  }
+
+  .heroVisual{
+    position:relative;
+    z-index:1;
+    margin-top:18px;
+  }
+
+  .heroVisual .phoneWrap{
+    z-index:2;
+    transform:scale(.53) translateY(34px);
+  }
+
+  .heroVisual .topCard,
+  .heroVisual .bottomCard{
+    z-index:3;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual .phoneWrap{
+    transform:scale(.48) translateY(38px);
+  }
+}

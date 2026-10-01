@@ -1938,3 +1938,129 @@ body.darkMode .processItem:hover .processArrowButton{
     transform:scale(.48) translateY(38px);
   }
 }
+
+
+/* Mobile hero composition — keep content clear, place the 3D phone below trust proof. */
+@media (max-width:650px){
+  .hero{
+    padding-bottom:0;
+  }
+
+  .heroCopy{
+    position:relative;
+    z-index:30;
+  }
+
+  .heroActions{
+    position:relative;
+    z-index:31;
+    display:flex;
+    flex-wrap:nowrap;
+    width:100%;
+    align-items:center;
+  }
+
+  .heroActions .ctaButton,
+  .heroActions .watchButton{
+    flex:1 1 0;
+    min-width:0;
+    white-space:nowrap;
+  }
+
+  .heroActions .ctaButton{
+    padding-left:12px;
+    padding-right:7px;
+  }
+
+  .heroActions .watchButton{
+    justify-content:center;
+    padding-left:7px;
+    padding-right:7px;
+  }
+
+  .trustRow{
+    position:relative;
+    z-index:31;
+    width:100%;
+    margin-top:20px;
+    padding-bottom:8px;
+  }
+
+  .heroVisual{
+    z-index:1;
+    width:calc(100% + 32px);
+    margin-left:-16px;
+    height:500px;
+    margin-top:0;
+    overflow:hidden;
+    align-items:flex-start;
+  }
+
+  .heroVisual .orangeShape{
+    width:420px;
+    height:300px;
+    right:50%;
+    top:145px;
+    transform:translateX(50%) rotate(12deg);
+    border-radius:48% 22% 45% 18%;
+  }
+
+  .heroVisual .heroBackText{
+    display:none;
+  }
+
+  .heroVisual .phoneWrap{
+    position:absolute;
+    left:50%;
+    top:105px;
+    width:365px;
+    height:650px;
+    transform:translateX(-50%) scale(.56);
+    transform-origin:top center;
+    z-index:4;
+  }
+
+  .heroVisual .iphone3d{
+    inset:-55px -68px -55px;
+  }
+
+  .heroVisual .topCard{
+    right:16px;
+    top:155px;
+    z-index:8;
+  }
+
+  .heroVisual .bottomCard{
+    left:16px;
+    bottom:34px;
+    z-index:8;
+  }
+
+  .scrollHint{
+    display:none;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:470px;
+  }
+
+  .heroVisual .phoneWrap{
+    top:100px;
+    transform:translateX(-50%) scale(.51);
+  }
+
+  .heroVisual .orangeShape{
+    width:380px;
+    top:140px;
+  }
+
+  .heroVisual .topCard{
+    right:10px;
+  }
+
+  .heroVisual .bottomCard{
+    left:10px;
+  }
+}

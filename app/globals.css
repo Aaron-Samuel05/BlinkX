@@ -5266,3 +5266,133 @@ body.darkMode #why .sectionIntro .textButton{
     padding-top:3.5vw;
   }
 }
+
+
+/* =========================================================
+   CTA — FULL-BLEED PRODUCTION IMAGE
+   Replace the floating image card with one cinematic image.
+   ========================================================= */
+.ctaSection{
+  position:relative;
+  isolation:isolate;
+  display:block;
+  min-height:560px;
+  padding:72px 7%;
+  overflow:hidden;
+  background:
+    linear-gradient(90deg,
+      rgba(5,5,5,.98) 0%,
+      rgba(5,5,5,.94) 25%,
+      rgba(5,5,5,.72) 48%,
+      rgba(5,5,5,.24) 78%,
+      rgba(5,5,5,.12) 100%),
+    url("/cta-production.webp") center center / cover no-repeat;
+}
+
+.ctaSection::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.12),transparent 35%,rgba(0,0,0,.28)),
+    radial-gradient(circle at 78% 55%,rgba(255,143,0,.16),transparent 34%);
+  pointer-events:none;
+}
+
+.ctaEditorialGlow{
+  display:none;
+}
+
+.ctaEditorialCopy{
+  position:relative;
+  z-index:4;
+  width:min(560px,52%);
+  min-height:410px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.ctaEditorialVisual{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.ctaImageFrame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:0;
+  transform:none;
+  box-shadow:none;
+  overflow:hidden;
+  opacity:0;
+  pointer-events:none;
+}
+
+.ctaImageFrame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.ctaImageLabel,
+.ctaVerticalText{
+  display:none;
+}
+
+.ctaMeta{
+  position:relative;
+  z-index:5;
+}
+
+/* Keep the full image treatment coherent in dark mode. */
+body.darkMode .ctaSection{
+  background:
+    linear-gradient(90deg,
+      rgba(5,5,5,.98) 0%,
+      rgba(5,5,5,.94) 25%,
+      rgba(5,5,5,.72) 48%,
+      rgba(5,5,5,.24) 78%,
+      rgba(5,5,5,.12) 100%),
+    url("/cta-production.webp") center center / cover no-repeat;
+}
+
+/* Mobile: full image behind the complete CTA, with readable copy. */
+@media (max-width:650px){
+  .ctaSection{
+    display:block;
+    min-height:560px;
+    margin:0 10px 58px;
+    padding:48px 20px;
+    border-radius:24px;
+    background:
+      linear-gradient(180deg,
+        rgba(5,5,5,.96) 0%,
+        rgba(5,5,5,.82) 42%,
+        rgba(5,5,5,.46) 72%,
+        rgba(5,5,5,.72) 100%),
+      url("/cta-production.webp") center center / cover no-repeat;
+  }
+
+  .ctaEditorialCopy{
+    width:100%;
+    min-height:460px;
+    justify-content:flex-start;
+  }
+
+  .ctaEditorialCopy h2{
+    font-size:clamp(43px,13vw,60px);
+  }
+
+  .ctaEditorialVisual{
+    display:none;
+  }
+}

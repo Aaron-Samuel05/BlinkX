@@ -4988,3 +4988,248 @@ body.darkMode .processItem:hover .processArrowButton{
     right:auto;
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — ACTUAL DARK MODE FIX
+   Blink X toggles body.darkMode (not .dark).
+   This override is intentionally scoped to #why.
+   ========================================================= */
+body.darkMode #why.why{
+  background:#0b0b0b;
+  color:#f5f3ee;
+}
+
+body.darkMode #why .sectionIntro h2{
+  color:#f5f3ee;
+}
+
+body.darkMode #why .sectionIntro p{
+  color:#a7a39b;
+}
+
+body.darkMode #why .miniEyebrow{
+  color:#89857d;
+}
+
+body.darkMode #why .sectionIntro .textButton{
+  color:#f5f3ee;
+  border-bottom-color:#f5f3ee;
+}
+
+/* Desktop */
+@media (min-width:651px){
+  body.darkMode #why .benefitGrid{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+
+  body.darkMode #why .benefit,
+  body.darkMode #why .benefit:nth-child(even){
+    display:grid;
+    grid-template-columns:minmax(270px,.78fr) minmax(500px,1.22fr);
+    grid-template-rows:auto 1fr auto;
+    column-gap:7%;
+    width:100%;
+    min-height:390px;
+    height:auto;
+    padding:38px 0;
+    margin:0;
+    border:0;
+    border-top:1px solid #393733;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
+    overflow:visible;
+    transform:none;
+  }
+
+  body.darkMode #why .benefit:nth-child(even){
+    grid-template-columns:minmax(500px,1.22fr) minmax(270px,.78fr);
+  }
+
+  body.darkMode #why .benefit:last-child{
+    border-bottom:1px solid #393733;
+  }
+
+  body.darkMode #why .benefitNo,
+  body.darkMode #why .benefit:nth-child(even) .benefitNo{
+    grid-column:1;
+    grid-row:1;
+    position:relative;
+    z-index:5;
+    margin:0 0 34px;
+    color:#ff8500;
+  }
+
+  body.darkMode #why .benefit:nth-child(even) .benefitNo{
+    grid-column:2;
+  }
+
+  body.darkMode #why .benefitNo::after{
+    background:#46433e;
+  }
+
+  body.darkMode #why .iconBubble,
+  body.darkMode #why .benefit:nth-child(even) .iconBubble{
+    grid-column:1;
+    grid-row:2;
+    position:relative;
+    z-index:5;
+    width:46px;
+    height:46px;
+    margin:0 0 18px;
+    border-radius:12px;
+    background:#24180b;
+    border:0;
+    box-shadow:none;
+    color:#ff8500;
+  }
+
+  body.darkMode #why .benefit:nth-child(even) .iconBubble{
+    grid-column:2;
+  }
+
+  body.darkMode #why .benefit h3,
+  body.darkMode #why .benefit:nth-child(even) h3{
+    grid-column:1;
+    grid-row:2;
+    position:relative;
+    z-index:5;
+    align-self:end;
+    margin:0 0 55px;
+    color:#f5f3ee;
+    font-size:clamp(38px,4vw,58px);
+    line-height:.88;
+    letter-spacing:-.065em;
+  }
+
+  body.darkMode #why .benefit:nth-child(even) h3{
+    grid-column:2;
+  }
+
+  body.darkMode #why .benefit p,
+  body.darkMode #why .benefit:nth-child(even) p{
+    grid-column:1;
+    grid-row:3;
+    position:relative;
+    z-index:5;
+    margin:0;
+    max-width:360px;
+    color:#a7a39b;
+    font-size:16px;
+    line-height:1.45;
+  }
+
+  body.darkMode #why .benefit:nth-child(even) p{
+    grid-column:2;
+  }
+
+  body.darkMode #why .cardArrow,
+  body.darkMode #why .benefit:nth-child(even) .cardArrow{
+    grid-column:1;
+    grid-row:3;
+    position:relative;
+    right:auto;
+    bottom:auto;
+    align-self:end;
+    margin-top:50px;
+    color:#f5f3ee;
+  }
+
+  body.darkMode #why .benefit:nth-child(even) .cardArrow{
+    grid-column:2;
+  }
+
+  body.darkMode #why .cardArrow::after{
+    color:#f5f3ee;
+    border-bottom-color:#f5f3ee;
+  }
+
+  /* Force the image pseudo-element back into its image column. */
+  body.darkMode #why .benefit::before{
+    content:"";
+    position:relative;
+    inset:auto;
+    grid-column:2;
+    grid-row:1 / 4;
+    width:100%;
+    height:100%;
+    min-height:310px;
+    border-radius:20px;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    background-color:transparent;
+    box-shadow:0 18px 50px rgba(0,0,0,.35);
+    z-index:1;
+  }
+
+  body.darkMode #why .benefit:nth-child(even)::before{
+    grid-column:1;
+  }
+
+  body.darkMode #why .benefit::after{
+    z-index:8;
+    pointer-events:none;
+    color:#fff;
+  }
+}
+
+/* Mobile — preserve the client-ready light-mode structure, only recolor it. */
+@media (max-width:650px){
+  body.darkMode #why.why{
+    background:#0b0b0b;
+    color:#f5f3ee;
+  }
+
+  body.darkMode #why .benefit,
+  body.darkMode #why .benefit:nth-child(even){
+    background:transparent;
+    border-top-color:#36332e;
+    box-shadow:none;
+  }
+
+  body.darkMode #why .benefit:last-child{
+    border-bottom-color:#36332e;
+  }
+
+  body.darkMode #why .benefitNo{
+    color:#ff8500;
+  }
+
+  body.darkMode #why .benefitNo::after{
+    background:#3d3a35;
+  }
+
+  body.darkMode #why .iconBubble,
+  body.darkMode #why .benefit:nth-child(even) .iconBubble{
+    background:#24180b;
+    color:#ff8500;
+  }
+
+  body.darkMode #why .benefit h3,
+  body.darkMode #why .benefit:nth-child(even) h3{
+    color:#f5f3ee;
+  }
+
+  body.darkMode #why .benefit p,
+  body.darkMode #why .benefit:nth-child(even) p{
+    color:#a7a39b;
+  }
+
+  body.darkMode #why .cardArrow,
+  body.darkMode #why .benefit:nth-child(even) .cardArrow{
+    color:#f5f3ee;
+  }
+
+  body.darkMode #why .cardArrow::after{
+    color:#f5f3ee;
+    border-bottom-color:#f5f3ee;
+  }
+
+  body.darkMode #why .benefit::before{
+    background-color:transparent;
+  }
+}

@@ -555,63 +555,38 @@ body.darkMode .nav::before{
 
 /* Blink X loading screen — initial load only */
 body.loadingActive{overflow:hidden}
-.blinkLoadingScreen{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-  background:#000;
-  color:#fff;
-  font-family:"Instrument Sans",sans-serif;
-  animation:blinkLoaderExit .48s ease 2.45s forwards;
-}
-
-.blinkLoaderCenter{
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transform:translateY(-1vh);
-}
-
-.blinkLoaderLogo{
-  display:block;
-  width:min(470px,42vw);
-  height:auto;
-  max-height:155px;
-  object-fit:contain;
-  filter:drop-shadow(0 18px 40px rgba(0,0,0,.45));
-}
-
-.blinkLoaderNumber{
-  margin-top:34px;
-  font-size:clamp(42px,5vw,68px);
-  line-height:1;
-  font-weight:600;
-  letter-spacing:-.055em;
-  color:#fff;
-  font-variant-numeric:tabular-nums;
-  min-width:3ch;
-  text-align:center;
-}
-
+.blinkLoadingScreen{position:fixed;inset:0;z-index:99999;overflow:hidden;display:grid;place-items:center;background:#000;color:#fff;font-family:"Instrument Sans",sans-serif}
+.blinkLoaderCenter{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;transform:translateY(-1vh)}
+.blinkLoaderLogo{display:block;width:min(470px,42vw);height:auto;max-height:155px;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+.blinkLoaderTagline{margin-top:19px;font-size:13px;letter-spacing:.42em;color:rgba(255,255,255,.65);text-align:center}
+.blinkLoaderProgressRow{display:flex;align-items:center;gap:24px;margin-top:51px}
+.blinkLoaderProgressTrack{width:min(420px,30vw);height:8px;border-radius:999px;background:rgba(255,255,255,.16);box-shadow:inset 0 1px 2px rgba(0,0,0,.5)}
+.blinkLoaderProgressTrack span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#f59e0b,#ffb52f);box-shadow:0 0 18px rgba(255,168,32,.5);transition:width .08s linear}
+.blinkLoaderPercent{min-width:42px;font-size:14px;color:rgba(255,255,255,.78);font-variant-numeric:tabular-nums}
+.blinkLoaderLabel{margin-top:27px;font-size:11px;letter-spacing:.55em;color:rgba(255,255,255,.55)}
+.blinkLoaderGlow{position:absolute;z-index:1;pointer-events:none;border-radius:50%;filter:blur(45px);background:rgba(245,158,11,.24)}
+.glowTop{width:360px;height:220px;top:-110px;left:-50px}.glowBottom{width:420px;height:250px;right:-95px;bottom:-110px;background:rgba(245,158,11,.2)}
+.blinkLoaderArc{position:absolute;z-index:2;pointer-events:none;border:2px solid rgba(255,166,34,.62);border-radius:50%;transform:rotate(-27deg)}
+.arcTop{width:920px;height:360px;left:-340px;top:-210px;box-shadow:0 0 16px rgba(255,166,34,.18)}
+.arcBottom{width:1040px;height:390px;right:-420px;bottom:-250px;transform:rotate(-27deg);box-shadow:0 0 16px rgba(255,166,34,.18)}
+.blinkLoaderCorner{position:absolute;z-index:5;display:flex;flex-direction:column;font-size:10px;line-height:1.7;letter-spacing:.38em;color:rgba(255,255,255,.58)}
+.cornerTopRight{top:34px;right:48px;text-align:right;align-items:flex-end}.cornerBottomLeft{left:48px;bottom:53px}
+.blinkLoaderCorner i,.blinkLoaderStages i{display:block;width:20px;height:2px;background:#ffad21;margin-top:13px;box-shadow:0 0 10px rgba(255,173,33,.55)}
+.blinkLoaderStages{position:absolute;z-index:5;left:50%;bottom:52px;transform:translateX(-50%);display:flex;gap:34px;align-items:center;font-size:10px;letter-spacing:.45em;color:rgba(255,255,255,.58)}
+.blinkLoaderStages i{margin:0 0 0 3px}
 @media(max-width:700px){
   .blinkLoaderLogo{width:min(330px,72vw)}
-  .blinkLoaderNumber{
-    margin-top:25px;
-    font-size:clamp(38px,13vw,54px);
-  }
+  .blinkLoaderTagline{font-size:9px;letter-spacing:.28em;margin-top:14px}
+  .blinkLoaderProgressRow{margin-top:36px;gap:12px}.blinkLoaderProgressTrack{width:58vw;height:7px}.blinkLoaderPercent{font-size:11px}
+  .blinkLoaderLabel{margin-top:20px;font-size:9px;letter-spacing:.4em}
+  .cornerTopRight{right:18px;top:20px;font-size:8px}.cornerBottomLeft{left:18px;bottom:24px;font-size:8px}
+  .blinkLoaderStages{bottom:25px;gap:14px;font-size:8px;letter-spacing:.25em}.blinkLoaderStages i{display:none}
 }
 
-@keyframes blinkLoaderExit{
-  0%{opacity:1;visibility:visible;transform:scale(1)}
-  85%{opacity:1;visibility:visible;transform:scale(1)}
-  100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.015)}
-}
+.blinkLoadingScreen{animation:blinkLoaderExit .48s ease 2.45s forwards}
+.blinkLoaderProgressTrack span{width:0;animation:blinkLoaderProgress 2.3s cubic-bezier(.22,.61,.36,1) forwards}
+@keyframes blinkLoaderProgress{0%{width:0}100%{width:100%}}
+@keyframes blinkLoaderExit{0%{opacity:1;visibility:visible;transform:scale(1)}85%{opacity:1;visibility:visible;transform:scale(1)}100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.015)}}
 
 /* Blink X theme lanyard — desktop only */
 .themeLanyardAnchor{position:relative;display:flex;align-items:center;justify-content:center}
@@ -622,30 +597,6 @@ body.loadingActive{overflow:hidden}
 
 
 @media(max-width:900px){.ctaSection{grid-template-columns:1fr;gap:35px;min-height:auto;padding:58px 8%;margin-bottom:70px}.ctaEditorialCopy h2{font-size:clamp(48px,12vw,72px)}.ctaEditorialVisual{height:330px}.ctaImageFrame{height:310px}.ctaVerticalText{display:none}}
-
-/* Mobile CTA: use the supplied full-composition artwork as the entire card. */
-@media(max-width:600px){
-  .ctaSection{
-    display:block;
-    width:calc(100% - 28px);
-    height:auto;
-    min-height:0;
-    aspect-ratio:1024 / 1536;
-    margin:0 auto 58px;
-    padding:0;
-    border-radius:24px;
-    overflow:hidden;
-    background-image:url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/4ef06562665f904cc8e4d7427993a5294e404daff9cfb5182f0bc48f546574dd.png");
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-  }
-  .ctaSection .ctaEditorialGlow,
-  .ctaSection .ctaEditorialCopy,
-  .ctaSection .ctaEditorialVisual{
-    display:none!important;
-  }
-}
 @media(max-width:600px){.ctaSection{border-radius:28px;padding:48px 24px}.ctaEditorialCopy h2{font-size:clamp(45px,13vw,62px)}.ctaMeta{gap:8px;letter-spacing:.12em;font-size:8px}.ctaEditorialVisual{height:270px}.ctaImageFrame{height:255px;border-radius:22px}.ctaImageLabel{left:15px;bottom:14px}}
 
 

@@ -2064,3 +2064,107 @@ body.darkMode .processItem:hover .processArrowButton{
     left:10px;
   }
 }
+
+
+/* Mobile hero — final composition correction */
+@media (max-width:650px){
+  .hero{
+    overflow:hidden;
+    padding-bottom:0;
+  }
+
+  .heroCopy,
+  .heroActions,
+  .trustRow{
+    position:relative;
+    z-index:30;
+  }
+
+  .heroVisual{
+    position:relative;
+    width:calc(100% + 32px);
+    margin-left:-16px;
+    margin-top:14px;
+    height:470px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    z-index:1;
+  }
+
+  /* Full-width visual background behind the phone. */
+  .heroVisual .orangeShape{
+    width:145%;
+    height:330px;
+    left:50%;
+    right:auto;
+    top:145px;
+    transform:translateX(-50%) rotate(7deg);
+    border-radius:46% 46% 0 0;
+    z-index:1;
+  }
+
+  .heroVisual .heroBackText{
+    display:none;
+  }
+
+  /* Keep the 3D model centered in the visual area. */
+  .heroVisual .phoneWrap{
+    position:relative;
+    left:auto;
+    top:auto;
+    width:365px;
+    height:650px;
+    margin:72px auto 0;
+    flex:0 0 365px;
+    transform:scale(.62);
+    transform-origin:top center;
+    z-index:5;
+  }
+
+  .heroVisual .iphone3d{
+    inset:-55px -68px -55px;
+  }
+
+  /* Floating stat cards belong to the phone area, not the text area. */
+  .heroVisual .topCard{
+    right:18px;
+    top:155px;
+    z-index:10;
+  }
+
+  .heroVisual .bottomCard{
+    left:18px;
+    bottom:25px;
+    z-index:10;
+  }
+
+  .scrollHint{
+    display:none;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:450px;
+  }
+
+  .heroVisual .orangeShape{
+    width:155%;
+    top:138px;
+  }
+
+  .heroVisual .phoneWrap{
+    margin-top:66px;
+    transform:scale(.56);
+  }
+
+  .heroVisual .topCard{
+    right:10px;
+  }
+
+  .heroVisual .bottomCard{
+    left:10px;
+  }
+}

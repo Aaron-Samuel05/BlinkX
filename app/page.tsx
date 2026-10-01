@@ -32,22 +32,21 @@ function LoadingScreen() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const duration = 2300;
-    const start = performance.now();
+    const timer = window.setInterval(() => {
+      setProgress(current => {
+        if (current >= 100) {
+          window.clearInterval(timer);
+          return 100;
+        }
+        return current + 1;
+      });
+    }, 23);
 
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const next = Math.min(100, Math.floor((elapsed / duration) * 100));
-      setProgress(next);
-      if (next < 100) requestAnimationFrame(tick);
-    };
-
-    const frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <div className="blinkLoadingScreen" aria-label={`Loading Blink X ${progress}%`} role="status">
+    <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
       <div className="blinkLoaderCenter">
         <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
         <div className="blinkLoaderNumber" aria-live="polite">{progress}%</div>

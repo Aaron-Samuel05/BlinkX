@@ -3366,3 +3366,248 @@ body.darkMode .processItem:hover .processArrowButton{
   #why .cardArrow,
   #why .benefit:nth-child(even) .cardArrow{display:none;}
 }
+
+
+/* =========================================================
+   WHY BLINK X — MOBILE OPTIMIZATION ONLY
+   Desktop layout above remains untouched.
+   ========================================================= */
+@media (max-width:650px){
+  #why.why{
+    width:100%;
+    padding:76px 16px 88px;
+    overflow:hidden;
+  }
+
+  #why .sectionIntro{
+    width:100%;
+    display:block;
+    margin:0 0 48px;
+  }
+
+  #why .sectionIntro > div:first-child{
+    width:100%;
+    max-width:none;
+  }
+
+  #why .sectionIntro h2{
+    margin:15px 0 17px;
+    font-size:clamp(52px,15.8vw,70px);
+    line-height:.86;
+    letter-spacing:-.085em;
+    white-space:normal;
+  }
+
+  #why .sectionIntro p{
+    font-size:14px;
+    line-height:1.4;
+  }
+
+  #why .sectionIntro .textButton{
+    display:inline-flex;
+    align-items:center;
+    margin-top:24px;
+    padding-bottom:7px;
+    font-size:12px;
+  }
+
+  #why .benefitGrid{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    position:relative;
+    width:100%;
+    min-width:0;
+    min-height:0;
+    height:auto;
+    padding:32px 0 38px;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid #d6d2ca;
+    border-bottom:0;
+    gap:0;
+    overflow:visible;
+  }
+
+  #why .benefit:last-child{
+    border-bottom:1px solid #d6d2ca;
+  }
+
+  /* Number + divider */
+  #why .benefitNo,
+  #why .benefit:nth-child(even) .benefitNo{
+    order:1;
+    width:100%;
+    margin:0 0 22px;
+    padding:0;
+    color:#ef8c0c;
+    font-size:12px;
+    line-height:1;
+  }
+
+  #why .benefitNo::after{
+    width:calc(100% - 58px);
+    max-width:none;
+    margin-left:12px;
+    background:#c9c5bd;
+  }
+
+  /* Icon */
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    order:2;
+    width:40px;
+    height:40px;
+    flex:0 0 40px;
+    margin:0 0 16px;
+    border-radius:11px;
+    background:#fff1d9;
+    color:#b96200;
+  }
+
+  #why .iconBubble svg{
+    width:21px;
+    height:21px;
+  }
+
+  /* Title */
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    order:3;
+    width:100%;
+    margin:0 0 9px;
+    padding:0;
+    font-size:clamp(36px,11vw,46px);
+    line-height:.9;
+    letter-spacing:-.065em;
+    color:#0b0b0b;
+  }
+
+  /* Description */
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    order:4;
+    width:100%;
+    max-width:300px;
+    margin:0;
+    padding:0;
+    color:#67635d;
+    font-size:13px;
+    line-height:1.48;
+  }
+
+  /* Full-width image */
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    order:5;
+    content:"";
+    position:relative;
+    inset:auto;
+    display:block;
+    width:100%;
+    height:235px;
+    min-height:235px;
+    flex:0 0 235px;
+    margin:28px 0 0;
+    border-radius:17px;
+    background-size:cover;
+    background-position:center;
+    box-shadow:0 12px 32px rgba(20,15,8,.11);
+    z-index:1;
+  }
+
+  #why .benefit:nth-child(1)::before{
+    background-position:center 52%;
+  }
+
+  #why .benefit:nth-child(2)::before{
+    background-position:center;
+  }
+
+  #why .benefit:nth-child(3)::before{
+    background-position:center;
+  }
+
+  #why .benefit:nth-child(4)::before{
+    background-position:center;
+  }
+
+  /* Handwritten annotation stays INSIDE the image. */
+  #why .benefit::after,
+  #why .benefit:nth-child(even)::after{
+    content:"";
+    position:absolute;
+    left:auto;
+    right:17px;
+    top:auto;
+    bottom:54px;
+    width:125px;
+    height:auto;
+    z-index:5;
+    color:#fff;
+    font-family:"Caveat","Comic Sans MS",cursive;
+    font-size:14px;
+    line-height:1.02;
+    text-align:left;
+    white-space:pre-line;
+    text-shadow:0 2px 9px rgba(0,0,0,.55);
+    pointer-events:none;
+  }
+
+  #why .benefit:nth-child(1)::after{
+    content:"YOU RUN\A THE BUSINESS.\A WE HANDLE\A THE CONTENT.";
+  }
+
+  #why .benefit:nth-child(2)::after{
+    content:"MORE REACH.\A MORE CUSTOMERS.";
+  }
+
+  #why .benefit:nth-child(3)::after{
+    content:"CONTENT\A THAT STANDS\A OUT.";
+  }
+
+  #why .benefit:nth-child(4)::after{
+    content:"IDEAS TO\A IMPACT.";
+  }
+
+  #why .cardArrow,
+  #why .benefit:nth-child(even) .cardArrow{
+    display:none;
+  }
+}
+
+@media (max-width:380px){
+  #why.why{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  #why .sectionIntro h2{
+    font-size:15.5vw;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    padding-top:28px;
+    padding-bottom:32px;
+  }
+
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    height:215px;
+    min-height:215px;
+    flex-basis:215px;
+  }
+
+  #why .benefit::after,
+  #why .benefit:nth-child(even)::after{
+    right:14px;
+    bottom:49px;
+    font-size:13px;
+  }
+}

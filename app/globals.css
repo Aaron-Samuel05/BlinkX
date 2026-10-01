@@ -5242,3 +5242,19 @@ body.darkMode #why .sectionIntro .textButton{
   padding:0 18px;
   justify-content:center;
 }
+
+
+/* Trust avatars — image treatment only */
+.avatarStack img{
+  width:29px;
+  height:29px;
+  flex:0 0 29px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  border:2px solid #fff;
+  margin-left:-6px;
+  display:block;
+  background:#ddd;
+}
+.avatarStack img:first-child{margin-left:0;}

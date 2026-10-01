@@ -4659,3 +4659,85 @@ body.darkMode .processItem:hover .processArrowButton{
     min-height:190px;
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — MOBILE DARK MODE
+   Scoped only to mobile #why. Light mode + desktop untouched.
+   ========================================================= */
+@media (max-width:650px){
+  html.dark #why.why,
+  body.dark #why.why,
+  .dark #why.why{
+    background:#0b0b0b;
+    color:#f7f5ef;
+  }
+
+  .dark #why .miniEyebrow{
+    color:#8f8b84;
+  }
+
+  .dark #why .sectionIntro h2{
+    color:#f7f5ef;
+  }
+
+  .dark #why .sectionIntro p{
+    color:#aaa69e;
+  }
+
+  .dark #why .sectionIntro .textButton{
+    color:#f7f5ef;
+    border-bottom-color:#f7f5ef;
+  }
+
+  .dark #why .benefit,
+  .dark #why .benefit:nth-child(even){
+    background:transparent;
+    border-top-color:#35332f;
+  }
+
+  .dark #why .benefit:last-child{
+    border-bottom-color:#35332f;
+  }
+
+  .dark #why .benefitNo{
+    color:#ff8a00;
+  }
+
+  .dark #why .benefitNo::after{
+    background:#3b3935;
+  }
+
+  .dark #why .iconBubble,
+  .dark #why .benefit:nth-child(even) .iconBubble{
+    background:#241a0e;
+    color:#ff8a00;
+  }
+
+  .dark #why .benefit h3,
+  .dark #why .benefit:nth-child(even) h3{
+    color:#f7f5ef;
+  }
+
+  .dark #why .benefit p,
+  .dark #why .benefit:nth-child(even) p{
+    color:#aaa69e;
+  }
+
+  .dark #why .cardArrow{
+    color:#f7f5ef;
+  }
+
+  .dark #why .cardArrow::after{
+    border-bottom-color:#f7f5ef;
+  }
+
+  /* Remove the accidental dark overlay/gradient from the content area. */
+  .dark #why .benefit::before{
+    background-color:transparent;
+  }
+
+  .dark #why .benefit::after{
+    color:#fff;
+  }
+}

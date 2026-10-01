@@ -3937,3 +3937,182 @@ body.darkMode .processItem:hover .processArrowButton{
     font-size:12px;
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — MOBILE ALIGNMENT REFINEMENT
+   Only mobile #why. Desktop remains untouched.
+   ========================================================= */
+@media (max-width:650px){
+  /* Give the fixed/sticky navbar its own breathing room. */
+  #why.why{
+    padding-top:118px;
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  #why .sectionIntro{
+    margin-bottom:42px;
+  }
+
+  #why .sectionIntro h2{
+    margin-top:14px;
+    margin-bottom:16px;
+  }
+
+  /* Every benefit uses a simple editorial stack. */
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    display:grid;
+    grid-template-columns:44px 1fr;
+    grid-template-rows:auto auto auto auto auto;
+    column-gap:14px;
+    padding:28px 0 34px;
+    min-height:0;
+    width:100%;
+  }
+
+  /* Number sits at the very top of each story. */
+  #why .benefitNo,
+  #why .benefit:nth-child(even) .benefitNo{
+    grid-column:1 / -1;
+    grid-row:1;
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:18px;
+    margin:0 0 20px;
+    font-size:11px;
+    line-height:18px;
+  }
+
+  #why .benefitNo::after{
+    flex:1;
+    width:auto;
+    margin:0 0 0 12px;
+    height:1px;
+    background:#d2cec6;
+  }
+
+  /* Icon is now a real visual anchor beside the title. */
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    grid-column:1;
+    grid-row:2;
+    width:40px;
+    height:40px;
+    margin:0;
+    align-self:start;
+    justify-self:start;
+    border-radius:11px;
+    background:#fff0d7;
+    color:#ef7f00;
+  }
+
+  #why .iconBubble svg{
+    width:20px;
+    height:20px;
+  }
+
+  /* Title is left aligned, never centered. */
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    grid-column:2;
+    grid-row:2;
+    width:100%;
+    margin:0 0 7px;
+    align-self:start;
+    text-align:left;
+    font-size:clamp(32px,9.5vw,40px);
+    line-height:.92;
+    letter-spacing:-.065em;
+  }
+
+  /* Description aligns exactly with the title column. */
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    grid-column:2;
+    grid-row:3;
+    width:100%;
+    max-width:285px;
+    margin:0;
+    text-align:left;
+    font-size:12px;
+    line-height:1.48;
+  }
+
+  /* CTA also follows the title column. */
+  #why .cardArrow,
+  #why .benefit:nth-child(even) .cardArrow{
+    grid-column:2;
+    grid-row:4;
+    display:block;
+    margin:13px 0 0;
+    text-align:left;
+    justify-self:start;
+  }
+
+  #why .cardArrow::after{
+    padding-bottom:6px;
+    font-size:10.5px;
+  }
+
+  /* Image is always a clean full-width block below the copy. */
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    grid-column:1 / -1;
+    grid-row:5;
+    width:100%;
+    height:205px;
+    min-height:205px;
+    margin:25px 0 0;
+    border-radius:16px;
+    box-shadow:0 9px 26px rgba(20,15,8,.10);
+  }
+
+  /* Keep annotations visually restrained and attached to images. */
+  #why .benefit::after,
+  #why .benefit:nth-child(even)::after{
+    right:15px;
+    bottom:48px;
+    width:105px;
+    font-size:12px;
+    line-height:1.05;
+  }
+}
+
+@media (max-width:380px){
+  #why.why{
+    padding-top:112px;
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    grid-template-columns:40px 1fr;
+    column-gap:12px;
+  }
+
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    width:36px;
+    height:36px;
+  }
+
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    font-size:9.2vw;
+  }
+
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    font-size:11.5px;
+  }
+
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    height:190px;
+    min-height:190px;
+  }
+}

@@ -5233,3 +5233,12 @@ body.darkMode #why .sectionIntro .textButton{
     background-color:transparent;
   }
 }
+
+
+/* Hero secondary CTA sizing — sizing only */
+.watchButton{
+  min-height:50px;
+  box-sizing:border-box;
+  padding:0 18px;
+  justify-content:center;
+}

@@ -2193,3 +2193,285 @@ body.darkMode .processItem:hover .processArrowButton{
     max-width:calc(100% - 20px);
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — EDITORIAL REDESIGN
+   Replace generic glass cards with a restrained production-
+   studio editorial grid. Scoped only to #why.
+   ========================================================= */
+
+#why.why{
+  background:#fff;
+  color:#0a0a0a;
+  padding-top:120px;
+  padding-bottom:130px;
+}
+
+#why .sectionIntro{
+  max-width:1450px;
+  margin:0 auto 72px;
+  align-items:flex-end;
+}
+
+#why .sectionIntro > div:first-child{
+  max-width:900px;
+}
+
+#why .miniEyebrow{
+  color:#77736c;
+  font-size:10px;
+  letter-spacing:.2em;
+}
+
+#why .sectionIntro h2{
+  font-size:clamp(64px,8.2vw,118px);
+  line-height:.84;
+  letter-spacing:-.085em;
+  margin:18px 0 22px;
+}
+
+#why .sectionIntro p{
+  margin:0;
+  color:#77736c;
+  font-size:16px;
+}
+
+#why .sectionIntro .textButton{
+  flex:0 0 auto;
+  padding-bottom:8px;
+  border-bottom:1px solid #151515;
+  color:#111;
+  font-size:12px;
+  letter-spacing:.02em;
+}
+
+#why .benefitGrid{
+  width:100%;
+  max-width:1450px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+  border-top:1px solid #171717;
+}
+
+#why .benefit{
+  position:relative;
+  min-height:255px;
+  height:auto;
+  aspect-ratio:auto;
+  padding:30px 32px 34px 0;
+  border:0;
+  border-radius:0;
+  border-bottom:1px solid #d9d7d1;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  display:grid;
+  grid-template-columns:72px 1fr;
+  column-gap:22px;
+  align-content:start;
+  overflow:hidden;
+  transition:background .35s ease,padding-left .35s ease;
+}
+
+#why .benefit:nth-child(odd){
+  border-right:1px solid #d9d7d1;
+  padding-right:42px;
+}
+
+#why .benefit:nth-child(even){
+  padding-left:42px;
+}
+
+#why .benefit:hover{
+  transform:none;
+  box-shadow:none;
+  background:#faf9f5;
+}
+
+#why .benefitNo{
+  grid-row:1 / span 3;
+  color:#aaa59c;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  padding-top:3px;
+  position:relative;
+}
+
+#why .benefitNo::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:28px;
+  width:28px;
+  height:1px;
+  background:#151515;
+  opacity:.55;
+}
+
+#why .iconBubble{
+  grid-column:2;
+  width:42px;
+  height:42px;
+  margin:0 0 28px;
+  border-radius:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  color:#111;
+  filter:none;
+}
+
+#why .iconBubble svg{
+  width:25px;
+  height:25px;
+  color:#111;
+  stroke-width:1.6;
+}
+
+#why .benefit h3{
+  grid-column:2;
+  margin:0 0 9px;
+  font-size:clamp(25px,2.3vw,35px);
+  line-height:.95;
+  letter-spacing:-.055em;
+  font-weight:600;
+}
+
+#why .benefit p{
+  grid-column:2;
+  max-width:330px;
+  margin:0;
+  color:#74716b;
+  font-size:13px;
+  line-height:1.55;
+}
+
+#why .cardArrow{
+  right:30px;
+  bottom:30px;
+  color:#111;
+  opacity:.55;
+  transition:transform .3s ease,opacity .3s ease;
+}
+
+#why .benefit:hover .cardArrow{
+  transform:translate(4px,-4px);
+  opacity:1;
+}
+
+@media(max-width:1050px){
+  #why.why{
+    padding:90px 5vw 100px;
+  }
+
+  #why .sectionIntro{
+    margin-bottom:55px;
+  }
+
+  #why .benefit{
+    min-height:235px;
+  }
+}
+
+@media(max-width:650px){
+  #why.why{
+    padding:72px 16px 82px;
+  }
+
+  #why .sectionIntro{
+    display:block;
+    margin-bottom:48px;
+  }
+
+  #why .sectionIntro h2{
+    font-size:clamp(52px,16vw,70px);
+    line-height:.86;
+    margin:15px 0 17px;
+  }
+
+  #why .sectionIntro p{
+    font-size:13px;
+  }
+
+  #why .sectionIntro .textButton{
+    display:inline-flex;
+    margin-top:25px;
+    padding-bottom:7px;
+  }
+
+  #why .benefitGrid{
+    grid-template-columns:1fr;
+    border-top:1px solid #171717;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(odd),
+  #why .benefit:nth-child(even){
+    min-height:0;
+    width:100%;
+    padding:24px 0 27px;
+    border-right:0;
+    border-bottom:1px solid #d9d7d1;
+    display:grid;
+    grid-template-columns:52px 1fr 28px;
+    column-gap:13px;
+    background:transparent;
+  }
+
+  #why .benefit:hover{
+    background:#faf9f5;
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  #why .benefitNo{
+    grid-column:1;
+    grid-row:1 / span 3;
+    font-size:10px;
+  }
+
+  #why .benefitNo::after{
+    top:24px;
+    width:22px;
+  }
+
+  #why .iconBubble{
+    grid-column:2;
+    width:27px;
+    height:27px;
+    margin:0 0 13px;
+  }
+
+  #why .iconBubble svg{
+    width:21px;
+    height:21px;
+  }
+
+  #why .benefit h3{
+    grid-column:2;
+    font-size:25px;
+    margin:0 0 6px;
+    line-height:.95;
+  }
+
+  #why .benefit p{
+    grid-column:2;
+    max-width:245px;
+    font-size:11px;
+    line-height:1.5;
+  }
+
+  #why .cardArrow{
+    grid-column:3;
+    grid-row:1 / span 3;
+    position:static;
+    align-self:center;
+    justify-self:end;
+    opacity:.45;
+  }
+}

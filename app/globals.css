@@ -2475,3 +2475,423 @@ body.darkMode .processItem:hover .processArrowButton{
     opacity:.45;
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — EDITORIAL IMAGE / STORY LAYOUT
+   Scoped exclusively to #why.
+   ========================================================= */
+
+#why.why{
+  background:#fbfaf6;
+  color:#0b0b0b;
+  padding:118px 4.5vw 135px;
+  overflow:hidden;
+}
+
+#why .sectionIntro{
+  max-width:1450px;
+  margin:0 auto 82px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+}
+
+#why .sectionIntro > div:first-child{
+  max-width:980px;
+}
+
+#why .miniEyebrow{
+  color:#8a867f;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.22em;
+}
+
+#why .miniEyebrow span{
+  display:inline-block;
+  width:28px;
+  height:2px;
+  margin-left:7px;
+  vertical-align:middle;
+  background:var(--orange,#f59b18);
+}
+
+#why .sectionIntro h2{
+  margin:17px 0 18px;
+  font-size:clamp(65px,8vw,116px);
+  line-height:.82;
+  letter-spacing:-.09em;
+  font-weight:700;
+}
+
+#why .sectionIntro p{
+  margin:0;
+  color:#68645e;
+  font-size:17px;
+}
+
+#why .sectionIntro .textButton{
+  flex:0 0 auto;
+  color:#111;
+  border-bottom:1px solid #111;
+  padding-bottom:8px;
+  font-size:13px;
+  font-weight:600;
+}
+
+#why .benefitGrid{
+  width:100%;
+  max-width:1450px;
+  margin:0 auto;
+  display:block;
+}
+
+#why .benefit{
+  position:relative;
+  width:100%;
+  min-height:390px;
+  height:auto;
+  aspect-ratio:auto;
+  margin:0;
+  padding:52px 4% 52px 3px;
+  border:0;
+  border-top:1px solid #d6d2ca;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  display:grid;
+  grid-template-columns:minmax(280px,.82fr) minmax(430px,1.18fr);
+  grid-template-rows:auto auto 1fr auto;
+  column-gap:7%;
+  align-items:start;
+  overflow:visible;
+  transition:none;
+}
+
+#why .benefit:last-child{
+  border-bottom:1px solid #d6d2ca;
+}
+
+#why .benefit:nth-child(even){
+  grid-template-columns:minmax(430px,1.18fr) minmax(280px,.82fr);
+  padding-left:0;
+  padding-right:3px;
+}
+
+#why .benefit:hover{
+  transform:none;
+  background:transparent;
+  box-shadow:none;
+}
+
+#why .benefit::before{
+  content:"";
+  grid-column:2;
+  grid-row:1 / 5;
+  width:100%;
+  height:100%;
+  min-height:310px;
+  border-radius:22px;
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 18px 50px rgba(20,15,8,.12);
+  overflow:hidden;
+}
+
+#why .benefit:nth-child(1)::before{
+  background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1400&q=88");
+}
+#why .benefit:nth-child(2)::before{
+  grid-column:1;
+  background-image:url("https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1400&q=88");
+}
+#why .benefit:nth-child(3)::before{
+  background-image:url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=88");
+}
+#why .benefit:nth-child(4)::before{
+  grid-column:1;
+  background-image:url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=88");
+}
+
+#why .benefit::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  pointer-events:none;
+  color:#fff;
+  font-family:"Caveat","Comic Sans MS",cursive;
+  font-size:18px;
+  line-height:1.05;
+  white-space:pre-line;
+  text-align:left;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+}
+
+#why .benefit:nth-child(1)::after{
+  content:"YOU RUN\A THE BUSINESS.\A WE HANDLE\A THE CONTENT.";
+  right:5%;
+  top:72px;
+}
+#why .benefit:nth-child(2)::after{
+  content:"MORE REACH.\A MORE CUSTOMERS.";
+  left:4%;
+  top:72px;
+}
+#why .benefit:nth-child(3)::after{
+  content:"CONTENT\A THAT STANDS\A OUT.";
+  right:5%;
+  top:72px;
+}
+#why .benefit:nth-child(4)::after{
+  content:"IDEAS TO\A IMPACT.";
+  left:4%;
+  top:72px;
+}
+
+#why .benefitNo{
+  grid-column:1;
+  grid-row:1;
+  color:#ef8c0c;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.04em;
+  padding:0;
+  margin:0 0 42px;
+}
+
+#why .benefitNo::after{
+  content:"";
+  display:inline-block;
+  width:180px;
+  height:1px;
+  margin-left:18px;
+  vertical-align:middle;
+  background:#bdb8ae;
+}
+
+#why .benefit:nth-child(even) .benefitNo{
+  grid-column:2;
+}
+
+#why .iconBubble{
+  grid-column:1;
+  grid-row:2;
+  width:48px;
+  height:48px;
+  margin:0 0 20px;
+  border-radius:13px;
+  background:#fff2dc;
+  border:0;
+  box-shadow:none;
+  color:#b96200;
+}
+
+#why .benefit:nth-child(even) .iconBubble{
+  grid-column:2;
+}
+
+#why .iconBubble svg{
+  width:23px;
+  height:23px;
+  stroke-width:1.8;
+}
+
+#why .benefit h3{
+  grid-column:1;
+  grid-row:3;
+  align-self:start;
+  margin:0 0 11px;
+  font-size:clamp(38px,4vw,58px);
+  line-height:.88;
+  letter-spacing:-.065em;
+  font-weight:650;
+}
+
+#why .benefit:nth-child(even) h3{
+  grid-column:2;
+}
+
+#why .benefit p{
+  grid-column:1;
+  grid-row:4;
+  max-width:360px;
+  margin:0;
+  color:#67635d;
+  font-size:17px;
+  line-height:1.42;
+}
+
+#why .benefit:nth-child(even) p{
+  grid-column:2;
+}
+
+#why .cardArrow{
+  position:static;
+  grid-column:1;
+  grid-row:4;
+  align-self:end;
+  justify-self:start;
+  margin-top:74px;
+  color:#111;
+  opacity:1;
+  font-size:0;
+}
+
+#why .benefit:nth-child(even) .cardArrow{
+  grid-column:2;
+}
+
+#why .cardArrow::after{
+  content:"See the difference  →";
+  display:inline-block;
+  border-bottom:1px solid #222;
+  padding-bottom:8px;
+  font-size:13px;
+  font-weight:600;
+}
+
+#why .benefit:nth-child(2) .cardArrow::after{
+  content:"Turn views into growth  →";
+}
+#why .benefit:nth-child(3) .cardArrow::after{
+  content:"Content that stands out  →";
+}
+#why .benefit:nth-child(4) .cardArrow::after{
+  content:"A complete content solution  →";
+}
+
+@media(max-width:900px){
+  #why .benefit{
+    grid-template-columns:minmax(230px,.8fr) minmax(300px,1.2fr);
+    min-height:340px;
+  }
+
+  #why .benefit:nth-child(even){
+    grid-template-columns:minmax(300px,1.2fr) minmax(230px,.8fr);
+  }
+
+  #why .benefitNo::after{
+    width:80px;
+  }
+
+  #why .benefit h3{
+    font-size:40px;
+  }
+
+  #why .benefit p{
+    font-size:14px;
+  }
+}
+
+@media(max-width:650px){
+  #why.why{
+    padding:76px 16px 88px;
+  }
+
+  #why .sectionIntro{
+    display:block;
+    margin-bottom:54px;
+  }
+
+  #why .sectionIntro h2{
+    font-size:clamp(54px,16vw,72px);
+    line-height:.84;
+    margin:16px 0 18px;
+  }
+
+  #why .sectionIntro p{
+    font-size:14px;
+  }
+
+  #why .sectionIntro .textButton{
+    display:inline-flex;
+    margin-top:25px;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    min-height:0;
+    padding:34px 0 38px;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto auto;
+    gap:0;
+    border-top:1px solid #d6d2ca;
+  }
+
+  #why .benefit::before,
+  #why .benefit:nth-child(2)::before,
+  #why .benefit:nth-child(4)::before{
+    grid-column:1;
+    grid-row:4;
+    width:100%;
+    height:235px;
+    min-height:235px;
+    margin-top:30px;
+    border-radius:17px;
+  }
+
+  #why .benefit::after,
+  #why .benefit:nth-child(2)::after,
+  #why .benefit:nth-child(3)::after,
+  #why .benefit:nth-child(4)::after{
+    left:auto;
+    right:18px;
+    top:auto;
+    bottom:145px;
+    font-size:15px;
+  }
+
+  #why .benefitNo,
+  #why .benefit:nth-child(even) .benefitNo{
+    grid-column:1;
+    grid-row:1;
+    margin-bottom:24px;
+  }
+
+  #why .benefitNo::after{
+    width:calc(100% - 68px);
+    margin-left:14px;
+  }
+
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    grid-column:1;
+    grid-row:2;
+    width:40px;
+    height:40px;
+    margin-bottom:17px;
+  }
+
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    grid-column:1;
+    grid-row:3;
+    font-size:39px;
+    line-height:.9;
+    margin-bottom:10px;
+  }
+
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    grid-column:1;
+    grid-row:3;
+    align-self:end;
+    max-width:75%;
+    margin-bottom:-4px;
+    font-size:13px;
+    line-height:1.42;
+  }
+
+  #why .cardArrow,
+  #why .benefit:nth-child(even) .cardArrow{
+    display:none;
+  }
+
+  #why .benefit:nth-child(2)::before,
+  #why .benefit:nth-child(4)::before{
+    background-position:center;
+  }
+}

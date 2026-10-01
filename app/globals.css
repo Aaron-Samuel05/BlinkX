@@ -4116,3 +4116,269 @@ body.darkMode .processItem:hover .processArrowButton{
     min-height:190px;
   }
 }
+
+
+/* =========================================================
+   WHY BLINK X — FINAL MOBILE TYPOGRAPHY / ALIGNMENT PASS
+   Scoped exclusively to mobile #why.
+   ========================================================= */
+@media (max-width:650px){
+  #why.why{
+    padding:78px 16px 88px;
+    overflow:hidden;
+  }
+
+  /* Section heading: one clean left edge. */
+  #why .sectionIntro{
+    width:100%;
+    margin:0 0 48px;
+    display:block;
+  }
+
+  #why .sectionIntro h2{
+    width:100%;
+    margin:14px 0 15px;
+    text-align:left;
+    font-size:clamp(50px,15.2vw,68px);
+    line-height:.88;
+    letter-spacing:-.085em;
+  }
+
+  #why .sectionIntro p{
+    width:100%;
+    max-width:290px;
+    margin:0;
+    text-align:left;
+    font-size:13px;
+    line-height:1.45;
+  }
+
+  #why .sectionIntro .textButton{
+    margin-top:22px;
+    text-align:left;
+  }
+
+  /* Every benefit has exactly the same grid. */
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    display:grid;
+    grid-template-columns:42px minmax(0,1fr);
+    grid-template-rows:18px auto auto auto;
+    column-gap:14px;
+    width:100%;
+    min-height:0;
+    padding:30px 0 34px;
+    margin:0;
+    border-top:1px solid #d4d0c8;
+    border-bottom:0;
+    background:transparent;
+    overflow:visible;
+  }
+
+  #why .benefit:last-child{
+    border-bottom:1px solid #d4d0c8;
+  }
+
+  /* Number + line are the section's only full-width header. */
+  #why .benefitNo,
+  #why .benefit:nth-child(even) .benefitNo{
+    grid-column:1 / -1;
+    grid-row:1;
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:18px;
+    margin:0 0 19px;
+    padding:0;
+    font-size:11px;
+    line-height:18px;
+    color:#ef7f00;
+    text-align:left;
+  }
+
+  #why .benefitNo::after{
+    content:"";
+    flex:1;
+    width:auto;
+    height:1px;
+    margin-left:11px;
+    background:#d4d0c8;
+  }
+
+  /* Icon sits beside the title — never floating independently. */
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    grid-column:1;
+    grid-row:2;
+    width:38px;
+    height:38px;
+    margin:0;
+    align-self:start;
+    justify-self:start;
+    border-radius:10px;
+    background:#fff0d7;
+    color:#ef7f00;
+    border:0;
+    box-shadow:none;
+  }
+
+  #why .iconBubble svg{
+    width:19px;
+    height:19px;
+    stroke-width:1.8;
+  }
+
+  /* Title is always left aligned with the description. */
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    grid-column:2;
+    grid-row:2;
+    width:100%;
+    margin:0;
+    padding:0;
+    text-align:left;
+    align-self:start;
+    font-size:clamp(32px,9.5vw,40px);
+    line-height:.92;
+    letter-spacing:-.065em;
+    font-weight:650;
+  }
+
+  /* Description directly under title. */
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    grid-column:2;
+    grid-row:3;
+    width:100%;
+    max-width:285px;
+    margin:7px 0 0;
+    padding:0;
+    text-align:left;
+    align-self:start;
+    color:#6b6760;
+    font-size:12px;
+    line-height:1.48;
+  }
+
+  /* CTA directly under description. */
+  #why .cardArrow,
+  #why .benefit:nth-child(even) .cardArrow{
+    grid-column:2;
+    grid-row:4;
+    display:block;
+    position:static;
+    width:max-content;
+    margin:13px 0 0;
+    padding:0;
+    text-align:left;
+    justify-self:start;
+    align-self:start;
+  }
+
+  #why .cardArrow::after{
+    content:"Learn more  →";
+    display:inline-block;
+    padding-bottom:5px;
+    border-bottom:1px solid #222;
+    font-size:10.5px;
+    line-height:1;
+    font-weight:600;
+  }
+
+  #why .benefit:nth-child(2) .cardArrow::after{
+    content:"Turn views into growth  →";
+  }
+
+  #why .benefit:nth-child(3) .cardArrow::after{
+    content:"Content that stands out  →";
+  }
+
+  #why .benefit:nth-child(4) .cardArrow::after{
+    content:"A complete content solution  →";
+  }
+
+  /* Images all use the same width, height and radius. */
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    grid-column:1 / -1;
+    grid-row:5;
+    width:100%;
+    height:205px;
+    min-height:205px;
+    margin:26px 0 0;
+    border-radius:16px;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    box-shadow:0 8px 24px rgba(20,15,8,.09);
+  }
+
+  /* Keep image crops intentional. */
+  #why .benefit:nth-child(1)::before{
+    background-position:center 52%;
+  }
+
+  #why .benefit:nth-child(2)::before{
+    background-position:center;
+  }
+
+  #why .benefit:nth-child(3)::before{
+    background-position:center;
+  }
+
+  #why .benefit:nth-child(4)::before{
+    background-position:center;
+  }
+
+  /* Annotations are anchored to the image, not the text. */
+  #why .benefit::after,
+  #why .benefit:nth-child(even)::after{
+    left:auto;
+    right:14px;
+    top:auto;
+    bottom:48px;
+    width:105px;
+    z-index:5;
+    font-family:"Caveat","Comic Sans MS",cursive;
+    font-size:12px;
+    line-height:1.05;
+    text-align:left;
+    white-space:pre-line;
+    text-shadow:0 2px 8px rgba(0,0,0,.55);
+  }
+}
+
+@media (max-width:380px){
+  #why.why{
+    padding-left:14px;
+    padding-right:14px;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    grid-template-columns:40px minmax(0,1fr);
+    column-gap:12px;
+  }
+
+  #why .iconBubble,
+  #why .benefit:nth-child(even) .iconBubble{
+    width:36px;
+    height:36px;
+  }
+
+  #why .benefit h3,
+  #why .benefit:nth-child(even) h3{
+    font-size:9.2vw;
+  }
+
+  #why .benefit p,
+  #why .benefit:nth-child(even) p{
+    font-size:11.5px;
+  }
+
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    height:190px;
+    min-height:190px;
+  }
+}

@@ -4,7 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import { useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Sparkles, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -44,7 +44,7 @@ const heroContentThumbs = [
 ];
 
 const process: [string, string, string, LucideIcon, string, string][] = [
-  ["01", "We Plan", "We bring ideas to life.", Sparkles, "IDEA", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=88"],
+  ["01", "We Plan", "We bring ideas to life.", "IDEA", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=88"],
   ["02", "We Shoot", "On-location with professional production.", Video, "PRODUCTION", "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=88"],
   ["03", "We Edit", "High-quality, ready-to-post reels.", Star, "POST-PRODUCTION", "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=88"],
   ["04", "You Grow", "More content. More opportunities.", ArrowRight, "GROWTH", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=88"],
@@ -193,8 +193,8 @@ export default function Home() {
         <div className="heroNoise" />
         <div className="heroInner">
           <motion.div className="heroCopy" style={{ y: heroY }}>
-            <motion.div className="eyebrow glassPill"><Sparkles size={14}/> CONTENT THAT MOVES BUSINESS</motion.div>
-            <h1><span>18 Reels.</span><span className="orange">24 Hours.</span></h1>
+            <motion.div className="eyebrow glassPill"> CONTENT THAT MOVES BUSINESS</motion.div>
+            <h1><span>18 Reels</span><span className="orange">24 Hours</span></h1>
             <p>We come. We shoot. We edit. You grow.</p>
             <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
             <div className="heroActions">
@@ -262,7 +262,7 @@ export default function Home() {
       </section>
 
       <section id="how" className="section how">
-        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill"><Sparkles size={13}/> Simple. Fast. Effective.</div></div>
+        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill"> Simple. Fast. Effective.</div></div>
         <div className="processGrid">
           {process.map(([num,title,text,Icon,category,image],i)=>(
             <div className="processItem" key={num}>
@@ -436,7 +436,7 @@ export default function Home() {
             <h2>Everything you need to <em>know.</em></h2>
             <p>Simple answers before you book your content day.</p>
           </div>
-          <div className="faqBadge glassPill"><Sparkles size={14}/> BLINK X DETAILS</div>
+          <div className="faqBadge glassPill"> BLINK X DETAILS</div>
         </div>
         <div className="faqGrid">
           {faqs.map(([question, answer], i) => (

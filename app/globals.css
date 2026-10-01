@@ -5258,3 +5258,11 @@ body.darkMode #why .sectionIntro .textButton{
   background:#ddd;
 }
 .avatarStack img:first-child{margin-left:0;}
+
+
+/* Final hero/nav spacing cleanup */
+@media (min-width:1051px){
+  .hero{
+    padding-top:3.5vw;
+  }
+}

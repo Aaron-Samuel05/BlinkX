@@ -199,7 +199,7 @@ export default function Home() {
             <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
             <div className="heroActions">
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#book">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
-              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how"><span className="playCircle"><Play size={13} fill="currentColor"/></span> Watch how it works <small>01:00</small></motion.a>
+              <motion.a whileHover={{ y: -3, x: 3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how">See how we work <ArrowRight size={15} /></motion.a>
             </div>
             <div className="trustRow"><div className="avatarStack"><i/><i/><i/><i/><i/></div><div><b>500+</b><span>Businesses trust Blink X</span></div></div>
           </motion.div>

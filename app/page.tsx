@@ -21,7 +21,7 @@ const timeOptions = ["Morning (9 AM – 12 PM)", "Afternoon (12 PM – 4 PM)", "
 const benefits: [string, string, string, LucideIcon][] = [
   ["01", "Save Time", "No more planning, scripting, shooting or editing on your own.", Clock3],
   ["02", "Grow Faster", "More content means more reach, more conversations, more customers.", ArrowRight],
-  ["03", "Pro Quality", "Shoot and edited by a dedicated creative team.", Sparkles],
+  ["03", "Pro Quality", "Shoot and edited by a dedicated creative team.", Film],
   ["04", "All in One", "Planning, scripts, shooting, editing, captions and music.", Star],
 ];
 

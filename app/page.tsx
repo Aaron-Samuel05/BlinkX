@@ -44,7 +44,7 @@ const heroContentThumbs = [
 ];
 
 const process: [string, string, string, LucideIcon, string, string][] = [
-  ["01", "We Plan", "We bring ideas to life.", "IDEA", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=88"],
+  ["01", "We Plan", "We bring ideas to life.", Clock3, "IDEA", "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=88"],
   ["02", "We Shoot", "On-location with professional production.", Video, "PRODUCTION", "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=88"],
   ["03", "We Edit", "High-quality, ready-to-post reels.", Star, "POST-PRODUCTION", "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=88"],
   ["04", "You Grow", "More content. More opportunities.", ArrowRight, "GROWTH", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=88"],

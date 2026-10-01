@@ -5375,11 +5375,11 @@ body.darkMode .ctaSection{
     border-radius:24px;
     background:
       linear-gradient(180deg,
-        rgba(5,5,5,.96) 0%,
-        rgba(5,5,5,.82) 42%,
-        rgba(5,5,5,.46) 72%,
-        rgba(5,5,5,.72) 100%),
-      url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/d72a35c014f0a2e1936d27cede73458ce0210f78fe67c6379af5e31dcb72c1ce.png") center center / cover no-repeat;
+        rgba(5,5,5,.90) 0%,
+        rgba(5,5,5,.68) 42%,
+        rgba(5,5,5,.32) 72%,
+        rgba(5,5,5,.60) 100%),
+      url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/4f39f97741127c990b6ed8f0b6e150972ab310134097a2dfee58b3279fc79f07.jpg") center center / cover no-repeat;
   }
 
   .ctaEditorialCopy{

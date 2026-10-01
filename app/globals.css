@@ -1212,3 +1212,692 @@ body.darkMode .processItem:hover .processArrowButton{
     display:none !important;
   }
 }
+
+
+/* =========================================================
+   BLINK X — MOBILE-FIRST STABILITY PASS
+   Desktop styles remain unchanged. These rules only apply
+   to touch/small-screen layouts.
+   ========================================================= */
+@media (max-width: 650px) {
+  /* Prevent accidental horizontal overflow and improve touch scrolling. */
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main,
+  section,
+  .hero,
+  .heroInner,
+  .heroVisual {
+    max-width: 100%;
+  }
+
+  /* Compact mobile navigation. */
+  .nav {
+    width: calc(100% - 20px);
+    margin: 6px 10px 0;
+    padding: 0 10px;
+    height: 58px;
+    top: 6px;
+  }
+
+  .brand img {
+    width: 94px;
+    max-width: 42vw;
+  }
+
+  .navActions {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .themeToggle {
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+  }
+
+  .pillButton.dark {
+    padding: 9px 10px;
+    font-size: 9px;
+    gap: 5px;
+    white-space: nowrap;
+  }
+
+  .pillButton.dark svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Hero: no oversized desktop canvas leaking off-screen. */
+  .hero {
+    width: 100%;
+    padding: 14px 16px 48px;
+    min-height: auto;
+  }
+
+  .heroInner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .heroCopy {
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .glassPill {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 18px;
+    padding: 8px 11px;
+    font-size: 8px;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(56px, 18.5vw, 82px);
+    line-height: .9;
+    letter-spacing: -.075em;
+  }
+
+  .heroCopy > p:not(.heroSub) {
+    font-size: 17px;
+    line-height: 1.25;
+    margin: 18px 0 9px;
+  }
+
+  .heroSub {
+    max-width: 100%;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  .heroActions {
+    width: 100%;
+    margin-top: 20px;
+    gap: 8px;
+  }
+
+  .ctaButton,
+  .watchButton {
+    min-height: 48px;
+  }
+
+  .ctaButton {
+    padding-left: 15px;
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .ctaButton span {
+    width: 32px;
+    height: 32px;
+  }
+
+  .watchButton {
+    padding-right: 10px;
+    font-size: 9.5px;
+    gap: 7px;
+    min-width: 0;
+  }
+
+  .watchButton small {
+    display: none;
+  }
+
+  .trustRow {
+    margin-top: 20px;
+  }
+
+  /* 3D phone: keep it centered and prevent the canvas from creating a
+     horizontal scroll region. Mouse rotation is already disabled in
+     IPhone3D on coarse/mobile pointers. */
+  .heroVisual {
+    width: 100%;
+    height: 395px;
+    margin-top: 6px;
+    overflow: visible;
+    position: relative;
+  }
+
+  .phoneWrap {
+    width: 365px;
+    height: 650px;
+    max-width: none;
+    transform: scale(.56);
+    transform-origin: center center;
+  }
+
+  .iphone3d {
+    inset: -70px -78px -70px;
+    pointer-events: none;
+  }
+
+  .orangeShape {
+    width: 285px;
+    height: 300px;
+    right: 50%;
+    top: 9%;
+    transform: translateX(50%) rotate(21deg);
+  }
+
+  .heroBackText {
+    right: 50%;
+    top: 24%;
+    font-size: 23vw;
+    transform: translateX(50%);
+  }
+
+  .topCard {
+    right: -2px;
+    top: 11%;
+    padding: 9px 11px;
+    border-radius: 15px;
+    font-size: 10px;
+  }
+
+  .topCard b {
+    font-size: 19px;
+  }
+
+  .topCard strong {
+    font-size: 13px;
+  }
+
+  .bottomCard {
+    left: -2px;
+    bottom: 10%;
+    min-width: 195px;
+    padding: 9px 11px;
+    border-radius: 15px;
+  }
+
+  .bottomCard .tinyLogo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .sideProgress {
+    display: none;
+  }
+
+  .scrollHint {
+    left: 16px;
+    bottom: 10px;
+  }
+
+  /* Sections use the viewport width cleanly. */
+  .section {
+    width: 100%;
+    padding: 68px 16px;
+  }
+
+  .section h2,
+  .how h2,
+  .problem h2,
+  .offerCopy h2,
+  .bookingCopy h2 {
+    font-size: clamp(42px, 12.5vw, 58px);
+    line-height: .92;
+  }
+
+  /* Why cards: two columns, but no cramped text or accidental fixed heights. */
+  .why {
+    width: 100%;
+    min-height: auto;
+    padding: 68px 16px 74px;
+  }
+
+  .why .benefitGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .why .benefit {
+    width: 100%;
+    min-width: 0;
+    min-height: 0 !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    padding: 16px;
+    border-radius: 19px;
+  }
+
+  .why .benefit .iconBubble {
+    width: 45px;
+    height: 45px;
+    margin: 28px 0 16px;
+  }
+
+  .why .benefit h3 {
+    font-size: 16px;
+    line-height: 1.05;
+    margin-bottom: 7px;
+  }
+
+  .why .benefit p {
+    max-width: 100%;
+    font-size: 10.5px;
+    line-height: 1.4;
+  }
+
+  .why .benefit .cardArrow {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  /* Problem section. */
+  .problem {
+    width: 100%;
+    padding: 64px 16px;
+    gap: 32px;
+  }
+
+  .problemVisual,
+  .problemImageCard {
+    width: 100%;
+    height: 290px !important;
+    border-radius: 22px;
+  }
+
+  .problemCopy p {
+    font-size: 15px;
+  }
+
+  .taskList {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .taskList div {
+    min-width: 0;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 12.5px;
+  }
+
+  .handline {
+    font-size: 27px;
+    margin-top: 28px;
+  }
+
+  /* How it works: compact two-column cards. */
+  .how {
+    width: 100%;
+    padding: 70px 16px 76px;
+  }
+
+  .howHeader {
+    display: block;
+  }
+
+  .howHeader > div:first-child {
+    max-width: 100%;
+  }
+
+  .howHeader p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .simpleBadge {
+    width: max-content;
+    max-width: 100%;
+    margin-top: 17px;
+  }
+
+  .how .processGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 13px 9px;
+    margin-top: 30px;
+  }
+
+  .how .processItem {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .how .processVisual {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .how .processContent {
+    min-height: 92px;
+    padding: 12px 11px;
+    border-radius: 0 0 15px 15px;
+    gap: 7px;
+  }
+
+  .how .processContent h3 {
+    font-size: 14px;
+    line-height: 1.12;
+    margin-bottom: 4px;
+  }
+
+  .how .processContent p {
+    max-width: 100%;
+    font-size: 9.5px;
+    line-height: 1.35;
+  }
+
+  .how .processArrowButton {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .how .processArrowButton svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .how .processNo {
+    top: 10px;
+    left: 11px;
+    font-size: 8px;
+  }
+
+  .how .processCategory {
+    top: 10px;
+    right: 11px;
+    max-width: 60%;
+    font-size: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .how .processConnector {
+    display: none !important;
+  }
+
+  /* Pricing: one card per row is easier to read and tap. */
+  .offerSection {
+    width: 100%;
+    padding: 62px 16px 58px;
+  }
+
+  .pricingHeader {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .pricingHeader h2 {
+    font-size: clamp(42px, 12.5vw, 58px);
+  }
+
+  .pricingHeader p {
+    font-size: 13px;
+  }
+
+  .pricingOptions {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .packageCard {
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 22px 18px 18px;
+    border-radius: 21px;
+    transform: none !important;
+  }
+
+  .packageCard:hover,
+  .pricingOptions:has(.packageCard:hover) .packageCard:not(:hover) {
+    filter: none;
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .packagePrice {
+    font-size: 36px;
+  }
+
+  .packageUnit {
+    font-size: 10px;
+  }
+
+  .packageReels {
+    font-size: 14px;
+  }
+
+  .packageFeature {
+    min-height: 29px;
+    font-size: 10.5px;
+  }
+
+  .packagePopular,
+  .scaleBadge {
+    top: -9px;
+    font-size: 7px;
+  }
+
+  /* CTA section. */
+  .ctaSection {
+    width: calc(100% - 20px);
+    margin: 0 10px 58px;
+    padding: 46px 18px;
+    border-radius: 23px;
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .ctaEditorialCopy h2 {
+    font-size: clamp(42px, 12.5vw, 60px);
+  }
+
+  .ctaEditorialCopy p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .ctaEditorialVisual {
+    height: 245px;
+  }
+
+  .ctaImageFrame {
+    width: 100%;
+    max-width: 390px;
+    height: 235px;
+    border-radius: 18px;
+    transform: none;
+  }
+
+  /* Booking form/calendar. */
+  .bookingSection {
+    width: 100%;
+    padding: 20px 16px 68px;
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px !important;
+  }
+
+  .calendarDays {
+    gap: 4px;
+  }
+
+  .calendarDays > span > button {
+    min-height: 40px;
+    padding: 7px 0 !important;
+  }
+
+  .bookingModal {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 21px;
+  }
+
+  .bookingModal h3 {
+    font-size: 29px;
+    padding-right: 42px;
+  }
+
+  .modalClose {
+    width: 44px;
+    height: 44px;
+    right: 12px;
+    top: 12px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formGrid .full {
+    grid-column: auto;
+  }
+
+  /* FAQ and footer. */
+  .faqSection {
+    width: 100%;
+    padding: 68px 16px;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .faqItem summary {
+    padding: 17px;
+    font-size: 13px;
+  }
+
+  .faqItem p {
+    padding: 0 17px 18px;
+    font-size: 11px;
+  }
+
+  .footer {
+    width: 100%;
+    min-height: 340px;
+    padding: 30px 16px;
+  }
+
+  .footerBrand {
+    min-height: 185px;
+  }
+
+  .footerBrand img {
+    width: 110px;
+    max-width: 45vw;
+  }
+
+  .footerLinks {
+    gap: 13px 18px;
+    flex-wrap: wrap;
+    font-size: 10px;
+  }
+
+  /* Touch devices should not retain desktop hover enlargement. */
+  @media (hover: none) and (pointer: coarse) {
+    .benefit:hover,
+    .packageCard:hover,
+    .ctaImageFrame:hover,
+    .processItem:hover .processVisual img {
+      transform: none !important;
+    }
+
+    .reelThumb:hover img,
+    .miniVideoGrid i:hover img,
+    .processItem:hover .processVisual img {
+      transform: none;
+    }
+  }
+}
+
+/* Very small phones. */
+@media (max-width: 380px) {
+  .nav {
+    width: calc(100% - 14px);
+    margin-left: 7px;
+    margin-right: 7px;
+    padding: 0 8px;
+  }
+
+  .brand img {
+    width: 86px;
+  }
+
+  .pillButton.dark {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 8.5px;
+  }
+
+  .themeToggle {
+    width: 33px;
+    height: 33px;
+    flex-basis: 33px;
+  }
+
+  .hero {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .hero h1 {
+    font-size: 18vw;
+  }
+
+  .heroVisual {
+    height: 370px;
+  }
+
+  .phoneWrap {
+    transform: scale(.50);
+  }
+
+  .topCard {
+    right: 0;
+  }
+
+  .bottomCard {
+    left: 0;
+    min-width: 180px;
+  }
+
+  .why .benefit {
+    padding: 13px;
+  }
+
+  .why .benefit .iconBubble {
+    margin-top: 22px;
+  }
+
+  .how .processContent {
+    padding: 10px;
+  }
+
+  .how .processContent h3 {
+    font-size: 12.5px;
+  }
+
+  .how .processContent p {
+    font-size: 8.5px;
+  }
+
+  .packageCard {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

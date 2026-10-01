@@ -5396,3 +5396,24 @@ body.darkMode .ctaSection{
     display:none;
   }
 }
+
+
+/* Mobile CTA artwork — exact full composition, mobile only */
+@media(max-width:600px){
+  .ctaSection{
+    display:block;
+    width:calc(100% - 28px);
+    height:calc((100vw - 28px) * 1.5);
+    min-height:0;
+    margin:0 auto 58px;
+    padding:0;
+    border-radius:24px;
+    overflow:hidden;
+    background:url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/4ef06562665f904cc8e4d7427993a5294e404daff9cfb5182f0bc48f546574dd.png") center/cover no-repeat;
+  }
+  .ctaSection .ctaEditorialGlow,
+  .ctaSection .ctaEditorialCopy,
+  .ctaSection .ctaEditorialVisual{
+    display:none!important;
+  }
+}

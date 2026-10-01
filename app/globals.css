@@ -5286,7 +5286,7 @@ body.darkMode #why .sectionIntro .textButton{
       rgba(5,5,5,.72) 48%,
       rgba(5,5,5,.24) 78%,
       rgba(5,5,5,.12) 100%),
-    url("/cta-production.webp") center center / cover no-repeat;
+    url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/d72a35c014f0a2e1936d27cede73458ce0210f78fe67c6379af5e31dcb72c1ce.png") center center / cover no-repeat;
 }
 
 .ctaSection::before{
@@ -5362,7 +5362,7 @@ body.darkMode .ctaSection{
       rgba(5,5,5,.72) 48%,
       rgba(5,5,5,.24) 78%,
       rgba(5,5,5,.12) 100%),
-    url("/cta-production.webp") center center / cover no-repeat;
+    url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/d72a35c014f0a2e1936d27cede73458ce0210f78fe67c6379af5e31dcb72c1ce.png") center center / cover no-repeat;
 }
 
 /* Mobile: full image behind the complete CTA, with readable copy. */
@@ -5379,7 +5379,7 @@ body.darkMode .ctaSection{
         rgba(5,5,5,.82) 42%,
         rgba(5,5,5,.46) 72%,
         rgba(5,5,5,.72) 100%),
-      url("/cta-production.webp") center center / cover no-repeat;
+      url("https://cdn.openart.ai/openart-uploads/production/attachment-transfers/d72a35c014f0a2e1936d27cede73458ce0210f78fe67c6379af5e31dcb72c1ce.png") center center / cover no-repeat;
   }
 
   .ctaEditorialCopy{

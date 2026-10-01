@@ -201,7 +201,7 @@ export default function Home() {
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#book">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
               <motion.a whileHover={{ y: -3, x: 3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how">See how we work <ArrowRight size={15} /></motion.a>
             </div>
-            <div className="trustRow"><div className="avatarStack"><i/><i/><i/><i/><i/></div><div><b>500+</b><span>Businesses trust Blink X</span></div></div>
+            <div className="trustRow"><div className="avatarStack"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=160&q=80" alt="" /></div><div><b>500+</b><span>Businesses trust Blink X</span></div></div>
           </motion.div>
 
           <div className="heroVisual">

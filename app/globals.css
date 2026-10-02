@@ -5523,3 +5523,64 @@ body.darkMode .ctaSection{
     height:17px;
   }
 }
+
+
+/* Mobile footer cleanup */
+@media(max-width:650px){
+  .footer{
+    min-height:0;
+    margin-top:10px;
+    padding:48px 20px 30px;
+    background:#050505;
+    border-radius:0;
+    justify-content:flex-start;
+    gap:0;
+  }
+  .footer::before,
+  .footer::after,
+  .footerBrand::after{
+    display:none;
+  }
+  .footerBrand{
+    min-height:0;
+    width:100%;
+    padding:0 0 30px;
+  }
+  .footerBrand img{
+    width:175px;
+    max-width:75vw;
+  }
+  .footerBrand span{
+    margin-top:11px;
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:rgba(255,255,255,.58);
+  }
+  .footerLinks{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    padding:18px 4px;
+    border-top:1px solid rgba(255,255,255,.12);
+    border-bottom:1px solid rgba(255,255,255,.12);
+    font-size:10px;
+    line-height:1;
+  }
+  .footerLinks a{
+    min-height:38px;
+    justify-content:center;
+    padding:0 6px;
+    color:rgba(255,255,255,.68);
+  }
+  .footerSocial{
+    margin-top:22px;
+    gap:12px;
+  }
+  .footerSocial a{
+    width:42px;
+    height:42px;
+    background:rgba(255,255,255,.025);
+    border-color:rgba(255,255,255,.22);
+  }
+}

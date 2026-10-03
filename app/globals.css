@@ -5741,3 +5741,40 @@ body:not(.darkMode) .footerSocial a:hover{
     border-color:#fff;
   }
 }
+
+
+/* Why section — remove decorative divider lines for a cleaner layout */
+#why .sectionIntro .textButton{
+  border-bottom:0 !important;
+  padding-bottom:0;
+}
+
+#why .miniEyebrow span{
+  display:none !important;
+}
+
+#why .benefit,
+#why .benefit:nth-child(even){
+  border-top:0 !important;
+  border-bottom:0 !important;
+  border-right:0 !important;
+}
+
+#why .benefitNo::after{
+  display:none !important;
+}
+
+@media(max-width:650px){
+  #why .benefitGrid{
+    border-top:0 !important;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(odd),
+  #why .benefit:nth-child(even),
+  #why .benefit:last-child{
+    border-top:0 !important;
+    border-bottom:0 !important;
+    border-right:0 !important;
+  }
+}

@@ -136,29 +136,16 @@ export default function Home() {
   return (
     <>
       <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
-        <div className="blinkLoaderGlow glowTop" />
-        <div className="blinkLoaderGlow glowBottom" />
-        <div className="blinkLoaderArc arcTop" />
-        <div className="blinkLoaderArc arcBottom" />
-
-        <div className="blinkLoaderCorner cornerTopRight">
-          <span>CONTENT</span><span>THAT</span><span>MOVES</span><span>BUSINESS</span><i />
-        </div>
-        <div className="blinkLoaderCorner cornerBottomLeft">
-          <span>CREATORS</span><span>BRANDS</span><span>BUSINESSES</span><i />
-        </div>
-        <div className="blinkLoaderStages">
-          <span>SHOOT</span><span>EDIT</span><span>DELIVER</span><span>GROW</span><i />
-        </div>
-
         <div className="blinkLoaderCenter">
           <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
-          <div className="blinkLoaderTagline">MORE CONTENT. LESS STRESS.</div>
-          <div className="blinkLoaderProgressRow">
-            <div className="blinkLoaderProgressTrack"><span /></div>
-            <span className="blinkLoaderPercent">18 REELS</span>
+          <div className="blinkLoaderNumber" aria-hidden="true">
+            <div className="blinkLoaderNumberTrack">
+              {Array.from({ length: 101 }, (_, number) => (
+                <span key={number}>{number}</span>
+              ))}
+            </div>
+            <em>%</em>
           </div>
-          <div className="blinkLoaderLabel">LOADING...</div>
         </div>
       </div>
 

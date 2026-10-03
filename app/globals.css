@@ -5644,3 +5644,36 @@ body:not(.darkMode) .footerSocial a:hover{
   color:#111;
   border-color:var(--orange2);
 }
+
+
+/* Dark mode mobile footer — keep all footer content clearly visible */
+@media(max-width:650px){
+  body.darkMode .footer{
+    background:#050505;
+    color:#fff;
+  }
+  body.darkMode .footerBrand span{
+    color:rgba(255,255,255,.62);
+  }
+  body.darkMode .footerLinks{
+    color:rgba(255,255,255,.72);
+    border-top-color:rgba(255,255,255,.12);
+    border-bottom-color:rgba(255,255,255,.12);
+  }
+  body.darkMode .footerLinks a{
+    color:rgba(255,255,255,.72);
+  }
+  body.darkMode .footerLinks a:hover{
+    color:#fff;
+  }
+  body.darkMode .footerSocial a{
+    color:#fff;
+    background:rgba(255,255,255,.025);
+    border-color:rgba(255,255,255,.22);
+  }
+  body.darkMode .footerSocial a:hover{
+    background:#fff;
+    color:#111;
+    border-color:#fff;
+  }
+}

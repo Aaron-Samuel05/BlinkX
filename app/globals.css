@@ -586,17 +586,40 @@ body.loadingActive{overflow:hidden}
 }
 
 .blinkLoaderNumber{
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin-top:48px;
+  height:1em;
+  overflow:hidden;
   font-size:clamp(58px,7vw,96px);
   line-height:1;
   font-weight:500;
   letter-spacing:-.06em;
-  color:#fff;
-  font-variant-numeric:tabular-nums;
-  text-align:center;
 }
 
-.blinkLoaderNumber span{color:#fff}.blinkLoaderNumber em{color:#f5a623;font-style:normal;font-weight:500;margin-left:.04em}
+.blinkLoaderNumberTrack{
+  height:1em;
+  transform:translateY(0);
+  animation:blinkLoaderCount 2.3s steps(100,end) forwards;
+}
+
+.blinkLoaderNumberTrack span{
+  display:block;
+  height:1em;
+  line-height:1em;
+  color:#fff;
+  font-variant-numeric:tabular-nums;
+  text-align:right;
+  min-width:2ch;
+}
+
+.blinkLoaderNumber em{
+  color:#f5a623;
+  font-style:normal;
+  font-weight:500;
+  margin-left:.04em;
+}
 
 @media(max-width:700px){
   .blinkLoaderLogo{
@@ -607,6 +630,11 @@ body.loadingActive{overflow:hidden}
     margin-top:36px;
     font-size:clamp(52px,16vw,72px);
   }
+}
+
+@keyframes blinkLoaderCount{
+  from{transform:translateY(0)}
+  to{transform:translateY(-100em)}
 }
 
 @keyframes blinkLoaderExit{

@@ -139,10 +139,12 @@ export default function Home() {
         <div className="blinkLoaderCenter">
           <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
           <div className="blinkLoaderNumber" aria-hidden="true">
-            <div className="blinkLoaderNumberTrack">
-              {Array.from({ length: 101 }, (_, number) => (
-                <span key={number}>{number}</span>
-              ))}
+            <div className="blinkLoaderNumberViewport">
+              <div className="blinkLoaderNumberTrack">
+                {Array.from({ length: 101 }, (_, number) => (
+                  <span key={number}>{number}</span>
+                ))}
+              </div>
             </div>
             <em>%</em>
           </div>

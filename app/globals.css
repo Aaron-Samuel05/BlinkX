@@ -599,9 +599,15 @@ body.loadingActive{overflow:hidden}
   letter-spacing:-.06em;
 }
 
-.blinkLoaderNumberTrack{
+.blinkLoaderNumberViewport{
   height:1.15em;
   overflow:hidden;
+  display:block;
+}
+
+.blinkLoaderNumberTrack{
+  height:101em;
+  overflow:visible;
   transform:translateY(0);
   animation:blinkLoaderCount 2.3s steps(100,end) forwards;
 }

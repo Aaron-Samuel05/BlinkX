@@ -98,8 +98,8 @@ function PhoneModel(){
   const scale=5.25/bounds.size.y;
   const screenWidth=bounds.size.x*.56;
   const screenHeight=bounds.size.y*.49;
-  // Place the custom reel screen on the front display face of the phone.
-  const screenZ=bounds.maxZ+bounds.size.z*.006;
+  // Place the custom reel screen on the visible front display face of the phone.
+  const screenZ=bounds.minZ-bounds.size.z*.006;
 
   useFrame(({clock})=>{
     if(!group.current)return;

@@ -600,7 +600,7 @@ body.loadingActive{overflow:hidden}
 }
 
 .blinkLoaderNumberViewport{
-  height:1.15em;
+  height:1em;
   overflow:hidden;
   display:block;
 }

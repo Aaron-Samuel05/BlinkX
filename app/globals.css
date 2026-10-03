@@ -5778,3 +5778,9 @@ body:not(.darkMode) .footerSocial a:hover{
     border-right:0 !important;
   }
 }
+
+
+/* Remove the remaining top divider above the Why Blink X cards */
+#why .benefitGrid{
+  border-top:0 !important;
+}

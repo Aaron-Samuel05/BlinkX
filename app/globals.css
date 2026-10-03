@@ -600,7 +600,8 @@ body.loadingActive{overflow:hidden}
 }
 
 .blinkLoaderNumberTrack{
-  height:1em;
+  height:1.15em;
+  overflow:hidden;
   transform:translateY(0);
   animation:blinkLoaderCount 2.3s steps(100,end) forwards;
 }

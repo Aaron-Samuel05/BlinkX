@@ -28,32 +28,6 @@ const benefits: [string, string, string, LucideIcon][] = [
 
 const IPhone3D = dynamic(() => import("./components/IPhone3D"), { ssr: false });
 
-function LoadingScreen() {
-  const [progress, setProgress] = useState(0);
-
-  React.useEffect(() => {
-    const timer = window.setInterval(() => {
-      setProgress(value => {
-        if (value >= 100) {
-          window.clearInterval(timer);
-          return 100;
-        }
-        return value + 1;
-      });
-    }, 23);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="blinkLoadingScreen" aria-label={"Loading Blink X " + progress + "%"} role="status">
-      <div className="blinkLoaderCenter">
-        <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
-        <div className="blinkLoaderNumber"><span>{progress}</span><em>%</em></div>
-      </div>
-    </div>
-  );
-}
-
 const heroContentThumbs = [
   "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=85",
   "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85",
@@ -161,7 +135,32 @@ export default function Home() {
 
   return (
     <>
-      <LoadingScreen />
+      <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
+        <div className="blinkLoaderGlow glowTop" />
+        <div className="blinkLoaderGlow glowBottom" />
+        <div className="blinkLoaderArc arcTop" />
+        <div className="blinkLoaderArc arcBottom" />
+
+        <div className="blinkLoaderCorner cornerTopRight">
+          <span>CONTENT</span><span>THAT</span><span>MOVES</span><span>BUSINESS</span><i />
+        </div>
+        <div className="blinkLoaderCorner cornerBottomLeft">
+          <span>CREATORS</span><span>BRANDS</span><span>BUSINESSES</span><i />
+        </div>
+        <div className="blinkLoaderStages">
+          <span>SHOOT</span><span>EDIT</span><span>DELIVER</span><span>GROW</span><i />
+        </div>
+
+        <div className="blinkLoaderCenter">
+          <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
+          <div className="blinkLoaderTagline">MORE CONTENT. LESS STRESS.</div>
+          <div className="blinkLoaderProgressRow">
+            <div className="blinkLoaderProgressTrack"><span /></div>
+            <span className="blinkLoaderPercent">18 REELS</span>
+          </div>
+          <div className="blinkLoaderLabel">LOADING...</div>
+        </div>
+      </div>
 
     <main onMouseLeave={() => { cursorX.set(0); cursorY.set(0); }}>
       <div className="progress"><motion.div style={{ scaleX: scrollYProgress }} /></div>

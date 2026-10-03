@@ -82,7 +82,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
   useEffect(()=>()=>geometry.dispose(),[geometry]);
 
   return <mesh geometry={geometry} position={[0,0,z]} renderOrder={4}>
-    <meshBasicMaterial map={texture ?? undefined} transparent opacity={texture ? 1 : 0} toneMapped={false}/>
+    <meshBasicMaterial map={texture ?? undefined} transparent opacity={texture ? 1 : 0} toneMapped={false} side={THREE.DoubleSide}/>
   </mesh>;
 }
 

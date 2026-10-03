@@ -49,7 +49,7 @@ function LoadingScreen() {
     <div className="blinkLoadingScreen" aria-label={`Loading Blink X ${progress}%`} role="status">
       <div className="blinkLoaderCenter">
         <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
-        <div className="blinkLoaderNumber" aria-live="polite">{progress}%</div>
+        <div className="blinkLoaderNumber" aria-live="polite"><span>{progress}</span><em>%</em></div>
       </div>
     </div>
   );

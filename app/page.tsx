@@ -29,20 +29,26 @@ const benefits: [string, string, string, LucideIcon][] = [
 const IPhone3D = dynamic(() => import("./components/IPhone3D"), { ssr: false });
 
 function LoadingScreen() {
-  const loadingNumbers = Array.from({ length: 101 }, (_, i) => i);
+  const [progress, setProgress] = useState(0);
+
+  React.useEffect(() => {
+    const timer = window.setInterval(() => {
+      setProgress(value => {
+        if (value >= 100) {
+          window.clearInterval(timer);
+          return 100;
+        }
+        return value + 1;
+      });
+    }, 23);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
-    <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
+    <div className="blinkLoadingScreen" aria-label={"Loading Blink X " + progress + "%"} role="status">
       <div className="blinkLoaderCenter">
         <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
-        <div className="blinkLoaderNumber" aria-hidden="true">
-          <div className="blinkLoaderNumberTrack">
-            {loadingNumbers.map(number => (
-              <span key={number}>{number}</span>
-            ))}
-          </div>
-          <em>%</em>
-        </div>
+        <div className="blinkLoaderNumber"><span>{progress}</span><em>%</em></div>
       </div>
     </div>
   );

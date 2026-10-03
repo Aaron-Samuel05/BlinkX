@@ -620,6 +620,7 @@ body.loadingActive{overflow:hidden}
   font-variant-numeric:tabular-nums;
   text-align:right;
   min-width:2ch;
+  padding-right:.08em;
 }
 
 .blinkLoaderNumber em{

@@ -590,10 +590,11 @@ body.loadingActive{overflow:hidden}
   align-items:center;
   justify-content:center;
   margin-top:48px;
-  height:1em;
-  overflow:hidden;
+  min-height:1.15em;
+  height:auto;
+  overflow:visible;
   font-size:clamp(58px,7vw,96px);
-  line-height:1;
+  line-height:1.15;
   font-weight:500;
   letter-spacing:-.06em;
 }

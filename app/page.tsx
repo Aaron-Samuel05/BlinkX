@@ -328,7 +328,12 @@ export default function Home() {
                 key={pkg.id}
                 whileTap={{ scale: .985 }}
                 className={`packageCard glassCard ${selectedPackage === pkg.id ? "selected" : ""} ${pkg.id === "scale" ? "scaleCard" : ""}`}
-                onClick={() => setSelectedPackage(pkg.id)}
+                onClick={() => {
+                  setSelectedPackage(pkg.id);
+                  window.setTimeout(() => {
+                    document.getElementById("bookForm")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }, 50);
+                }}
               >
                 {pkg.popular && <span className="packagePopular">MOST POPULAR</span>}
                 <span className="packageName">{pkg.name}</span>

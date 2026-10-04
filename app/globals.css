@@ -6577,3 +6577,56 @@ body.darkMode .bookingSection .glass{
     0 18px 55px rgba(0,0,0,.28),
     inset 0 1px rgba(255,255,255,.07);
 }
+
+
+/* HOW IT WORKS — larger desktop composition */
+@media (min-width:1051px){
+  .how{
+    min-height:calc(100vh - 82px);
+    box-sizing:border-box;
+    padding-top:72px;
+    padding-bottom:72px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .howHeader{
+    width:min(1450px,92vw);
+    margin:0 auto 34px;
+  }
+
+  .howHeader h2{
+    font-size:clamp(62px,6.2vw,98px);
+  }
+
+  .how .processGrid{
+    width:min(1450px,92vw);
+    margin:0 auto;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;
+  }
+
+  .how .processItem{
+    min-height:0;
+    height:min(54vh,520px);
+  }
+
+  .how .processVisual{
+    height:58%;
+  }
+
+  .how .processContent{
+    min-height:42%;
+    box-sizing:border-box;
+    padding:22px 20px;
+  }
+
+  .how .processContent h3{
+    font-size:26px;
+  }
+
+  .how .processContent p{
+    font-size:13px;
+  }
+}

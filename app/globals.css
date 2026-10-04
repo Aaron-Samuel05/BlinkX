@@ -6986,3 +6986,122 @@ body.darkMode .bookingVisual *{
     height:410px !important;
   }
 }
+
+
+/* FINAL MOBILE HERO — approved composition only */
+@media (max-width:650px){
+  .hero{
+    overflow:hidden !important;
+  }
+
+  .heroVisual{
+    height:590px !important;
+    flex-basis:590px !important;
+    margin-top:18px !important;
+    position:relative !important;
+    overflow:visible !important;
+    display:flex !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+  }
+
+  .heroVisual .phoneWrap{
+    width:365px !important;
+    height:650px !important;
+    position:absolute !important;
+    top:0 !important;
+    left:50% !important;
+    margin-left:-182.5px !important;
+    transform:translateY(0) scale(.82) !important;
+    transform-origin:top center !important;
+    z-index:5 !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:400px !important;
+    height:430px !important;
+    right:50% !important;
+    top:32% !important;
+    transform:translate(50%,-50%) rotate(21deg) !important;
+    z-index:1 !important;
+  }
+
+  .heroVisual .heroBackText{
+    top:32% !important;
+    z-index:0 !important;
+  }
+
+  /* Matching floating cards */
+  .heroVisual .topCard{
+    right:2px !important;
+    top:20% !important;
+    z-index:10 !important;
+    min-width:0 !important;
+    width:142px !important;
+    height:58px !important;
+    box-sizing:border-box !important;
+    padding:9px 11px !important;
+  }
+
+  .heroVisual .topCard span{
+    font-size:9px !important;
+    line-height:1.15 !important;
+  }
+
+  .heroVisual .topCard strong{
+    font-size:12px !important;
+  }
+
+  .heroVisual .bottomCard{
+    left:2px !important;
+    bottom:17% !important;
+    z-index:10 !important;
+    min-width:0 !important;
+    width:142px !important;
+    height:58px !important;
+    box-sizing:border-box !important;
+    padding:9px 11px !important;
+  }
+
+  .heroVisual .bottomCard span{
+    min-width:0 !important;
+  }
+
+  .heroVisual .bottomCard strong{
+    font-size:11px !important;
+  }
+
+  .heroVisual .bottomCard small{
+    font-size:7.5px !important;
+    white-space:nowrap !important;
+  }
+
+  .trustRow{
+    position:relative !important;
+    z-index:30 !important;
+    margin-top:14px !important;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:545px !important;
+    flex-basis:545px !important;
+    margin-top:15px !important;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(0) scale(.74) !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:360px !important;
+    height:390px !important;
+  }
+
+  .heroVisual .topCard,
+  .heroVisual .bottomCard{
+    width:128px !important;
+    height:53px !important;
+  }
+}

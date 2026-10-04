@@ -6837,3 +6837,56 @@ body.darkMode .ctaImageFrame *,
 body.darkMode .bookingVisual *{
   color:inherit;
 }
+
+
+/* HERO — restore proper mobile phone scale/composition */
+@media (max-width:650px){
+  .heroVisual{
+    height:330px;
+    flex-basis:330px;
+    margin-top:8px;
+    align-items:flex-start;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(-2px) scale(.48) !important;
+    transform-origin:top center !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:285px;
+    height:300px;
+    top:45%;
+    transform:translate(50%,-50%) rotate(21deg);
+  }
+
+  .heroVisual .heroBackText{
+    top:45%;
+  }
+
+  .heroVisual .topCard{
+    right:8px;
+    top:22%;
+  }
+
+  .heroVisual .bottomCard{
+    left:8px;
+    bottom:12%;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:305px;
+    flex-basis:305px;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(-2px) scale(.44) !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:260px;
+    height:275px;
+  }
+}

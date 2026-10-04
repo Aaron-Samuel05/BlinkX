@@ -87,7 +87,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
 }
 
 function PhoneModel(){
-  const {scene}=useGLTF("/iphone 18 pro max blinkx.glb");
+  const {scene}=useGLTF("/iphone 18 pro max blinkxblacked.glb");
   const group=useRef<THREE.Group>(null);
   const model=useMemo(()=>scene.clone(true),[scene]);
   const bounds=useMemo(()=>{

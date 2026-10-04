@@ -5847,3 +5847,45 @@ body:not(.darkMode) .footerSocial a:hover{
     bottom:8px;
   }
 }
+
+
+/* Hero background refinement — visual treatment only.
+   Keeps the existing phone, cards, sizing and alignment untouched. */
+.orangeShape{
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255,226,164,.62) 0%, rgba(255,226,164,.18) 24%, transparent 46%),
+    linear-gradient(138deg,#ffd889 0%,#ffb43f 42%,#ff8a08 100%);
+  box-shadow:
+    0 30px 80px rgba(250,170,38,.20),
+    0 12px 34px rgba(250,170,38,.12),
+    inset 18px 18px 42px rgba(255,255,255,.16),
+    inset -18px -20px 45px rgba(208,102,0,.10);
+  isolation:isolate;
+}
+
+.orangeShape::before{
+  content:"";
+  position:absolute;
+  inset:9% 7%;
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:42% 58% 48% 52%;
+  transform:rotate(-8deg);
+  opacity:.72;
+  pointer-events:none;
+  filter:blur(.15px);
+}
+
+.orangeShape::after{
+  content:"";
+  position:absolute;
+  width:72%;
+  height:34%;
+  left:10%;
+  bottom:5%;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  filter:blur(34px);
+  transform:rotate(-14deg);
+  pointer-events:none;
+  z-index:-1;
+}

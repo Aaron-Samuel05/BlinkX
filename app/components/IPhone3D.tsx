@@ -101,15 +101,7 @@ function PhoneModel(){
   // Place the custom reel screen on the visible front display face of the phone.
   const screenZ=bounds.minZ-bounds.size.z*.006;
 
-  useFrame(({clock})=>{
-    if(!group.current)return;
-    const t=clock.getElapsedTime();
-    group.current.rotation.x=-.018+Math.sin(t*.75)*.008;
-    group.current.rotation.y=.085+Math.sin(t*.55)*.012;
-    group.current.rotation.z=-.055+Math.sin(t*.6)*.006;
-  });
-
-  return <group ref={group} scale={scale} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
+  return <group ref={group} scale={scale} rotation={[-.018,.085,-.055]} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
     <group position={[0, bounds.size.y*.105, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
   </group>;

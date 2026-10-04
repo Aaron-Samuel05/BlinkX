@@ -7105,3 +7105,75 @@ body.darkMode .bookingVisual *{
     height:53px !important;
   }
 }
+
+
+/* MOBILE HERO — final alignment correction only */
+@media (max-width:650px){
+  .heroVisual{
+    height:545px !important;
+    flex-basis:545px !important;
+    margin-top:8px !important;
+    overflow:visible !important;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(-4px) scale(.98) !important;
+    transform-origin:top center !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:390px !important;
+    height:410px !important;
+    top:38% !important;
+    right:50% !important;
+    transform:translate(50%,-50%) rotate(21deg) !important;
+  }
+
+  .heroVisual .heroBackText{
+    top:38% !important;
+  }
+
+  /* 18 Reels / 24 Hours */
+  .heroVisual .topCard{
+    right:-2px !important;
+    top:17% !important;
+    width:142px !important;
+    height:58px !important;
+  }
+
+  /* Blink X — matching card, placed on the lower phone area */
+  .heroVisual .bottomCard{
+    left:50% !important;
+    bottom:auto !important;
+    top:58% !important;
+    transform:translateX(-50%) !important;
+    width:142px !important;
+    height:58px !important;
+    min-width:0 !important;
+    padding:9px 11px !important;
+    z-index:12 !important;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:505px !important;
+    flex-basis:505px !important;
+    margin-top:6px !important;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(-3px) scale(.88) !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:350px !important;
+    height:375px !important;
+  }
+
+  .heroVisual .topCard,
+  .heroVisual .bottomCard{
+    width:128px !important;
+    height:53px !important;
+  }
+}

@@ -87,7 +87,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
 }
 
 function PhoneModel(){
-  const {scene}=useGLTF("/iphone 18 pro max blinkxblacked.glb");
+  const {scene}=useGLTF("/iphone 18 pro max blinkxblacked_no_reflection.glb");
   const group=useRef<THREE.Group>(null);
   const model=useMemo(()=>scene.clone(true),[scene]);
   const bounds=useMemo(()=>{
@@ -98,7 +98,6 @@ function PhoneModel(){
   const scale=5.25/bounds.size.y;
   const screenWidth=bounds.size.x*.56;
   const screenHeight=bounds.size.y*.49;
-  // Place the custom reel screen on the visible front display face of the phone.
   const screenZ=bounds.minZ-bounds.size.z*.006;
 
   return <group ref={group} scale={scale} rotation={[-.018,.085,-.055]} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
@@ -128,4 +127,4 @@ export default function IPhone3D(){
   </Canvas>;
 }
 
-useGLTF.preload("/apple_iphone_18_pro_max_silver.glb");
+useGLTF.preload("/iphone 18 pro max blinkxblacked_no_reflection.glb");

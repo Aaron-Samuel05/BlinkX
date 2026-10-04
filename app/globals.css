@@ -6813,3 +6813,27 @@ body.darkMode .bookingSection .glass{
     height:265px;
   }
 }
+
+
+/* BOOKING CARD — preserve the exact light-mode card in dark mode */
+body.darkMode .ctaImageFrame,
+body.darkMode .bookingVisual{
+  background:#fff !important;
+  border-color:rgba(0,0,0,.08) !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.10),inset 0 1px rgba(255,255,255,.92) !important;
+}
+
+body.darkMode .ctaImageFrame img,
+body.darkMode .bookingVisual img{
+  filter:none !important;
+}
+
+body.darkMode .ctaImageFrame::after,
+body.darkMode .bookingVisual::after{
+  background:transparent !important;
+}
+
+body.darkMode .ctaImageFrame *,
+body.darkMode .bookingVisual *{
+  color:inherit;
+}

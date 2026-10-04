@@ -6914,3 +6914,75 @@ body.darkMode .bookingVisual *{
     display:none !important;
   }
 }
+
+
+/* HERO — match approved mobile reference composition */
+@media (max-width:650px){
+  .hero{
+    padding:14px 16px 0 !important;
+    overflow:hidden !important;
+  }
+
+  .heroVisual{
+    height:620px !important;
+    flex-basis:620px !important;
+    margin-top:92px !important;
+    overflow:visible !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+  }
+
+  .heroVisual .phoneWrap{
+    width:365px !important;
+    height:650px !important;
+    transform:translateY(0) scale(.88) !important;
+    transform-origin:top center !important;
+    position:absolute !important;
+    top:0 !important;
+    left:50% !important;
+    margin-left:-182.5px !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:430px !important;
+    height:470px !important;
+    top:30% !important;
+    right:50% !important;
+    transform:translate(50%,-50%) rotate(21deg) !important;
+  }
+
+  .heroVisual .heroBackText{
+    top:30% !important;
+  }
+
+  .heroVisual .topCard{
+    right:-8px !important;
+    top:19% !important;
+  }
+
+  .heroVisual .bottomCard{
+    left:-8px !important;
+    bottom:18% !important;
+  }
+
+  .trustRow{
+    margin-top:17px !important;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual{
+    height:570px !important;
+    flex-basis:570px !important;
+    margin-top:82px !important;
+  }
+
+  .heroVisual .phoneWrap{
+    transform:translateY(0) scale(.78) !important;
+  }
+
+  .heroVisual .orangeShape{
+    width:370px !important;
+    height:410px !important;
+  }
+}

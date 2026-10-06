@@ -7216,3 +7216,27 @@ body.darkMode .bookingVisual *{
     transform:translate(42px,-3px) scale(.88) !important;
   }
 }
+
+
+/* Final mobile spacing + CTA readability refinement */
+@media (max-width:650px){
+  /* Reduce the large transition gap between Why Blink X? and The Problem. */
+  .problem{
+    padding-top:30px!important;
+  }
+
+  /* Make hero CTA text comfortably readable on small screens. */
+  .hero .ctaButton{
+    font-size:13px!important;
+    font-weight:800;
+  }
+  .hero .watchButton{
+    font-size:11.5px!important;
+    font-weight:600;
+  }
+
+  /* Slightly improve the navbar CTA readability too. */
+  .nav .pillButton.dark{
+    font-size:10.5px!important;
+  }
+}

@@ -7827,3 +7827,25 @@ body.darkMode .heroActions .watchButton svg{
     font-size:10px!important;
   }
 }
+
+
+/* Mobile hero cards — keep both cards visible and preserve Framer Motion animation */
+@media (max-width:650px){
+  .heroVisual .topCard{
+    right:8px!important;
+    top:12%!important;
+  }
+  .heroVisual .bottomCard{
+    left:8px!important;
+    bottom:9%!important;
+    top:auto!important;
+    transform:none!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .topCard,
+  .heroVisual .bottomCard{
+    width:128px!important;
+    height:53px!important;
+  }
+}

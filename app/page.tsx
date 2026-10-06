@@ -135,8 +135,8 @@ export default function Home() {
     const rect = e.currentTarget.getBoundingClientRect();
     cursorX.set((e.clientX - rect.left - rect.width / 2) / 22);
     cursorY.set((e.clientY - rect.top - rect.height / 2) / 22);
-    glowX.set(e.clientX - rect.left);
-    glowY.set(e.clientY - rect.top);
+    glowX.set(e.clientX - rect.left - rect.width / 2);
+    glowY.set(e.clientY - rect.top - rect.height / 2);
   }
 
   return (

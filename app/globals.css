@@ -7240,3 +7240,28 @@ body.darkMode .bookingVisual *{
     font-size:10.5px!important;
   }
 }
+
+
+/* Mobile hero + Why section final polish */
+@media (max-width:650px){
+  .heroActions .ctaButton,
+  .heroActions .watchButton{
+    font-size:11.5px!important;
+    font-weight:700!important;
+  }
+
+  .trustRow > div:last-child span{
+    color:var(--orange2)!important;
+  }
+
+  #why .benefit,
+  #why .benefit:nth-child(even){
+    padding-top:16px!important;
+    padding-bottom:14px!important;
+  }
+
+  #why .benefit::before,
+  #why .benefit:nth-child(even)::before{
+    margin-top:18px!important;
+  }
+}

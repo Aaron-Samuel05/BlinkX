@@ -7877,10 +7877,10 @@ body.darkMode .heroActions .watchButton svg{
 }
 @media (max-width:380px){
   .heroVisual .phoneWrap .topCard{
-    right::8px!important;
+    right:8px!important;
   }
   .heroVisual .phoneWrap .bottomCard{
-    left::8px!important;
+    left:8px!important;
   }
 }
 

@@ -7877,10 +7877,10 @@ body.darkMode .heroActions .watchButton svg{
 }
 @media (max-width:380px){
   .heroVisual .phoneWrap .topCard{
-    right:-22px!important;
+    right::8px!important;
   }
   .heroVisual .phoneWrap .bottomCard{
-    left:-14px!important;
+    left::8px!important;
   }
 }
 
@@ -7891,7 +7891,7 @@ body.darkMode .heroActions .watchButton svg{
     right:48px!important;
     top:16%!important;
     z-index:50!important;
-    transform:none!important;
+    
   }
 
   .heroVisual .phoneWrap .bottomCard{
@@ -7899,7 +7899,7 @@ body.darkMode .heroActions .watchButton svg{
     top:63%!important;
     bottom:auto!important;
     z-index:50!important;
-    transform:none!important;
+    
   }
 }
 
@@ -7911,4 +7911,22 @@ body.darkMode .heroActions .watchButton svg{
     left:-48px!important;
     top:62%!important;
   }
+}
+
+
+/* Final mobile floating-card correction: preserve motion transforms and keep both cards inside viewport */
+@media (max-width:650px){
+  .heroVisual .phoneWrap .topCard{
+    right:8px!important;
+    top:16%!important;
+  }
+  .heroVisual .phoneWrap .bottomCard{
+    left:8px!important;
+    top:63%!important;
+    bottom:auto!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .phoneWrap .topCard{right:6px!important;}
+  .heroVisual .phoneWrap .bottomCard{left:6px!important;}
 }

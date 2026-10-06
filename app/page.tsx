@@ -105,13 +105,13 @@ export default function Home() {
   }, [selectedMonth]);
   const monthLabel = monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, 1));
   const canContinue = date !== null;
-  const formComplete = [form.name, form.business, form.phone, form.email, form.location].every(value => value.trim().length > 0);
+  const formComplete = form.name.trim().length > 0 && form.phone.trim().length > 0;
 
   function submitBooking() {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
     const phoneDigits = form.phone.replace(/\D/g, "");
     if (!formComplete) {
-      setFormError("Please fill in all fields before submitting.");
+      setFormError("Please enter your name and phone number.");
       return;
     }
     if (phoneDigits.length < 7) {
@@ -453,7 +453,7 @@ export default function Home() {
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
-          <div className="formGrid">{[["name","Your name"],["business","Business / brand"],["phone","Phone number"],["email","Email address"],["location","Shoot location / area"]].map(([k,label])=><input key={k} required type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>
+          <div className="formGrid">{[["name","Your name *"],["business","Business / brand (optional)"],["phone","Phone number *"],["email","Email address (optional)"],["location","Shoot location / area (optional)"]].map(([k,label])=><input key={k} required={k==="name" || k==="phone"} type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>
           <select value={form.type} onChange={e=>{setForm({...form,type:e.target.value});setFormError("")}}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
           <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>
           {formError && <p className="formError" role="alert">{formError}</p>}

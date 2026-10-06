@@ -143,7 +143,7 @@ export default function Home() {
     <>
       <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
         <div className="blinkLoaderCenter">
-          <img src="/blinkx-logo-dark.png" alt="Blink X" className="blinkLoaderLogo" />
+          <img src="/blinkx-loading-logo.svg" alt="Blink X" className="blinkLoaderLogo" />
           <div className="blinkLoaderNumber" aria-hidden="true">
             <div className="blinkLoaderNumberViewport">
               <div className="blinkLoaderNumberTrack">

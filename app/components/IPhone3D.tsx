@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
@@ -86,7 +86,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
   </mesh>;
 }
 
-function PhoneModel({rotationRef}:{rotationRef:React.RefObject<THREE.Group|null>}){
+function PhoneModel({rotationRef}:{rotationRef:RefObject<THREE.Group|null>}){
   const {scene}=useGLTF("/iphone 18 pro max blinkxblacked_no_reflection.glb");
   const group=useRef<THREE.Group>(null);
   const model=useMemo(()=>scene.clone(true),[scene]);
@@ -107,7 +107,7 @@ function PhoneModel({rotationRef}:{rotationRef:React.RefObject<THREE.Group|null>
 export default function IPhone3D(){
   const [isMobile,setIsMobile]=useState(false);
   const phoneGroup=useRef<THREE.Group>(null);
-  const dragState=useRef({active:false,startX:0,lastX:0,axisLocked:false});
+  const dragState=useRef({active:false,startX:0,startY:0,lastX:0,axisLocked:false});
 
   useEffect(()=>{
     const query=window.matchMedia("(max-width: 768px), (pointer: coarse)");
@@ -129,16 +129,15 @@ export default function IPhone3D(){
       state.active=true;
       state.axisLocked=false;
       state.startX=e.clientX;
+      state.startY=e.clientY;
       state.lastX=e.clientX;
     };
     const onPointerMove=(e:PointerEvent)=>{
       if(!state.active || !phoneGroup.current) return;
       const dx=e.clientX-state.lastX;
       const totalX=e.clientX-state.startX;
-      const totalY=e.clientY-(e as any).__startY;
-      if(!(e as any).__startY) (e as any).__startY=e.clientY;
       const absX=Math.abs(totalX);
-      const absY=Math.abs(e.clientY-(e as any).__startY);
+      const absY=Math.abs(e.clientY-state.startY);
       if(!state.axisLocked){
         if(Math.max(absX,absY)<8) return;
         state.axisLocked=absX>absY;

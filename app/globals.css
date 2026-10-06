@@ -583,7 +583,7 @@ body.loadingActive{overflow:hidden}
   background:#000;
   color:#fff;
   font-family:"Instrument Sans",sans-serif;
-  animation:blinkLoaderExit .48s ease 2.45s forwards;
+  animation:blinkLoaderExit .42s ease-out 2.42s forwards;
 }
 
 .blinkLoaderCenter{
@@ -604,7 +604,7 @@ body.loadingActive{overflow:hidden}
   filter:none;
   opacity:0;
   transform:translateY(10px) scale(.92);
-  animation:blinkLoaderLogoIn .7s cubic-bezier(.22,.75,.2,1) .08s forwards;
+  animation:blinkLoaderLogoIn .7s cubic-bezier(.22,.75,.2,1) .08s both;
 }
 
 .blinkLoaderNumber{
@@ -631,7 +631,7 @@ body.loadingActive{overflow:hidden}
   height:101em;
   overflow:visible;
   transform:translateY(0);
-  animation:blinkLoaderCount 2.3s steps(100,end) forwards;
+  animation:blinkLoaderCount 2.32s steps(100,end) both;
 }
 
 .blinkLoaderNumberTrack span{
@@ -662,7 +662,7 @@ body.loadingActive{overflow:hidden}
   background:rgba(255,255,255,.14);
   transform-origin:left center;
   overflow:hidden;
-  animation:blinkLoaderProgress 2.3s cubic-bezier(.22,.7,.2,1) forwards;
+  animation:blinkLoaderProgress 2.32s cubic-bezier(.22,.7,.2,1) both;
   box-shadow:0 0 0 0 transparent;
 }
 
@@ -700,7 +700,7 @@ body.loadingActive{overflow:hidden}
 @keyframes blinkLoaderExit{
   0%{opacity:1;visibility:visible;transform:scale(1)}
   85%{opacity:1;visibility:visible;transform:scale(1)}
-  100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.015)}
+  100%{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1)}
 }
 
 /* Blink X theme lanyard — desktop only */

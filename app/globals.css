@@ -7883,3 +7883,32 @@ body.darkMode .heroActions .watchButton svg{
     left:-14px!important;
   }
 }
+
+
+/* Mobile hero cards — final viewport-safe positioning */
+@media (max-width:650px){
+  .heroVisual .phoneWrap .topCard{
+    right:48px!important;
+    top:16%!important;
+    z-index:50!important;
+    transform:none!important;
+  }
+
+  .heroVisual .phoneWrap .bottomCard{
+    left:-58px!important;
+    top:63%!important;
+    bottom:auto!important;
+    z-index:50!important;
+    transform:none!important;
+  }
+}
+
+@media (max-width:380px){
+  .heroVisual .phoneWrap .topCard{
+    right:38px!important;
+  }
+  .heroVisual .phoneWrap .bottomCard{
+    left:-48px!important;
+    top:62%!important;
+  }
+}

@@ -7849,3 +7849,37 @@ body.darkMode .heroActions .watchButton svg{
     height:53px!important;
   }
 }
+
+
+/* Mobile floating cards — restore visibility/alignment only */
+@media (max-width:650px){
+  .heroVisual .phoneWrap .topCard{
+    position:absolute!important;
+    right:-28px!important;
+    top:16%!important;
+    left:auto!important;
+    display:flex!important;
+    z-index:30!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+  .heroVisual .phoneWrap .bottomCard{
+    position:absolute!important;
+    left:-18px!important;
+    right:auto!important;
+    bottom:11%!important;
+    top:auto!important;
+    display:flex!important;
+    z-index:30!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .phoneWrap .topCard{
+    right:-22px!important;
+  }
+  .heroVisual .phoneWrap .bottomCard{
+    left:-14px!important;
+  }
+}

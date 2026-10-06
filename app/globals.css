@@ -7427,3 +7427,11 @@ body.darkMode .sideProgress i{
     height:36px!important;
   }
 }
+
+
+/* Remove the decorative repeated Blink X marquee from the footer */
+@media (min-width:651px){
+  .footer::before{
+    display:none!important;
+  }
+}

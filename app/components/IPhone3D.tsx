@@ -98,13 +98,8 @@ function PhoneModel(){
   const scale=5.25/bounds.size.y;
   // Keep the custom Reel screen slightly inside the phone silhouette so its edge
   // never peeks out behind the chassis when the phone is viewed from the side.
-  const screenWidth=bounds.size.x*.53;
-  const screenHeight=bounds.size.y*.46;
-  const screenZ=bounds.minZ-bounds.size.z*.004;
-
   return <group ref={group} scale={scale} rotation={[-.018,.085,-.055]} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
-    <group position={[0, bounds.size.y*.115, 0]}><ReelScreen width={screenWidth} height={screenHeight} z={screenZ}/></group>
   </group>;
 }
 

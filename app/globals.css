@@ -8069,3 +8069,21 @@ body.darkMode .heroActions .watchButton svg{
     left:-12px!important;
   }
 }
+
+
+/* Final mobile hero positioning: center phone and bring it closer */
+@media (max-width:650px){
+  .heroVisual{
+    height:500px!important;
+    margin-top:2px!important;
+  }
+  .heroVisual .phoneWrap{
+    transform:translate(46px,-22px) scale(.82)!important;
+    transform-origin:center top!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .phoneWrap{
+    transform:translate(38px,-18px) scale(.78)!important;
+  }
+}

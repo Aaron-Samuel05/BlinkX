@@ -7687,3 +7687,23 @@ body:not(.darkMode) .footerBottom{
 #pricing{
   scroll-margin-top:48px!important;
 }
+
+
+/* Hero secondary CTA — orange */
+.heroActions .watchButton{
+  background:var(--orange)!important;
+  border-color:var(--orange)!important;
+  color:#111!important;
+  box-shadow:0 12px 30px rgba(250,170,38,.22);
+}
+.heroActions .watchButton svg{
+  color:#111!important;
+}
+.heroActions .watchButton:hover{
+  box-shadow:0 16px 36px rgba(250,170,38,.32);
+}
+body.darkMode .heroActions .watchButton{
+  background:var(--orange)!important;
+  border-color:var(--orange)!important;
+  color:#111!important;
+}

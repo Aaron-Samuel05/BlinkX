@@ -7265,3 +7265,17 @@ body.darkMode .bookingVisual *{
     margin-top:18px!important;
   }
 }
+
+
+/* Dark mode hero progress readability */
+body.darkMode .sideProgress{
+  color:rgba(255,255,255,.62)!important;
+}
+body.darkMode .sideProgress span:nth-of-type(1),
+body.darkMode .sideProgress span:nth-of-type(2),
+body.darkMode .sideProgress span:nth-of-type(3){
+  color:rgba(255,255,255,.78)!important;
+}
+body.darkMode .sideProgress i{
+  background:rgba(255,255,255,.28)!important;
+}

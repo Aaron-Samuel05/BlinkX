@@ -7740,3 +7740,38 @@ body.darkMode .heroActions .watchButton svg{
 .heroActions .watchButton:hover svg{
   transform:translateX(3px) rotate(-4deg)!important;
 }
+
+
+/* Mobile hero floating cards — balanced edge alignment */
+@media (max-width:650px){
+  .heroVisual .topCard{
+    right:4px!important;
+    top:12%!important;
+    width:132px!important;
+    height:56px!important;
+    padding:8px 10px!important;
+    border-radius:16px!important;
+    z-index:12!important;
+  }
+  .heroVisual .bottomCard{
+    left:4px!important;
+    bottom:9%!important;
+    width:132px!important;
+    height:56px!important;
+    padding:8px 10px!important;
+    border-radius:16px!important;
+    z-index:12!important;
+  }
+  .heroVisual .topCard span{
+    font-size:8.5px!important;
+  }
+  .heroVisual .topCard strong{
+    font-size:11px!important;
+  }
+  .heroVisual .bottomCard strong{
+    font-size:10.5px!important;
+  }
+  .heroVisual .bottomCard small{
+    font-size:7px!important;
+  }
+}

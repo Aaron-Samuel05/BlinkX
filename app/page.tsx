@@ -441,7 +441,7 @@ export default function Home() {
         </div>
         <div className="faqGrid">
           {faqs.map(([question, answer], i) => (
-            <details className="faqItem glassCard" key={question} open={i === 0}>
+            <details className="faqItem glassCard" key={question}>
               <summary><span>{question}</span><span className="faqPlus">+</span></summary>
               <p>{answer}</p>
             </details>

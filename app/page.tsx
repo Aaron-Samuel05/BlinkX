@@ -194,7 +194,7 @@ export default function Home() {
             <p>We come. We shoot. We edit. You grow.</p>
             <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
             <div className="heroActions">
-              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#book">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
               <motion.a whileHover={{ y: -3, x: 3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how">See how we work <ArrowRight size={15} /></motion.a>
             </div>
             <div className="trustRow"><div className="avatarStack"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=160&q=80" alt="" /><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=160&q=80" alt="" /></div><div><b>500+</b><span>Businesses trust Blink X</span></div></div>
@@ -383,7 +383,7 @@ export default function Home() {
           <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
           <h2>Your next<br/><em>content day</em><br/>starts here.</h2>
           <p>Pick a date. We shoot. We edit. We deliver.</p>
-          <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#bookForm">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+          <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
           <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
         </div>
         <div className="ctaEditorialVisual">
@@ -471,9 +471,9 @@ export default function Home() {
           </div>
           <div className="footerColumn">
             <b>Company</b>
-            <a href="#bookForm">Book a Shoot</a><a href="#faqs">FAQs</a><a href="#bookForm">Contact</a>
+            <a href="#pricing">Book a Shoot</a><a href="#faqs">FAQs</a><a href="#bookForm">Contact</a>
           </div>
-          <a className="footerBookButton" href="#bookForm">Book a Shoot <ArrowRight size={16}/></a>
+          <a className="footerBookButton" href="#pricing">Book a Shoot <ArrowRight size={16}/></a>
         </div>
         <div className="footerBottom">
           <span>© 2026 Blink X. All rights reserved.</span>

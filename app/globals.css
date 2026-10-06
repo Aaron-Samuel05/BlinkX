@@ -7304,3 +7304,50 @@ body.darkMode .sideProgress i{
     object-fit:cover;
   }
 }
+
+
+/* Desktop footer refinement — footer only */
+@media (min-width:651px){
+  .footer{
+    min-height:330px!important;
+    padding:38px 6vw 26px!important;
+    justify-content:center!important;
+    gap:18px!important;
+  }
+  .footerBrand{
+    min-height:165px!important;
+    justify-content:center!important;
+  }
+  .footerBrand img{
+    width:270px!important;
+    max-width:32vw!important;
+  }
+  .footerBrand span{
+    margin-top:10px!important;
+    font-size:10px!important;
+    letter-spacing:1.5px!important;
+  }
+  .footerBrand::after{
+    font-size:clamp(120px,14vw,210px)!important;
+    opacity:.7;
+  }
+  .footerLinks{
+    gap:34px!important;
+    font-size:12px!important;
+  }
+  .footerSocial{
+    margin-top:4px!important;
+    gap:10px!important;
+  }
+  .footerSocial a{
+    width:38px!important;
+    height:38px!important;
+  }
+  .footer::after{
+    width:560px!important;
+    height:280px!important;
+    top:50%!important;
+    opacity:.62!important;
+    filter:blur(46px)!important;
+  }
+}

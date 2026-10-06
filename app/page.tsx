@@ -179,6 +179,7 @@ export default function Home() {
       <section className="hero" onMouseMove={moveHero}>
         <motion.div className="heroOrb orbOne" style={{ x: smoothX, y: smoothY }} />
         <motion.div className="heroOrb orbTwo" style={{ x: useTransform(smoothX, v => -v * 0.45), y: useTransform(smoothY, v => -v * 0.45) }} />
+        <motion.div className="cursorGlow" style={{ x: smoothX, y: smoothY }} aria-hidden="true" />
         <div className="heroNoise" />
         <div className="heroInner">
           <motion.div className="heroCopy" style={{ y: heroY }}>

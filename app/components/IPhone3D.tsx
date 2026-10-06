@@ -86,7 +86,7 @@ function ReelScreen({width,height,z}:{width:number;height:number;z:number}){
   </mesh>;
 }
 
-function PhoneModel(){
+function PhoneModel({rotationRef}:{rotationRef:React.RefObject<THREE.Group|null>}){
   const {scene}=useGLTF("/iphone 18 pro max blinkxblacked_no_reflection.glb");
   const group=useRef<THREE.Group>(null);
   const model=useMemo(()=>scene.clone(true),[scene]);
@@ -98,6 +98,7 @@ function PhoneModel(){
   const scale=5.25/bounds.size.y;
   // Keep the custom Reel screen slightly inside the phone silhouette so its edge
   // never peeks out behind the chassis when the phone is viewed from the side.
+  useEffect(()=>{ if(rotationRef) rotationRef.current=group.current; return()=>{ if(rotationRef) rotationRef.current=null; }; },[rotationRef]);
   return <group ref={group} scale={scale} rotation={[-.018,.085,-.055]} position={[-bounds.center.x*scale,-bounds.center.y*scale,-bounds.center.z*scale]}>
     <primitive object={model}/>
   </group>;
@@ -105,6 +106,8 @@ function PhoneModel(){
 
 export default function IPhone3D(){
   const [isMobile,setIsMobile]=useState(false);
+  const phoneGroup=useRef<THREE.Group>(null);
+  const dragState=useRef({active:false,startX:0,lastX:0,axisLocked:false});
 
   useEffect(()=>{
     const query=window.matchMedia("(max-width: 768px), (pointer: coarse)");
@@ -113,12 +116,60 @@ export default function IPhone3D(){
     query.addEventListener("change",update);
     return()=>query.removeEventListener("change",update);
   },[]);
+
+  useEffect(()=>{
+    if(!isMobile) return;
+    const canvas=document.querySelector(".heroVisual canvas") as HTMLCanvasElement | null;
+    if(!canvas) return;
+    canvas.style.touchAction="pan-y";
+    const state=dragState.current;
+
+    const onPointerDown=(e:PointerEvent)=>{
+      if(e.pointerType!=="touch" && e.pointerType!=="pen") return;
+      state.active=true;
+      state.axisLocked=false;
+      state.startX=e.clientX;
+      state.lastX=e.clientX;
+    };
+    const onPointerMove=(e:PointerEvent)=>{
+      if(!state.active || !phoneGroup.current) return;
+      const dx=e.clientX-state.lastX;
+      const totalX=e.clientX-state.startX;
+      const totalY=e.clientY-(e as any).__startY;
+      if(!(e as any).__startY) (e as any).__startY=e.clientY;
+      const absX=Math.abs(totalX);
+      const absY=Math.abs(e.clientY-(e as any).__startY);
+      if(!state.axisLocked){
+        if(Math.max(absX,absY)<8) return;
+        state.axisLocked=absX>absY;
+      }
+      if(!state.axisLocked) return;
+      e.preventDefault();
+      phoneGroup.current.rotation.y += dx*0.012;
+      state.lastX=e.clientX;
+    };
+    const onPointerUp=()=>{
+      state.active=false;
+      state.axisLocked=false;
+    };
+    canvas.addEventListener("pointerdown",onPointerDown,{passive:true});
+    canvas.addEventListener("pointermove",onPointerMove,{passive:false});
+    canvas.addEventListener("pointerup",onPointerUp,{passive:true});
+    canvas.addEventListener("pointercancel",onPointerUp,{passive:true});
+    return()=>{
+      canvas.removeEventListener("pointerdown",onPointerDown);
+      canvas.removeEventListener("pointermove",onPointerMove);
+      canvas.removeEventListener("pointerup",onPointerUp);
+      canvas.removeEventListener("pointercancel",onPointerUp);
+    };
+  },[isMobile]);
+
   return <Canvas dpr={[1,1.6]} camera={{position:[0,0,10.2],fov:31}} gl={{alpha:true,antialias:true,powerPreference:"high-performance"}} style={{width:"100%",height:"100%",display:"block"}}>
     <ambientLight intensity={1.15}/>
     <directionalLight position={[4,6,8]} intensity={2.8}/>
     <directionalLight position={[-5,2,3]} intensity={1.4}/>
     <Environment preset="studio" environmentIntensity={.7}/>
-    <PhoneModel/>
+    <PhoneModel rotationRef={phoneGroup}/>
     <ContactShadows position={[0,-3.15,0]} opacity={.24} scale={5.8} blur={2.6} far={4.5}/>
     {!isMobile && <OrbitControls enablePan={false} enableZoom={false} enableDamping dampingFactor={0.08} rotateSpeed={0.65} minPolarAngle={0} maxPolarAngle={Math.PI} minAzimuthAngle={-Infinity} maxAzimuthAngle={Infinity} />}
   </Canvas>;

@@ -96,6 +96,10 @@ export default function Home() {
   const cursorY = useMotionValue(0);
   const smoothX = useSpring(cursorX, { stiffness: 80, damping: 22 });
   const smoothY = useSpring(cursorY, { stiffness: 80, damping: 22 });
+  const glowX = useMotionValue(0);
+  const glowY = useMotionValue(0);
+  const smoothGlowX = useSpring(glowX, { stiffness: 55, damping: 24 });
+  const smoothGlowY = useSpring(glowY, { stiffness: 55, damping: 24 });
 
   const calendar = useMemo(() => {
     const first = new Date(selectedMonth.year, selectedMonth.month, 1);
@@ -131,6 +135,8 @@ export default function Home() {
     const rect = e.currentTarget.getBoundingClientRect();
     cursorX.set((e.clientX - rect.left - rect.width / 2) / 22);
     cursorY.set((e.clientY - rect.top - rect.height / 2) / 22);
+    glowX.set(e.clientX - rect.left);
+    glowY.set(e.clientY - rect.top);
   }
 
   return (
@@ -179,7 +185,7 @@ export default function Home() {
       <section className="hero" onMouseMove={moveHero}>
         <motion.div className="heroOrb orbOne" style={{ x: smoothX, y: smoothY }} />
         <motion.div className="heroOrb orbTwo" style={{ x: useTransform(smoothX, v => -v * 0.45), y: useTransform(smoothY, v => -v * 0.45) }} />
-        <motion.div className="cursorGlow" style={{ x: smoothX, y: smoothY }} aria-hidden="true" />
+        <motion.div className="cursorGlow" style={{ x: smoothGlowX, y: smoothGlowY }} aria-hidden="true" />
         <div className="heroNoise" />
         <div className="heroInner">
           <motion.div className="heroCopy" style={{ y: heroY }}>

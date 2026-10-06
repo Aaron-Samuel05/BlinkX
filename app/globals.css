@@ -8141,3 +8141,30 @@ body.darkMode .heroActions .watchButton svg{
     display: none !important;
   }
 }
+
+
+/* Mobile hero — subtle orange depth behind the phone + final centering */
+@media (max-width:650px){
+  .heroVisual::before{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    left:50%;
+    top:46%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    background:radial-gradient(circle,rgba(250,150,20,.22) 0%,rgba(250,150,20,.12) 34%,rgba(250,150,20,.045) 58%,transparent 76%);
+    filter:blur(72px);
+  }
+  .heroVisual .phoneWrap{
+    transform:translate(58px,-22px) scale(.82)!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .phoneWrap{
+    transform:translate(50px,-18px) scale(.78)!important;
+  }
+}

@@ -7596,3 +7596,34 @@ body.darkMode .sideProgress i{
     font-size:9px!important;
   }
 }
+
+
+/* Footer light mode — preserve the site's light theme */
+body:not(.darkMode) .footer{
+  background:#fff!important;
+  color:#111!important;
+}
+body:not(.darkMode) .footer::after{
+  background:radial-gradient(circle,rgba(250,145,20,.10) 0%,rgba(250,145,20,.035) 34%,transparent 70%)!important;
+}
+body:not(.darkMode) .footerBrand span{
+  color:rgba(17,17,17,.68)!important;
+}
+body:not(.darkMode) .footerBrand p{
+  color:rgba(17,17,17,.52)!important;
+}
+body:not(.darkMode) .footerColumn a{
+  color:rgba(17,17,17,.62)!important;
+}
+body:not(.darkMode) .footerColumn a:hover{
+  color:#111!important;
+}
+body:not(.darkMode) .footerSocial a{
+  color:#111!important;
+  border-color:rgba(17,17,17,.18)!important;
+  background:transparent!important;
+}
+body:not(.darkMode) .footerBottom{
+  border-top-color:rgba(17,17,17,.10)!important;
+  color:rgba(17,17,17,.42)!important;
+}

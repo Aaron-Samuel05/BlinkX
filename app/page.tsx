@@ -118,7 +118,7 @@ export default function Home() {
       setFormError("Please enter a valid phone number.");
       return;
     }
-    if (!emailValid) {
+    if (form.email.trim() && !emailValid) {
       setFormError("Please enter a valid email address.");
       return;
     }

@@ -7731,3 +7731,12 @@ body.darkMode .heroActions .watchButton svg{
   background:#111!important;
   color:#fff!important;
 }
+
+
+/* Match the primary hero CTA arrow hover animation */
+.heroActions .watchButton svg{
+  transition:transform .3s ease!important;
+}
+.heroActions .watchButton:hover svg{
+  transform:translateX(3px) rotate(-4deg)!important;
+}

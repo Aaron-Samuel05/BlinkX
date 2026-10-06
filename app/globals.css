@@ -8132,3 +8132,12 @@ body.darkMode .heroActions .watchButton svg{
     transform:translate(38px,-18px) scale(.78)!important;
   }
 }
+
+
+/* Mobile: hide hero floating cards while keeping them unchanged on desktop */
+@media (max-width: 650px) {
+  .heroVisual .phoneWrap .topCard,
+  .heroVisual .phoneWrap .bottomCard {
+    display: none !important;
+  }
+}

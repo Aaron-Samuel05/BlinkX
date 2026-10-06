@@ -450,9 +450,35 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="footerBrand"><img src={darkMode ? "/blinkx-logo-dark.png" : "/blinkx-logo.png"} alt="Blink X"/><span>More Content. Bigger Growth.</span></div>
-        <div className="footerLinks"><a href="#why">Why Blink X?</a><a href="#how">How It Works</a><a href="#pricing">Pricing</a><a href="#bookForm">Book</a><a href="#faqs">FAQs</a></div>
-        <div className="footerSocial"><a href="#"><Instagram size={16}/></a><a href="#"><Video size={16}/></a><a href="#"><Phone size={16}/></a></div>
+        <div className="footerSimpleTop">
+          <div className="footerBrand">
+            <img src={darkMode ? "/blinkx-logo-dark.png" : "/blinkx-logo.png"} alt="Blink X"/>
+            <span>More Content. Bigger Growth.</span>
+            <p>We shoot, edit and deliver high-quality short-form content — fast.</p>
+            <div className="footerSocial">
+              <a href="#" aria-label="Instagram"><Instagram size={16}/></a>
+              <a href="#" aria-label="Video"><Video size={16}/></a>
+              <a href="#" aria-label="Call"><Phone size={16}/></a>
+            </div>
+          </div>
+          <div className="footerColumn">
+            <b>Explore</b>
+            <a href="#why">Why Blink X?</a><a href="#how">How It Works</a><a href="#pricing">Pricing</a>
+          </div>
+          <div className="footerColumn">
+            <b>Services</b>
+            <a href="#pricing">Content Shoots</a><a href="#pricing">Editing</a><a href="#pricing">24-Hour Delivery</a>
+          </div>
+          <div className="footerColumn">
+            <b>Company</b>
+            <a href="#bookForm">Book a Shoot</a><a href="#faqs">FAQs</a><a href="#bookForm">Contact</a>
+          </div>
+          <a className="footerBookButton" href="#bookForm">Book a Shoot <ArrowRight size={16}/></a>
+        </div>
+        <div className="footerBottom">
+          <span>© 2026 Blink X. All rights reserved.</span>
+          <span>Shot · Edit · Deliver.</span>
+        </div>
       </footer>
 
       {showBooking && <div className="modalBack" onMouseDown={()=>setShowBooking(false)}>

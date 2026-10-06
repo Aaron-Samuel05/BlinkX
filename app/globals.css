@@ -8005,3 +8005,31 @@ body.darkMode .heroActions .watchButton svg{
     font-size:8.5px!important;
   }
 }
+
+
+/* Mobile hero floating motion — animate position without overriding Framer Motion transforms */
+@keyframes blinkxMobileTopFloat{
+  0%,100%{ top:calc(16% - 7px); }
+  50%{ top:calc(16% + 7px); }
+}
+@keyframes blinkxMobileBottomFloat{
+  0%,100%{ top:calc(63% + 7px); }
+  50%{ top:calc(63% - 7px); }
+}
+@media (max-width:650px){
+  .heroVisual .phoneWrap .topCard{
+    right:8px!important;
+    top:16%!important;
+    animation:blinkxMobileTopFloat 4s ease-in-out infinite!important;
+  }
+  .heroVisual .phoneWrap .bottomCard{
+    left:8px!important;
+    top:63%!important;
+    bottom:auto!important;
+    animation:blinkxMobileBottomFloat 5s ease-in-out infinite!important;
+  }
+}
+@media (max-width:380px){
+  .heroVisual .phoneWrap .topCard{right:6px!important;}
+  .heroVisual .phoneWrap .bottomCard{left:6px!important;}
+}

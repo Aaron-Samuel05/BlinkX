@@ -7627,3 +7627,57 @@ body:not(.darkMode) .footerBottom{
   border-top-color:rgba(17,17,17,.10)!important;
   color:rgba(17,17,17,.42)!important;
 }
+
+
+/* Footer desktop — wider, more balanced composition */
+@media (min-width:901px){
+  .footerSimpleTop{
+    max-width:1320px!important;
+    width:100%!important;
+    grid-template-columns:1.65fr .9fr .9fr .9fr auto!important;
+    gap:64px!important;
+  }
+  .footerBrand img{
+    width:210px!important;
+  }
+  .footerBrand span{
+    font-size:12px!important;
+    letter-spacing:1.3px!important;
+  }
+  .footerBrand p{
+    font-size:13px!important;
+    max-width:340px!important;
+    line-height:1.65!important;
+  }
+  .footerSocial{
+    gap:11px!important;
+    margin-top:22px!important;
+  }
+  .footerSocial a{
+    width:38px!important;
+    height:38px!important;
+  }
+  .footerColumn{
+    gap:13px!important;
+    padding-top:3px!important;
+  }
+  .footerColumn b{
+    font-size:11px!important;
+    letter-spacing:2px!important;
+    margin-bottom:7px!important;
+  }
+  .footerColumn a{
+    font-size:13px!important;
+  }
+  .footerBookButton{
+    padding:13px 18px!important;
+    font-size:12px!important;
+  }
+  .footerBottom{
+    max-width:1320px!important;
+    width:100%!important;
+    margin-top:54px!important;
+    padding-top:20px!important;
+    font-size:11px!important;
+  }
+}

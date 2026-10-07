@@ -263,6 +263,7 @@ export default function Home() {
         <div className="ctaArtworkCleanup" aria-hidden="true">
           <span className="ctaArtworkDashCleanup" />
           <span className="ctaArtworkTextCleanup" />
+          <span className="ctaMobileContentCleanup" />
         </div>
         <div className="ctaEditorialCopy">
           <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>

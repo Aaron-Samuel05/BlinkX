@@ -8168,3 +8168,10 @@ body.darkMode .heroActions .watchButton svg{
     transform:translate(50px,-18px) scale(.78)!important;
   }
 }
+
+
+/* Hero text alignment after removing the tagline */
+@media (min-width: 1051px){
+  .heroCopy{transform:translateY(-18px);}
+  .heroSub{margin-top:24px;}
+}

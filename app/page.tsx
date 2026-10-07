@@ -145,15 +145,8 @@ export default function Home() {
       <div className="blinkLoadingScreen" aria-label="Loading Blink X" role="status">
         <div className="blinkLoaderCenter">
           <img src="/loading%20page%20logo%20neww.png" alt="Blink X" className="blinkLoaderLogo" />
-          <div className="blinkLoaderNumber" aria-hidden="true">
-            <div className="blinkLoaderNumberViewport">
-              <div className="blinkLoaderNumberTrack">
-                {Array.from({ length: 101 }, (_, number) => (
-                  <span key={number}>{number}</span>
-                ))}
-              </div>
-            </div>
-            <em>%</em>
+          <div className="blinkLoaderBar" aria-hidden="true">
+            <div className="blinkLoaderBarFill" />
           </div>
         </div>
       </div>

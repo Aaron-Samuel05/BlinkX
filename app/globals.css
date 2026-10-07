@@ -8175,3 +8175,7 @@ body.darkMode .heroActions .watchButton svg{
   .heroCopy{transform:translateY(-18px);}
   .heroSub{margin-top:24px;}
 }
+
+
+/* Enlarge Blink X logo inside the hero floating card */
+.heroVisual .bottomCard .tinyLogo{width:52px;height:52px;}

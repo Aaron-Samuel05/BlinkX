@@ -433,6 +433,23 @@ export default function Home() {
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
+          <div className="modalPlanPicker">
+            <div className="modalPlanPickerLabel">CHANGE PLAN</div>
+            <div className="modalPlanOptions">
+              {packages.map(pkg => (
+                <button
+                  type="button"
+                  key={pkg.id}
+                  className={`modalPlanOption ${selectedPackage === pkg.id ? "active" : ""}`}
+                  onClick={() => setSelectedPackage(pkg.id)}
+                >
+                  <span>{pkg.name}</span>
+                  <b>{pkg.reels} Reels</b>
+                  <small>₹{pkg.price.toLocaleString("en-IN")}</small>
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="formGrid">{[["name","Your name *"],["business","Business / brand (optional)"],["phone","Phone number *"],["email","Email address (optional)"],["location","Shoot location / area (optional)"]].map(([k,label])=><input key={k} required={k==="name" || k==="phone"} type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>
           <select value={form.type} onChange={e=>{setForm({...form,type:e.target.value});setFormError("")}}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
           <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>

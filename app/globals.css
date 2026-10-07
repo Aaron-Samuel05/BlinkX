@@ -8190,3 +8190,36 @@ body.darkMode .heroActions .watchButton svg{
   .ctaEditorialCopy h2{margin-bottom:28px;}
   .ctaEditorialCopy .ctaButton{width:100%;max-width:360px;margin-top:0;}
 }
+
+
+/* Pricing visual refresh — scoped to the pricing cards only; existing motion/interaction rules remain intact. */
+.pricingOptions{gap:22px;}
+.packageCard{min-height:484px;padding:30px 32px 22px;border-radius:28px;background:rgba(255,255,255,.82);}
+.packageName{font-size:11px;letter-spacing:.18em;margin-bottom:12px;color:#252525;}
+.packagePrice{font-size:clamp(40px,3.2vw,52px);}
+.packageReels{font-size:18px;margin-top:12px;}
+.packageFeatureList{margin-top:18px;gap:8px;}
+.packageFeature{min-height:48px;padding:4px 0;gap:13px;align-items:center;}
+.packageFeatureIcon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:#fff2d7;color:var(--orange2);}
+.packageFeatureText{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.packageFeatureText b{font-size:14px;font-weight:700;line-height:1.1;color:#171717;}
+.packageFeatureText small{font-size:10px;color:#999;line-height:1.2;}
+.packageSelect{min-height:48px;padding:7px 10px 7px 20px;font-size:13px;background:rgba(255,255,255,.55);}
+.packageSelect svg{width:32px;height:32px;padding:7px;}
+.packageSelect.active{background:var(--orange);}
+.packageCard.scaleCard{background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(255,248,230,.94));}
+.pricingHighlights{margin-top:48px;}
+@media(max-width:1050px){
+  .packageCard{min-height:470px;padding:26px 24px 20px;}
+  .packageFeatureIcon{width:38px;height:38px;flex-basis:38px;}
+  .packageFeatureText b{font-size:12px;}
+  .packageFeatureText small{font-size:9px;}
+}
+@media(max-width:650px){
+  .packageCard{min-height:0;padding:24px 20px 18px;}
+  .packageFeatureList{gap:5px;}
+  .packageFeature{min-height:45px;}
+  .packageFeatureIcon{width:38px;height:38px;flex-basis:38px;}
+  .packageFeatureText b{font-size:12px;}
+  .packageFeatureText small{font-size:9px;}
+}

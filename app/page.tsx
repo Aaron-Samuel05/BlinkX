@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
@@ -68,7 +68,12 @@ export default function Home() {
   const [showTimeOptions, setShowTimeOptions] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.add("darkMode");
+    return () => document.body.classList.remove("darkMode");
+  }, []);
   const packages = [
     { id: "starter", name: "Starter", reels: 8, price: 10000, advance: 5000 },
     { id: "growth", name: "Growth", reels: 12, price: 15000, advance: 7500, popular: true },

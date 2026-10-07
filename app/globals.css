@@ -8303,3 +8303,37 @@ body.darkMode .calendarDays button.active{
     height:3px;
   }
 }
+
+
+/* Mobile CTA artwork cleanup: hide only the baked-in copy requested by the user. */
+@media(max-width:600px){
+  .ctaArtworkCleanup{
+    display:block;
+    position:absolute;
+    inset:0;
+    z-index:4;
+    pointer-events:none;
+  }
+  .ctaArtworkDashCleanup,
+  .ctaArtworkTextCleanup{
+    position:absolute;
+    display:block;
+    background:linear-gradient(180deg,rgba(5,5,5,.92),rgba(5,5,5,.78));
+    border-radius:4px;
+  }
+  .ctaArtworkDashCleanup{
+    left:39%;
+    top:40.5%;
+    width:13%;
+    height:4.5%;
+  }
+  .ctaArtworkTextCleanup{
+    left:5%;
+    top:67%;
+    width:66%;
+    height:11%;
+  }
+}
+@media(min-width:601px){
+  .ctaArtworkCleanup{display:none!important;}
+}

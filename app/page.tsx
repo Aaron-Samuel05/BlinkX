@@ -260,6 +260,10 @@ export default function Home() {
 
       <section className="ctaSection">
         <div className="ctaEditorialGlow" />
+        <div className="ctaArtworkCleanup" aria-hidden="true">
+          <span className="ctaArtworkDashCleanup" />
+          <span className="ctaArtworkTextCleanup" />
+        </div>
         <div className="ctaEditorialCopy">
           <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
           <h2>Your next<br/><em>content day</em><br/>starts here.</h2>

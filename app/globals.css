@@ -8271,3 +8271,35 @@ body.darkMode .calendarDays button.active{
 
 /* Remove the small orange eyebrow dash accents site-wide */
 .miniEyebrow span{display:none!important;}
+
+
+/* Loading screen: replace percentage counter with a clean progress bar */
+.blinkLoaderBar{
+  width:min(250px,42vw);
+  height:4px;
+  margin-top:34px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.14);
+}
+.blinkLoaderBarFill{
+  width:100%;
+  height:100%;
+  transform-origin:left center;
+  transform:scaleX(0);
+  border-radius:inherit;
+  background:#f5a623;
+  animation:blinkLoaderBarFill 2.32s cubic-bezier(.22,.7,.2,1) both;
+}
+.blinkLoaderCenter::after{display:none!important;}
+@keyframes blinkLoaderBarFill{
+  from{transform:scaleX(0)}
+  to{transform:scaleX(1)}
+}
+@media(max-width:700px){
+  .blinkLoaderBar{
+    width:min(190px,52vw);
+    margin-top:28px;
+    height:3px;
+  }
+}

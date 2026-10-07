@@ -367,7 +367,6 @@ export default function Home() {
         <div className="ctaEditorialCopy">
           <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
           <h2>Your next<br/><em>content day</em><br/>starts here.</h2>
-          <p>Pick a date. We shoot. We edit. We deliver.</p>
           <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
           <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
         </div>

@@ -8266,3 +8266,14 @@ body.darkMode .calendar::before{
   pointer-events:none;
   background:linear-gradient(180deg,rgba(255,255,255,.045),transparent 18%);
 }
+
+
+/* Make selected calendar date unmistakable in dark mode */
+body.darkMode .calendarDays>span>button.active,
+body.darkMode .calendarDays button.active{
+  background:var(--orange)!important;
+  border-color:var(--orange)!important;
+  color:#111!important;
+  font-weight:800!important;
+  box-shadow:0 0 0 1px rgba(255,190,70,.35),0 8px 20px rgba(250,170,38,.28)!important;
+}

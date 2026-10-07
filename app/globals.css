@@ -5961,16 +5961,6 @@ body:not(.darkMode) .footerSocial a:hover{
   background:#f6f4ef;
   overflow:hidden;
 }
-.how::before{
-  content:"04 STEPS / ONE CONTENT DAY";
-  position:absolute;
-  top:52px;
-  right:4.5vw;
-  color:#a09b92;
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.16em;
-}
 .howHeader{
   position:relative;
   z-index:2;

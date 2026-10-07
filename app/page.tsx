@@ -273,47 +273,13 @@ export default function Home() {
 
         <div className="pricingOptions" id="book">
           {packages.map(pkg => {
-            const features =
-              pkg.id === "scale"
-                ? [
-                    "Shooting",
-                    "Editing",
-                    "Captions & Subtitles",
-                    "Music & Sound Design",
-                    "Color Grading",
-                    "Thumbnails",
-                    "24-Hour Delivery",
-                    "18 Ready-to-Post Reels",
-                    "1 Revision Round",
-                    "Shorts + Reels + TikTok Formatting",
-                    "Platform-Specific Optimization",
-                    "Priority Delivery Support",
-                    "Content Strategy & Shot List",
-                  ]
-                : pkg.id === "growth"
-                ? [
-                    "Shooting",
-                    "Editing",
-                    "Captions & Subtitles",
-                    "Music & Sound Design",
-                    "Color Grading",
-                    "Thumbnails",
-                    "24-Hour Delivery",
-                    `${pkg.reels} Ready-to-Post Reels`,
-                    "Hashtag Strategy",
-                    "Platform-Specific Optimization",
-                    "1 Revision Round",
-                  ]
-                : [
-                    "Shooting",
-                    "Editing",
-                    "Captions & Subtitles",
-                    "Music & Sound Design",
-                    "Color Grading",
-                    "Thumbnails",
-                    "24-Hour Delivery",
-                    `${pkg.reels} Ready-to-Post Reels`,
-                  ];
+            const features = [
+              "Script",
+              "Shooting",
+              "Editing",
+              "24-Hour Delivery",
+              `${pkg.reels} Ready-to-Post Reels`,
+            ];
 
             return (
               <motion.button
@@ -357,7 +323,7 @@ export default function Home() {
         <div className="pricingHighlights">
           <div><span><Clock3 size={20} /></span><div><b>One content day</b><small>We come to you</small></div></div>
           <i />
-          <div><span><Layers3 size={20} /></span><div><b>Everything included</b><small>Shoot. Edit. Deliver.</small></div></div>
+          <div><span><Layers3 size={20} /></span><div><b>Everything included</b><small>Script. Shoot. Edit. Deliver.</small></div></div>
           <i />
           <div><span><TrendingUp size={20} /></span><div><b>More content. More growth.</b><small>Built for businesses & creators</small></div></div>
         </div>

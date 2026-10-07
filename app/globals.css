@@ -8337,3 +8337,139 @@ body.darkMode .calendarDays button.active{
 @media(min-width:601px){
   .ctaArtworkCleanup{display:none!important;}
 }
+
+
+/* =========================================================
+   MOBILE FINAL PASS — remove CTA card + unify section grid
+   Desktop remains unchanged.
+   ========================================================= */
+@media (max-width:650px){
+  /* The cinematic CTA card is desktop-only. Remove it completely on mobile
+     so the next section starts directly after the preceding content. */
+  .ctaSection{
+    display:none!important;
+  }
+
+  /* One consistent mobile content gutter across the page. */
+  .section,
+  .how,
+  .problem,
+  .offerSection,
+  .bookingSection,
+  .faqSection{
+    width:100%!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+
+  /* Keep section spacing consistent and remove accidental oversized gaps. */
+  .section,
+  .how{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+  }
+
+  .problem{
+    padding-top:56px!important;
+    padding-bottom:64px!important;
+    gap:28px!important;
+  }
+
+  .offerSection{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+  }
+
+  .bookingSection{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+    gap:34px!important;
+  }
+
+  .faqSection{
+    padding-top:64px!important;
+    padding-bottom:64px!important;
+  }
+
+  /* Keep headings and body copy aligned to the same 16px grid. */
+  .section > *,
+  .how > *,
+  .problem > *,
+  .offerSection > *,
+  .bookingSection > *,
+  .faqSection > *{
+    max-width:100%!important;
+  }
+
+  .howHeader,
+  .pricingHeader,
+  .bookingCopy,
+  .faqHeader{
+    width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* Full-width cards inside the shared gutter. */
+  .how .processGrid,
+  .pricingOptions,
+  .pricingHighlights,
+  .faqGrid{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  .pricingOptions{
+    gap:14px!important;
+  }
+
+  .pricingHighlights{
+    margin-top:34px!important;
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+
+  .pricingHighlights>i{
+    display:none!important;
+  }
+
+  .pricingHighlights>div{
+    justify-content:flex-start!important;
+  }
+
+  .bookingSection .calendar{
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:20px!important;
+  }
+
+  .faqGrid{
+    gap:10px!important;
+  }
+
+  /* Prevent long content from creating horizontal overflow. */
+  .section,
+  .how,
+  .problem,
+  .offerSection,
+  .bookingSection,
+  .faqSection,
+  .pricingOptions,
+  .pricingHighlights,
+  .faqGrid{
+    overflow-x:clip!important;
+  }
+
+  /* Footer uses the same 16px content grid. */
+  .footer{
+    box-sizing:border-box!important;
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+}

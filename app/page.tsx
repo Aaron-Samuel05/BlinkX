@@ -16,7 +16,7 @@ const bookingMonths = Array.from({ length: 12 }, (_, i) => {
   return { year: d.getFullYear(), month: d.getMonth() };
 });
 const monthFormatter = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" });
-const timeOptions = ["Morning (9 AM – 12 PM)", "Afternoon (12 PM – 4 PM)", "Evening (4 PM – 7 PM)", "Discuss on call"];
+const timeOptions = ["Morning (9 AM to 12 PM)", "Afternoon (12 PM to 4 PM)", "Evening (4 PM to 7 PM)", "Discuss on call"];
 
 const benefits: [string, string, string, LucideIcon][] = [
   ["01", "Save Time", "No more planning, scripting, shooting or editing on your own.", Clock3],

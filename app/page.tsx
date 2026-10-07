@@ -191,7 +191,6 @@ export default function Home() {
           <motion.div className="heroCopy" style={{ y: heroY }}>
             <motion.div className="eyebrow glassPill"> CONTENT THAT MOVES BUSINESS</motion.div>
             <h1><span>18 Reels</span><span className="orange">24 Hours</span></h1>
-            <p>We come. We shoot. We edit. You grow.</p>
             <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content — shot and delivered within 24 hours.</div>
             <div className="heroActions">
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>

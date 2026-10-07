@@ -274,11 +274,10 @@ export default function Home() {
         <div className="pricingOptions" id="book">
           {packages.map(pkg => {
             const features = [
-              "Script",
-              "Shooting",
-              "Editing",
-              "24-Hour Delivery",
-              `${pkg.reels} Ready-to-Post Reels`,
+              ["Script", "Concept, hooks & shot direction", PenLine],
+              ["Shooting", "On-location, professional setup", Video],
+              ["Editing", "Crisp, engaging, ready-to-post", Film],
+              ["24-Hour Delivery", "Your reels, delivered within 24 hours", Clock3],
             ];
 
             return (
@@ -300,19 +299,17 @@ export default function Home() {
                   <span className="packageUnit">/content day</span>
                 </div>
                 <span className="packageReels">{pkg.reels} Reels</span>
-                <span className="packageAdvance">₹{pkg.advance.toLocaleString("en-IN")} to reserve</span>
-
                 <div className="packageFeatureList">
-                  {features.map((feature, index) => (
-                    <span className={`packageFeature ${pkg.id === "scale" && index === 8 ? "scaleFeatureStart" : ""}`} key={feature}>
-                      <Check size={15} />
-                      {feature}
+                  {features.map(([feature, detail, Icon], index) => (
+                    <span className="packageFeature" key={feature}>
+                      <span className="packageFeatureIcon"><Icon size={18} /></span>
+                      <span className="packageFeatureText"><b>{feature}</b><small>{detail}</small></span>
                     </span>
                   ))}
                 </div>
 
                 <span className={`packageSelect ${selectedPackage === pkg.id ? "active" : ""}`}>
-                  {selectedPackage === pkg.id ? `Selected ${pkg.name}` : `Select ${pkg.name}`}
+                  Choose ${pkg.name}
                   <ArrowRight size={17} />
                 </span>
               </motion.button>

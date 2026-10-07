@@ -8179,3 +8179,14 @@ body.darkMode .heroActions .watchButton svg{
 
 /* Enlarge Blink X logo inside the hero floating card */
 .heroVisual .bottomCard .tinyLogo{width:52px;height:52px;}
+
+
+/* CTA refinement after removing supporting line */
+@media (min-width: 651px){
+  .ctaEditorialCopy h2{margin-bottom:30px;}
+  .ctaEditorialCopy .ctaButton{width:360px;max-width:100%;margin-top:0;}
+}
+@media (max-width:650px){
+  .ctaEditorialCopy h2{margin-bottom:28px;}
+  .ctaEditorialCopy .ctaButton{width:100%;max-width:360px;margin-top:0;}
+}

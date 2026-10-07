@@ -8267,3 +8267,7 @@ body.darkMode .calendarDays button.active{
   font-weight:800!important;
   box-shadow:0 0 0 1px rgba(255,190,70,.35),0 8px 20px rgba(250,170,38,.28)!important;
 }
+
+
+/* Remove the small orange eyebrow dash accents site-wide */
+.miniEyebrow span{display:none!important;}

@@ -273,7 +273,7 @@ export default function Home() {
 
         <div className="pricingOptions" id="book">
           {packages.map(pkg => {
-            const features = [
+            const features: [string, string, LucideIcon][] = [
               ["Script", "Concept, hooks & shot direction", PenLine],
               ["Shooting", "On-location, professional setup", Video],
               ["Editing", "Crisp, engaging, ready-to-post", Film],
@@ -309,7 +309,7 @@ export default function Home() {
                 </div>
 
                 <span className={`packageSelect ${selectedPackage === pkg.id ? "active" : ""}`}>
-                  Choose ${pkg.name}
+                  Choose {pkg.name}
                   <ArrowRight size={17} />
                 </span>
               </motion.button>

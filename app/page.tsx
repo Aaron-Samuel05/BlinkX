@@ -264,6 +264,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="ctaSection">
+        <div className="ctaEditorialGlow" />
+        <div className="ctaEditorialCopy">
+          <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
+          <h2>Your next<br/><em>content day</em><br/>starts here.</h2>
+          <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
+          <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
+        </div>
+        <div className="ctaEditorialVisual">
+          <motion.div className="ctaImageFrame" whileHover={{ y: -10, rotate: 0, scale: 1.025 }} transition={{ type: "spring", stiffness: 180, damping: 18 }}>
+            <img src="/cta-production.webp" alt="Blink X production setup" />
+            <div className="ctaImageLabel"><span>BLINK X</span><small>PRODUCTION DAY / 01</small></div>
+          </motion.div>
+          <div className="ctaVerticalText">SHOOT&nbsp;&nbsp;&nbsp; EDIT&nbsp;&nbsp;&nbsp; DELIVER</div>
+        </div>
+      </section>
+
       <section id="pricing" className="offerSection section">
         <div className="pricingHeader">
           <div className="miniEyebrow">SIMPLE PRICING <span /></div>
@@ -325,22 +342,7 @@ export default function Home() {
           <div><span><TrendingUp size={20} /></span><div><b>More content. More growth.</b><small>Built for businesses & creators</small></div></div>
         </div>
       </section>
-      <section className="ctaSection">
-        <div className="ctaEditorialGlow" />
-        <div className="ctaEditorialCopy">
-          <div className="miniEyebrow">READY WHEN YOU ARE <span /></div>
-          <h2>Your next<br/><em>content day</em><br/>starts here.</h2>
-          <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
-          <div className="ctaMeta">18 REELS <i/> 24 HOURS <i/> ONE SHOOT</div>
-        </div>
-        <div className="ctaEditorialVisual">
-          <motion.div className="ctaImageFrame" whileHover={{ y: -10, rotate: 0, scale: 1.025 }} transition={{ type: "spring", stiffness: 180, damping: 18 }}>
-            <img src="/cta-production.webp" alt="Blink X production setup" />
-            <div className="ctaImageLabel"><span>BLINK X</span><small>PRODUCTION DAY / 01</small></div>
-          </motion.div>
-          <div className="ctaVerticalText">SHOOT&nbsp;&nbsp;&nbsp; EDIT&nbsp;&nbsp;&nbsp; DELIVER</div>
-        </div>
-      </section>
+
 
       <section id="bookForm" className="bookingSection section">
         <div className="bookingCopy">

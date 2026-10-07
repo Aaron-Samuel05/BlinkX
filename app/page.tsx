@@ -203,7 +203,7 @@ export default function Home() {
           <div className="heroVisual">
             <motion.div className="heroBackText" style={{ y: blobY }}>BLINK X</motion.div>
             <motion.div className="orangeShape" style={{ y: blobY }} />
-            <motion.div className="phoneWrap" style={{ y: phoneY }}>
+            <motion.div className="phoneWrap" style={{ y: phoneY, rotateX: useTransform(smoothY, v => -v * 0.45), rotateY: useTransform(smoothX, v => v * 0.6) }}>
               <div className="iphone3d">
                 <IPhone3D />
               </div>
@@ -387,7 +387,6 @@ export default function Home() {
             <h2>Everything you need to <em>know.</em></h2>
             <p>Simple answers before you book your content day.</p>
           </div>
-          <div className="faqBadge glassPill"> BLINK X DETAILS</div>
         </div>
         <div className="faqGrid">
           {faqs.map(([question, answer], i) => (

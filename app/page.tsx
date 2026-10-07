@@ -244,7 +244,7 @@ export default function Home() {
       </section>
 
       <section id="how" className="section how">
-        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div><div className="simpleBadge glassPill"> Simple. Fast. Effective.</div></div>
+        <div className="howHeader"><div><div className="miniEyebrow">HOW IT WORKS <span /></div><h2>That’s where <em>Blink X</em> comes in.</h2><p>We take care of your short-form content from idea to final Reel.</p></div></div>
         <div className="processGrid">
           {process.map(([num,title,text,Icon,category,image],i)=>(
             <div className="processItem" key={num}>

@@ -8245,3 +8245,8 @@ body.darkMode .modalPlanOption{background:#0b0b0b;color:#fff;border-color:#2a2a2
 body.darkMode .modalPlanOption span,body.darkMode .modalPlanOption small{color:#999;}
 body.darkMode .modalPlanOption.active{background:var(--orange);border-color:var(--orange);color:#111;}
 body.darkMode .modalPlanOption.active span,body.darkMode .modalPlanOption.active small{color:#5b3b08;}
+
+
+/* Text alignment after punctuation cleanup */
+.heroSub{max-width:620px;text-align:left;}
+.footerBrand p{text-align:center;max-width:520px;margin:12px auto 0;}

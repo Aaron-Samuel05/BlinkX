@@ -8250,3 +8250,19 @@ body.darkMode .modalPlanOption.active span,body.darkMode .modalPlanOption.active
 /* Text alignment after punctuation cleanup */
 .heroSub{max-width:620px;text-align:left;}
 .footerBrand p{text-align:center;max-width:520px;margin:12px auto 0;}
+
+
+/* Dark calendar separation — stronger component boundary without changing layout or interactions */
+body.darkMode .calendar{
+  background:#10100f!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.48),0 0 0 1px rgba(255,255,255,.035) inset,0 0 32px rgba(250,170,38,.035)!important;
+}
+body.darkMode .calendar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.045),transparent 18%);
+}

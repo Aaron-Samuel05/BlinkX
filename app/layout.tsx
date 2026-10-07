@@ -5,5 +5,5 @@ export const metadata: Metadata = {
   description:"Blink X shoots and delivers 12 social-ready reels in 24 hours.",
 };
 export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body className="darkMode">{children}</body></html>;
 }

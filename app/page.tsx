@@ -165,7 +165,7 @@ export default function Home() {
           <img src={darkMode ? "/blinkx-logo-dark.png" : "/blinkx-logo.png"} alt="Blink X" />
         </a>
         <div className="navlinks">
-          <a href="#why">Why Blink X?</a>
+          <a href="#problem">Why Blink X?</a>
           <a href="#how">How it works</a>
           <a href="#pricing">Pricing</a>
           <a href="#book">Book</a>
@@ -228,21 +228,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section id="why" className="section why">
-        <div className="sectionIntro">
-          <div><div className="miniEyebrow">WHY <span /></div><h2>Why Blink <em>X?</em></h2><p>Your business deserves better content.</p></div>
-          <motion.a whileHover={{ x: 5 }} href="#how" className="textButton">See how it works <ArrowRight size={17}/></motion.a>
-        </div>
-        <div className="benefitGrid">
-          {benefits.map(([num, title, text, Icon], i) => (
-            <motion.div key={title} className="benefit glassCard" initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .25 }} transition={{ delay: i * .08 }}>
-              <span className="benefitNo">{num}</span><div className="iconBubble"><Icon size={24} strokeWidth={2.2}/></div><h3>{title}</h3><p>{text}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      <section className="problem section">
+      <section id="problem" className="problem section">
         <motion.div className="problemVisual problemImageCard" initial={{ opacity: 0, scale: .96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
           <img src="/blinkx-problem.jpg" alt="Blink X content production workspace" />
         </motion.div>

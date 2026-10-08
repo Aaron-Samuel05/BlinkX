@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
@@ -59,6 +59,17 @@ const faqs = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    if (window.innerWidth <= 650) {
+      window.history.scrollRestoration = "manual";
+      const resetScroll = () => window.scrollTo(0, 0);
+      resetScroll();
+      requestAnimationFrame(resetScroll);
+      const timer = window.setTimeout(resetScroll, 100);
+      return () => window.clearTimeout(timer);
+    }
+  }, []);
+
   const [date, setDate] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const now = new Date();

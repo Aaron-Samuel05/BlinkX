@@ -7635,7 +7635,7 @@ body.darkMode .sideProgress i{
 
 /* Footer light mode — preserve the site's light theme */
 body:not(.darkMode) .footer{
-  background:#fff!important;
+  background:#e8e6e1!important;
   color:#111!important;
 }
 body:not(.darkMode) .footer::after{

@@ -68,6 +68,7 @@ export default function Home() {
   const [showTimeOptions, setShowTimeOptions] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [bookingSubmitting, setBookingSubmitting] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
 
   const packages = [
@@ -112,7 +113,7 @@ export default function Home() {
   const canContinue = date !== null;
   const formComplete = form.name.trim().length > 0 && form.phone.trim().length > 0;
 
-  function submitBooking() {
+  async function submitBooking() {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
     const phoneDigits = form.phone.replace(/\D/g, "");
     if (!formComplete) {
@@ -127,9 +128,57 @@ export default function Home() {
       setFormError("Please enter a valid email address.");
       return;
     }
+    if (!date) {
+      setFormError("Please choose a date.");
+      return;
+    }
+
+    const dateKey = [
+      selectedMonth.year,
+      String(selectedMonth.month + 1).padStart(2, "0"),
+      String(date).padStart(2, "0"),
+    ].join("-");
+
     setFormError("");
-    setShowBooking(false);
-    setSubmitted(true);
+    setBookingSubmitting(true);
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbztGqt6QKUyvQNF6V9p5I9lKe_RVEZHeuHiC3c1UEtTLm8A-Ba1af6dIPZltc4PvMhFiA/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify({
+          date: dateKey,
+          time,
+          name: form.name.trim(),
+          business: form.business.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          type: form.type,
+          location: form.location.trim(),
+          package: `${activePackage.name} - ${activePackage.reels} Reels - ₹${activePackage.price.toLocaleString("en-IN")}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        if (result.booked) {
+          setFormError("Time slot is already booked. Please choose another date or time.");
+        } else {
+          setFormError(result.message || "We couldn't submit your booking. Please try again.");
+        }
+        return;
+      }
+
+      setShowBooking(false);
+      setSubmitted(true);
+    } catch {
+      setFormError("We couldn't connect to the booking system. Please try again.");
+    } finally {
+      setBookingSubmitting(false);
+    }
   }
 
   function moveHero(e: React.MouseEvent<HTMLElement>) {
@@ -454,7 +503,7 @@ export default function Home() {
           <select value={form.type} onChange={e=>{setForm({...form,type:e.target.value});setFormError("")}}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>
           <p className="modalNote">Time availability, location, production requirements and the 50% advance process will be discussed with the Blink X team on the callback.</p>
           {formError && <p className="formError" role="alert">{formError}</p>}
-          <motion.button whileHover={{scale:1.015}} whileTap={{scale:.985}} className="fullButton" onClick={submitBooking}>Submit Booking Request <ArrowRight size={18}/></motion.button>
+          <motion.button whileHover={{scale:1.015}} whileTap={{scale:.985}} className="fullButton" onClick={submitBooking} disabled={bookingSubmitting}>{bookingSubmitting ? "Checking slot..." : <>Submit Booking Request <ArrowRight size={18}/></>}</motion.button>
         </motion.div>
       </div>}
     </main>

@@ -143,7 +143,7 @@ export default function Home() {
     setBookingSubmitting(true);
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbztGqt6QKUyvQNF6V9p5I9lKe_RVEZHeuHiC3c1UEtTLm8A-Ba1af6dIPZltc4PvMhFiA/exec", {
+      const response = await fetch("/api/booking", {
         method: "POST",
         headers: {
           "Content-Type": "text/plain;charset=utf-8",

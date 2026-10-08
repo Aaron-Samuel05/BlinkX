@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title:"Blink X. 18 Reels. 24 Hours.",
+  title:"BlinkX",
   description:"Blink X shoots and delivers 18 social-ready reels in 24 hours.",
 };
 export default function RootLayout({children}:{children:React.ReactNode}) {

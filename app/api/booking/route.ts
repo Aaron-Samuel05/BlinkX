@@ -3,45 +3,23 @@ import { NextResponse } from "next/server";
 const APPS_SCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbwu5oV-aENTXrjyL4lnLLWTeMS17dsUB4oER3EkyMb0otCSF0I3CnwJKvNoQdS36gTq8A/exec";
 
-const REQUEST_TIMEOUT_MS = 15000;
+const REQUEST_TIMEOUT_MS = 30000;
 
 async function postToAppsScript(body: unknown) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
   try {
-    const request = {
-      method: "POST" as const,
+    return await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
       body: JSON.stringify(body),
+      redirect: "follow",
       signal: controller.signal,
-      cache: "no-store" as const,
-    };
-
-    // Google Apps Script web apps can return a redirect before the actual
-    // web-app response. Handle that redirect ourselves so the POST body and
-    // method are preserved instead of relying on fetch's redirect behavior.
-    let response = await fetch(APPS_SCRIPT_URL, {
-      ...request,
-      redirect: "manual",
+      cache: "no-store",
     });
-
-    if (response.status >= 300 && response.status < 400) {
-      const location = response.headers.get("location");
-
-      if (!location) {
-        throw new Error("Booking service redirect did not include a destination.");
-      }
-
-      response = await fetch(new URL(location, APPS_SCRIPT_URL), {
-        ...request,
-        redirect: "follow",
-      });
-    }
-
-    return response;
   } finally {
     clearTimeout(timeout);
   }

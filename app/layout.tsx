@@ -8,7 +8,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
   return <html lang="en"><body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(() => { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; if (location.hash) return; const reset = () => window.scrollTo(0, 0); reset(); requestAnimationFrame(() => { reset(); requestAnimationFrame(reset); }); window.addEventListener("load", reset, { once: true }); window.addEventListener("pageshow", reset); setTimeout(reset, 50); setTimeout(reset, 250); })();`,
+            __html: `(() => { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; if (location.hash) return; const nav = performance.getEntriesByType("navigation")[0]; if (!nav || nav.type !== "reload") return; const reset = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" }); let tries = 0; const timer = setInterval(() => { reset(); if (++tries >= 20) clearInterval(timer); }, 50); reset(); })();`,
           }}
         />
         {children}

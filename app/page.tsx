@@ -511,6 +511,12 @@ export default function Home() {
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
+          <div className="modalTimePicker">
+            <div className="modalTimePickerLabel">CHANGE CALL TIME</div>
+            <select value={time} onChange={e=>setTime(e.target.value)}>
+              {timeOptions.map(option => <option key={option} value={option}>{option}</option>)}
+            </select>
+          </div>
           <div className="modalPlanPicker">
             <div className="modalPlanPickerLabel">CHANGE PLAN</div>
             <div className="modalPlanOptions">

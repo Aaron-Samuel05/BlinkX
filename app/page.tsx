@@ -66,6 +66,7 @@ export default function Home() {
   });
   const [time, setTime] = useState("Discuss on call");
   const [showTimeOptions, setShowTimeOptions] = useState(false);
+  const [openModalDropdown, setOpenModalDropdown] = useState<"time" | "plan" | null>(null);
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
@@ -496,48 +497,38 @@ export default function Home() {
       </footer>
 
       {showBooking && <div className="modalBack" onMouseDown={()=>setShowBooking(false)}>
-        <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>e.stopPropagation()}>
-          <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
+        <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={()=>setOpenModalDropdown(null)}>
+          <button className="modalClose" onMouseDown={e=>e.stopPropagation()} onClick={()=>{setOpenModalDropdown(null);setShowBooking(false)}}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
-          <div className="modalTimePicker">
-            <div className="modalTimePickerLabel">PREFERRED CALL TIME</div>
-            <div className="modalTimeOptions">
-              {timeOptions.map(option => {
-                const [label, range] = option === "Discuss on call"
-                  ? ["Flexible", "Discuss on call"]
-                  : option.split(" (");
-                const cleanRange = range?.replace(")", "").replace(" to ", " – ") || "";
-                const icon = label === "Morning" ? "☀" : label === "Afternoon" ? "◐" : label === "Evening" ? "◉" : "↔";
-                return (
-                  <button
-                    type="button"
-                    key={option}
-                    className={time === option ? "selected" : ""}
-                    onClick={() => setTime(option)}
-                  >
-                    <span className="modalTimeOptionTop"><b>{icon}</b><strong>{label}</strong></span>
-                    <small>{cleanRange}</small>
-                  </button>
-                );
-              })}
+          <div className="modalDropdownBlock">
+            <div className="modalDropdownLabel">PREFERRED CALL TIME</div>
+            <div className="modalDropdown">
+              <button type="button" className={"modalDropdownTrigger " + (openModalDropdown === "time" ? "open" : "")} onMouseDown={e=>e.stopPropagation()} onClick={()=>setOpenModalDropdown(openModalDropdown === "time" ? null : "time")} aria-expanded={openModalDropdown === "time"}>
+                <span className="modalDropdownTriggerIcon"><Clock3 size={15}/></span>
+                <span className="modalDropdownTriggerText"><b>{time === "Discuss on call" ? "Flexible" : time.split(" (")[0]}</b><small>{time === "Discuss on call" ? "Discuss on call" : time.split(" (")[1]?.replace(")", "").replace(" to ", " – ")}</small></span>
+                <ChevronDown size={16}/>
+              </button>
+              {openModalDropdown === "time" && <div className="modalDropdownMenu" onMouseDown={e=>e.stopPropagation()}>
+                {timeOptions.map(option => {
+                  const label = option === "Discuss on call" ? "Flexible" : option.split(" (")[0];
+                  const range = option === "Discuss on call" ? "Discuss on call" : option.split(" (")[1]?.replace(")", "").replace(" to ", " – ");
+                  return <button type="button" key={option} className={time === option ? "selected" : ""} onClick={()=>{setTime(option);setOpenModalDropdown(null);}}><span><b>{label}</b><small>{range}</small></span>{time === option && <Check size={15}/>}</button>;
+                })}
+              </div>}
             </div>
           </div>
-          <div className="modalPlanPicker">
-            <div className="modalPlanPickerLabel">CHANGE PLAN</div>
-            <div className="modalPlanOptions">
-              {packages.map(pkg => (
-                <button
-                  type="button"
-                  key={pkg.id}
-                  className={`modalPlanOption ${selectedPackage === pkg.id ? "active" : ""}`}
-                  onClick={() => setSelectedPackage(pkg.id)}
-                >
-                  <span>{pkg.name}</span>
-                  <b>{pkg.reels} Reels</b>
-                  <small>₹{pkg.price.toLocaleString("en-IN")}</small>
-                </button>
-              ))}
+          <div className="modalDropdownBlock">
+            <div className="modalDropdownLabel">SELECT PLAN</div>
+            <div className="modalDropdown">
+              <button type="button" className={"modalDropdownTrigger " + (openModalDropdown === "plan" ? "open" : "")} onMouseDown={e=>e.stopPropagation()} onClick={()=>setOpenModalDropdown(openModalDropdown === "plan" ? null : "plan")} aria-expanded={openModalDropdown === "plan"}>
+                <span className="modalDropdownTriggerIcon"><Layers3 size={15}/></span>
+                <span className="modalDropdownTriggerText"><b>{activePackage.name}</b><small>{activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")}</small></span>
+                <ChevronDown size={16}/>
+              </button>
+              {openModalDropdown === "plan" && <div className="modalDropdownMenu" onMouseDown={e=>e.stopPropagation()}>
+                {packages.map(pkg => <button type="button" key={pkg.id} className={selectedPackage === pkg.id ? "selected" : ""} onClick={()=>{setSelectedPackage(pkg.id);setOpenModalDropdown(null);}}><span><b>{pkg.name}</b><small>{pkg.reels} Reels · ₹{pkg.price.toLocaleString("en-IN")}</small></span>{selectedPackage === pkg.id && <Check size={15}/>}</button>)}
+              </div>}
             </div>
           </div>
           <div className="formGrid">{[["name","Your name *"],["business","Business / brand (optional)"],["phone","Phone number *"],["email","Email address (optional)"],["location","Shoot location / area (optional)"]].map(([k,label])=><input key={k} required={k==="name" || k==="phone"} type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>

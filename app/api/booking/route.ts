@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const requestedDate = String(body?.date || "").trim();
-    if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(requestedDate)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) {
       return NextResponse.json(
         { success: false, message: "Please choose a valid booking date." },
         { status: 400 }

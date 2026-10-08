@@ -69,7 +69,7 @@ export default function Home() {
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const packages = [
     { id: "starter", name: "Starter", reels: 8, price: 10000, advance: 5000 },

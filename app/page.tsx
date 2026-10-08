@@ -66,6 +66,7 @@ export default function Home() {
   });
   const [time, setTime] = useState("Discuss on call");
   const [showTimeOptions, setShowTimeOptions] = useState(false);
+  const [modalOpenDropdown, setModalOpenDropdown] = useState<"time" | "plan" | null>(null);
   const [showBooking, setShowBooking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
@@ -496,49 +497,33 @@ export default function Home() {
       </footer>
 
       {showBooking && <div className="modalBack" onMouseDown={()=>setShowBooking(false)}>
-        <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>e.stopPropagation()}>
+        <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>{e.stopPropagation();setModalOpenDropdown(null)}}>
           <button className="modalClose" onClick={()=>setShowBooking(false)}><X size={18}/></button>
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
-          <div className="modalTimePicker">
+          <div className="modalDropdownField">
             <div className="modalTimePickerLabel">PREFERRED CALL TIME</div>
-            <div className="modalTimeOptions">
-              {timeOptions.map(option => {
-                const [label, range] = option === "Discuss on call"
-                  ? ["Flexible", "Discuss on call"]
-                  : option.split(" (");
-                const cleanRange = range?.replace(")", "").replace(" to ", " – ") || "";
-                const icon = label === "Morning" ? "☀" : label === "Afternoon" ? "◐" : label === "Evening" ? "◉" : "↔";
-                return (
-                  <button
-                    type="button"
-                    key={option}
-                    className={time === option ? "selected" : ""}
-                    onClick={() => setTime(option)}
-                  >
-                    <span className="modalTimeOptionTop"><b>{icon}</b><strong>{label}</strong></span>
-                    <small>{cleanRange}</small>
-                  </button>
-                );
+            <button type="button" className="modalDropdownTrigger" onMouseDown={e=>e.stopPropagation()} onClick={()=>setModalOpenDropdown(v=>v==="time"?null:"time")}>
+              <span className="modalDropdownValue"><Clock3 size={15}/><span><b>{time === "Discuss on call" ? "Flexible" : time.split(" (")[0]}</b><small>{time === "Discuss on call" ? "Discuss on call" : time.split(" (")[1]?.replace(")","").replace(" to "," – ")}</small></span></span>
+              <ChevronDown size={16} className={modalOpenDropdown==="time" ? "open" : ""}/>
+            </button>
+            {modalOpenDropdown==="time" && <div className="modalDropdownMenu">
+              {timeOptions.map(option=>{
+                const label=option==="Discuss on call"?"Flexible":option.split(" (")[0];
+                const range=option==="Discuss on call"?"Discuss on call":option.split(" (")[1]?.replace(")","").replace(" to "," – ");
+                return <button type="button" key={option} className={time===option?"selected":""} onMouseDown={e=>e.stopPropagation()} onClick={()=>{setTime(option);setModalOpenDropdown(null)}}><span><b>{label}</b><small>{range}</small></span>{time===option&&<Check size={15}/>}</button>;
               })}
-            </div>
+            </div>}
           </div>
-          <div className="modalPlanPicker">
-            <div className="modalPlanPickerLabel">CHANGE PLAN</div>
-            <div className="modalPlanOptions">
-              {packages.map(pkg => (
-                <button
-                  type="button"
-                  key={pkg.id}
-                  className={`modalPlanOption ${selectedPackage === pkg.id ? "active" : ""}`}
-                  onClick={() => setSelectedPackage(pkg.id)}
-                >
-                  <span>{pkg.name}</span>
-                  <b>{pkg.reels} Reels</b>
-                  <small>₹{pkg.price.toLocaleString("en-IN")}</small>
-                </button>
-              ))}
-            </div>
+          <div className="modalDropdownField modalPlanPicker">
+            <div className="modalPlanPickerLabel">SELECT PLAN</div>
+            <button type="button" className="modalDropdownTrigger" onMouseDown={e=>e.stopPropagation()} onClick={()=>setModalOpenDropdown(v=>v==="plan"?null:"plan")}>
+              <span className="modalDropdownValue"><Layers3 size={15}/><span><b>{activePackage.name}</b><small>{activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")}</small></span></span>
+              <ChevronDown size={16} className={modalOpenDropdown==="plan" ? "open" : ""}/>
+            </button>
+            {modalOpenDropdown==="plan" && <div className="modalDropdownMenu">
+              {packages.map(pkg=><button type="button" key={pkg.id} className={selectedPackage===pkg.id?"selected":""} onMouseDown={e=>e.stopPropagation()} onClick={()=>{setSelectedPackage(pkg.id);setModalOpenDropdown(null)}}><span><b>{pkg.name}</b><small>{pkg.reels} Reels · ₹{pkg.price.toLocaleString("en-IN")}</small></span>{selectedPackage===pkg.id&&<Check size={15}/>}</button>)}
+            </div>}
           </div>
           <div className="formGrid">{[["name","Your name *"],["business","Business / brand (optional)"],["phone","Phone number *"],["email","Email address (optional)"],["location","Shoot location / area (optional)"]].map(([k,label])=><input key={k} required={k==="name" || k==="phone"} type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>
           <select value={form.type} onChange={e=>{setForm({...form,type:e.target.value});setFormError("")}}><option>Business / Brand</option><option>Creator / Personal brand</option><option>Event</option><option>Personal</option><option>Other</option></select>

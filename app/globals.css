@@ -8539,3 +8539,31 @@ body.darkMode .calendarDays button.active{
 .modalTimePickerLabel{font-size:8px;font-weight:800;letter-spacing:.16em;color:#999;margin:0 0 7px 2px;}
 .modalTimePicker select{margin-top:0!important;width:100%;box-sizing:border-box;}
 body.darkMode .modalTimePicker select{background:#0b0b0b;color:#fff;border-color:#2a2a2a;}
+
+
+/* Dark pricing refinement — background and card text only. */
+body.darkMode .offerSection{
+  background:
+    radial-gradient(circle at 50% 72%,rgba(250,170,38,.10) 0%,rgba(250,170,38,.035) 28%,transparent 58%),
+    #11110f!important;
+}
+body.darkMode .packageCard .packageName,
+body.darkMode .packageCard .packageUnit,
+body.darkMode .packageCard .packageAdvance{
+  color:#aaa!important;
+}
+body.darkMode .packageCard .packagePrice,
+body.darkMode .packageCard .packageReels,
+body.darkMode .packageCard .packageFeatureText b{
+  color:#f5f5f2!important;
+}
+body.darkMode .packageCard .packageFeatureText small{
+  color:#aaa!important;
+}
+body.darkMode .packageCard .packageSelect{
+  color:#f5f5f2!important;
+  border-color:#41413b!important;
+}
+body.darkMode .packageCard .packageSelect.active{
+  color:#111!important;
+}

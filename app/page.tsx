@@ -51,7 +51,7 @@ const process: [string, string, string, LucideIcon, string, string][] = [
 ];
 
 const faqs = [
-  ["What is included in a content day?", "Every package includes professional shooting, editing, captions and subtitles, music and sound design, color grading, thumbnails and 24-hour delivery. The number of ready-to-post Reels depends on the package you choose."],
+  ["What is included in a content day?", "Every package includes professional shooting, editing, captions and subtitles, music and sound design, color grading and 24-hour delivery. The number of ready-to-post Reels depends on the package you choose."],
   ["How does the 50% payment work?", "You pay 50% to reserve the content day. The remaining 50% is due on delivery."],
   ["How quickly will I receive the Reels?", "The package is designed for delivery within 24 hours after the shoot."],
   ["Where do you shoot?", "Shoot location is discussed and confirmed with the Blink X team during the booking callback."],

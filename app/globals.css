@@ -8792,3 +8792,44 @@ body.darkMode .modalDropdownMenu button.selected small{color:#5b3b08;}
   .modalDropdownMenu{top:calc(100% + 5px);max-height:220px;overflow-y:auto;}
   .modalDropdownMenu button{min-height:46px;padding:8px 9px;}
 }
+
+
+/* Booking availability states */
+.calendarDays button.bookedFull{
+  opacity:.42!important;
+  color:#777!important;
+  border-color:#d4d1ca!important;
+  cursor:not-allowed!important;
+  text-decoration:line-through!important;
+  transform:none!important;
+  box-shadow:none!important;
+}
+.calendarDays button.bookedFull:hover{
+  border-color:#d4d1ca!important;
+  transform:none!important;
+}
+.timeOptions button.booked,
+.modalDropdownMenu button.booked{
+  opacity:.42!important;
+  color:#888!important;
+  cursor:not-allowed!important;
+  text-decoration:line-through!important;
+  background:transparent!important;
+}
+.timeOptions button.booked:hover,
+.modalDropdownMenu button.booked:hover{
+  background:transparent!important;
+  transform:none!important;
+}
+body.darkMode .calendarDays button.bookedFull{
+  color:#777!important;
+  border-color:#444!important;
+}
+body.darkMode .calendarDays button.bookedFull:hover{
+  border-color:#444!important;
+}
+body.darkMode .timeOptions button.booked,
+body.darkMode .modalDropdownMenu button.booked{
+  color:#777!important;
+  background:transparent!important;
+}

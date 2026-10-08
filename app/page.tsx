@@ -71,6 +71,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [availability, setAvailability] = useState<Record<string, string[]>>({});
 
   const packages = [
     { id: "starter", name: "Starter", reels: 8, price: 10000, advance: 5000 },
@@ -118,8 +119,55 @@ export default function Home() {
     candidate.setHours(0, 0, 0, 0);
     return candidate < today;
   };
-  const canContinue = date !== null && !isPastDate(date);
+  const getDateKey = (year: number, month: number, day: number) =>
+    `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+  const getBookedTimes = (day: number | null) =>
+    day === null ? [] : availability[getDateKey(selectedMonth.year, selectedMonth.month, day)] || [];
+
+  const isFullyBooked = (day: number) =>
+    new Set(getBookedTimes(day)).size >= timeOptions.length;
+
+  const isTimeBooked = (option: string) =>
+    date !== null && getBookedTimes(date).includes(option);
+
+  const canContinue = date !== null && !isPastDate(date) && !isFullyBooked(date);
   const formComplete = form.name.trim().length > 0 && form.phone.trim().length > 0;
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadAvailability() {
+      const monthStart = getDateKey(selectedMonth.year, selectedMonth.month, 1);
+      const monthEnd = getDateKey(
+        selectedMonth.year,
+        selectedMonth.month,
+        new Date(selectedMonth.year, selectedMonth.month + 1, 0).getDate()
+      );
+
+      setAvailability({});
+
+      try {
+        const response = await fetch(
+          `/api/booking?start=${monthStart}&end=${monthEnd}`,
+          { cache: "no-store" }
+        );
+        const result = await response.json();
+
+        if (!cancelled && result?.success && result.booked && typeof result.booked === "object") {
+          setAvailability(result.booked);
+        }
+      } catch {
+        // Availability is non-blocking. Keep the calendar usable if it cannot be loaded.
+      }
+    }
+
+    loadAvailability();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedMonth.year, selectedMonth.month]);
 
   async function submitBooking() {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
@@ -149,6 +197,16 @@ export default function Home() {
     if (selectedDate < today) {
       setDate(null);
       setFormError("That date has already passed. Please choose a future date.");
+      return;
+    }
+
+    if (isFullyBooked(date)) {
+      setFormError("That date is fully booked. Please choose another date.");
+      return;
+    }
+
+    if (isTimeBooked(time)) {
+      setFormError("That time slot is already booked. Please choose another time.");
       return;
     }
 
@@ -435,11 +493,11 @@ export default function Home() {
               </div>
             </div>
             <div className="calendarWeek">{["M","T","W","T","F","S","S"].map((x,i)=><span key={i}>{x}</span>)}</div>
-            <div className="calendarDays">{calendar.map((d, i)=>{ const past = d !== null && isPastDate(d); return <span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button type="button" disabled={past} className={`${date===d?"active ":""}${past?"past":""}`} onClick={()=>{ if (!past) { setDate(d); setFormError(""); } }}>{d}</button>}</span> })}</div>
+            <div className="calendarDays">{calendar.map((d, i)=>{ const past = d !== null && isPastDate(d); const full = d !== null && isFullyBooked(d); const disabled = past || full; return <span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button type="button" disabled={disabled} className={`${date===d?"active ":""}${past?"past ":""}${full?"bookedFull":""}`} onClick={()=>{ if (!disabled) { setDate(d); const bookedForDay = getBookedTimes(d); if (bookedForDay.includes(time)) { const nextTime = timeOptions.find(option => !bookedForDay.includes(option)); if (nextTime) setTime(nextTime); } setFormError(""); } }}>{d}</button>}</span> })}</div>
             <div className="preference" onClick={()=>setShowTimeOptions(v=>!v)} role="button" tabIndex={0}>
               <div><small>PREFERRED CALL TIME</small><b>{time}</b></div><ChevronDown size={17}/>
             </div>
-            {showTimeOptions && <div className="timeOptions">{timeOptions.map(option=><button key={option} className={time===option?"selected":""} onClick={()=>{setTime(option);setShowTimeOptions(false)}}>{option}<Check size={15}/></button>)}</div>}
+            {showTimeOptions && <div className="timeOptions">{timeOptions.map(option=>{ const booked = isTimeBooked(option); return <button key={option} disabled={booked} className={`${time===option?"selected ":""}${booked?"booked":""}`} onClick={()=>{ if (!booked) { setTime(option); setShowTimeOptions(false); } }}>{option}{booked && <small>BOOKED</small>}{!booked && <Check size={15}/>}</button>})}</div>}
             <button className="preferenceHint" onClick={()=>setShowTimeOptions(v=>!v)}>Tap to choose a preferred call time</button>
             <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={18}/></motion.button>
           </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>{monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year}</b>. The Blink X team will call to confirm the time, location and shoot details.</p><motion.button whileHover={{ y: -2 }} whileTap={{ scale: .97 }} className="successBookingButton" onClick={()=>setSubmitted(false)}>Make another booking <span><ArrowRight size={16}/></span></motion.button></div>}
@@ -509,9 +567,10 @@ export default function Home() {
             </button>
             {modalOpenDropdown==="time" && <div className="modalDropdownMenu">
               {timeOptions.map(option=>{
+                const booked = isTimeBooked(option);
                 const label=option==="Discuss on call"?"Flexible":option.split(" (")[0];
                 const range=option==="Discuss on call"?"Discuss on call":option.split(" (")[1]?.replace(")","").replace(" to "," – ");
-                return <button type="button" key={option} className={time===option?"selected":""} onMouseDown={e=>e.stopPropagation()} onClick={()=>{setTime(option);setModalOpenDropdown(null)}}><span><b>{label}</b><small>{range}</small></span>{time===option&&<Check size={15}/>}</button>;
+                return <button type="button" key={option} disabled={booked} className={`${time===option?"selected ":""}${booked?"booked":""}`} onMouseDown={e=>e.stopPropagation()} onClick={()=>{if (!booked) {setTime(option);setModalOpenDropdown(null)}}}><span><b>{label}</b><small>{range}{booked ? " · BOOKED" : ""}</small></span>{time===option&&!booked&&<Check size={15}/>}</button>;
               })}
             </div>}
           </div>

@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "The booking service returned an invalid response.",
+          message: "This time slot is already booked. Please choose another date or time.",
         },
         { status: 502 }
       );

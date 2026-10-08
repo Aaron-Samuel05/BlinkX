@@ -110,7 +110,14 @@ export default function Home() {
     return [...Array(startOffset).fill(null), ...Array.from({ length: count }, (_, i) => i + 1)];
   }, [selectedMonth]);
   const monthLabel = monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, 1));
-  const canContinue = date !== null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const isPastDate = (day: number) => {
+    const candidate = new Date(selectedMonth.year, selectedMonth.month, day);
+    candidate.setHours(0, 0, 0, 0);
+    return candidate < today;
+  };
+  const canContinue = date !== null && !isPastDate(date);
   const formComplete = form.name.trim().length > 0 && form.phone.trim().length > 0;
 
   async function submitBooking() {
@@ -130,6 +137,17 @@ export default function Home() {
     }
     if (!date) {
       setFormError("Please choose a date.");
+      return;
+    }
+
+    const selectedDate = new Date(selectedMonth.year, selectedMonth.month, date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    selectedDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      setDate(null);
+      setFormError("That date has already passed. Please choose a future date.");
       return;
     }
 
@@ -416,7 +434,7 @@ export default function Home() {
               </div>
             </div>
             <div className="calendarWeek">{["M","T","W","T","F","S","S"].map((x,i)=><span key={i}>{x}</span>)}</div>
-            <div className="calendarDays">{calendar.map((d, i)=><span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button className={date===d?"active":""} onClick={()=>setDate(d)}>{d}</button>}</span>)}</div>
+            <div className="calendarDays">{calendar.map((d, i)=>{ const past = d !== null && isPastDate(d); return <span key={`${selectedMonth.year}-${selectedMonth.month}-${i}`}>{d !== null && <button type="button" disabled={past} className={`${date===d?"active ":""}${past?"past":""}`} onClick={()=>{ if (!past) { setDate(d); setFormError(""); } }}>{d}</button>}</span> })}</div>
             <div className="preference" onClick={()=>setShowTimeOptions(v=>!v)} role="button" tabIndex={0}>
               <div><small>PREFERRED CALL TIME</small><b>{time}</b></div><ChevronDown size={17}/>
             </div>

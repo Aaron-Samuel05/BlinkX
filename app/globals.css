@@ -8532,3 +8532,10 @@ body.darkMode .calendarDays button.active{
     max-width:320px!important;
   }
 }
+
+
+/* Booking modal — compact call-time selector. */
+.modalTimePicker{margin-top:12px;}
+.modalTimePickerLabel{font-size:8px;font-weight:800;letter-spacing:.16em;color:#999;margin:0 0 7px 2px;}
+.modalTimePicker select{margin-top:0!important;width:100%;box-sizing:border-box;}
+body.darkMode .modalTimePicker select{background:#0b0b0b;color:#fff;border-color:#2a2a2a;}

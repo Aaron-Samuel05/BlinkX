@@ -8473,3 +8473,62 @@ body.darkMode .calendarDays button.active{
     padding-right:16px!important;
   }
 }
+
+
+/* Booking calendar — past dates are visible but cannot be selected. */
+.calendarDays button.past{
+  opacity:.24!important;
+  cursor:not-allowed!important;
+  transform:none!important;
+  box-shadow:none!important;
+  border-color:#ddd!important;
+  color:#999!important;
+}
+.calendarDays button.past:hover{
+  border-color:#ddd!important;
+  transform:none!important;
+}
+
+/* Booking success state — center the confirmation content cleanly inside the card. */
+.success{
+  min-height:416px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:42px 34px!important;
+}
+.successIcon{
+  margin:0 0 18px!important;
+  flex:0 0 auto!important;
+}
+.success .miniEyebrow{
+  margin:0!important;
+  text-align:center!important;
+}
+.success h3{
+  margin:10px 0 14px!important;
+  text-align:center!important;
+}
+.success p{
+  width:100%!important;
+  max-width:480px!important;
+  margin:0 auto 24px!important;
+  text-align:center!important;
+}
+.successBookingButton{
+  flex:0 0 auto!important;
+}
+@media(max-width:650px){
+  .success{
+    min-height:390px!important;
+    padding:36px 22px!important;
+  }
+  .success h3{
+    font-size:38px!important;
+  }
+  .success p{
+    max-width:320px!important;
+  }
+}

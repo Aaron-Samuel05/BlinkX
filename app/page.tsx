@@ -167,7 +167,7 @@ export default function Home() {
     return () => {
       cancelled = true;
     };
-  }, [selectedMonth.year, selectedMonth.month]);
+  }, [selectedMonth.year, selectedMonth.month, getDateKey(selectedMonth.year, selectedMonth.month, 1)]);
 
   async function submitBooking() {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());

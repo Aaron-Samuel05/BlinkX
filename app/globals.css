@@ -8592,3 +8592,39 @@ body:not(.darkMode) .footer{
     radial-gradient(ellipse 58% 70% at 88% 92%,rgba(250,170,38,.10) 0%,rgba(250,170,38,.045) 38%,transparent 72%),
     #e8e6e1!important;
 }
+
+
+/* Mobile footer alignment only — preserve background and all content. */
+@media(max-width:650px){
+  .footerSimpleTop{
+    justify-items:center!important;
+    text-align:center!important;
+  }
+  .footerBrand{
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+    width:100%!important;
+  }
+  .footerBrand p{
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  .footerSocial{
+    justify-content:center!important;
+  }
+  .footerColumn{
+    align-items:center!important;
+    text-align:center!important;
+    width:100%!important;
+  }
+  .footerBookButton{
+    justify-self:center!important;
+  }
+  .footerBottom{
+    justify-content:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    flex-wrap:wrap!important;
+  }
+}

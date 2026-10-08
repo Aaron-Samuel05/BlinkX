@@ -59,17 +59,6 @@ const faqs = [
 ];
 
 export default function Home() {
-  useEffect(() => {
-    if (window.innerWidth <= 650) {
-      window.history.scrollRestoration = "manual";
-      const resetScroll = () => window.scrollTo(0, 0);
-      resetScroll();
-      requestAnimationFrame(resetScroll);
-      const timer = window.setTimeout(resetScroll, 100);
-      return () => window.clearTimeout(timer);
-    }
-  }, []);
-
   const [date, setDate] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState(() => {
     const now = new Date();

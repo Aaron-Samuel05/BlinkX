@@ -88,3 +88,48 @@ export async function POST(request: Request) {
     );
   }
 }
+
+
+async function getFromAppsScript(start: string, end: string) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  try {
+    const params = new URLSearchParams({ start, end });
+    return await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
+      method: "GET",
+      redirect: "follow",
+      signal: controller.signal,
+      cache: "no-store",
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const start = String(searchParams.get("start") || "").trim();
+  const end = String(searchParams.get("end") || "").trim();
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(start) || !/^\d{4}-\d{2}-\d{2}$/.test(end)) {
+    return NextResponse.json({ success: false, booked: {} }, { status: 400 });
+  }
+
+  try {
+    const response = await getFromAppsScript(start, end);
+    const text = await response.text();
+
+    try {
+      const result = JSON.parse(text);
+      if (!result?.success || typeof result.booked !== "object" || result.booked === null) {
+        return NextResponse.json({ success: false, booked: {} }, { status: 200 });
+      }
+      return NextResponse.json({ success: true, booked: result.booked }, { status: 200 });
+    } catch {
+      return NextResponse.json({ success: false, booked: {} }, { status: 200 });
+    }
+  } catch {
+    return NextResponse.json({ success: false, booked: {} }, { status: 200 });
+  }
+}

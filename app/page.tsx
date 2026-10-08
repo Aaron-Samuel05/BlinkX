@@ -501,10 +501,27 @@ export default function Home() {
           <div className="miniEyebrow">FINAL STEP <span /></div><h3>Tell us about your shoot.</h3>
           <div className="selectedSlot"><CalendarDays size={16}/> {monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year} <span>•</span> {time} <span>•</span> {activePackage.reels} Reels · ₹{activePackage.price.toLocaleString("en-IN")} <span>•</span> ₹{activePackage.advance.toLocaleString("en-IN")} advance</div>
           <div className="modalTimePicker">
-            <div className="modalTimePickerLabel">CHANGE CALL TIME</div>
-            <select value={time} onChange={e=>setTime(e.target.value)}>
-              {timeOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
+            <div className="modalTimePickerLabel">PREFERRED CALL TIME</div>
+            <div className="modalTimeOptions">
+              {timeOptions.map(option => {
+                const [label, range] = option === "Discuss on call"
+                  ? ["Flexible", "Discuss on call"]
+                  : option.split(" (");
+                const cleanRange = range?.replace(")", "").replace(" to ", " – ") || "";
+                const icon = label === "Morning" ? "☀" : label === "Afternoon" ? "◐" : label === "Evening" ? "◉" : "↔";
+                return (
+                  <button
+                    type="button"
+                    key={option}
+                    className={time === option ? "selected" : ""}
+                    onClick={() => setTime(option)}
+                  >
+                    <span className="modalTimeOptionTop"><b>{icon}</b><strong>{label}</strong></span>
+                    <small>{cleanRange}</small>
+                  </button>
+                );
+              })}
+            </div>
           </div>
           <div className="modalPlanPicker">
             <div className="modalPlanPickerLabel">CHANGE PLAN</div>

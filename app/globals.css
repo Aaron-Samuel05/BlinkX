@@ -8705,6 +8705,7 @@ body:not(.darkMode) .modalTimeOptions button.selected small{color:#5b3b08;}
 
 /* Booking modal — compact custom time/plan dropdowns. */
 .modalDropdownField{position:relative;margin-top:12px;z-index:20;}
+.modalDropdownField:has(.modalDropdownMenu){z-index:60;}
 .modalDropdownField.modalPlanPicker{margin-top:12px;}
 .modalDropdownTrigger{
   width:100%;

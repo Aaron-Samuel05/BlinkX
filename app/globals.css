@@ -8584,3 +8584,11 @@ body.darkMode .footer::after{
   filter:blur(42px)!important;
   opacity:1!important;
 }
+
+
+/* Light theme footer background only — preserve all footer content/layout. */
+body:not(.darkMode) .footer{
+  background:
+    radial-gradient(ellipse 58% 70% at 88% 92%,rgba(250,170,38,.10) 0%,rgba(250,170,38,.045) 38%,transparent 72%),
+    #e8e6e1!important;
+}

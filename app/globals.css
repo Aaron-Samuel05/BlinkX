@@ -8628,3 +8628,9 @@ body:not(.darkMode) .footer{
     flex-wrap:wrap!important;
   }
 }
+
+
+/* FAQ cards stay independently sized when one is opened. */
+.faqGrid{
+  align-items:start!important;
+}

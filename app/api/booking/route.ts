@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzzVhkU1qC_9AuqKR0K1c8KYXCOmSH9UaqBp1ZFkKf0t6ifF8c4pqbtgf4-xisZjzJmjQ/exec";
+  "https://script.google.com/macros/s/AKfycbwlc_zkuTbXR0seUy6HCssokbIdOoIb8rupSUF_ESybKR_j_7Wdf9NyMtVDP7LwCgnOFA/exec";
 
 const REQUEST_TIMEOUT_MS = 30000;
 

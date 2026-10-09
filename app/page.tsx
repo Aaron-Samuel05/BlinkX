@@ -112,15 +112,19 @@ export default function Home() {
     return [...Array(startOffset).fill(null), ...Array.from({ length: count }, (_, i) => i + 1)];
   }, [selectedMonth]);
   const monthLabel = monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, 1));
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const isPastDate = (day: number) => {
-    const candidate = new Date(selectedMonth.year, selectedMonth.month, day);
-    candidate.setHours(0, 0, 0, 0);
-    return candidate < today;
-  };
   const getDateKey = (year: number, month: number, day: number) =>
     `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+  // Use India time consistently, so Vercel's UTC timezone cannot mark yesterday as today.
+  const indiaTodayKey = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+
+  const isPastDate = (day: number) =>
+    getDateKey(selectedMonth.year, selectedMonth.month, day) < indiaTodayKey;
 
   const getBookedTimes = (day: number | null) =>
     day === null ? [] : availability[getDateKey(selectedMonth.year, selectedMonth.month, day)] || [];

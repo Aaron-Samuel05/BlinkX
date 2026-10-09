@@ -192,9 +192,8 @@ export default function Home() {
       }
 
       const bookedByDate = result.booked as Record<string, string[]>;
-      setAvailability((current) => ({ ...current, ...bookedByDate }));
-
       const bookedTimes = bookedByDate[dateKey] || [];
+      setAvailability((current) => ({ ...current, [dateKey]: bookedTimes }));
       if (bookedTimes.includes(time)) {
         setFormError("That call time has just been booked. Choose another available time.");
         return;

@@ -177,7 +177,16 @@ export default function Home() {
     if (date === null) return;
 
     const dateKey = getDateKey(selectedMonth.year, selectedMonth.month, date);
+    const normalizeTime = (value: string) => value.trim().toLowerCase().replace(/\\s+/g, " ");
+
     setFormError("");
+
+    // Stop immediately if the calendar already knows this slot is booked.
+    const cachedTimes = availability[dateKey] || [];
+    if (cachedTimes.some((bookedTime) => normalizeTime(bookedTime) === normalizeTime(time))) {
+      setFormError("That call time is already booked. Please choose another time.");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -192,14 +201,16 @@ export default function Home() {
       }
 
       const bookedByDate = result.booked as Record<string, string[]>;
-      const bookedTimes = bookedByDate[dateKey] || [];
+      // The API contract uses YYYY-MM-DD keys. Compare slot labels without case/spacing differences.
+      const bookedTimes = Array.isArray(bookedByDate[dateKey]) ? bookedByDate[dateKey] : [];
       setAvailability((current) => ({ ...current, [dateKey]: bookedTimes }));
-      if (bookedTimes.includes(time)) {
-        setFormError("That call time has just been booked. Choose another available time.");
+
+      if (bookedTimes.some((bookedTime) => normalizeTime(bookedTime) === normalizeTime(time))) {
+        setFormError("That call time has just been booked. Please choose another time.");
         return;
       }
 
-      if (new Set(bookedTimes).size >= timeOptions.length) {
+      if (new Set(bookedTimes.map(normalizeTime)).size >= timeOptions.length) {
         setFormError("That date is fully booked. Please choose another date.");
         return;
       }

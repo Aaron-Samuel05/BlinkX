@@ -173,6 +173,44 @@ export default function Home() {
     };
   }, [selectedMonth.year, selectedMonth.month, getDateKey(selectedMonth.year, selectedMonth.month, 1)]);
 
+  async function openBookingAfterAvailabilityCheck() {
+    if (date === null) return;
+
+    const dateKey = getDateKey(selectedMonth.year, selectedMonth.month, date);
+    setFormError("");
+
+    try {
+      const response = await fetch(
+        `/api/booking?start=${dateKey}&end=${dateKey}`,
+        { cache: "no-store" }
+      );
+      const result = await response.json();
+
+      if (!response.ok || !result?.success || !result.booked || typeof result.booked !== "object") {
+        setFormError("We couldn't verify the latest availability. Please try again.");
+        return;
+      }
+
+      const bookedByDate = result.booked as Record<string, string[]>;
+      setAvailability((current) => ({ ...current, ...bookedByDate }));
+
+      const bookedTimes = bookedByDate[dateKey] || [];
+      if (bookedTimes.includes(time)) {
+        setFormError("That call time has just been booked. Choose another available time.");
+        return;
+      }
+
+      if (new Set(bookedTimes).size >= timeOptions.length) {
+        setFormError("That date is fully booked. Please choose another date.");
+        return;
+      }
+
+      setShowBooking(true);
+    } catch {
+      setFormError("We couldn't verify the latest availability. Please try again.");
+    }
+  }
+
   async function submitBooking() {
     const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
     const phoneDigits = form.phone.replace(/\D/g, "");
@@ -503,7 +541,7 @@ export default function Home() {
             </div>
             {showTimeOptions && <div className="timeOptions">{timeOptions.map(option=>{ const booked = isTimeBooked(option); return <button key={option} disabled={booked} className={`${time===option?"selected ":""}${booked?"booked":""}`} onClick={()=>{ if (!booked) { setTime(option); setShowTimeOptions(false); } }}>{option}{booked && <small>BOOKED</small>}{!booked && <Check size={15}/>}</button>})}</div>}
             <button className="preferenceHint" onClick={()=>setShowTimeOptions(v=>!v)}>Tap to choose a preferred call time</button>
-            <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={()=>setShowBooking(true)}>Continue <ArrowRight size={18}/></motion.button>
+            <motion.button whileHover={{ scale: 1.015 }} whileTap={{ scale: .985 }} disabled={!canContinue} className="fullButton" onClick={openBookingAfterAvailabilityCheck}>Continue <ArrowRight size={18}/></motion.button>
           </> : <div className="success"><div className="successIcon"><Check/></div><div className="miniEyebrow">REQUEST RECEIVED <span /></div><h3>We’ll call you.</h3><p>Your preferred date is <b>{monthFormatter.format(new Date(selectedMonth.year, selectedMonth.month, date || 1)).split(" ")[0]} {date}, {selectedMonth.year}</b>. The Blink X team will call to confirm the time, location and shoot details.</p><motion.button whileHover={{ y: -2 }} whileTap={{ scale: .97 }} className="successBookingButton" onClick={()=>setSubmitted(false)}>Make another booking <span><ArrowRight size={16}/></span></motion.button></div>}
         </div>
       </section>

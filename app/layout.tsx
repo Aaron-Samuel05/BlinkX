@@ -6,11 +6,11 @@ const siteUrl = "https://theblinkx.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Instagram Reels Production in India | Blink X",
+    default: "Blink X (TheBlinkX) | Instagram Reels Production India",
     template: "%s | Blink X",
   },
   description:
-    "Plan, shoot and edit Instagram Reels for your business with Blink X. Choose 8, 12 or 18-video packages, with delivery within 24 hours after your shoot.",
+    "Blink X (TheBlinkX) plans, shoots and edits Instagram Reels for businesses and brands in India. Choose 8, 12 or 18-video packages with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
   keywords: [
     "Reels production company India",
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "social media video production",
     "brand video production",
     "Blink X",
+    "TheBlinkX",
   ],
   alternates: {
     canonical: "/",
@@ -29,16 +30,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Blink X",
-    title: "Instagram Reels Production in India | Blink X",
+    title: "Blink X (TheBlinkX) | Instagram Reels Production India",
     description:
-      "Plan, shoot and edit short-form videos for your business or brand. Explore Blink X content-day packages and book a shoot.",
+      "TheBlinkX is Blink X, producing Instagram Reels and short-form videos for businesses and brands across India.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
     title: "Instagram Reels Production in India | Blink X",
     description:
-      "Short-form video production for businesses and brands. Choose an 8, 12 or 18-Reel package with Blink X.",
+      "TheBlinkX (Blink X) produces Instagram Reels and short-form videos for businesses and brands across India.",
   },
   robots: {
     index: true,
@@ -57,6 +58,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Blink X",
+  alternateName: ["TheBlinkX", "theblinkx"],
   url: siteUrl,
   logo: `${siteUrl}/blinkx-logo.png`,
   description:
@@ -77,6 +79,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Blink X",
+  alternateName: ["TheBlinkX", "theblinkx"],
   url: siteUrl,
   inLanguage: "en-IN",
   publisher: {

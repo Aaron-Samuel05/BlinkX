@@ -6,11 +6,11 @@ const siteUrl = "https://www.theblinkx.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Blink X (TheBlinkX) | Instagram Reels Production India",
+    default: "Blink X | Reels Production for Brands & Businesses in India",
     template: "%s | Blink X",
   },
   description:
-    "Blink X (TheBlinkX) plans, shoots and edits Instagram Reels for businesses and brands in India. Choose 8, 12 or 18-video packages with delivery within 24 hours after your shoot.",
+    "Create scroll-stopping Instagram Reels with Blink X. We plan, shoot and edit short-form videos for businesses and brands across India, with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
   icons: {
     icon: [{ url: "/blinkx-logo.png", type: "image/png", sizes: "any" }],
@@ -35,16 +35,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Blink X",
-    title: "Blink X (TheBlinkX) | Instagram Reels Production India",
+    title: "Blink X | Reels Production for Brands & Businesses in India",
     description:
-      "TheBlinkX is Blink X, producing Instagram Reels and short-form videos for businesses and brands across India.",
+      "Blink X plans, shoots and edits high-quality Instagram Reels for businesses and brands across India. Book a content shoot and get ready-to-post videos within 24 hours.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Instagram Reels Production in India | Blink X",
+    title: "Blink X | Instagram Reels & Short-Form Video Production",
     description:
-      "TheBlinkX (Blink X) produces Instagram Reels and short-form videos for businesses and brands across India.",
+      "Professional Instagram Reels production for businesses and brands across India. Planning, shooting, editing and 24-hour delivery by Blink X.",
   },
   robots: {
     index: true,

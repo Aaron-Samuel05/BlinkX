@@ -17,11 +17,6 @@ export const metadata: Metadata = {
     shortcut: "/blinkx-logo.png",
     apple: "/blinkx-logo.png",
   },
-  icons: {
-    icon: [{ url: "/blinkx-logo.png", type: "image/png", sizes: "any" }],
-    shortcut: "/blinkx-logo.png",
-    apple: "/blinkx-logo.png",
-  },
   keywords: [
     "Reels production company India",
     "Instagram Reels production services",

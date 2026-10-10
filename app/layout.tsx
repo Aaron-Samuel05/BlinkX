@@ -6,20 +6,20 @@ const siteUrl = "https://theblinkx.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Blink X | Reels Production & Short-Form Video Content",
+    default: "Blink X | Reels Production for Businesses & Brands in India",
     template: "%s | Blink X",
   },
   description:
-    "Blink X helps businesses, brands and creators plan, shoot and edit social-ready Reels. Choose 8, 12 or 18 Reels, with delivery within 24 hours after your shoot.",
+    "Blink X helps businesses and brands across India plan, shoot and edit short-form video content. Choose 8, 12 or 18 Reels, with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
   keywords: [
-    "Reels production",
-    "Instagram Reels production",
-    "short-form video content",
-    "business video production",
-    "content creation for brands",
-    "Reels editing",
-    "video production for businesses",
+    "Reels production company India",
+    "Instagram Reels production services",
+    "short-form video production for brands",
+    "video content creation for businesses",
+    "Reels editing services India",
+    "social media video production",
+    "brand video production",
     "Blink X",
   ],
   alternates: {
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Blink X",
-    title: "Blink X | Reels Production & Short-Form Video Content",
+    title: "Blink X | Reels Production for Businesses & Brands in India",
     description:
-      "Plan, shoot and edit social-ready Reels for your business, brand or personal brand. Pick a package and book your content day with Blink X.",
+      "Plan, shoot and edit social-ready Reels for your business or brand. Choose a content-day package and book with Blink X.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blink X | Reels Production & Short-Form Video Content",
+    title: "Blink X | Reels Production for Businesses & Brands in India",
     description:
-      "Plan, shoot and edit social-ready Reels for your business, brand or personal brand with Blink X.",
+      "Short-form video content for businesses and brands across India. Plan, shoot and edit social-ready Reels with Blink X.",
   },
   robots: {
     index: true,
@@ -59,14 +59,42 @@ const organizationSchema = {
   name: "Blink X",
   url: siteUrl,
   description:
-    "Short-form video and Reels production for businesses, brands, creators and personal brands.",
+    "Short-form video and Instagram Reels production for businesses and brands.",
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  knowsAbout: [
+    "Instagram Reels production",
+    "Short-form video production",
+    "Social media content creation",
+    "Video editing for brands",
+  ],
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Short-form Video and Reels Production",
+  serviceType: "Short-form video production",
+  provider: {
+    "@type": "Organization",
+    name: "Blink X",
+    url: siteUrl,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  description:
+    "Content planning, scripting, video shoots and editing for businesses and brands, with social-ready Reels delivered within 24 hours after the shoot.",
 };
 
 export default function RootLayout({children}:{children:React.ReactNode}) {
   return <html lang="en"><body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, serviceSchema]) }}
         />
         <script
           dangerouslySetInnerHTML={{

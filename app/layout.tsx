@@ -6,11 +6,11 @@ const siteUrl = "https://theblinkx.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Blink X | Reels Production for Businesses & Brands in India",
+    default: "Instagram Reels Production in India | Blink X",
     template: "%s | Blink X",
   },
   description:
-    "Blink X helps businesses and brands across India plan, shoot and edit short-form video content. Choose 8, 12 or 18 Reels, with delivery within 24 hours after your shoot.",
+    "Plan, shoot and edit Instagram Reels for your business with Blink X. Choose 8, 12 or 18-video packages, with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
   keywords: [
     "Reels production company India",
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "Blink X",
-    title: "Blink X | Reels Production for Businesses & Brands in India",
+    title: "Instagram Reels Production in India | Blink X",
     description:
-      "Plan, shoot and edit social-ready Reels for your business or brand. Choose a content-day package and book with Blink X.",
+      "Plan, shoot and edit short-form videos for your business or brand. Explore Blink X content-day packages and book a shoot.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blink X | Reels Production for Businesses & Brands in India",
+    title: "Instagram Reels Production in India | Blink X",
     description:
-      "Short-form video content for businesses and brands across India. Plan, shoot and edit social-ready Reels with Blink X.",
+      "Short-form video production for businesses and brands. Choose an 8, 12 or 18-Reel package with Blink X.",
   },
   robots: {
     index: true,

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = "https://theblinkx.com";
+const siteUrl = "https://www.theblinkx.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     "Blink X (TheBlinkX) plans, shoots and edits Instagram Reels for businesses and brands in India. Choose 8, 12 or 18-video packages with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
+  icons: {
+    icon: [{ url: "/blinkx-logo.png", type: "image/png", sizes: "any" }],
+    shortcut: "/blinkx-logo.png",
+    apple: "/blinkx-logo.png",
+  },
   icons: {
     icon: [{ url: "/blinkx-logo.png", type: "image/png", sizes: "any" }],
     shortcut: "/blinkx-logo.png",

@@ -592,7 +592,7 @@ export default function Home() {
           </div>
           <div className="footerColumn">
             <b>Services</b>
-            <a href="#pricing">Content Shoots</a><a href="#pricing">Editing</a><a href="#pricing">24-Hour Delivery</a>
+            <a href="/reels-production">Reels Production</a><a href="#pricing">Content Shoots</a><a href="#pricing">Editing</a><a href="#pricing">24-Hour Delivery</a>
           </div>
           <div className="footerColumn">
             <b>Company</b>

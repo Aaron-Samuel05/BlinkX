@@ -363,7 +363,7 @@ export default function Home() {
           <motion.div className="heroCopy" style={{ y: heroY }}>
             <motion.div className="eyebrow glassPill"> CONTENT THAT MOVES BUSINESS</motion.div>
             <h1><span>18 Reels</span><span className="orange">24 Hours</span></h1>
-            <div className="heroSub">Blink X helps businesses, creators and brands get high-quality short-form content, shot and delivered within 24 hours.</div>
+            <div className="heroSub">Blink X helps businesses and brands across India plan, shoot and edit high-quality short-form video content, delivered within 24 hours after your shoot.</div>
             <div className="heroActions">
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: .97 }} className="ctaButton orangeButton" href="#pricing">Book Your Shoot <span><ArrowRight size={17}/></span></motion.a>
               <motion.a whileHover={{ y: -3, x: 3 }} whileTap={{ scale: .97 }} className="watchButton glass" href="#how">See how we work <ArrowRight size={15} /></motion.a>
@@ -420,7 +420,7 @@ export default function Home() {
           {process.map(([num,title,text,Icon,category,image],i)=>(
             <div className="processItem" key={num}>
               <div className="processVisual">
-                <img src={image} alt="" loading={i === 0 ? "eager" : "lazy"} />
+                <img src={image} alt={`${title}: short-form video production process at Blink X`} loading={i === 0 ? "eager" : "lazy"} />
                 <span className="processNo">{num}</span>
                 <span className="processCategory">{category}</span>
               </div>

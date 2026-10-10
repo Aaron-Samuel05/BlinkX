@@ -1,16 +1,19 @@
 import type { MetadataRoute } from "next";
 
+const homepageLastModified = new Date("2026-10-10T00:00:00.000Z");
+const reelsPageLastModified = new Date("2026-10-10T00:00:00.000Z");
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://theblinkx.com",
-      lastModified: new Date(),
+      url: "https://theblinkx.com/",
+      lastModified: homepageLastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: "https://theblinkx.com/reels-production",
-      lastModified: new Date(),
+      lastModified: reelsPageLastModified,
       changeFrequency: "monthly",
       priority: 0.9,
     },

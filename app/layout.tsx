@@ -58,6 +58,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Blink X",
   url: siteUrl,
+  logo: `${siteUrl}/blinkx-logo.png`,
   description:
     "Short-form video and Instagram Reels production for businesses and brands.",
   areaServed: {
@@ -70,6 +71,19 @@ const organizationSchema = {
     "Social media content creation",
     "Video editing for brands",
   ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Blink X",
+  url: siteUrl,
+  inLanguage: "en-IN",
+  publisher: {
+    "@type": "Organization",
+    name: "Blink X",
+    url: siteUrl,
+  },
 };
 
 const serviceSchema = {
@@ -90,11 +104,15 @@ const serviceSchema = {
     "Content planning, scripting, video shoots and editing for businesses and brands, with social-ready Reels delivered within 24 hours after the shoot.",
 };
 
-export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="en"><body>
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, serviceSchema]) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([organizationSchema, websiteSchema, serviceSchema]),
+          }}
         />
         <script
           dangerouslySetInnerHTML={{
@@ -102,5 +120,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
           }}
         />
         {children}
-      </body></html>;
+      </body>
+    </html>
+  );
 }

@@ -579,7 +579,7 @@ export default function Home() {
           <div className="footerBrand">
             <img src={darkMode ? "/blinkx-logo-dark.png" : "/blinkx-logo.png"} alt="Blink X"/>
             <span>More Content. Bigger Growth.</span>
-            <p>We shoot, edit and deliver high-quality short-form content. fast.</p>
+            <p>Blink X (TheBlinkX) is a Reels production service for businesses and brands across India. We plan, shoot, edit and deliver short-form video content within 24 hours after your shoot.</p>
             <div className="footerSocial">
               <a href="#" aria-label="Instagram"><Instagram size={16}/></a>
               <a href="#" aria-label="Video"><Video size={16}/></a>

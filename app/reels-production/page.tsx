@@ -5,24 +5,24 @@ import styles from "./page.module.css";
 const siteUrl = "https://theblinkx.com";
 
 export const metadata: Metadata = {
-  title: "Reels Production for Businesses & Brands in India",
+  title: "Reels Production Services for Brands in India",
   description:
-    "Get professional Instagram Reels and short-form video content for your business or brand. Blink X handles planning, scripting, shooting and editing, with 24-hour delivery after your shoot.",
+    "Need Reels for your business? Blink X plans, scripts, shoots and edits short-form videos for brands. Compare 8, 12 and 18-Reel packages with 24-hour post-shoot delivery.",
   alternates: { canonical: "/reels-production" },
   openGraph: {
     type: "website",
     url: `${siteUrl}/reels-production`,
     siteName: "Blink X",
-    title: "Reels Production for Businesses & Brands | Blink X",
+    title: "Reels Production Services for Brands in India | Blink X",
     description:
-      "Plan, shoot and edit social-ready Reels with Blink X. Choose an 8, 12 or 18-Reel content day.",
+      "One content day, a batch of ready-to-post videos. Explore Blink X's 8, 12 and 18-Reel production packages.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reels Production for Businesses & Brands | Blink X",
+    title: "Reels Production Services for Brands in India | Blink X",
     description:
-      "Plan, shoot and edit social-ready Reels with Blink X. Choose an 8, 12 or 18-Reel content day, with delivery within 24 hours after the shoot.",
+      "Plan, shoot and edit short-form videos with Blink X. Compare content-day packages and book your shoot.",
   },
 };
 
@@ -45,12 +45,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: siteUrl,
-    },
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
     {
       "@type": "ListItem",
       position: 2,
@@ -82,9 +77,14 @@ const faqs = [
       "Choose your preferred content-day package and request a booking. The team will call to confirm the preferred time, location and shoot details. A 50% advance reserves the content day.",
   },
   {
-    question: "Is this service suitable for my business?",
+    question: "Who is this service for?",
     answer:
-      "The service is designed for businesses and brands that want a consistent supply of short-form social video content for their marketing.",
+      "The service is designed for businesses, product brands, service providers, creators and personal brands that want a consistent supply of short-form social video content.",
+  },
+  {
+    question: "Do I need to provide scripts or ideas?",
+    answer:
+      "The service includes content planning, scripting and shot direction. Share your goals, product or service details and preferred style so the team can plan the content with you.",
   },
 ];
 
@@ -98,6 +98,10 @@ export default function ReelsProductionPage() {
         <Link className={styles.navCta} href="/#pricing">View packages <span aria-hidden="true">↗</span></Link>
       </header>
 
+      <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
+        <Link href="/">Home</Link><span aria-hidden="true">/</span><span>Reels Production</span>
+      </nav>
+
       <section className={styles.hero}>
         <p className={styles.eyebrow}>SHORT-FORM VIDEO FOR BUSINESS</p>
         <h1>Reels production for <em>businesses &amp; brands.</em></h1>
@@ -107,8 +111,8 @@ export default function ReelsProductionPage() {
           24 hours after your shoot.
         </p>
         <div className={styles.actions}>
-          <Link className={styles.primary} href="/#pricing">Explore packages <span aria-hidden="true">↗</span></Link>
-          <Link className={styles.secondary} href="/#how">How it works</Link>
+          <Link className={styles.primary} href="/#pricing">Explore Reels packages <span aria-hidden="true">↗</span></Link>
+          <Link className={styles.secondary} href="/#how">See how it works</Link>
         </div>
         <div className={styles.proof}>
           <span>PLAN</span><i /> <span>SHOOT</span><i /> <span>EDIT</span><i /> <span>DELIVER</span>
@@ -116,23 +120,42 @@ export default function ReelsProductionPage() {
       </section>
 
       <section className={styles.section}>
-        <p className={styles.eyebrow}>WHY REELS PRODUCTION?</p>
+        <p className={styles.eyebrow}>REELS PRODUCTION SERVICES</p>
         <h2>Consistent content, without managing every step yourself.</h2>
         <p className={styles.copy}>
           Keeping your business visible on social media takes more than recording a quick clip.
           Ideas need to become scripts, shoots need direction, and raw footage needs to become
           clear, engaging videos. Blink X brings those steps together in one content-day service so
           your team can spend less time coordinating production and more time running the business.
+          If you are comparing options for <strong>Instagram Reels production</strong> or
+          <strong> short-form video production for your brand</strong>, start with the package that
+          matches the amount of content you need.
         </p>
         <div className={styles.grid}>
           <article className={styles.card}><span>01</span><h3>Plan the content</h3><p>Develop concepts, hooks and shot direction around the content your brand needs.</p></article>
           <article className={styles.card}><span>02</span><h3>Shoot professionally</h3><p>Capture your content in a planned session, with location and shoot details confirmed with the team.</p></article>
           <article className={styles.card}><span>03</span><h3>Edit for social</h3><p>Turn footage into ready-to-post Reels with editing, captions, subtitles, music and colour grading.</p></article>
-          <article className={styles.card}><span>04</span><h3>Receive it fast</h3><p>Get your edited content within 24 hours after the shoot, according to the service promise.</p></article>
+          <article className={styles.card}><span>04</span><h3>Receive it fast</h3><p>Receive edited content within 24 hours after the shoot, according to the service promise.</p></article>
         </div>
       </section>
 
-      <section className={styles.pricing}>
+      <section className={styles.section + " " + styles.audience}>
+        <p className={styles.eyebrow}>WHO IT'S FOR</p>
+        <h2>Short-form video for the way your business shows up.</h2>
+        <p className={styles.copy}>
+          Reels can help you introduce products, explain a service, answer common customer questions,
+          show the people behind your business and build a more consistent social media presence.
+          Blink X works with businesses and brands that want a planned batch of video content rather
+          than arranging every shoot and edit separately.
+        </p>
+        <div className={styles.audienceLinks}>
+          <Link href="/#pricing">Compare Reels production packages <span aria-hidden="true">↗</span></Link>
+          <Link href="/#faqs">Read booking and delivery FAQs <span aria-hidden="true">↗</span></Link>
+          <Link href="/#book">Request a content-day booking <span aria-hidden="true">↗</span></Link>
+        </div>
+      </section>
+
+      <section className={styles.pricing} id="packages">
         <div>
           <p className={styles.eyebrow}>CONTENT-DAY PACKAGES</p>
           <h2>Choose the volume your brand needs.</h2>
@@ -143,20 +166,25 @@ export default function ReelsProductionPage() {
           <article className={styles.featured}><p>GROWTH · POPULAR</p><strong>12 Reels</strong><b>₹15,000</b><small>₹7,500 advance</small><Link href="/#pricing">Choose Growth ↗</Link></article>
           <article><p>SCALE</p><strong>18 Reels</strong><b>₹25,000</b><small>₹12,500 advance</small><Link href="/#pricing">Choose Scale ↗</Link></article>
         </div>
+        <p className={styles.packageNote}>All packages are shown in Indian rupees. The team will confirm your preferred shoot time, location and requirements after you request a booking.</p>
       </section>
 
       <section className={styles.section}>
-        <p className={styles.eyebrow}>BUILT FOR BUSINESS</p>
-        <h2>Short-form video for your brand's next stage.</h2>
+        <p className={styles.eyebrow}>HOW TO GET STARTED</p>
+        <h2>From content ideas to ready-to-post Reels.</h2>
         <p className={styles.copy}>
-          Whether you're introducing a product, showing how your service works, sharing behind-the-scenes
-          moments or building a more consistent social presence, a planned batch of Reels gives your
-          business more material to publish. Start with a content day that fits your needs and build
-          your workflow from there.
+          Start by choosing an 8, 12 or 18-Reel package. Submit your preferred date and contact
+          details through the booking form, then the Blink X team will call to discuss your shoot,
+          location and content requirements. A 50% advance reserves the content day, with the
+          remaining payment due on delivery.
         </p>
+        <div className={styles.actions}>
+          <Link className={styles.primary} href="/#book">Request a booking <span aria-hidden="true">↗</span></Link>
+          <Link className={styles.secondary} href="/">Explore Blink X</Link>
+        </div>
       </section>
 
-      <section className={styles.faq}>
+      <section className={styles.faq} id="service-faqs">
         <p className={styles.eyebrow}>FAQ</p>
         <h2>Before you book.</h2>
         <div className={styles.faqList}>
@@ -177,9 +205,9 @@ export default function ReelsProductionPage() {
       </section>
 
       <footer className={styles.footer}>
-        <Link href="/">Blink X</Link>
+        <Link href="/">Blink X homepage</Link>
         <span>Short-form video production for businesses and brands.</span>
-        <Link href="/#pricing">Book a shoot ↗</Link>
+        <Link href="/#pricing">View Reels production packages ↗</Link>
       </footer>
 
       <script

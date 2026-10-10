@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://theblinkx.com/sitemap.xml",
-    host: "https://theblinkx.com",
+    sitemap: "https://www.theblinkx.com/sitemap.xml",
+    host: "https://www.theblinkx.com",
   };
 }

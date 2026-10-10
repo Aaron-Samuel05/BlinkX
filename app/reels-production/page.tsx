@@ -18,6 +18,12 @@ export const metadata: Metadata = {
       "Plan, shoot and edit social-ready Reels with Blink X. Choose an 8, 12 or 18-Reel content day.",
     locale: "en_IN",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Reels Production for Businesses & Brands | Blink X",
+    description:
+      "Plan, shoot and edit social-ready Reels with Blink X. Choose an 8, 12 or 18-Reel content day, with delivery within 24 hours after the shoot.",
+  },
 };
 
 const serviceSchema = {
@@ -33,6 +39,25 @@ const serviceSchema = {
   areaServed: { "@type": "Country", name: "India" },
   description:
     "A content-day service for businesses and brands, covering planning, scripting, professional shooting and editing of social-ready Reels.",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Reels Production",
+      item: `${siteUrl}/reels-production`,
+    },
+  ],
 };
 
 const faqs = [
@@ -159,7 +184,7 @@ export default function ReelsProductionPage() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceSchema, breadcrumbSchema]) }}
       />
     </main>
   );

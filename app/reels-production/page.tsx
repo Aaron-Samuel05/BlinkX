@@ -5,31 +5,31 @@ import styles from "./page.module.css";
 const siteUrl = "https://theblinkx.com";
 
 export const metadata: Metadata = {
-  title: "Reels Production Services for Brands in India",
+  title: "Blink X Reels Production Company in India",
   description:
-    "Need Reels for your business? Blink X plans, scripts, shoots and edits short-form videos for brands. Compare 8, 12 and 18-Reel packages with 24-hour post-shoot delivery.",
+    "Need a Reels production company in India? Blink X (TheBlinkX) plans, scripts, shoots and edits short-form videos for businesses and brands. Compare 8, 12 and 18-Reel packages with 24-hour post-shoot delivery.",
   alternates: { canonical: "/reels-production" },
   openGraph: {
     type: "website",
     url: `${siteUrl}/reels-production`,
     siteName: "Blink X",
-    title: "Reels Production Services for Brands in India | Blink X",
+    title: "Blink X Reels Production Company in India | TheBlinkX",
     description:
-      "One content day, a batch of ready-to-post videos. Explore Blink X's 8, 12 and 18-Reel production packages.",
+      "TheBlinkX is Blink X, a Reels production service for businesses and brands in India. Explore 8, 12 and 18-Reel packages.",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
     title: "Reels Production Services for Brands in India | Blink X",
     description:
-      "Plan, shoot and edit short-form videos with Blink X. Compare content-day packages and book your shoot.",
+      "TheBlinkX (Blink X) plans, shoots and edits Instagram Reels for businesses and brands in India.",
   },
 };
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Instagram Reels Production for Businesses and Brands",
+  name: "Blink X Instagram Reels Production for Businesses and Brands",
   serviceType: "Short-form video and Reels production",
   provider: {
     "@type": "Organization",
@@ -106,7 +106,7 @@ export default function ReelsProductionPage() {
         <p className={styles.eyebrow}>SHORT-FORM VIDEO FOR BUSINESS</p>
         <h1>Reels production for <em>businesses &amp; brands.</em></h1>
         <p className={styles.lead}>
-          Turn one content day into a library of social-ready videos. Blink X helps businesses plan,
+          TheBlinkX is Blink X, a Reels production company for businesses and brands in India. Turn one content day into a library of social-ready videos. We help businesses plan,
           script, shoot and edit Instagram Reels and short-form video content, with delivery within
           24 hours after your shoot.
         </p>

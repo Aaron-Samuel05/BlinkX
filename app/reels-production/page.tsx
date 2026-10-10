@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-const siteUrl = "https://theblinkx.com";
+const siteUrl = "https://www.theblinkx.com";
 
 export const metadata: Metadata = {
   title: "Blink X Reels Production Company in India",

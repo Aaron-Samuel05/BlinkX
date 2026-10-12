@@ -9288,3 +9288,28 @@ body.darkMode html {
 @media (prefers-reduced-motion: reduce) {
   body, body * { transition-duration: 0ms !important; }
 }
+
+
+/* Fix image not filling the full lifestyle card on mobile. */
+@media (max-width: 600px) {
+  .ugcShowcaseGrid .ugcShot,
+  .ugcShowcaseGrid .ugcShotCreator {
+    position: relative !important;
+    overflow: hidden !important;
+    aspect-ratio: 3 / 4.4 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+    background: #171715 !important;
+  }
+  .ugcShowcaseGrid .ugcShot img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}

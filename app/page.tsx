@@ -229,7 +229,7 @@ export default function Home() {
   async function submitUgcEnquiry() {
     const name = ugcForm.name.trim();
     const phone = ugcForm.phone.trim();
-    const phoneDigits = phone.replace(/\\D/g, "");
+    const phoneDigits = phone.replace(/\D/g, "");
     if (!name || !phone) {
       setUgcError("Please enter your name and phone number.");
       return;

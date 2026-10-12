@@ -511,37 +511,37 @@ export default function Home() {
 
       <section id="ugc" className="ugcSection section" aria-labelledby="ugcHeading">
         <div className="ugcSectionInner">
-          <div className="ugcSectionTop"><span>BLINK X / SERVICES</span><span>02 — UGC CONTENT</span></div>
+          <div className="ugcSectionTop"><span>UGC CONTENT</span></div>
           <div className="ugcSectionMain">
             <div className="ugcSectionCopy">
-              <div className="miniEyebrow">CREATOR-STYLE CONTENT <span /></div>
+              <div className="miniEyebrow">UGC CONTENT <span /></div>
               <h2 id="ugcHeading">Your brand.<br/><em>Their voice.</em></h2>
-              <p>Authentic, creator-style videos made to bring your product into real conversations. We’ll shape the content around your brand, your audience and your goals.</p>
+              <p>Videos made by creators, designed around your product and the people you want to reach. From product demos to everyday lifestyle content, we help your brand show up naturally.</p>
               <div className="ugcServiceList">
-                <span><Check size={15}/> Product stories</span>
-                <span><Check size={15}/> Creator POV</span>
+                <span><Check size={15}/> Product demos</span>
+                <span><Check size={15}/> Creator-led videos</span>
                 <span><Check size={15}/> Lifestyle content</span>
               </div>
-              <button type="button" className="ctaButton orangeButton ugcEnquireButton" onClick={() => { setUgcError(""); setUgcSubmitted(false); setShowUgcEnquiry(true); }}>Enquire Now <span><ArrowRight size={17}/></span></button>
-              <small className="ugcSectionNote">No fixed packages. Our representative will connect with you to discuss your requirements and pricing.</small>
+              <button type="button" className="ctaButton orangeButton ugcEnquireButton" onClick={() => { setUgcError(""); setUgcSubmitted(false); setShowUgcEnquiry(true); }}>Discuss your project <span><ArrowRight size={17}/></span></button>
+              <small className="ugcSectionNote">Tell us what you’re building. We’ll help you figure out the right content for your brand.</small>
             </div>
             <div className="ugcShowcase" aria-label="Examples of UGC content formats">
-              <div className="ugcShowcaseLabel"><span>CONTENT THAT FEELS NATURAL</span><span className="ugcShowcaseIndex">UGC / 01—03</span></div>
+              
               <div className="ugcShowcaseGrid">
                 <div className="ugcShot ugcShotProduct">
                   <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85" alt="Skincare product arranged for a product story" loading="lazy"/>
-                  <span className="ugcShotType">01 / PRODUCT STORY</span>
+                  <span className="ugcShotType">Product</span>
                 </div>
                 <div className="ugcShot ugcShotCreator">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=650&q=85" alt="Creator portrait for a relatable creator-led video" loading="lazy"/>
-                  <span className="ugcShotType">02 / CREATOR POV</span>
+                  <span className="ugcShotType">Creator</span>
                 </div>
                 <div className="ugcShot ugcShotLifestyle">
                   <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=650&q=85" alt="Coffee lifestyle scene for everyday product content" loading="lazy"/>
-                  <span className="ugcShotType">03 / LIFESTYLE</span>
+                  <span className="ugcShotType">Lifestyle</span>
                 </div>
               </div>
-              <div className="ugcShowcaseBottom"><span>REAL PEOPLE. REAL CONTEXT.</span><span>MADE FOR THE FEED ↗</span></div>
+              
             </div>
           </div>
         </div>

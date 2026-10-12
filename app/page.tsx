@@ -458,6 +458,24 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="ugc" className="ugcServiceSection section">
+        <div className="ugcServiceCard">
+          <div className="ugcServiceCopy">
+            <div className="miniEyebrow">ANOTHER WAY TO CREATE <span /></div>
+            <h2>UGC content<br/><em>made for your brand.</em></h2>
+            <p>Authentic, creator-style videos designed to help your brand connect with its audience through relatable short-form content.</p>
+            <div className="ugcServiceNote">Custom requirements. No fixed package pricing.</div>
+            <a className="ctaButton orangeButton ugcServiceButton" href="#bookForm">Enquire Now <span><ArrowRight size={17}/></span></a>
+            <small className="ugcServiceFollowup">Our representative will connect with you to discuss your requirements and pricing.</small>
+          </div>
+          <div className="ugcServiceVisual" aria-hidden="true">
+            <div className="ugcVisualOrb" />
+            <div className="ugcVisualCard ugcVisualCardBack"><span>CREATOR-LED</span><b>Real stories.<br/>Real connection.</b></div>
+            <div className="ugcVisualCard ugcVisualCardFront"><span>BLINK X / UGC</span><div className="ugcVisualPlay"><Play size={25} fill="currentColor"/></div><b>Made to feel<br/>authentic.</b></div>
+          </div>
+        </div>
+      </section>
+
       <section id="pricing" className="offerSection section">
         <div className="pricingHeader">
           <div className="miniEyebrow">SIMPLE PRICING <span /></div>

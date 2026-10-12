@@ -68,6 +68,11 @@ export default function Home() {
   const [showTimeOptions, setShowTimeOptions] = useState(false);
   const [modalOpenDropdown, setModalOpenDropdown] = useState<"time" | "plan" | null>(null);
   const [showBooking, setShowBooking] = useState(false);
+  const [showUgcEnquiry, setShowUgcEnquiry] = useState(false);
+  const [ugcSubmitting, setUgcSubmitting] = useState(false);
+  const [ugcSubmitted, setUgcSubmitted] = useState(false);
+  const [ugcError, setUgcError] = useState("");
+  const [ugcForm, setUgcForm] = useState({ name: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -218,6 +223,40 @@ export default function Home() {
       setShowBooking(true);
     } catch {
       setFormError("We couldn't verify the latest availability. Please try again.");
+    }
+  }
+
+  async function submitUgcEnquiry() {
+    const name = ugcForm.name.trim();
+    const phone = ugcForm.phone.trim();
+    const phoneDigits = phone.replace(/\\D/g, "");
+    if (!name || !phone) {
+      setUgcError("Please enter your name and phone number.");
+      return;
+    }
+    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+      setUgcError("Please enter a valid phone number.");
+      return;
+    }
+    setUgcError("");
+    setUgcSubmitting(true);
+    try {
+      const response = await fetch("/api/ugc-enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, source: "UGC", type: "UGC Enquiry", package: "UGC Content" }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result?.success) {
+        setUgcError(result?.message || "We couldn't submit your enquiry. Please try again.");
+        return;
+      }
+      setUgcSubmitted(true);
+      setUgcForm({ name: "", phone: "" });
+    } catch {
+      setUgcError("We couldn't connect to the enquiry system. Please try again.");
+    } finally {
+      setUgcSubmitting(false);
     }
   }
 
@@ -458,26 +497,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="ugc" className="ugcServiceSection section">
-        <div className="ugcEditorial">
-          <div className="ugcEditorialTop"><span>BLINK X / SERVICES</span><span>02 — UGC CONTENT</span></div>
-          <div className="ugcEditorialBody">
-            <div className="ugcEditorialCopy">
+      <section id="ugc" className="ugcSection section" aria-labelledby="ugcHeading">
+        <div className="ugcSectionInner">
+          <div className="ugcSectionTop"><span>BLINK X / SERVICES</span><span>02 — UGC CONTENT</span></div>
+          <div className="ugcSectionMain">
+            <div className="ugcSectionCopy">
               <div className="miniEyebrow">CREATOR-STYLE CONTENT <span /></div>
-              <h2>Less ad.<br/><em>More “I want that.”</em></h2>
-              <p>UGC that feels native to the feed. We help brands create relatable, creator-style videos built around your product, your audience and the way people actually scroll.</p>
-              <div className="ugcEditorialTags"><span>PRODUCT STORIES</span><span>CREATOR POV</span><span>SHORT-FORM VIDEO</span></div>
-              <a className="ctaButton orangeButton ugcServiceButton" href="#bookForm">Let’s talk UGC <span><ArrowRight size={17}/></span></a>
-              <small className="ugcServiceFollowup">No fixed packages. Our team will discuss your brief, requirements and pricing with you.</small>
-            </div>
-            <div className="ugcReelBoard" aria-hidden="true">
-              <div className="ugcBoardHeading"><span>THE FEED, REIMAGINED</span><span className="ugcLiveDot">● IN THE MAKING</span></div>
-              <div className="ugcReelStack">
-                <div className="ugcReelTile ugcReelTileOne"><span className="ugcReelIndex">01 / PRODUCT</span><div className="ugcReelScene ugcSceneProduct"><i/><b>Made<br/>for real life.</b></div><span className="ugcReelCaption">A product moment that feels personal.</span></div>
-                <div className="ugcReelTile ugcReelTileTwo"><span className="ugcReelIndex">02 / POV</span><div className="ugcReelScene ugcScenePov"><i/><b>POV: you<br/>found it.</b></div><span className="ugcReelCaption">A creator’s point of view.</span></div>
-                <div className="ugcReelTile ugcReelTileThree"><span className="ugcReelIndex">03 / STORY</span><div className="ugcReelScene ugcSceneStory"><i/><b>Worth<br/>the share.</b></div><span className="ugcReelCaption">A story people want to pass on.</span></div>
+              <h2 id="ugcHeading">Your brand.<br/><em>Their voice.</em></h2>
+              <p>Authentic, creator-style videos made to bring your product into real conversations. We’ll shape the content around your brand, your audience and your goals.</p>
+              <div className="ugcServiceList">
+                <span><Check size={15}/> Product stories</span>
+                <span><Check size={15}/> Creator POV</span>
+                <span><Check size={15}/> Lifestyle content</span>
               </div>
-              <div className="ugcBoardFooter"><b>REAL PEOPLE. REAL REACTIONS.</b><span>YOUR BRAND, IN THEIR WORLD ↗</span></div>
+              <button type="button" className="ctaButton orangeButton ugcEnquireButton" onClick={() => { setUgcError(""); setUgcSubmitted(false); setShowUgcEnquiry(true); }}>Enquire Now <span><ArrowRight size={17}/></span></button>
+              <small className="ugcSectionNote">No fixed packages. Our representative will connect with you to discuss your requirements and pricing.</small>
+            </div>
+            <div className="ugcShowcase" aria-label="Examples of UGC content formats">
+              <div className="ugcShowcaseLabel"><span>CONTENT THAT FEELS NATURAL</span><span className="ugcShowcaseIndex">UGC / 01—03</span></div>
+              <div className="ugcShowcaseGrid">
+                <div className="ugcShot ugcShotProduct">
+                  <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85" alt="Skincare product arranged for a product story" loading="lazy"/>
+                  <span className="ugcShotType">01 / PRODUCT STORY</span>
+                </div>
+                <div className="ugcShot ugcShotCreator">
+                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=650&q=85" alt="Creator portrait for a relatable creator-led video" loading="lazy"/>
+                  <span className="ugcShotType">02 / CREATOR POV</span>
+                </div>
+                <div className="ugcShot ugcShotLifestyle">
+                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=650&q=85" alt="Coffee lifestyle scene for everyday product content" loading="lazy"/>
+                  <span className="ugcShotType">03 / LIFESTYLE</span>
+                </div>
+              </div>
+              <div className="ugcShowcaseBottom"><span>REAL PEOPLE. REAL CONTEXT.</span><span>MADE FOR THE FEED ↗</span></div>
             </div>
           </div>
         </div>
@@ -630,6 +682,32 @@ export default function Home() {
           <span>Shot · Edit · Deliver.</span>
         </div>
       </footer>
+
+      {showUgcEnquiry && <div className="modalBack ugcModalBack" onMouseDown={() => { if (!ugcSubmitting) setShowUgcEnquiry(false); }}>
+        <motion.div className="ugcEnquiryModal" role="dialog" aria-modal="true" aria-labelledby="ugcModalTitle" initial={{ opacity: 0, y: 18, scale: .98 }} animate={{ opacity: 1, y: 0, scale: 1 }} onMouseDown={e => e.stopPropagation()}>
+          <button type="button" className="ugcModalClose" aria-label="Close enquiry form" onClick={() => { if (!ugcSubmitting) setShowUgcEnquiry(false); }}><X size={19}/></button>
+          {!ugcSubmitted ? <>
+            <div className="ugcModalEyebrow"><span /> BLINK X / UGC ENQUIRY</div>
+            <h2 id="ugcModalTitle">Let’s make<br/><em>something real.</em></h2>
+            <p className="ugcModalIntro">Share your details and our representative will connect with you to understand your brief and discuss pricing.</p>
+            <form className="ugcEnquiryForm" onSubmit={(e) => { e.preventDefault(); void submitUgcEnquiry(); }}>
+              <label htmlFor="ugcName">Your name <span>*</span></label>
+              <input id="ugcName" name="name" autoComplete="name" maxLength={100} required value={ugcForm.name} onChange={e => { setUgcForm(current => ({ ...current, name: e.target.value })); setUgcError(""); }} placeholder="Enter your full name" disabled={ugcSubmitting}/>
+              <label htmlFor="ugcPhone">Phone number <span>*</span></label>
+              <input id="ugcPhone" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={25} required value={ugcForm.phone} onChange={e => { setUgcForm(current => ({ ...current, phone: e.target.value })); setUgcError(""); }} placeholder="Enter your phone number" disabled={ugcSubmitting}/>
+              {ugcError && <p className="ugcFormError" role="alert">{ugcError}</p>}
+              <button type="submit" className="ugcFormSubmit" disabled={ugcSubmitting}>{ugcSubmitting ? "Sending enquiry…" : <>Submit enquiry <ArrowRight size={17}/></>}</button>
+              <p className="ugcPrivacyNote">No fixed packages. We’ll discuss your requirements and pricing with you.</p>
+            </form>
+          </> : <div className="ugcSuccessState">
+            <span className="ugcSuccessIcon"><Check size={25}/></span>
+            <div className="ugcModalEyebrow"><span /> ENQUIRY RECEIVED</div>
+            <h2 id="ugcModalTitle">We’ll be<br/><em>in touch.</em></h2>
+            <p>Thanks for your interest in UGC content. Our representative will contact you to discuss your requirements and pricing.</p>
+            <button type="button" className="ugcFormSubmit" onClick={() => setShowUgcEnquiry(false)}>Done <Check size={17}/></button>
+          </div>}
+        </motion.div>
+      </div>}
 
       {showBooking && <div className="modalBack" onMouseDown={()=>setShowBooking(false)}>
         <motion.div className="bookingModal glassCard" initial={{opacity:0,y:30,scale:.97}} animate={{opacity:1,y:0,scale:1}} onMouseDown={e=>{e.stopPropagation();setModalOpenDropdown(null)}}>

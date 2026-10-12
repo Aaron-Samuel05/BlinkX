@@ -73,6 +73,12 @@ export default function Home() {
   const [ugcSubmitted, setUgcSubmitted] = useState(false);
   const [ugcError, setUgcError] = useState("");
   const [ugcForm, setUgcForm] = useState({ name: "", phone: "", date: "", time: "" });
+  const [ugcDateOpen, setUgcDateOpen] = useState(false);
+  const [ugcTimeOpen, setUgcTimeOpen] = useState(false);
+  const [ugcCalendarMonth, setUgcCalendarMonth] = useState(() => {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), 1);
+  });
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -707,10 +713,34 @@ export default function Home() {
               <input id="ugcName" name="name" autoComplete="name" maxLength={100} required value={ugcForm.name} onChange={e => { setUgcForm(current => ({ ...current, name: e.target.value })); setUgcError(""); }} placeholder="Enter your full name" disabled={ugcSubmitting}/>
               <label htmlFor="ugcPhone">Phone number <span>*</span></label>
               <input id="ugcPhone" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={25} required value={ugcForm.phone} onChange={e => { setUgcForm(current => ({ ...current, phone: e.target.value })); setUgcError(""); }} placeholder="Enter your phone number" disabled={ugcSubmitting}/>
-              <label htmlFor="ugcDate">Preferred date <span>*</span></label>
-              <input id="ugcDate" name="date" type="date" required min={new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date())} value={ugcForm.date} onChange={e => { setUgcForm(current => ({ ...current, date: e.target.value })); setUgcError(""); }} disabled={ugcSubmitting}/>
-              <label htmlFor="ugcTime">Preferred time <span>*</span></label>
-              <input id="ugcTime" name="time" type="time" required value={ugcForm.time} onChange={e => { setUgcForm(current => ({ ...current, time: e.target.value })); setUgcError(""); }} disabled={ugcSubmitting}/>
+              <label htmlFor="ugcDateTrigger">Preferred date <span>*</span></label>
+              <div className="ugcPickerWrap">
+                <button id="ugcDateTrigger" type="button" className={`ugcPickerTrigger ${ugcForm.date ? "hasValue" : ""}`} aria-haspopup="dialog" aria-expanded={ugcDateOpen} onClick={() => { setUgcDateOpen(open => !open); setUgcTimeOpen(false); }} disabled={ugcSubmitting}>
+                  <CalendarDays size={18}/><span>{ugcForm.date ? new Date(ugcForm.date + "T12:00:00").toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" }) : "Choose a date"}</span><ChevronDown size={16} className="ugcPickerChevron"/>
+                </button>
+                {ugcDateOpen && <div className="ugcCalendarPopover" role="dialog" aria-label="Choose preferred date">
+                  <div className="ugcCalendarHead"><button type="button" aria-label="Previous month" onClick={() => setUgcCalendarMonth(m => new Date(m.getFullYear(), m.getMonth() - 1, 1))} disabled={ugcCalendarMonth.getFullYear() === new Date().getFullYear() && ugcCalendarMonth.getMonth() === new Date().getMonth()}><ChevronDown size={16}/></button><strong>{ugcCalendarMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}</strong><button type="button" aria-label="Next month" onClick={() => setUgcCalendarMonth(m => new Date(m.getFullYear(), m.getMonth() + 1, 1))}><ChevronDown size={16}/></button></div>
+                  <div className="ugcCalendarGrid ugcWeekdays">{["Su","Mo","Tu","We","Th","Fr","Sa"].map(day => <span key={day}>{day}</span>)}</div>
+                  <div className="ugcCalendarGrid">{Array.from({ length: new Date(ugcCalendarMonth.getFullYear(), ugcCalendarMonth.getMonth(), 1).getDay() }, (_, i) => <span className="ugcCalendarBlank" key={`blank-${i}`}/>)}
+                    {Array.from({ length: new Date(ugcCalendarMonth.getFullYear(), ugcCalendarMonth.getMonth() + 1, 0).getDate() }, (_, i) => {
+                      const day = i + 1;
+                      const d = new Date(ugcCalendarMonth.getFullYear(), ugcCalendarMonth.getMonth(), day);
+                      const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+                      const today = new Date(); today.setHours(0,0,0,0);
+                      const isPast = d < today;
+                      return <button type="button" key={iso} className={`ugcCalendarDay ${ugcForm.date === iso ? "selected" : ""} ${!isPast && iso === new Date().toLocaleDateString("en-CA") ? "today" : ""}`} disabled={isPast || ugcSubmitting} onClick={() => { setUgcForm(current => ({ ...current, date: iso })); setUgcDateOpen(false); setUgcError(""); }}>{day}</button>;
+                    })}
+                  </div>
+                  <div className="ugcCalendarFoot">Choose the day that works for you</div>
+                </div>}
+              </div>
+              <label htmlFor="ugcTimeTrigger">Preferred time <span>*</span></label>
+              <div className="ugcPickerWrap">
+                <button id="ugcTimeTrigger" type="button" className={`ugcPickerTrigger ${ugcForm.time ? "hasValue" : ""}`} aria-haspopup="listbox" aria-expanded={ugcTimeOpen} onClick={() => { setUgcTimeOpen(open => !open); setUgcDateOpen(false); }} disabled={ugcSubmitting}>
+                  <Clock3 size={18}/><span>{ugcForm.time ? new Date(`2000-01-01T${ugcForm.time}:00`).toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit" }) : "Choose a time"}</span><ChevronDown size={16} className="ugcPickerChevron"/>
+                </button>
+                {ugcTimeOpen && <div className="ugcTimePopover" role="listbox" aria-label="Choose preferred time">{Array.from({ length: 20 }, (_, i) => { const mins = 9 * 60 + i * 30; const value = `${String(Math.floor(mins/60)).padStart(2,"0")}:${String(mins%60).padStart(2,"0")}`; const label = new Date(`2000-01-01T${value}:00`).toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit" }); return <button type="button" role="option" aria-selected={ugcForm.time === value} className={ugcForm.time === value ? "selected" : ""} key={value} onClick={() => { setUgcForm(current => ({ ...current, time: value })); setUgcTimeOpen(false); setUgcError(""); }}>{label}{ugcForm.time === value && <Check size={15}/>}</button>; })}</div>}
+              </div>
               {ugcError && <p className="ugcFormError" role="alert">{ugcError}</p>}
               <button type="submit" className="ugcFormSubmit" disabled={ugcSubmitting}>{ugcSubmitting ? "Sending enquiry…" : <>Submit enquiry <ArrowRight size={17}/></>}</button>
               <p className="ugcPrivacyNote">No fixed packages. We’ll discuss your requirements and pricing with you.</p>

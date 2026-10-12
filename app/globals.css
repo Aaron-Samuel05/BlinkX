@@ -8833,3 +8833,30 @@ body.darkMode .modalDropdownMenu button.booked{
   color:#777!important;
   background:transparent!important;
 }
+
+
+/* UGC service section — isolated styles to avoid changing existing sections */
+.ugcServiceSection{max-width:none;padding:90px 6vw;background:#fff}
+.ugcServiceCard{max-width:1320px;margin:0 auto;border-radius:34px;background:#10100f;color:#f7f6f2;padding:clamp(30px,5vw,72px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:5vw;position:relative;overflow:hidden;border:1px solid #282722;box-shadow:0 28px 80px rgba(0,0,0,.12)}
+.ugcServiceCopy{position:relative;z-index:2}
+.ugcServiceCopy .miniEyebrow{color:#aaa}
+.ugcServiceCopy h2{font-size:clamp(42px,5.2vw,72px);line-height:.96;letter-spacing:-.065em;margin:22px 0}
+.ugcServiceCopy h2 em{font-style:normal;color:var(--orange2)}
+.ugcServiceCopy p{max-width:520px;color:#b6b5af;font-size:15px;line-height:1.7}
+.ugcServiceNote{display:inline-flex;margin-top:12px;padding:10px 14px;border:1px solid rgba(250,170,38,.35);border-radius:999px;color:#f5c46d;font-size:11px;font-weight:700}
+.ugcServiceButton{margin-top:24px}
+.ugcServiceFollowup{display:block;max-width:390px;margin-top:13px;color:#aaa;font-size:11px;line-height:1.6}
+.ugcServiceVisual{min-height:350px;position:relative;display:grid;place-items:center}
+.ugcVisualOrb{position:absolute;width:min(28vw,350px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(250,170,38,.32),rgba(250,170,38,.04) 65%,transparent 72%);filter:blur(4px)}
+.ugcVisualCard{position:absolute;width:min(76%,320px);min-height:225px;border-radius:25px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.14);box-shadow:0 25px 55px rgba(0,0,0,.32)}
+.ugcVisualCard span{font-size:9px;letter-spacing:.18em;font-weight:800}
+.ugcVisualCard b{font-size:24px;line-height:1.05;letter-spacing:-.04em}
+.ugcVisualCardBack{transform:rotate(9deg) translate(25px,-8px);background:linear-gradient(145deg,#2c2922,#151513);color:#f5f4ef}
+.ugcVisualCardBack span{color:#f5bd50}
+.ugcVisualCardFront{transform:rotate(-7deg) translate(-12px,12px);background:linear-gradient(145deg,#f9c65e,#f2a51d);color:#171512}
+.ugcVisualCardFront span{color:rgba(23,21,18,.65)}
+.ugcVisualPlay{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#171512;color:#f8bd4b}
+.ugcVisualCardFront b{font-size:25px}
+body.darkMode .ugcServiceSection{background:#0b0b0b}
+@media(max-width:900px){.ugcServiceSection{padding:70px 5vw}.ugcServiceCard{grid-template-columns:1fr;gap:25px}.ugcServiceVisual{min-height:300px}.ugcVisualOrb{width:300px}}
+@media(max-width:600px){.ugcServiceSection{padding:55px 16px}.ugcServiceCard{padding:28px 22px;border-radius:26px}.ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)}.ugcServiceCopy p{font-size:13px}.ugcServiceVisual{min-height:265px}.ugcVisualCard{min-height:190px;width:76%;padding:18px}.ugcVisualCard b,.ugcVisualCardFront b{font-size:21px}}

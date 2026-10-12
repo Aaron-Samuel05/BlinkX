@@ -9313,3 +9313,12 @@ body.darkMode html {
     object-position: center !important;
   }
 }
+
+
+/* Remove the extra outer background panel behind the UGC card only. */
+.ugcSection {
+  background: transparent !important;
+}
+body.darkMode .ugcSection {
+  background: transparent !important;
+}

@@ -515,43 +515,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="ugc" className="ugcSection section" aria-labelledby="ugcHeading">
-        <div className="ugcSectionInner">
-          <div className="ugcSectionMain">
-            <div className="ugcSectionCopy">
-              <div className="miniEyebrow">UGC CONTENT <span /></div>
-              <h2 id="ugcHeading">Your brand.<br/><em>Their voice.</em></h2>
-              <p>Videos made by creators, designed around your product and the people you want to reach. From product demos to everyday lifestyle content, we help your brand show up naturally.</p>
-              <div className="ugcServiceList">
-                <span><Check size={15}/> Product demos</span>
-                <span><Check size={15}/> Creator-led videos</span>
-                <span><Check size={15}/> Lifestyle content</span>
-              </div>
-              <button type="button" className="ctaButton orangeButton ugcEnquireButton" onClick={() => { setUgcError(""); setUgcSubmitted(false); setShowUgcEnquiry(true); }}>Discuss your project <span><ArrowRight size={17}/></span></button>
-              <small className="ugcSectionNote">Tell us what you’re building. We’ll help you figure out the right content for your brand.</small>
-            </div>
-            <div className="ugcShowcase" aria-label="Examples of UGC content formats">
-              
-              <div className="ugcShowcaseGrid">
-                <div className="ugcShot ugcShotProduct">
-                  <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85" alt="Skincare product arranged for a product story" loading="lazy"/>
-                  <span className="ugcShotType">Product</span>
-                </div>
-                <div className="ugcShot ugcShotCreator">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=650&q=85" alt="Creator portrait for a relatable creator-led video" loading="lazy"/>
-                  <span className="ugcShotType">Creator</span>
-                </div>
-                <div className="ugcShot ugcShotLifestyle">
-                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=650&q=85" alt="Coffee lifestyle scene for everyday product content" loading="lazy"/>
-                  <span className="ugcShotType">Lifestyle</span>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="pricing" className="offerSection section">
         <div className="pricingHeader">
           <div className="miniEyebrow">SIMPLE PRICING <span /></div>
@@ -614,6 +577,43 @@ export default function Home() {
         </div>
       </section>
 
+
+      <section id="ugc" className="ugcSection section" aria-labelledby="ugcHeading">
+        <div className="ugcSectionInner">
+          <div className="ugcSectionMain">
+            <div className="ugcSectionCopy">
+              <div className="miniEyebrow">UGC CONTENT <span /></div>
+              <h2 id="ugcHeading">Your brand.<br/><em>Their voice.</em></h2>
+              <p>Videos made by creators, designed around your product and the people you want to reach. From product demos to everyday lifestyle content, we help your brand show up naturally.</p>
+              <div className="ugcServiceList">
+                <span><Check size={15}/> Product demos</span>
+                <span><Check size={15}/> Creator-led videos</span>
+                <span><Check size={15}/> Lifestyle content</span>
+              </div>
+              <button type="button" className="ctaButton orangeButton ugcEnquireButton" onClick={() => { setUgcError(""); setUgcSubmitted(false); setShowUgcEnquiry(true); }}>Discuss your project <span><ArrowRight size={17}/></span></button>
+              <small className="ugcSectionNote">Tell us what you’re building. We’ll help you figure out the right content for your brand.</small>
+            </div>
+            <div className="ugcShowcase" aria-label="Examples of UGC content formats">
+              
+              <div className="ugcShowcaseGrid">
+                <div className="ugcShot ugcShotProduct">
+                  <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85" alt="Skincare product arranged for a product story" loading="lazy"/>
+                  <span className="ugcShotType">Product</span>
+                </div>
+                <div className="ugcShot ugcShotCreator">
+                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=650&q=85" alt="Creator portrait for a relatable creator-led video" loading="lazy"/>
+                  <span className="ugcShotType">Creator</span>
+                </div>
+                <div className="ugcShot ugcShotLifestyle">
+                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=650&q=85" alt="Coffee lifestyle scene for everyday product content" loading="lazy"/>
+                  <span className="ugcShotType">Lifestyle</span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="bookForm" className="bookingSection section">
         <div className="bookingCopy">

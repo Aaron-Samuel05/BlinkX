@@ -9215,3 +9215,51 @@ body.darkMode .ugcShowcase {
   .ugcShowcaseGrid { gap: 5px !important; }
   .ugcShotType { left: 4px !important; font-size: 9px !important; }
 }
+
+
+/* Mobile showcase polish: make the three samples feel like one intentional gallery. */
+@media (max-width: 600px) {
+  .ugcShowcase {
+    padding: 12px !important;
+    background: #171715 !important;
+    border: 1px solid #34322d !important;
+    border-radius: 18px !important;
+  }
+  .ugcShowcaseGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+    align-items: stretch !important;
+  }
+  .ugcShot,
+  .ugcShotCreator {
+    height: auto !important;
+    aspect-ratio: 3 / 4.4 !important;
+    min-height: 0 !important;
+    transform: none !important;
+    border-radius: 10px !important;
+    background: #292825 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+  }
+  .ugcShot img {
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  .ugcShot:after {
+    background: linear-gradient(180deg, transparent 52%, rgba(0,0,0,.72) 100%) !important;
+  }
+  .ugcShotType {
+    left: 8px !important;
+    right: 4px !important;
+    bottom: 9px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+    font-weight: 650 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 360px) {
+  .ugcShowcase { padding: 9px !important; }
+  .ugcShowcaseGrid { gap: 6px !important; }
+  .ugcShotType { left: 5px !important; font-size: 9px !important; }
+}

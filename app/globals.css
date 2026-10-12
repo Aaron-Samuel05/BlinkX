@@ -9263,3 +9263,28 @@ body.darkMode .ugcShowcase {
   .ugcShowcaseGrid { gap: 6px !important; }
   .ugcShotType { left: 5px !important; font-size: 9px !important; }
 }
+
+
+/* Prevent a bright frame when switching the site theme. Keep theme surface changes in sync. */
+html, body {
+  background-color: #f7f6f2;
+}
+body, body * {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 180ms;
+  transition-timing-function: ease;
+}
+body.darkMode,
+body.darkMode html {
+  background-color: #0b0b0b;
+}
+.ugcSection,
+.ugcSectionInner,
+.ugcSectionTop,
+.ugcSectionMain,
+.ugcShowcase {
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  body, body * { transition-duration: 0ms !important; }
+}

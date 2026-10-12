@@ -517,7 +517,6 @@ export default function Home() {
 
       <section id="ugc" className="ugcSection section" aria-labelledby="ugcHeading">
         <div className="ugcSectionInner">
-          <div className="ugcSectionTop"><span>UGC CONTENT</span></div>
           <div className="ugcSectionMain">
             <div className="ugcSectionCopy">
               <div className="miniEyebrow">UGC CONTENT <span /></div>

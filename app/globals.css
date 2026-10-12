@@ -9101,3 +9101,117 @@ body.darkMode .ugcShowcase {
   border-color: #302e29 !important;
   box-shadow: none !important;
 }
+
+
+/* Mobile UGC layout fix: stack copy and showcase instead of squeezing them side by side. */
+@media (max-width: 600px) {
+  .ugcSection {
+    width: 100%;
+    padding: 24px 12px !important;
+  }
+  .ugcSectionInner {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 18px !important;
+  }
+  .ugcSectionTop {
+    padding: 0 16px !important;
+    font-size: 10px !important;
+  }
+  .ugcSectionMain {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 26px !important;
+    width: 100% !important;
+    padding: 24px 16px 26px !important;
+  }
+  .ugcSectionCopy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100% !important;
+    min-width: 0;
+  }
+  .ugcSectionCopy .miniEyebrow {
+    font-size: 11px !important;
+    margin: 0 0 8px;
+  }
+  .ugcSectionCopy h2 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(42px, 12vw, 54px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.065em !important;
+    margin: 8px 0 16px !important;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .ugcSectionCopy > p {
+    width: 100% !important;
+    max-width: none !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+  .ugcServiceList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px !important;
+    width: 100%;
+    margin-top: 20px !important;
+  }
+  .ugcServiceList span {
+    font-size: 13px !important;
+  }
+  .ugcEnquireButton {
+    margin-top: 22px !important;
+    min-height: 46px;
+  }
+  .ugcSectionNote {
+    width: 100%;
+    max-width: 300px !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin-top: 12px !important;
+  }
+  .ugcShowcase {
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+  }
+  .ugcShowcaseGrid {
+    display: grid !important;
+    grid-template-columns: 1fr 1.08fr 1fr !important;
+    align-items: center !important;
+    gap: 7px !important;
+    width: 100%;
+    margin: 0 !important;
+  }
+  .ugcShot {
+    width: 100%;
+    height: clamp(170px, 52vw, 230px) !important;
+    min-width: 0;
+    border-radius: 7px !important;
+    transform: none !important;
+  }
+  .ugcShotCreator {
+    height: clamp(190px, 58vw, 250px) !important;
+  }
+  .ugcShotType {
+    left: 6px !important;
+    bottom: 7px !important;
+    font-size: 10px !important;
+    letter-spacing: 0 !important;
+  }
+}
+@media (max-width: 360px) {
+  .ugcSectionMain { padding-inline: 13px !important; }
+  .ugcSectionCopy h2 { font-size: 41px !important; }
+  .ugcShowcaseGrid { gap: 5px !important; }
+  .ugcShotType { left: 4px !important; font-size: 9px !important; }
+}

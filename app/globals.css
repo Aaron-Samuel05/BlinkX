@@ -8877,3 +8877,44 @@ body.darkMode .ugcServiceSection{background:#0b0b0b}
 @media(max-width:900px){.ugcServiceSection{padding:70px 5vw!important}.ugcServiceSection .ugcServiceCard{grid-template-columns:1fr!important;gap:25px!important}.ugcServiceSection .ugcServiceVisual{min-height:300px!important}}
 @media(max-width:600px){.ugcServiceSection{padding:55px 16px!important}.ugcServiceSection .ugcServiceCard{padding:28px 22px!important;border-radius:26px!important}.ugcServiceSection .ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)!important}.ugcServiceSection .ugcServiceCopy p{font-size:13px!important}.ugcServiceSection .ugcServiceVisual{min-height:265px!important}.ugcServiceSection .ugcVisualCard{min-height:190px!important;width:76%!important;padding:18px!important}}
 body.darkMode .ugcServiceSection{background:#0b0b0b!important}
+
+
+/* UGC editorial redesign — distinctive, feed-inspired art direction */
+.ugcServiceSection{padding:78px 6vw!important;background:#0b0b0b!important;color:#f7f6f2!important}
+.ugcEditorial{max-width:1380px;margin:0 auto;border:1px solid #34312b;border-radius:4px;background:#10100f;overflow:hidden;position:relative}
+.ugcEditorialTop{height:48px;padding:0 28px;border-bottom:1px solid #34312b;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:.17em;font-weight:800;color:#aaa}
+.ugcEditorialTop span:last-child{color:#f6b52e}
+.ugcEditorialBody{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center;padding:clamp(28px,5vw,70px)}
+.ugcEditorialCopy{position:relative;z-index:2}
+.ugcEditorialCopy h2{font-size:clamp(44px,5.3vw,76px)!important;line-height:.91!important;letter-spacing:-.075em!important;margin:25px 0!important;max-width:650px}
+.ugcEditorialCopy h2 em{font-style:normal;color:#ffb629!important}
+.ugcEditorialCopy p{font-size:14px!important;line-height:1.8!important;max-width:470px;color:#b7b5ae!important}
+.ugcEditorialTags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.ugcEditorialTags span{font-size:8px;letter-spacing:.12em;font-weight:800;color:#e9e5dc;border:1px solid #3b3933;padding:9px 10px}
+.ugcEditorialCopy .ugcServiceButton{margin-top:27px}
+.ugcEditorialCopy .ugcServiceFollowup{max-width:360px;font-size:10px;line-height:1.7;color:#92918b;margin-top:13px}
+.ugcReelBoard{position:relative;min-width:0;padding:23px;background:#171714;border:1px solid #34312b;overflow:hidden}
+.ugcBoardHeading,.ugcBoardFooter{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:8px;letter-spacing:.14em;font-weight:800;color:#aaa}
+.ugcLiveDot{color:#ffb629!important}
+.ugcReelStack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start;margin:23px 0}
+.ugcReelTile{min-width:0;padding:7px;background:#22211d;border:1px solid #39362e;transform:translateY(12px)}
+.ugcReelTileTwo{transform:translateY(0);background:#f9b832;border-color:#f9b832;color:#171512}
+.ugcReelTileThree{transform:translateY(22px)}
+.ugcReelIndex{display:block;font-size:7px;font-weight:900;letter-spacing:.1em;padding:7px 3px 9px;color:#d8d2c5}
+.ugcReelTileTwo .ugcReelIndex{color:#3a2b11}
+.ugcReelScene{aspect-ratio:3/4;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:12px;background:#35332c}
+.ugcReelScene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78))}
+.ugcReelScene b{position:relative;z-index:1;font-size:clamp(14px,1.8vw,24px);line-height:.98;letter-spacing:-.055em;color:#fff}
+.ugcReelScene i{position:absolute;width:72%;aspect-ratio:1;border-radius:50%;top:12%;left:15%;background:radial-gradient(circle at 35% 30%,#f8dca4,#b87935 42%,#413026 72%);box-shadow:0 16px 35px #0008}
+.ugcSceneProduct{background:linear-gradient(140deg,#d5bca0,#6b4c3b 55%,#27201b)}
+.ugcSceneProduct i{border-radius:28% 28% 18% 18%;width:44%;height:48%;aspect-ratio:auto;left:29%;top:15%;background:linear-gradient(90deg,#d8c7a2,#fff0c9 35%,#ad7945 80%);box-shadow:0 15px 25px #25170f99}
+.ugcScenePov{background:linear-gradient(145deg,#f9ce68,#e58a40 60%,#6c3028)}
+.ugcScenePov i{background:radial-gradient(circle at 35% 30%,#ffedbd,#e9a04b 50%,#9d4e2e);border-radius:48% 52% 42% 58%;transform:rotate(-18deg)}
+.ugcSceneStory{background:linear-gradient(145deg,#c6d4c2,#667c6b 60%,#273a31)}
+.ugcSceneStory i{background:radial-gradient(circle at 35% 30%,#fff1d0,#a9b58a 48%,#526b4d);border-radius:44% 44% 22% 22%;height:58%;aspect-ratio:auto;width:50%;left:25%;top:10%}
+.ugcReelCaption{display:block;padding:9px 3px 5px;font-size:8px;line-height:1.45;color:#aaa}
+.ugcReelTileTwo .ugcReelCaption{color:#4b3917}
+.ugcBoardFooter{border-top:1px solid #34312b;padding-top:15px;color:#f2b63c}
+.ugcBoardFooter span{color:#8d8b83;text-align:right}
+@media(max-width:900px){.ugcEditorialBody{grid-template-columns:1fr;gap:40px}.ugcEditorialCopy p{max-width:600px}.ugcReelBoard{max-width:700px;width:100%;margin:0 auto}.ugcReelScene b{font-size:clamp(19px,3vw,28px)}}
+@media(max-width:600px){.ugcServiceSection{padding:48px 16px!important}.ugcEditorialTop{padding:0 15px;height:42px;font-size:7px}.ugcEditorialBody{padding:27px 17px;gap:32px}.ugcEditorialCopy h2{font-size:clamp(43px,12vw,58px)!important;margin:22px 0!important}.ugcEditorialCopy p{font-size:13px!important}.ugcEditorialTags{gap:5px}.ugcEditorialTags span{font-size:7px;padding:8px 7px}.ugcReelBoard{padding:12px}.ugcBoardHeading,.ugcBoardFooter{font-size:7px;letter-spacing:.08em}.ugcReelStack{gap:6px;margin:17px 0}.ugcReelTile{padding:5px}.ugcReelIndex{font-size:6px;padding:6px 2px 8px}.ugcReelScene{padding:8px}.ugcReelScene b{font-size:clamp(13px,4vw,19px)}.ugcReelCaption{font-size:7px;padding:7px 2px 3px}.ugcBoardFooter{align-items:flex-start}.ugcBoardFooter span{max-width:45%}}

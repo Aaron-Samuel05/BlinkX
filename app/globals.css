@@ -8967,3 +8967,46 @@ body.darkMode .ugcEnquiryForm input::placeholder{color:#aaa8a0}
     transform: translateY(18px) !important;
   }
 }
+
+
+/* Editorial refinement for the UGC section: fewer labels, clearer reading hierarchy. */
+.ugcSection { padding: clamp(32px, 4vw, 58px) 3vw; }
+.ugcSectionInner { max-width: 1500px; }
+.ugcSectionTop { height: 44px; padding-inline: clamp(20px, 3vw, 42px); font-size: 11px; letter-spacing: .04em; }
+.ugcSectionTop span:last-child { display: none; }
+.ugcSectionMain { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 4vw, 68px); padding: clamp(32px, 4vw, 64px); }
+.ugcSectionCopy .miniEyebrow { font-size: 12px; letter-spacing: .06em; }
+.ugcSectionCopy h2 { font-size: clamp(48px, 5.1vw, 78px); line-height: .98; letter-spacing: -.065em; margin: 18px 0 22px; }
+.ugcSectionCopy > p { max-width: 500px; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.75; }
+.ugcServiceList { gap: 12px 18px; margin-top: 25px; }
+.ugcServiceList span { font-size: 13px; font-weight: 600; }
+.ugcEnquireButton { margin-top: 30px; }
+.ugcSectionNote { max-width: 390px; margin-top: 14px; font-size: 13px; line-height: 1.65; }
+.ugcShowcase { padding: clamp(14px, 1.6vw, 24px); }
+.ugcShowcaseGrid { gap: clamp(8px, .9vw, 14px); margin: 0; }
+.ugcShot { height: clamp(260px, 29vw, 410px); border-radius: 9px; }
+.ugcShotCreator { height: clamp(290px, 32vw, 445px); }
+.ugcShotProduct { transform: translateY(10px); }
+.ugcShotLifestyle { transform: translateY(10px); }
+.ugcShotType { left: 12px; bottom: 12px; font-size: 12px; letter-spacing: 0; font-weight: 650; }
+body.darkMode .ugcSectionTop { color: #aaa8a0; }
+@media (max-width: 900px) {
+  .ugcSection { padding: 44px 4vw; }
+  .ugcSectionMain { padding: clamp(24px, 4vw, 40px); }
+  .ugcSectionCopy > p { font-size: 15px; }
+  .ugcSectionNote { font-size: 12px; }
+  .ugcShot { height: clamp(220px, 38vw, 360px); }
+  .ugcShotCreator { height: clamp(250px, 43vw, 400px); }
+}
+@media (max-width: 600px) {
+  .ugcSection { padding: 32px 16px; }
+  .ugcSectionTop { height: 40px; padding-inline: 16px; font-size: 10px; }
+  .ugcSectionMain { padding: 25px 17px; gap: 27px; }
+  .ugcSectionCopy h2 { font-size: clamp(42px, 11vw, 56px); margin: 16px 0; }
+  .ugcSectionCopy > p { font-size: 15px; line-height: 1.7; }
+  .ugcServiceList span { font-size: 12px; }
+  .ugcSectionNote { font-size: 12px; }
+  .ugcShot { height: clamp(165px, 48vw, 240px); }
+  .ugcShotCreator { height: clamp(185px, 55vw, 265px); }
+  .ugcShotType { font-size: 10px; left: 8px; bottom: 8px; }
+}

@@ -583,7 +583,7 @@ export default function Home() {
           <div className="ugcSectionMain">
             <div className="ugcSectionCopy">
               <div className="miniEyebrow">UGC CONTENT <span /></div>
-              <h2 id="ugcHeading">Your brand.<br/><em>Their voice.</em></h2>
+              <h2 id="ugcHeading">Your brand<br/><em>Their voice.</em></h2>
               <p>Videos made by creators, designed around your product and the people you want to reach. From product demos to everyday lifestyle content, we help your brand show up naturally.</p>
               <div className="ugcServiceList">
                 <span><Check size={15}/> Product demos</span>

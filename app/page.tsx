@@ -72,7 +72,7 @@ export default function Home() {
   const [ugcSubmitting, setUgcSubmitting] = useState(false);
   const [ugcSubmitted, setUgcSubmitted] = useState(false);
   const [ugcError, setUgcError] = useState("");
-  const [ugcForm, setUgcForm] = useState({ name: "", phone: "" });
+  const [ugcForm, setUgcForm] = useState({ name: "", phone: "", date: "", time: "" });
   const [submitted, setSubmitted] = useState(false);
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -229,9 +229,21 @@ export default function Home() {
   async function submitUgcEnquiry() {
     const name = ugcForm.name.trim();
     const phone = ugcForm.phone.trim();
+    const date = ugcForm.date;
+    const time = ugcForm.time;
     const phoneDigits = phone.replace(/\D/g, "");
-    if (!name || !phone) {
-      setUgcError("Please enter your name and phone number.");
+    if (!name || !phone || !date || !time) {
+      setUgcError("Please enter your details and choose a preferred date and time.");
+      return;
+    }
+    const todayInIndia = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+    if (date < todayInIndia) {
+      setUgcError("Please choose today or a future date.");
       return;
     }
     if (phoneDigits.length < 7 || phoneDigits.length > 15) {
@@ -244,7 +256,7 @@ export default function Home() {
       const response = await fetch("/api/ugc-enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, source: "UGC", type: "UGC Enquiry", package: "UGC Content" }),
+        body: JSON.stringify({ name, phone, date, time, source: "UGC", type: "UGC Enquiry", package: "UGC Content" }),
       });
       const result = await response.json();
       if (!response.ok || !result?.success) {
@@ -252,7 +264,7 @@ export default function Home() {
         return;
       }
       setUgcSubmitted(true);
-      setUgcForm({ name: "", phone: "" });
+      setUgcForm({ name: "", phone: "", date: "", time: "" });
     } catch {
       setUgcError("We couldn't connect to the enquiry system. Please try again.");
     } finally {
@@ -695,6 +707,10 @@ export default function Home() {
               <input id="ugcName" name="name" autoComplete="name" maxLength={100} required value={ugcForm.name} onChange={e => { setUgcForm(current => ({ ...current, name: e.target.value })); setUgcError(""); }} placeholder="Enter your full name" disabled={ugcSubmitting}/>
               <label htmlFor="ugcPhone">Phone number <span>*</span></label>
               <input id="ugcPhone" name="phone" type="tel" inputMode="tel" autoComplete="tel" maxLength={25} required value={ugcForm.phone} onChange={e => { setUgcForm(current => ({ ...current, phone: e.target.value })); setUgcError(""); }} placeholder="Enter your phone number" disabled={ugcSubmitting}/>
+              <label htmlFor="ugcDate">Preferred date <span>*</span></label>
+              <input id="ugcDate" name="date" type="date" required min={new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date())} value={ugcForm.date} onChange={e => { setUgcForm(current => ({ ...current, date: e.target.value })); setUgcError(""); }} disabled={ugcSubmitting}/>
+              <label htmlFor="ugcTime">Preferred time <span>*</span></label>
+              <input id="ugcTime" name="time" type="time" required value={ugcForm.time} onChange={e => { setUgcForm(current => ({ ...current, time: e.target.value })); setUgcError(""); }} disabled={ugcSubmitting}/>
               {ugcError && <p className="ugcFormError" role="alert">{ugcError}</p>}
               <button type="submit" className="ugcFormSubmit" disabled={ugcSubmitting}>{ugcSubmitting ? "Sending enquiry…" : <>Submit enquiry <ArrowRight size={17}/></>}</button>
               <p className="ugcPrivacyNote">No fixed packages. We’ll discuss your requirements and pricing with you.</p>

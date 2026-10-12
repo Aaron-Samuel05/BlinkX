@@ -10,6 +10,8 @@ export async function POST(request: Request) {
     const body = await request.json();
     const name = String(body?.name || "").trim();
     const phone = String(body?.phone || "").trim();
+    const date = String(body?.date || "").trim();
+    const time = String(body?.time || "").trim();
     const phoneDigits = phone.replace(/\D/g, "");
 
     if (name.length < 2 || name.length > 100) {
@@ -17,6 +19,19 @@ export async function POST(request: Request) {
     }
     if (phoneDigits.length < 7 || phoneDigits.length > 15) {
       return NextResponse.json({ success: false, message: "Please enter a valid phone number." }, { status: 400 });
+    }
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !time) {
+      return NextResponse.json({ success: false, message: "Please choose a preferred date and time." }, { status: 400 });
+    }
+    const todayInIndia = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Kolkata",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+    if (date < todayInIndia) {
+      return NextResponse.json({ success: false, message: "Please choose today or a future date." }, { status: 400 });
     }
 
     const controller = new AbortController();
@@ -32,6 +47,8 @@ export async function POST(request: Request) {
           package: "UGC Content",
           name,
           phone,
+          date,
+          time,
         }),
         redirect: "follow",
         cache: "no-store",

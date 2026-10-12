@@ -459,19 +459,26 @@ export default function Home() {
       </section>
 
       <section id="ugc" className="ugcServiceSection section">
-        <div className="ugcServiceCard">
-          <div className="ugcServiceCopy">
-            <div className="miniEyebrow">ANOTHER WAY TO CREATE <span /></div>
-            <h2>UGC content<br/><em>made for your brand.</em></h2>
-            <p>Authentic, creator-style videos designed to help your brand connect with its audience through relatable short-form content.</p>
-            <div className="ugcServiceNote">Custom requirements. No fixed package pricing.</div>
-            <a className="ctaButton orangeButton ugcServiceButton" href="#bookForm">Enquire Now <span><ArrowRight size={17}/></span></a>
-            <small className="ugcServiceFollowup">Our representative will connect with you to discuss your requirements and pricing.</small>
-          </div>
-          <div className="ugcServiceVisual" aria-hidden="true">
-            <div className="ugcVisualOrb" />
-            <div className="ugcVisualCard ugcVisualCardBack"><span>CREATOR-LED</span><b>Real stories.<br/>Real connection.</b></div>
-            <div className="ugcVisualCard ugcVisualCardFront"><span>BLINK X / UGC</span><div className="ugcVisualPlay"><Play size={25} fill="currentColor"/></div><b>Made to feel<br/>authentic.</b></div>
+        <div className="ugcEditorial">
+          <div className="ugcEditorialTop"><span>BLINK X / SERVICES</span><span>02 — UGC CONTENT</span></div>
+          <div className="ugcEditorialBody">
+            <div className="ugcEditorialCopy">
+              <div className="miniEyebrow">CREATOR-STYLE CONTENT <span /></div>
+              <h2>Less ad.<br/><em>More “I want that.”</em></h2>
+              <p>UGC that feels native to the feed. We help brands create relatable, creator-style videos built around your product, your audience and the way people actually scroll.</p>
+              <div className="ugcEditorialTags"><span>PRODUCT STORIES</span><span>CREATOR POV</span><span>SHORT-FORM VIDEO</span></div>
+              <a className="ctaButton orangeButton ugcServiceButton" href="#bookForm">Let’s talk UGC <span><ArrowRight size={17}/></span></a>
+              <small className="ugcServiceFollowup">No fixed packages. Our team will discuss your brief, requirements and pricing with you.</small>
+            </div>
+            <div className="ugcReelBoard" aria-hidden="true">
+              <div className="ugcBoardHeading"><span>THE FEED, REIMAGINED</span><span className="ugcLiveDot">● IN THE MAKING</span></div>
+              <div className="ugcReelStack">
+                <div className="ugcReelTile ugcReelTileOne"><span className="ugcReelIndex">01 / PRODUCT</span><div className="ugcReelScene ugcSceneProduct"><i/><b>Made<br/>for real life.</b></div><span className="ugcReelCaption">A product moment that feels personal.</span></div>
+                <div className="ugcReelTile ugcReelTileTwo"><span className="ugcReelIndex">02 / POV</span><div className="ugcReelScene ugcScenePov"><i/><b>POV: you<br/>found it.</b></div><span className="ugcReelCaption">A creator’s point of view.</span></div>
+                <div className="ugcReelTile ugcReelTileThree"><span className="ugcReelIndex">03 / STORY</span><div className="ugcReelScene ugcSceneStory"><i/><b>Worth<br/>the share.</b></div><span className="ugcReelCaption">A story people want to pass on.</span></div>
+              </div>
+              <div className="ugcBoardFooter"><b>REAL PEOPLE. REAL REACTIONS.</b><span>YOUR BRAND, IN THEIR WORLD ↗</span></div>
+            </div>
           </div>
         </div>
       </section>

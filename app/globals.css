@@ -8860,3 +8860,20 @@ body.darkMode .modalDropdownMenu button.booked{
 body.darkMode .ugcServiceSection{background:#0b0b0b}
 @media(max-width:900px){.ugcServiceSection{padding:70px 5vw}.ugcServiceCard{grid-template-columns:1fr;gap:25px}.ugcServiceVisual{min-height:300px}.ugcVisualOrb{width:300px}}
 @media(max-width:600px){.ugcServiceSection{padding:55px 16px}.ugcServiceCard{padding:28px 22px;border-radius:26px}.ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)}.ugcServiceCopy p{font-size:13px}.ugcServiceVisual{min-height:265px}.ugcVisualCard{min-height:190px;width:76%;padding:18px}.ugcVisualCard b,.ugcVisualCardFront b{font-size:21px}}
+
+
+/* Final UGC layout guard: keep the service panel styled even after legacy global rules */
+.ugcServiceSection{display:block!important;max-width:none!important;padding:90px 6vw!important;background:#fff!important}
+.ugcServiceSection .ugcServiceCard{display:grid!important;grid-template-columns:1.05fr .95fr!important;align-items:center!important;gap:5vw!important;max-width:1320px!important;margin:0 auto!important;padding:clamp(30px,5vw,72px)!important;border-radius:34px!important;background:#10100f!important;color:#f7f6f2!important;border:1px solid #282722!important;overflow:hidden!important;box-shadow:0 28px 80px rgba(0,0,0,.12)!important}
+.ugcServiceSection .ugcServiceCopy{display:block!important;position:relative!important;z-index:2!important}
+.ugcServiceSection .ugcServiceCopy h2{font-size:clamp(42px,5.2vw,72px)!important;line-height:.96!important;letter-spacing:-.065em!important;margin:22px 0!important;color:#f7f6f2!important}
+.ugcServiceSection .ugcServiceCopy h2 em{color:var(--orange2)!important}
+.ugcServiceSection .ugcServiceCopy p{max-width:520px!important;color:#b6b5af!important;font-size:15px!important;line-height:1.7!important}
+.ugcServiceSection .ugcServiceVisual{display:grid!important;position:relative!important;min-height:350px!important;place-items:center!important}
+.ugcServiceSection .ugcVisualCard{position:absolute!important;width:min(76%,320px)!important;min-height:225px!important;padding:22px!important;border-radius:25px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+.ugcServiceSection .ugcVisualCardBack{transform:rotate(9deg) translate(25px,-8px)!important;background:linear-gradient(145deg,#2c2922,#151513)!important;color:#f5f4ef!important}
+.ugcServiceSection .ugcVisualCardFront{transform:rotate(-7deg) translate(-12px,12px)!important;background:linear-gradient(145deg,#f9c65e,#f2a51d)!important;color:#171512!important}
+.ugcServiceSection .ugcServiceFollowup{display:block!important;max-width:390px!important;margin-top:13px!important;color:#aaa!important;font-size:11px!important;line-height:1.6!important}
+@media(max-width:900px){.ugcServiceSection{padding:70px 5vw!important}.ugcServiceSection .ugcServiceCard{grid-template-columns:1fr!important;gap:25px!important}.ugcServiceSection .ugcServiceVisual{min-height:300px!important}}
+@media(max-width:600px){.ugcServiceSection{padding:55px 16px!important}.ugcServiceSection .ugcServiceCard{padding:28px 22px!important;border-radius:26px!important}.ugcServiceSection .ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)!important}.ugcServiceSection .ugcServiceCopy p{font-size:13px!important}.ugcServiceSection .ugcServiceVisual{min-height:265px!important}.ugcServiceSection .ugcVisualCard{min-height:190px!important;width:76%!important;padding:18px!important}}
+body.darkMode .ugcServiceSection{background:#0b0b0b!important}

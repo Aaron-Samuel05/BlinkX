@@ -8835,86 +8835,71 @@ body.darkMode .modalDropdownMenu button.booked{
 }
 
 
-/* UGC service section — isolated styles to avoid changing existing sections */
-.ugcServiceSection{max-width:none;padding:90px 6vw;background:#fff}
-.ugcServiceCard{max-width:1320px;margin:0 auto;border-radius:34px;background:#10100f;color:#f7f6f2;padding:clamp(30px,5vw,72px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:5vw;position:relative;overflow:hidden;border:1px solid #282722;box-shadow:0 28px 80px rgba(0,0,0,.12)}
-.ugcServiceCopy{position:relative;z-index:2}
-.ugcServiceCopy .miniEyebrow{color:#aaa}
-.ugcServiceCopy h2{font-size:clamp(42px,5.2vw,72px);line-height:.96;letter-spacing:-.065em;margin:22px 0}
-.ugcServiceCopy h2 em{font-style:normal;color:var(--orange2)}
-.ugcServiceCopy p{max-width:520px;color:#b6b5af;font-size:15px;line-height:1.7}
-.ugcServiceNote{display:inline-flex;margin-top:12px;padding:10px 14px;border:1px solid rgba(250,170,38,.35);border-radius:999px;color:#f5c46d;font-size:11px;font-weight:700}
-.ugcServiceButton{margin-top:24px}
-.ugcServiceFollowup{display:block;max-width:390px;margin-top:13px;color:#aaa;font-size:11px;line-height:1.6}
-.ugcServiceVisual{min-height:350px;position:relative;display:grid;place-items:center}
-.ugcVisualOrb{position:absolute;width:min(28vw,350px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(250,170,38,.32),rgba(250,170,38,.04) 65%,transparent 72%);filter:blur(4px)}
-.ugcVisualCard{position:absolute;width:min(76%,320px);min-height:225px;border-radius:25px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(255,255,255,.14);box-shadow:0 25px 55px rgba(0,0,0,.32)}
-.ugcVisualCard span{font-size:9px;letter-spacing:.18em;font-weight:800}
-.ugcVisualCard b{font-size:24px;line-height:1.05;letter-spacing:-.04em}
-.ugcVisualCardBack{transform:rotate(9deg) translate(25px,-8px);background:linear-gradient(145deg,#2c2922,#151513);color:#f5f4ef}
-.ugcVisualCardBack span{color:#f5bd50}
-.ugcVisualCardFront{transform:rotate(-7deg) translate(-12px,12px);background:linear-gradient(145deg,#f9c65e,#f2a51d);color:#171512}
-.ugcVisualCardFront span{color:rgba(23,21,18,.65)}
-.ugcVisualPlay{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#171512;color:#f8bd4b}
-.ugcVisualCardFront b{font-size:25px}
-body.darkMode .ugcServiceSection{background:#0b0b0b}
-@media(max-width:900px){.ugcServiceSection{padding:70px 5vw}.ugcServiceCard{grid-template-columns:1fr;gap:25px}.ugcServiceVisual{min-height:300px}.ugcVisualOrb{width:300px}}
-@media(max-width:600px){.ugcServiceSection{padding:55px 16px}.ugcServiceCard{padding:28px 22px;border-radius:26px}.ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)}.ugcServiceCopy p{font-size:13px}.ugcServiceVisual{min-height:265px}.ugcVisualCard{min-height:190px;width:76%;padding:18px}.ugcVisualCard b,.ugcVisualCardFront b{font-size:21px}}
-
-
-/* Final UGC layout guard: keep the service panel styled even after legacy global rules */
-.ugcServiceSection{display:block!important;max-width:none!important;padding:90px 6vw!important;background:#fff!important}
-.ugcServiceSection .ugcServiceCard{display:grid!important;grid-template-columns:1.05fr .95fr!important;align-items:center!important;gap:5vw!important;max-width:1320px!important;margin:0 auto!important;padding:clamp(30px,5vw,72px)!important;border-radius:34px!important;background:#10100f!important;color:#f7f6f2!important;border:1px solid #282722!important;overflow:hidden!important;box-shadow:0 28px 80px rgba(0,0,0,.12)!important}
-.ugcServiceSection .ugcServiceCopy{display:block!important;position:relative!important;z-index:2!important}
-.ugcServiceSection .ugcServiceCopy h2{font-size:clamp(42px,5.2vw,72px)!important;line-height:.96!important;letter-spacing:-.065em!important;margin:22px 0!important;color:#f7f6f2!important}
-.ugcServiceSection .ugcServiceCopy h2 em{color:var(--orange2)!important}
-.ugcServiceSection .ugcServiceCopy p{max-width:520px!important;color:#b6b5af!important;font-size:15px!important;line-height:1.7!important}
-.ugcServiceSection .ugcServiceVisual{display:grid!important;position:relative!important;min-height:350px!important;place-items:center!important}
-.ugcServiceSection .ugcVisualCard{position:absolute!important;width:min(76%,320px)!important;min-height:225px!important;padding:22px!important;border-radius:25px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
-.ugcServiceSection .ugcVisualCardBack{transform:rotate(9deg) translate(25px,-8px)!important;background:linear-gradient(145deg,#2c2922,#151513)!important;color:#f5f4ef!important}
-.ugcServiceSection .ugcVisualCardFront{transform:rotate(-7deg) translate(-12px,12px)!important;background:linear-gradient(145deg,#f9c65e,#f2a51d)!important;color:#171512!important}
-.ugcServiceSection .ugcServiceFollowup{display:block!important;max-width:390px!important;margin-top:13px!important;color:#aaa!important;font-size:11px!important;line-height:1.6!important}
-@media(max-width:900px){.ugcServiceSection{padding:70px 5vw!important}.ugcServiceSection .ugcServiceCard{grid-template-columns:1fr!important;gap:25px!important}.ugcServiceSection .ugcServiceVisual{min-height:300px!important}}
-@media(max-width:600px){.ugcServiceSection{padding:55px 16px!important}.ugcServiceSection .ugcServiceCard{padding:28px 22px!important;border-radius:26px!important}.ugcServiceSection .ugcServiceCopy h2{font-size:clamp(40px,12vw,55px)!important}.ugcServiceSection .ugcServiceCopy p{font-size:13px!important}.ugcServiceSection .ugcServiceVisual{min-height:265px!important}.ugcServiceSection .ugcVisualCard{min-height:190px!important;width:76%!important;padding:18px!important}}
-body.darkMode .ugcServiceSection{background:#0b0b0b!important}
-
-
-/* UGC editorial redesign — distinctive, feed-inspired art direction */
-.ugcServiceSection{padding:78px 6vw!important;background:#0b0b0b!important;color:#f7f6f2!important}
-.ugcEditorial{max-width:1380px;margin:0 auto;border:1px solid #34312b;border-radius:4px;background:#10100f;overflow:hidden;position:relative}
-.ugcEditorialTop{height:48px;padding:0 28px;border-bottom:1px solid #34312b;display:flex;align-items:center;justify-content:space-between;font-size:9px;letter-spacing:.17em;font-weight:800;color:#aaa}
-.ugcEditorialTop span:last-child{color:#f6b52e}
-.ugcEditorialBody{display:grid;grid-template-columns:.92fr 1.08fr;gap:4vw;align-items:center;padding:clamp(28px,5vw,70px)}
-.ugcEditorialCopy{position:relative;z-index:2}
-.ugcEditorialCopy h2{font-size:clamp(44px,5.3vw,76px)!important;line-height:.91!important;letter-spacing:-.075em!important;margin:25px 0!important;max-width:650px}
-.ugcEditorialCopy h2 em{font-style:normal;color:#ffb629!important}
-.ugcEditorialCopy p{font-size:14px!important;line-height:1.8!important;max-width:470px;color:#b7b5ae!important}
-.ugcEditorialTags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
-.ugcEditorialTags span{font-size:8px;letter-spacing:.12em;font-weight:800;color:#e9e5dc;border:1px solid #3b3933;padding:9px 10px}
-.ugcEditorialCopy .ugcServiceButton{margin-top:27px}
-.ugcEditorialCopy .ugcServiceFollowup{max-width:360px;font-size:10px;line-height:1.7;color:#92918b;margin-top:13px}
-.ugcReelBoard{position:relative;min-width:0;padding:23px;background:#171714;border:1px solid #34312b;overflow:hidden}
-.ugcBoardHeading,.ugcBoardFooter{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:8px;letter-spacing:.14em;font-weight:800;color:#aaa}
-.ugcLiveDot{color:#ffb629!important}
-.ugcReelStack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start;margin:23px 0}
-.ugcReelTile{min-width:0;padding:7px;background:#22211d;border:1px solid #39362e;transform:translateY(12px)}
-.ugcReelTileTwo{transform:translateY(0);background:#f9b832;border-color:#f9b832;color:#171512}
-.ugcReelTileThree{transform:translateY(22px)}
-.ugcReelIndex{display:block;font-size:7px;font-weight:900;letter-spacing:.1em;padding:7px 3px 9px;color:#d8d2c5}
-.ugcReelTileTwo .ugcReelIndex{color:#3a2b11}
-.ugcReelScene{aspect-ratio:3/4;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:12px;background:#35332c}
-.ugcReelScene:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.78))}
-.ugcReelScene b{position:relative;z-index:1;font-size:clamp(14px,1.8vw,24px);line-height:.98;letter-spacing:-.055em;color:#fff}
-.ugcReelScene i{position:absolute;width:72%;aspect-ratio:1;border-radius:50%;top:12%;left:15%;background:radial-gradient(circle at 35% 30%,#f8dca4,#b87935 42%,#413026 72%);box-shadow:0 16px 35px #0008}
-.ugcSceneProduct{background:linear-gradient(140deg,#d5bca0,#6b4c3b 55%,#27201b)}
-.ugcSceneProduct i{border-radius:28% 28% 18% 18%;width:44%;height:48%;aspect-ratio:auto;left:29%;top:15%;background:linear-gradient(90deg,#d8c7a2,#fff0c9 35%,#ad7945 80%);box-shadow:0 15px 25px #25170f99}
-.ugcScenePov{background:linear-gradient(145deg,#f9ce68,#e58a40 60%,#6c3028)}
-.ugcScenePov i{background:radial-gradient(circle at 35% 30%,#ffedbd,#e9a04b 50%,#9d4e2e);border-radius:48% 52% 42% 58%;transform:rotate(-18deg)}
-.ugcSceneStory{background:linear-gradient(145deg,#c6d4c2,#667c6b 60%,#273a31)}
-.ugcSceneStory i{background:radial-gradient(circle at 35% 30%,#fff1d0,#a9b58a 48%,#526b4d);border-radius:44% 44% 22% 22%;height:58%;aspect-ratio:auto;width:50%;left:25%;top:10%}
-.ugcReelCaption{display:block;padding:9px 3px 5px;font-size:8px;line-height:1.45;color:#aaa}
-.ugcReelTileTwo .ugcReelCaption{color:#4b3917}
-.ugcBoardFooter{border-top:1px solid #34312b;padding-top:15px;color:#f2b63c}
-.ugcBoardFooter span{color:#8d8b83;text-align:right}
-@media(max-width:900px){.ugcEditorialBody{grid-template-columns:1fr;gap:40px}.ugcEditorialCopy p{max-width:600px}.ugcReelBoard{max-width:700px;width:100%;margin:0 auto}.ugcReelScene b{font-size:clamp(19px,3vw,28px)}}
-@media(max-width:600px){.ugcServiceSection{padding:48px 16px!important}.ugcEditorialTop{padding:0 15px;height:42px;font-size:7px}.ugcEditorialBody{padding:27px 17px;gap:32px}.ugcEditorialCopy h2{font-size:clamp(43px,12vw,58px)!important;margin:22px 0!important}.ugcEditorialCopy p{font-size:13px!important}.ugcEditorialTags{gap:5px}.ugcEditorialTags span{font-size:7px;padding:8px 7px}.ugcReelBoard{padding:12px}.ugcBoardHeading,.ugcBoardFooter{font-size:7px;letter-spacing:.08em}.ugcReelStack{gap:6px;margin:17px 0}.ugcReelTile{padding:5px}.ugcReelIndex{font-size:6px;padding:6px 2px 8px}.ugcReelScene{padding:8px}.ugcReelScene b{font-size:clamp(13px,4vw,19px)}.ugcReelCaption{font-size:7px;padding:7px 2px 3px}.ugcBoardFooter{align-items:flex-start}.ugcBoardFooter span{max-width:45%}}
+/* UGC section and enquiry modal — scoped styles only */
+.ugcSection{padding:76px 5vw;background:var(--soft);color:var(--ink);transition:background .25s,color .25s}
+.ugcSectionInner{max-width:1380px;margin:0 auto;border:1px solid var(--line);background:var(--white);border-radius:26px;overflow:hidden}
+.ugcSectionTop{height:46px;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--muted)}
+.ugcSectionTop span:last-child{color:var(--orange2)}
+.ugcSectionMain{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(28px,4.6vw,66px)}
+.ugcSectionCopy{min-width:0}
+.ugcSectionCopy .miniEyebrow{color:var(--muted)}
+.ugcSectionCopy h2{font-size:clamp(43px,5vw,72px);line-height:.94;letter-spacing:-.07em;margin:22px 0 20px;font-weight:700}
+.ugcSectionCopy h2 em{font-style:normal;color:var(--orange2)}
+.ugcSectionCopy>p{font-size:14px;line-height:1.8;color:var(--muted);max-width:440px;margin:0}
+.ugcServiceList{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:24px}
+.ugcServiceList span{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--ink)}
+.ugcServiceList svg{color:var(--orange2)}
+.ugcEnquireButton{margin-top:28px;cursor:pointer;border:0}
+.ugcSectionNote{display:block;max-width:370px;margin-top:13px;font-size:11px;line-height:1.65;color:var(--muted)}
+.ugcShowcase{min-width:0;padding:19px;background:var(--soft);border:1px solid var(--line);border-radius:18px}
+.ugcShowcaseLabel,.ugcShowcaseBottom{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:8px;font-weight:700;letter-spacing:.13em;color:var(--muted)}
+.ugcShowcaseIndex,.ugcShowcaseBottom span:last-child{color:var(--orange2)}
+.ugcShowcaseGrid{display:grid;grid-template-columns:1fr 1.13fr 1fr;align-items:center;gap:10px;margin:19px 0 20px}
+.ugcShot{height:clamp(190px,25vw,340px);position:relative;min-width:0;overflow:hidden;background:#d8d2c6;border-radius:7px}
+.ugcShotProduct{transform:translateY(10px)}
+.ugcShotCreator{height:clamp(220px,29vw,380px)}
+.ugcShotLifestyle{transform:translateY(17px)}
+.ugcShot img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .5s ease,filter .3s ease}
+.ugcShot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.7))}
+.ugcShotType{position:absolute;left:10px;right:6px;bottom:11px;z-index:1;color:#fff;font-size:7px;font-weight:800;letter-spacing:.09em;line-height:1.4}
+.ugcShowcaseBottom{border-top:1px solid var(--line);padding-top:14px}
+.ugcShowcaseBottom span:first-child{color:var(--ink)}
+body.darkMode .ugcSection{background:#0b0b0b;color:#f5f4f0}
+body.darkMode .ugcSectionInner{background:#11110f;border-color:#2b2a26}
+body.darkMode .ugcSectionTop{border-color:#2b2a26;color:#96948d}
+body.darkMode .ugcSectionCopy .miniEyebrow{color:#aaa8a0}
+body.darkMode .ugcSectionCopy>p,body.darkMode .ugcSectionNote{color:#aaa8a0}
+body.darkMode .ugcServiceList span{color:#f5f4f0}
+body.darkMode .ugcShowcase{background:#171714;border-color:#302f29}
+body.darkMode .ugcShowcaseBottom{border-color:#302f29}
+body.darkMode .ugcShowcaseBottom span:first-child{color:#f5f4f0}
+.ugcModalBack{z-index:120!important;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(10,10,9,.68)!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.ugcEnquiryModal{width:min(100%,500px);max-height:min(90vh,760px);overflow:auto;position:relative;padding:clamp(25px,5vw,42px);border:1px solid var(--line);border-radius:24px;background:var(--white);color:var(--ink);box-shadow:0 28px 100px rgba(0,0,0,.3)}
+.ugcModalClose{position:absolute;top:18px;right:18px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:transparent;color:var(--ink);cursor:pointer}
+.ugcModalClose:hover{border-color:var(--orange);color:var(--orange2)}
+.ugcModalEyebrow{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:800;letter-spacing:.15em;color:var(--muted)}
+.ugcModalEyebrow>span{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.ugcEnquiryModal h2{font-size:clamp(38px,7vw,56px);line-height:.96;letter-spacing:-.065em;margin:25px 0 14px}
+.ugcEnquiryModal h2 em{font-style:normal;color:var(--orange2)}
+.ugcModalIntro,.ugcSuccessState>p{font-size:13px;line-height:1.75;color:var(--muted);margin:0 0 25px;max-width:390px}
+.ugcEnquiryForm{display:flex;flex-direction:column;gap:8px}
+.ugcEnquiryForm label{margin-top:8px;font-size:11px;font-weight:700;color:var(--ink)}
+.ugcEnquiryForm label span{color:var(--orange2)}
+.ugcEnquiryForm input{width:100%;min-height:49px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink);padding:0 14px;font-size:13px;outline:none;transition:border-color .2s,box-shadow .2s}
+.ugcEnquiryForm input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(250,170,38,.14)}
+.ugcEnquiryForm input::placeholder{color:var(--muted);opacity:.8}
+.ugcFormSubmit{width:100%;min-height:50px;margin-top:12px;padding:0 17px;border:0;border-radius:999px;background:var(--orange);color:#171512;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;font-weight:800;cursor:pointer;transition:transform .2s,filter .2s}
+.ugcFormSubmit:hover{transform:translateY(-1px);filter:brightness(1.04)}
+.ugcFormSubmit:disabled{opacity:.65;cursor:wait;transform:none}
+.ugcFormError{font-size:12px;line-height:1.5;color:#c6382b;margin:5px 0 0}
+.ugcPrivacyNote{font-size:10px;line-height:1.6;color:var(--muted);text-align:center;margin:6px 0 0}
+body.darkMode .ugcEnquiryModal{background:#11110f;color:#f5f4f0;border-color:#302f29}
+body.darkMode .ugcModalClose{color:#f5f4f0;border-color:#34332e}
+body.darkMode .ugcEnquiryForm label{color:#f5f4f0}
+body.darkMode .ugcEnquiryForm input{background:#1a1a17;color:#f5f4f0;border-color:#38372f}
+body.darkMode .ugcEnquiryForm input::placeholder{color:#aaa8a0}
+.ugcSuccessState{padding-top:8px}
+.ugcSuccessIcon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:rgba(250,170,38,.16);color:var(--orange2);margin-bottom:22px}
+@media(max-width:900px){.ugcSection{padding:58px 4vw}.ugcSectionMain{grid-template-columns:1fr;gap:34px}.ugcSectionCopy>p{max-width:620px}.ugcShowcase{max-width:760px;width:100%;margin:0 auto}.ugcShot{height:clamp(220px,38vw,360px)}.ugcShotCreator{height:clamp(250px,43vw,400px)}}
+@media(max-width:600px){.ugcSection{padding:42px 16px}.ugcSectionInner{border-radius:18px}.ugcSectionTop{height:40px;padding:0 14px;font-size:7px}.ugcSectionMain{padding:27px 17px;gap:28px}.ugcSectionCopy h2{font-size:clamp(42px,12vw,57px);margin:20px 0 16px}.ugcSectionCopy>p{font-size:13px}.ugcServiceList{gap:9px 12px}.ugcServiceList span{font-size:10px}.ugcShowcase{padding:11px;border-radius:13px}.ugcShowcaseLabel,.ugcShowcaseBottom{font-size:7px;letter-spacing:.07em}.ugcShowcaseGrid{gap:6px;margin:15px 0}.ugcShot{height:clamp(155px,48vw,240px);border-radius:5px}.ugcShotCreator{height:clamp(180px,55vw,265px)}.ugcShotType{left:6px;bottom:8px;font-size:6px}.ugcShowcaseBottom{padding-top:11px}.ugcEnquiryModal{padding:28px 22px;border-radius:19px}.ugcModalClose{top:13px;right:13px;width:34px;height:34px}.ugcEnquiryModal h2{font-size:43px;margin-top:24px}}
+@media(prefers-reduced-motion:reduce){.ugcShot img,.ugcFormSubmit{transition:none}}

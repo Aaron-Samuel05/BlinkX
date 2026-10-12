@@ -8903,3 +8903,67 @@ body.darkMode .ugcEnquiryForm input::placeholder{color:#aaa8a0}
 @media(max-width:900px){.ugcSection{padding:58px 4vw}.ugcSectionMain{grid-template-columns:1fr;gap:34px}.ugcSectionCopy>p{max-width:620px}.ugcShowcase{max-width:760px;width:100%;margin:0 auto}.ugcShot{height:clamp(220px,38vw,360px)}.ugcShotCreator{height:clamp(250px,43vw,400px)}}
 @media(max-width:600px){.ugcSection{padding:42px 16px}.ugcSectionInner{border-radius:18px}.ugcSectionTop{height:40px;padding:0 14px;font-size:7px}.ugcSectionMain{padding:27px 17px;gap:28px}.ugcSectionCopy h2{font-size:clamp(42px,12vw,57px);margin:20px 0 16px}.ugcSectionCopy>p{font-size:13px}.ugcServiceList{gap:9px 12px}.ugcServiceList span{font-size:10px}.ugcShowcase{padding:11px;border-radius:13px}.ugcShowcaseLabel,.ugcShowcaseBottom{font-size:7px;letter-spacing:.07em}.ugcShowcaseGrid{gap:6px;margin:15px 0}.ugcShot{height:clamp(155px,48vw,240px);border-radius:5px}.ugcShotCreator{height:clamp(180px,55vw,265px)}.ugcShotType{left:6px;bottom:8px;font-size:6px}.ugcShowcaseBottom{padding-top:11px}.ugcEnquiryModal{padding:28px 22px;border-radius:19px}.ugcModalClose{top:13px;right:13px;width:34px;height:34px}.ugcEnquiryModal h2{font-size:43px;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.ugcShot img,.ugcFormSubmit{transition:none}}
+
+
+/* UGC section — use more of the desktop canvas and give the showcase room to breathe. */
+@media (min-width: 901px) {
+  .ugcSection {
+    padding: 30px 2vw !important;
+  }
+  .ugcSectionInner {
+    width: 100% !important;
+    max-width: 1600px !important;
+    margin-inline: auto !important;
+    border-radius: 28px !important;
+  }
+  .ugcSectionTop {
+    height: 52px !important;
+    padding-inline: clamp(24px, 3vw, 48px) !important;
+  }
+  .ugcSectionMain {
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+    gap: clamp(36px, 4vw, 76px) !important;
+    padding: clamp(52px, 5vw, 88px) clamp(36px, 4vw, 72px) !important;
+    min-height: 590px !important;
+  }
+  .ugcSectionCopy h2 {
+    font-size: clamp(60px, 5.2vw, 88px) !important;
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+  }
+  .ugcSectionCopy > p {
+    max-width: 520px !important;
+    font-size: 15px !important;
+  }
+  .ugcServiceList {
+    gap: 12px 20px !important;
+    margin-top: 28px !important;
+  }
+  .ugcServiceList span {
+    font-size: 12px !important;
+  }
+  .ugcEnquireButton {
+    margin-top: 32px !important;
+  }
+  .ugcShowcase {
+    padding: clamp(20px, 2vw, 30px) !important;
+    border-radius: 22px !important;
+  }
+  .ugcShowcaseGrid {
+    gap: clamp(10px, 1vw, 16px) !important;
+    margin: 24px 0 26px !important;
+  }
+  .ugcShot {
+    height: clamp(300px, 27vw, 420px) !important;
+    border-radius: 9px !important;
+  }
+  .ugcShotCreator {
+    height: clamp(340px, 31vw, 460px) !important;
+  }
+  .ugcShotProduct {
+    transform: translateY(12px) !important;
+  }
+  .ugcShotLifestyle {
+    transform: translateY(18px) !important;
+  }
+}

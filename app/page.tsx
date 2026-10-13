@@ -782,6 +782,7 @@ export default function Home() {
             </button>
             {modalOpenDropdown==="plan" && <div className="modalDropdownMenu">
               {packages.map(pkg=><button type="button" key={pkg.id} className={selectedPackage===pkg.id?"selected":""} onMouseDown={e=>e.stopPropagation()} onClick={()=>{setSelectedPackage(pkg.id);setModalOpenDropdown(null)}}><span><b>{pkg.name}</b><small>{pkg.reels} Reels · ₹{pkg.price.toLocaleString("en-IN")}</small></span>{selectedPackage===pkg.id&&<Check size={15}/>}</button>)}
+              <button type="button" className="ugcPlanOption" onMouseDown={e=>e.stopPropagation()} onClick={()=>{setModalOpenDropdown(null);setShowBooking(false);setShowUgcEnquiry(true);setUgcSubmitted(false);setUgcError("");}}><span><b>UGC Content</b><small>Custom requirements · Discuss pricing</small></span><ArrowRight size={15}/></button>
             </div>}
           </div>
           <div className="formGrid">{[["name","Your name *"],["business","Business / brand (optional)"],["phone","Phone number *"],["email","Email address (optional)"],["location","Shoot location / area (optional)"]].map(([k,label])=><input key={k} required={k==="name" || k==="phone"} type={k==="email"?"email":k==="phone"?"tel":"text"} className={k==="location"?"full":""} placeholder={label} value={(form as any)[k]} onChange={e=>{setForm({...form,[k]:e.target.value});setFormError("")}} />)}</div>

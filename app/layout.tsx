@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     "Create scroll-stopping Instagram Reels with Blink X. We plan, shoot and edit short-form videos for businesses and brands across India, with delivery within 24 hours after your shoot.",
   applicationName: "Blink X",
   icons: {
-    icon: [{ url: "/blinkx-logo.png", type: "image/png", sizes: "any" }],
-    shortcut: "/blinkx-logo.png",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml", sizes: "any" }, { url: "/blinkx-logo.png", type: "image/png" }],
+    shortcut: "/favicon.svg",
     apple: "/blinkx-logo.png",
   },
   keywords: [

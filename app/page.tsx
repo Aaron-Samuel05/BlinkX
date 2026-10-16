@@ -675,9 +675,13 @@ export default function Home() {
             <span>More Content. Bigger Growth.</span>
             <p>Blink X (TheBlinkX) is a Quick production company for businesses and brands across India. We plan, shoot, edit and deliver short-form video content within 24 hours after your shoot.</p>
             <div className="footerSocial">
-              <a href="#" aria-label="Instagram"><Instagram size={16}/></a>
-              <a href="#" aria-label="Video"><Video size={16}/></a>
-              <a href="#" aria-label="Call"><Phone size={16}/></a>
+              <a href="https://www.instagram.com/theblinkxofficial/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={16}/></a>
+              <a href="https://wa.me/919498048702?text=Hi%21%20I%27m%20interested%20in%20BlinkX.%20Could%20you%20share%20more%20details%20about%20your%20reels%20packages%20and%20how%20to%20book%20a%20shoot%3F" target="_blank" rel="noopener noreferrer" aria-label="Chat with Blink X on WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.52 3.48A11.8 11.8 0 0 0 12.12 0C5.58 0 .25 5.33.25 11.87c0 2.09.55 4.13 1.59 5.93L.15 24l6.36-1.67a11.9 11.9 0 0 0 5.6 1.42h.01c6.54 0 11.87-5.33 11.87-11.87 0-3.17-1.23-6.15-3.47-8.4ZM12.12 21.7a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.82 9.82 0 0 1-1.51-5.19c0-5.44 4.43-9.87 9.88-9.87a9.8 9.8 0 0 1 6.98 2.9 9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.88-9.87 9.88Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.5 1.7.64.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+                </svg>
+              </a>
+              <a href="tel:+919498048702" aria-label="Call Blink X"><Phone size={16}/></a>
             </div>
           </div>
           <div className="footerColumn">

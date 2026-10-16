@@ -4,7 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, MapPin, Play, Phone, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, ChevronDown, Clock3, Instagram, Mail, MapPin, Play, Phone, Star, Video, X, ListChecks, PenLine, CircleDot, Film, Layers3, TrendingUp, Moon, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 
@@ -682,6 +682,7 @@ export default function Home() {
                 </svg>
               </a>
               <a href="tel:+919498048702" aria-label="Call Blink X"><Phone size={16}/></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Blinkx.marketing%40gmail.com&su=BlinkX%20Enquiry" target="_blank" rel="noopener noreferrer" aria-label="Email Blink X"><Mail size={16}/></a>
             </div>
           </div>
           <div className="footerColumn">

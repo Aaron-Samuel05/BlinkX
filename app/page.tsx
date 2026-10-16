@@ -467,7 +467,6 @@ export default function Home() {
           <div className="taskList">
             {[["Planning content", ListChecks],["Writing scripts", PenLine],["Shooting videos", CircleDot],["Editing Reels", Film]].map(([x,Icon])=><div key={x as string}><span><Icon size={22} strokeWidth={2}/></span>{x as string}</div>)}
           </div>
-          <div className="handline">It takes time.</div>
         </div>
       </section>
 

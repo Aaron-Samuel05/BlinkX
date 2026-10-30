@@ -9322,3 +9322,17 @@ body.darkMode html {
 body.darkMode .ugcSection {
   background: transparent !important;
 }
+
+
+/* Desktop navbar: clearer, evenly distributed section links. */
+@media (min-width: 1051px) {
+  .navlinks {
+    width: min(620px, 42vw);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .navlinks a { min-height: 44px; padding: 0 8px; }
+}

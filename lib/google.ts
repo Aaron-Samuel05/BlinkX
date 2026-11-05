@@ -17,8 +17,13 @@ export function googleConfigured() {
   return Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 }
 
+// Tolerates APP_URL with a trailing slash ("https://example.com/").
+function appUrl() {
+  return (process.env.APP_URL || "http://localhost:3000").trim().replace(/\/+$/, "");
+}
+
 function redirectUri() {
-  return `${process.env.APP_URL || "http://localhost:3000"}/api/admin/google/callback`;
+  return `${appUrl()}/api/admin/google/callback`;
 }
 
 export function googleAuthUrl(state: string) {
@@ -195,7 +200,7 @@ function eventBody(b: Booking) {
     b.location && `Location: ${b.location}`,
     `Plan: ${what}`,
     `Preferred time: ${b.timeSlot}`,
-    `Admin: ${process.env.APP_URL || ""}/admin/board?lead=${b.id}`,
+    `Admin: ${appUrl()}/admin/board?lead=${b.id}`,
   ].filter(Boolean);
   return {
     summary: `Blink X call · ${b.name}`,

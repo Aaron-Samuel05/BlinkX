@@ -1,195 +1,95 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+import { bookedSlots, insertBooking, PACKAGES, syncBooking, type PackageId } from "@/lib/bookings";
+import { addDays, CONTENT_SLOTS, DATE_RE, todayInIndia } from "@/lib/slots";
 
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwlc_zkuTbXR0seUy6HCssokbIdOoIb8rupSUF_ESybKR_j_7Wdf9NyMtVDP7LwCgnOFA/exec";
-
-const REQUEST_TIMEOUT_MS = 30000;
-
-async function getAvailabilityForDate(date: string) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
-  try {
-    const params = new URLSearchParams({ start: date, end: date });
-    const response = await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
-      method: "GET",
-      redirect: "follow",
-      signal: controller.signal,
-      cache: "no-store",
-    });
-    const text = await response.text();
-
-    if (!response.ok) throw new Error("Availability service returned an error.");
-    const result = JSON.parse(text);
-    if (!result?.success || !result.booked || typeof result.booked !== "object") {
-      throw new Error("Availability response was invalid.");
-    }
-
-    return result.booked as Record<string, string[]>;
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-async function postToAppsScript(body: unknown) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
-  try {
-    return await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-      body: JSON.stringify(body),
-      redirect: "follow",
-      signal: controller.signal,
-      cache: "no-store",
-    });
-  } finally {
-    clearTimeout(timeout);
-  }
-}
+const clean = (value: unknown, max = 200) => String(value ?? "").trim().slice(0, max);
 
 export async function POST(request: Request) {
+  let body: any;
   try {
-    const body = await request.json();
-
-    const requestedDate = String(body?.date || "").trim();
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) {
-      return NextResponse.json(
-        { success: false, message: "Please choose a valid booking date." },
-        { status: 400 }
-      );
-    }
-
-    const todayInIndia = new Intl.DateTimeFormat("en-CA", {
-      timeZone: "Asia/Kolkata",
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    }).format(new Date());
-
-    if (requestedDate < todayInIndia) {
-      return NextResponse.json(
-        { success: false, message: "That date has already passed. Please choose a future date." },
-        { status: 400 }
-      );
-    }
-
-    const requestedTime = String(body?.time || "").trim();
-    if (!requestedTime) {
-      return NextResponse.json(
-        { success: false, message: "Please choose a call time." },
-        { status: 400 }
-      );
-    }
-
-    // Re-check the live sheet immediately before submitting, not just the browser's cached calendar.
-    let bookedByDate: Record<string, string[]>;
-    try {
-      bookedByDate = await getAvailabilityForDate(requestedDate);
-    } catch {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "We couldn't verify the latest availability. Please refresh the page and try again.",
-        },
-        { status: 503 }
-      );
-    }
-
-    const bookedTimes = bookedByDate[requestedDate];
-    if (Array.isArray(bookedTimes) && bookedTimes.includes(requestedTime)) {
-      return NextResponse.json(
-        {
-          success: false,
-          booked: true,
-          message: "This date and time slot is already booked. Please choose another time.",
-        },
-        { status: 409 }
-      );
-    }
-
-    const response = await postToAppsScript(body);
-    const text = await response.text();
-
-    let result: any;
-    try {
-      result = JSON.parse(text);
-    } catch {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "This time slot is already booked. Please choose another date or time.",
-        },
-        { status: 502 }
-      );
-    }
-
-    return NextResponse.json(result, { status: response.ok ? 200 : 502 });
-  } catch (error) {
-    if (error instanceof DOMException && error.name === "AbortError") {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "The booking service is taking too long to respond. Please try again.",
-        },
-        { status: 504 }
-      );
-    }
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Unable to reach the booking service. Please try again.",
-      },
-      { status: 502 }
-    );
+    body = JSON.parse(await request.text());
+  } catch {
+    return NextResponse.json({ success: false, message: "Invalid request." }, { status: 400 });
   }
-}
 
+  const date = clean(body?.date, 10);
+  const time = clean(body?.time);
+  const name = clean(body?.name, 100);
+  const phone = clean(body?.phone, 25);
+  const email = clean(body?.email, 200);
+  const packageId = (clean(body?.packageId, 20) || "growth") as PackageId;
+  const pkg = PACKAGES[packageId];
 
-async function getFromAppsScript(start: string, end: string) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  if (!DATE_RE.test(date)) {
+    return NextResponse.json({ success: false, message: "Please choose a valid booking date." }, { status: 400 });
+  }
+  if (date < todayInIndia()) {
+    return NextResponse.json({ success: false, message: "That date has already passed. Please choose a future date." }, { status: 400 });
+  }
+  if (!(CONTENT_SLOTS as readonly string[]).includes(time)) {
+    return NextResponse.json({ success: false, message: "Please choose a call time." }, { status: 400 });
+  }
+  if (name.length < 2) {
+    return NextResponse.json({ success: false, message: "Please enter your name." }, { status: 400 });
+  }
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 7 || digits.length > 15) {
+    return NextResponse.json({ success: false, message: "Please enter a valid phone number." }, { status: 400 });
+  }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ success: false, message: "Please enter a valid email address." }, { status: 400 });
+  }
+  if (!pkg) {
+    return NextResponse.json({ success: false, message: "Please choose a package." }, { status: 400 });
+  }
+
+  const slotTaken = NextResponse.json(
+    { success: false, booked: true, message: "This date and time slot is already booked. Please choose another time." },
+    { status: 409 }
+  );
 
   try {
-    const params = new URLSearchParams({ start, end });
-    return await fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
-      method: "GET",
-      redirect: "follow",
-      signal: controller.signal,
-      cache: "no-store",
+    // Also catches slots the admin is busy in Google Calendar; the unique index covers website races.
+    const taken = await bookedSlots(date, date);
+    if (taken[date]?.includes(time)) return slotTaken;
+
+    const booking = await insertBooking({
+      kind: "content_day",
+      name,
+      phone,
+      email: email || null,
+      business: clean(body?.business) || null,
+      clientType: clean(body?.type, 60) || null,
+      location: clean(body?.location) || null,
+      packageId,
+      packageLabel: `${pkg.name} · ${pkg.reels} Reels`,
+      price: pkg.price,
+      advance: pkg.advance,
+      scheduledDate: date,
+      timeSlot: time,
     });
-  } finally {
-    clearTimeout(timeout);
+    after(() => syncBooking(booking.id));
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    if (error instanceof Error && error.message === "SLOT_TAKEN") return slotTaken;
+    console.error("booking failed", error);
+    return NextResponse.json({ success: false, message: "We couldn't save your booking. Please try again." }, { status: 500 });
   }
 }
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const start = String(searchParams.get("start") || "").trim();
-  const end = String(searchParams.get("end") || "").trim();
+  const start = clean(searchParams.get("start"), 10);
+  const end = clean(searchParams.get("end"), 10);
 
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(start) || !/^\d{4}-\d{2}-\d{2}$/.test(end)) {
+  if (!DATE_RE.test(start) || !DATE_RE.test(end) || end < start || end > addDays(start, 62)) {
     return NextResponse.json({ success: false, booked: {} }, { status: 400 });
   }
 
   try {
-    const response = await getFromAppsScript(start, end);
-    const text = await response.text();
-
-    try {
-      const result = JSON.parse(text);
-      if (!result?.success || typeof result.booked !== "object" || result.booked === null) {
-        return NextResponse.json({ success: false, booked: {} }, { status: 200 });
-      }
-      return NextResponse.json({ success: true, booked: result.booked }, { status: 200 });
-    } catch {
-      return NextResponse.json({ success: false, booked: {} }, { status: 200 });
-    }
-  } catch {
-    return NextResponse.json({ success: false, booked: {} }, { status: 200 });
+    return NextResponse.json({ success: true, booked: await bookedSlots(start, end) });
+  } catch (error) {
+    console.error("availability failed", error);
+    return NextResponse.json({ success: false, booked: {} }, { status: 503 });
   }
 }

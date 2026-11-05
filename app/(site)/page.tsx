@@ -188,7 +188,7 @@ export default function Home() {
     if (date === null) return;
 
     const dateKey = getDateKey(selectedMonth.year, selectedMonth.month, date);
-    const normalizeTime = (value: string) => value.trim().toLowerCase().replace(/\\s+/g, " ");
+    const normalizeTime = (value: string) => value.trim().toLowerCase().replace(/\s+/g, " ");
 
     setFormError("");
 
@@ -343,6 +343,7 @@ export default function Home() {
           email: form.email.trim(),
           type: form.type,
           location: form.location.trim(),
+          packageId: activePackage.id,
           package: `${activePackage.name} - ${activePackage.reels} Reels - ₹${activePackage.price.toLocaleString("en-IN")}`,
         }),
       });
